@@ -54,6 +54,8 @@ function verif_form_2(f) {
         return false;
     } else if(!pass_ok) {
         alert("Les deux mots de passes ne sont pas egaux !");
+        f.pass_verif.style.backgroundColor = "#fba";
+        f.pass.style.backgroundColor = "#fba";
         return false;
     } else {
         return true;

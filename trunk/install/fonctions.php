@@ -53,7 +53,7 @@ function start_step_two() {
     echo '# DEBUG :<br>';
     var_dump($_POST);
 
-    echo '<h1 align="center">Création du compte administrateur</h1>';
+    echo '<h1 align="center">Creation du compte administrateur</h1>';
 
     echo '<form method="POST" action="index.php" onsubmit="return verif_form_2(this)">';
     echo '<table align="center">';
