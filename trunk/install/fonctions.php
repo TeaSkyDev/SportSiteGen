@@ -55,7 +55,7 @@ function start_step_two() {
 
     echo '<h1 align="center">Création du compte administrateur</h1>';
 
-    echo '<form method="POST" action="index.php">';
+    echo '<form method="POST" action="index.php" onsubmit="return verif_form_2(this)">';
     echo '<table align="center">';
         echo '<tr>';
             echo '<th>Login : </th><td><input type="text" name="login"/></td>';
@@ -64,7 +64,7 @@ function start_step_two() {
             echo '<th>Mot de passe : </th><td><input type="password" name="pass"/></td>';
         echo '</tr>';
         echo '<tr>';
-            echo '<th>Mot de passe (verification) : </th><td><input type="password" name="pass"/></td>';
+            echo '<th>Mot de passe (verification) : </th><td><input type="password" name="pass_verif"/></td>';
         echo '</tr>';
         echo '<tr>';
             echo '<th>Mail : </th><td><input type="text" name="mail"/></td>';
