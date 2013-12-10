@@ -84,5 +84,13 @@ function start_step_three() {
 
     var_dump($_POST);
 
-    
+    echo '<form method="POST" action="index.php">';
+    echo '<p>Choisissez maintenant le nom de votre site :</p> <input type="text" name="nom_site" required/>';
+    echo '<input type="hidden" name="step" value="step_3"/>';
+    echo '<input type="submit" value="Terminer l\installation"/>';
+    echo '</form>';
+}
+
+function show_recapitulatif() {
+    echo 'soon...';
 }

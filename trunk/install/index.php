@@ -26,6 +26,9 @@ if(isset($_POST['step'])) {
         case "step_2":
             start_step_three();
             break;
+        case "step_3":
+            show_recapitulatif();
+            break;
         default:
             echo 'Erreur<br>';
     }
