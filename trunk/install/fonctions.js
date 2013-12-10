@@ -12,10 +12,6 @@ function verif_form_1(f) {
         f.pass.style.backgroundColor = "#fba";
         rep = false;
     }
-    if(f.mail.value.length == 0) {
-        f.mail.style.backgroundColor = "#fba";
-        rep = false;
-    }
     if(f.bdd.value.length == 0) {
         f.bdd.style.backgroundColor = "#fba";
         rep = false;
