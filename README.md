@@ -6,9 +6,6 @@ En attente d'un magnifique cahier des charges, voici un description globale de l
 LEGENDE:
 	?<texte>? => à decider dans le futur
 
-On fait ca car le prof n'as pas trouvé ca sur internet et il était tout triste
-Nous allons donc tout tenter de faire pour que notre bien aimé prof soit heureux
-Donc en cas de conflit aller demander au prof car c'est le client
 Je compte sur vous pour remplir l'objectif suivant :
 
 *******************OBJECTIFS*******************
