@@ -1,4 +1,4 @@
-<html>
+<!--<html>
     <head>
         <title>SportSiteGen - Install</title>
         <script type="text/javascript" src="fonctions.js"></script>
@@ -14,18 +14,28 @@
                 border: 1px solid black;
             }
         </style>
-    </head>
+    </head>-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+    		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    		<link href='http://fonts.googleapis.com/css?family=Romanesco' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="design.css" />
+            <title>SSG - Etape 1</title>
+    	</head>
+
     <body>
 
 
 <?php
+
 /**
  * Date: 10/12/13
  *
  * Script d'installation du cms
  *
  */
-
 require_once("fonctions.php");
 
 echo '<h1 align="center">Script d\'installation</h1>';
@@ -34,26 +44,32 @@ if(isset($_POST['step'])) {
 
     $step = $_POST['step'];
 
-    echo '<table id="tab_progression">';
-        echo '<tr>';
-            echo '<td>Etape 1</td>';
+    echo '<nav>';
+		echo '<ul>';
+           /* if($step == "step_1") {
+			    echo '<div class="current"> <li><span>2</span> Base de données</li></div>';
+            } else {*/
+                echo '<li><span>1</span> Base de données</li>';
+            //}
             if($step == "step_1") {
-                echo '<th>Etape 2</th>';
+                echo '<div class="current"> <li><span>2</span> Administrateur</li></div>';
             } else {
-                echo '<td>Etape 2</td>';
+                echo '<li><span>2</span> Administrateur</li>';
             }
             if($step == "step_2") {
-                echo '<th>Etape 3</th>';
+                echo '<div class="current"> <li><span>3</span> Nom du site</li></div>';
             } else {
-                echo '<td>Etape 3</td>';
+                echo '<li><span>3</span> Nom du site</li>';
             }
             if($step == "step_3") {
-                echo '<th>Etape 4</th>';
+                echo '<div class="current"> <li><span>4</span> Récapitulatif</li></div>';
             } else {
-                echo '<td>Etape 4</td>';
+                echo '<li><span>4</span> Récapitulatif</li>';
             }
-        echo '</tr>';
-    echo '</table>';
+		echo '</ul>';
+	echo '</nav>';
+
+
 
     switch($step) {
         case "step_1":
@@ -75,14 +91,14 @@ if(isset($_POST['step'])) {
 
     if(!$cms_installed) {
 
-        echo '<table id="tab_progression">';
-            echo '<tr>';
-                echo '<th>Etape 1</th>';
-                echo '<td>Etape 2</td>';
-                echo '<td>Etape 3</td>';
-                echo '<td>Etape 4</td>';
-            echo '</tr>';
-        echo '</table>';
+        echo '<nav>';
+			echo '<ul>';
+				echo '<div class="current"> <li><span>1</span> Base de données</li></div>';
+				echo '<li><span>2</span> Administrateur</li>';
+				echo '<li><span>3</span> Nom du site</li>';
+				echo '<li><span>4</span> Récapitulatif</li>';
+			echo '</ul>';
+		echo '</nav>';
 
         start_step_one();
     } else {

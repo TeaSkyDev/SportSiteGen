@@ -20,7 +20,31 @@ function check_cms_installed() {
 }
 
 function start_step_one() {
-    echo '<h1 align="center">Etape 1</h1>';
+?>
+    <section id="page">
+		<h2>Installation de la base de données</h2>
+		<form method="POST" action="index.php" onSubmit="return verif_form_1(this)">
+			<section>
+				<label>Serveur</label><input type="text" name="server"/>
+			</section>
+			<section>
+				<label>Login</label><input type="text" name="login"/>
+			</section>
+			<section>
+				<label>Mot de passe</label><input type="password" name="pass"/>
+			</section>
+			<section>
+				<label>Base de données</label><input type="text" name="bdd"/>
+			</section>
+			<section id="boutons">
+				<input type="button" value="Retour">
+				<input type="submit" value="Valider">
+			</section>
+            <input type="hidden" name="step" value="step_1"/>
+		</form>
+	</section>
+<?php
+    /*echo '<h1 align="center">Etape 1</h1>';
     echo '<form method="POST" action="index.php" onSubmit="return verif_form_1(this)"/>';
     echo '<table align="center">';
     echo '<tr>';
@@ -43,15 +67,40 @@ function start_step_one() {
     echo '</tr>';
     echo '</table>';
     echo '<input type="hidden" name="step" value="step_1"/>';
-    echo '</form>';
+    echo '</form>';*/
 }
 
 function start_step_two() {
-    echo '<h1 align="center">Base de donnees cree !!</h1>';
+    //echo '<h1 align="center">Base de donnees cree !!</h1>';
 
     /* var_dump permet d'afficher le contenu de varaibles et tableau, pratique pour savoir si toutes les info d'un form sont passées */
     echo '# DEBUG :<br>';
-    var_dump($_POST);
+    //var_dump($_POST);
+
+    ?>
+    <section id="page">
+        <h2>Création du compte administrateur</h2>
+        <form method="POST" action="index.php" onSubmit="return verif_form_2(this)">
+            <section>
+                <label>Login</label><input type="text" name="login"/>
+            </section>
+            <section>
+                <label>Mot de passe</label><input type="password" name="pass"/>
+            </section>
+            <section>
+                <label>Mot de passe (verif)</label><input type="password" name="pass_verif"/>
+            </section>
+            <section>
+                <label>Mail</label><input type="text" name="mail"/>
+            </section>
+            <section id="boutons">
+                <input type="button" value="Retour">
+                <input type="submit" value="Valider">
+            </section>
+            <input type="hidden" name="step" value="step_2"/>
+        </form>
+    </section>
+<?php /*
 
     echo '<h1 align="center">Creation du compte administrateur</h1>';
 
@@ -74,23 +123,39 @@ function start_step_two() {
         echo '</tr>';
     echo '</table>';
         echo '<input type="hidden" name="step" value="step_2"/>';
-    echo '</form>';
+    echo '</form>';*/
 
 
 }
 
 function start_step_three() {
-    echo '<h1 align="center">Compte administrateur cree !</h1>';
+   // echo '<h1 align="center">Compte administrateur cree !</h1>';
 
-    var_dump($_POST);
+    //var_dump($_POST);
+
+    ?>
+    <section id="page">
+        <h2>Choisissez le nom de votre site</h2>
+        <form method="POST" action="index.php">
+            <section>
+                <input type="text" name="nom_site" required/>
+            </section>
+            <section id="boutons">
+                <input type="button" value="Retour">
+                <input type="submit" value="Valider">
+            </section>
+            <input type="hidden" name="step" value="step_3"/>
+        </form>
+    </section>
+    <?php /*
 
     echo '<form method="POST" action="index.php">';
     echo '<p>Choisissez maintenant le nom de votre site :</p> <input type="text" name="nom_site" required/>';
     echo '<input type="hidden" name="step" value="step_3"/>';
     echo '<input type="submit" value="Terminer l\installation"/>';
-    echo '</form>';
+    echo '</form>';*/
 }
 
 function show_recapitulatif() {
-    echo 'soon...';
+    echo '<h2>Soon...</h2>';
 }
