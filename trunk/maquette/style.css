@@ -35,7 +35,7 @@ h1{
 }
 #steps{
     width:600px;
-	height:310px;
+	height:390px;
     overflow:hidden;
 }
 .step{
@@ -145,7 +145,7 @@ h1{
     text-shadow:1px 1px 1px #fff;
     font-weight:bold;
 }
-#steps form input,
+#steps form p input,
 #steps form textarea,
 #steps form select{
     background: #ffffff;
@@ -158,9 +158,38 @@ h1{
     width: 200px;
     float:left;
 }
-#steps form input:focus{
+#steps form p input:focus{
     -moz-box-shadow:0px 0px 3px #aaa;
     -webkit-box-shadow:0px 0px 3px #aaa;
     box-shadow:0px 0px 3px #aaa;
     background-color:#FFFEEF;
 }
+
+#suivant{
+	margin-left:200px;
+	background: #ffffff;
+	box-shadow: 1px 1px 1px 1px grey;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 200px;
+    float:left;
+}
+
+#suivant:active{
+	box-shadow: 0px 0px 0px 0px grey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
