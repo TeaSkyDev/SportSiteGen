@@ -33,14 +33,17 @@ if(isset($_POST['step'])) {
     switch($step) {
         case "step_1":
             $_SESSION['steps']['step1'] = true;
+            recup_info("step_1");
             start_step_two();
             break;
         case "step_2":
             $_SESSION['steps']['step2'] = true;
+            recup_info("step_2");
             start_step_three();
             break;
         case "step_3":
             $_SESSION['steps']['step3'] = true;
+            recup_info("step_3");
             show_recapitulatif();
             break;
         default:

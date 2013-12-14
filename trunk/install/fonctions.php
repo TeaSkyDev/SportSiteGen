@@ -19,6 +19,27 @@ function check_cms_installed() {
     }
 }
 
+function recup_info($step) {
+    switch($step) {
+        case "step_1":
+            $_SESSION[$step]["server"] = $_POST['server'];
+            $_SESSION[$step]["login"]  = $_POST['login'];
+            $_SESSION[$step]["pass"]   = $_POST['pass'];
+            $_SESSION[$step]["bdd"]    = $_POST['bdd'];
+            break;
+        case "step_2":
+            $_SESSION[$step]["login"]  = $_POST['login'];
+            $_SESSION[$step]["pass"]   = $_POST['pass'];
+            $_SESSION[$step]["mail"]   = $_POST['mail'];
+            break;
+        case "step_3":
+            $_SESSION[$step]["nom"]    = $_POST['nom'];
+            break;
+        default:
+            echo 'Erreur';
+    }
+}
+
 function start_step_one() {
 ?>
     <link rel="stylesheet" href="design.css" type="text/css" media="screen"/>
@@ -203,35 +224,35 @@ function show_recapitulatif() {
                     <table>
                         <tr>
                             <td class="nom">Nom du site</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_3']['nom']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Serveur</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_1']['server']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Login</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_1']['login']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Mot de passe</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_1']['pass']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Base de données</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_1']['bdd']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Login administrateur</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_2']['login']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Mot de passe administrateur</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_2']['pass']; ?></td>
                         </tr>
                         <tr>
                             <td class="nom">Mail administrateur</td>
-                            <td class="info"></td>
+                            <td class="info"><?php echo $_SESSION['step_2']['mail']; ?></td>
                         </tr>
 
                     </table>
