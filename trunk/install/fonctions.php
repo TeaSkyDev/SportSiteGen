@@ -29,27 +29,26 @@ function start_step_one() {
     <h1>Installation SportSiteGen</h1>
     <div id="wrapper">
     <div id="steps">
-        <form id="formElem" name="formElem" action="" method="post">
+        <form id="formElem" name="formElem" action="index.php" method="post" onsubmit="return verif_form_1(this)">
 
             <fieldset class="step">
-                <legend>Création compte administrateur</legend>
+                <legend>Installation de la base de données</legend>
                 <p>
-                    <label for="login">Login</label>
-                    <input id="login" name="login" type="text"/>
+                    <label for="serveur">Serveur</label>
+                    <input id="serveur" name="server" />
                 </p>
                 <p>
-                    <label for="mail">Mail</label>
-                    <input id="mail" name="mail" placeholder="exemple@exemple.fr" type="email"/>
+                    <label for="login">Login</label>
+                    <input id="login" name="login"/>
                 </p>
                 <p>
                     <label for="password">Mot de passe</label>
-                    <input id="password" name="password" type="password"/>
+                    <input id="password" name="pass" type="password"/>
                 </p>
                 <p>
-                    <label for="passwordconf">Confirmer mot de passe</label>
-                    <input id="passwordconf" name="passwordconf" type="password"/>
+                    <label for="bd">Base de données</label>
+                    <input id="bd" name="bdd"/>
                 </p>
-
             </fieldset>
             <input type="hidden" name="step" value="step_1"/>
             <input type="submit" value="Suivant" id="suivant" name="suivant" />
@@ -98,7 +97,7 @@ function start_step_two() {
     <h1>Installation SportSiteGen</h1>
     <div id="wrapper">
     <div id="steps">
-        <form id="formElem" name="formElem" action="" method="post">
+        <form id="formElem" name="formElem" action="index.php" method="post" onsubmit="return verif_form_2(this)">
 
             <fieldset class="step">
                 <legend>Création compte administrateur</legend>
@@ -112,11 +111,11 @@ function start_step_two() {
                 </p>
                 <p>
                     <label for="password">Mot de passe</label>
-                    <input id="password" name="password" type="password"/>
+                    <input id="password" name="pass" type="password"/>
                 </p>
                 <p>
                     <label for="passwordconf">Confirmer mot de passe</label>
-                    <input id="passwordconf" name="passwordconf" type="password"/>
+                    <input id="passwordconf" name="pass_verif" type="password"/>
                 </p>
 
             </fieldset>
@@ -166,7 +165,7 @@ function start_step_three() {
     <h1>Installation SportSiteGen</h1>
     <div id="wrapper">
         <div id="steps">
-            <form id="formElem" name="formElem" action="" method="post">
+            <form id="formElem" name="formElem" action="index.php" method="post" onsubmit="return verif_form_3(this)">
 
                 <fieldset class="step">
                     <legend>Nom de votre site web</legend>
