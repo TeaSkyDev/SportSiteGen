@@ -1,3 +1,19 @@
+<?php
+/**
+ * Date: 10/12/13
+ *
+ * Script d'installation du cms
+ *
+ */
+session_start();
+if(!isset($_SESSION['steps'])) {
+    $_SESSION['steps']['step1'] = false;
+    $_SESSION['steps']['step2'] = false;
+    $_SESSION['steps']['step3'] = false;
+    $_SESSION['steps']['step4'] = false;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -5,16 +21,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <script type="text/javascript" src="fonctions.js"></script>
 
-
-
 <?php
 
-/**
- * Date: 10/12/13
- *
- * Script d'installation du cms
- *
- */
+
 require_once("fonctions.php");
 
 if(isset($_POST['step'])) {
@@ -23,12 +32,15 @@ if(isset($_POST['step'])) {
 
     switch($step) {
         case "step_1":
+            $_SESSION['steps']['step1'] = true;
             start_step_two();
             break;
         case "step_2":
+            $_SESSION['steps']['step2'] = true;
             start_step_three();
             break;
         case "step_3":
+            $_SESSION['steps']['step3'] = true;
             show_recapitulatif();
             break;
         default:
@@ -42,17 +54,29 @@ if(isset($_POST['step'])) {
             if($step == "step_1") {
                 echo '<li class="selected"><a href="admin.html">Administrateur</a></li>';
             } else {
-                echo '<li><a href="admin.html">Administrateur</a></li>';
+                if($_SESSION['steps']['step2']) {
+                    echo '<li><a href="admin.html">Administrateur</a></li>';
+                } else {
+                    echo '<li>Administration</li>';
+                }
             }
             if($step == "step_2") {
                 echo '<li class="selected"><a href="nom.html">Site web</a></li>';
             } else {
-                echo '<li><a href="nom.html">Site web</a></li>';
+                if($_SESSION['steps']['step3']) {
+                    echo '<li><a href="nom.html">Site web</a></li>';
+                } else {
+                    echo '<li>Site web</li>';
+                }
             }
             if($step == "step_3") {
                 echo '<li class="selected"><a href="recapitulatif.html">Récapitulatif</a></li>';
             } else {
-                echo '<li><a href="recapitulatif.html">Récapitulatif</a></li>';
+                if($_SESSION['steps']['step4']) {
+                    echo '<li><a href="recapitulatif.html">Récapitulatif</a></li>';
+                } else {
+                    echo '<li>Récapitulatif</li>';
+                }
             }
 		echo '</ul>';
 	echo '</nav>';
