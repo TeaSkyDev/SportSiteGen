@@ -26,24 +26,33 @@ if(!isset($_SESSION['steps'])) {
 require_once("steps.php");
 require_once("fonctions.php");
 
-if(isset($_POST['step'])) {
+if(isset($_POST['step']) || isset($_GET['step'])) {
 
-    $step = $_POST['step'];
+    $step = $_REQUEST['step'];
 
     switch($step) {
+        case "step_0":
+            start_step_one();
+            break;
         case "step_1":
-            $_SESSION['steps']['step1'] = true;
-            recup_info("step_1");
+            if(!$_SESSION['steps']['step1']) {
+                recup_info("step_1");
+                $_SESSION['steps']['step1'] = true;
+            }
             start_step_two();
             break;
         case "step_2":
-            $_SESSION['steps']['step2'] = true;
-            recup_info("step_2");
+            if(!$_SESSION['steps']['step2']) {
+                recup_info("step_2");
+                $_SESSION['steps']['step2'] = true;
+            }
             start_step_three();
             break;
         case "step_3":
-            $_SESSION['steps']['step3'] = true;
-            recup_info("step_3");
+            if(!$_SESSION['steps']['step3']) {
+                recup_info("step_3");
+                $_SESSION['steps']['step3'] = true;
+            }
             show_recapitulatif();
             break;
         default:
@@ -53,32 +62,32 @@ if(isset($_POST['step'])) {
     echo '<div id="navigation">';
 		echo '<ul>';
 
-            echo '<li><a href="base.html">Base de données</a></li>';
+            echo '<li><a href="index.php?step=step_0">Base de données</a></li>';
             if($step == "step_1") {
-                echo '<li class="selected"><a href="admin.html">Administrateur</a></li>';
+                echo '<li class="selected"><a href="#">Administrateur</a></li>';
             } else {
                 if($_SESSION['steps']['step2']) {
-                    echo '<li><a href="admin.html">Administrateur</a></li>';
+                    echo '<li><a href="index.php?step=step_1">Administrateur</a></li>';
                 } else {
-                    echo '<li>Administration</li>';
+                    echo '<li><a href="#">Administration</a></li>';
                 }
             }
             if($step == "step_2") {
-                echo '<li class="selected"><a href="nom.html">Site web</a></li>';
+                echo '<li class="selected"><a href="#">Site web</a></li>';
             } else {
                 if($_SESSION['steps']['step3']) {
-                    echo '<li><a href="nom.html">Site web</a></li>';
+                    echo '<li><a href="index.php?step=step_2">Site web</a></li>';
                 } else {
-                    echo '<li>Site web</li>';
+                    echo '<li><a href="#">Site web</a></li>';
                 }
             }
             if($step == "step_3") {
-                echo '<li class="selected"><a href="recapitulatif.html">Récapitulatif</a></li>';
+                echo '<li class="selected"><a href="#">Récapitulatif</a></li>';
             } else {
                 if($_SESSION['steps']['step4']) {
-                    echo '<li><a href="recapitulatif.html">Récapitulatif</a></li>';
+                    echo '<li><a href="index.php?step=step_3">Récapitulatif</a></li>';
                 } else {
-                    echo '<li>Récapitulatif</li>';
+                    echo '<li><a href="#">Récapitulatif</a></li>';
                 }
             }
 		echo '</ul>';
@@ -95,16 +104,16 @@ if(isset($_POST['step'])) {
         <div id="navigation">
             <ul>
                 <li class="selected">
-                    <a href="base.html">Base de données</a>
+                    <a href="#">Base de données</a>
                 </li>
                 <li>
-                    <a href="admin.html">Administrateur</a>
+                    <a href="#">Administrateur</a>
                 </li>
                 <li>
-                    <a href="nom.html">Site web</a>
+                    <a href="#">Site web</a>
                 </li>
                 <li>
-                    <a href="recapitulatif.html">Récapitulatif</a>
+                    <a href="#">Récapitulatif</a>
                 </li>
             </ul>
         </div>
