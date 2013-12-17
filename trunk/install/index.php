@@ -23,7 +23,7 @@ if(!isset($_SESSION['steps'])) {
 
 <?php
 
-
+require_once("steps.php");
 require_once("fonctions.php");
 
 if(isset($_POST['step'])) {
