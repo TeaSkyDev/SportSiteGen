@@ -1,3 +1,4 @@
+drop  table SITE;
 drop table APPARTENIR_TOURNOI;
 drop table TOURNOI;
 drop table EVENT_ADV;
@@ -15,6 +16,9 @@ drop table CATEGORIE;
 drop table UTILISATEUR;
 drop table TYPE_USER;
 drop table PHOTO;
+
+
+
 
 --1
 create table PHOTO(
@@ -162,3 +166,13 @@ create table APPARTENIR_TOURNOI(
        IdMatch number(10) references MATCH(Id),
        primary key(IdTournoi,IdMatch)
 );
+
+--18
+create table SITE(
+       Nom Varchar2(25) primary key       
+);
+
+insert into SITE values ("SuperSite De sport");
+insert into PHOTO values (1,"","Photo admin","");
+insert into TYPE_USER values (1,"Administrateur","Grand maitre du site");
+insert into UTILISATEUR values (1,"Admin","admin",1,1);
