@@ -1,0 +1,100 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    color:#444444;
+    font-size:13px;
+    background: #f2f2f2;
+    font-family:"Century Gothic", Helvetica, sans-serif;
+}
+
+.titre{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px; 
+    font-size:25px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    background: rgb(0, 0, 0);
+    background: -moz-linear-gradient(270deg, rgb(0, 0, 0) 20%, rgb(122, 122, 122) 100%);
+    background: -webkit-linear-gradient(270deg, rgb(0, 0, 0) 20%, rgb(122, 122, 122) 100%);
+    background: -o-linear-gradient(270deg, rgb(0, 0, 0) 20%, rgb(122, 122, 122) 100%);
+    background: -ms-linear-gradient(270deg, rgb(0, 0, 0) 20%, rgb(122, 122, 122) 100%);
+    background: linear-gradient(0deg, rgb(0, 0, 0) 20%, rgb(122, 122, 122) 100%);
+}
+
+.bleu{
+    width: 100%;
+    height: 10px;
+    color: rgb(6, 107, 163); 
+    background: rgb(6, 107, 163);
+    background: -moz-linear-gradient(270deg, rgb(6, 107, 163) 29%, rgb(43, 159, 209) 92%);
+    background: -webkit-linear-gradient(270deg, rgb(6, 107, 163) 29%, rgb(43, 159, 209) 92%);
+    background: -o-linear-gradient(270deg, rgb(6, 107, 163) 29%, rgb(43, 159, 209) 92%);
+    background: -ms-linear-gradient(270deg, rgb(6, 107, 163) 29%, rgb(43, 159, 209) 92%);
+    background: linear-gradient(0deg, rgb(6, 107, 163) 29%, rgb(43, 159, 209) 92%);
+}
+
+.connexion{
+    color:rgb(0,95,153);
+    font-size:25px;
+    padding:10px;
+}
+
+div{
+    -webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.79);
+    -moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.79);
+    box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.79);
+    border-radius: 10px;
+}
+
+img{
+    display: block;
+    position: relative;
+    margin: auto;
+}
+
+#contenu{
+    position: absolute;
+    margin: 1%;
+    text-shadow:1px 1px 1px #fff;
+    width: 98%;
+
+}
+
+.texte{
+    position: relative;
+    margin: auto;
+    width: 590px;
+}
+
+.info{
+    position: relative;
+    margin: 10px;
+    margin-top: 20px;
+    width: 275px;
+}
+
+.login{
+    position: absolute;
+    right:10px;
+    top:70px;
+    padding-left: 10px;
+    width: 275px;
+    height: 200px
+}
+
+#password{
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 85px;
+}
+
+#login{
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 35px;
+}
