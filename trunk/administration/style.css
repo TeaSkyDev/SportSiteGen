@@ -98,3 +98,24 @@ img{
     right: 10px;
     top: 35px;
 }
+
+#connexion{
+    position: relative;
+    left: 146px;
+    top:20px;
+    width: 105px;
+    height: 25px;
+    text-align: left;
+}
+
+#connexion img{
+    display: block;
+    position: relative;
+    top : -16px;
+    left: 39px;
+}
+#connexion p{
+    display: block;
+    padding-top: 2px;
+    padding-left: 10px;
+}
