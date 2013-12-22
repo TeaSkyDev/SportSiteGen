@@ -17,19 +17,43 @@ function start_step_one() {
                 <legend>Installation de la base de données</legend>
                 <p>
                     <label for="serveur">Serveur</label>
-                    <input id="serveur" name="server" />
+                    <?php
+                        if($_SESSION['steps']['step1']) {
+                            echo '<input id="serveur" name="server" value="'.$_SESSION['step_1']['server'].'"/>';
+                        } else {
+                            echo '<input id="serveur" name="server" />';
+                        }
+                    ?>
                 </p>
                 <p>
                     <label for="login">Login</label>
-                    <input id="login" name="login"/>
+                    <?php
+                    if($_SESSION['steps']['step1']) {
+                        echo '<input id="login" name="login" value="'.$_SESSION['step_1']['login'].'"/>';
+                    } else {
+                        echo '<input id="login" name="login"/>';
+                    }
+                    ?>
                 </p>
                 <p>
                     <label for="password">Mot de passe</label>
-                    <input id="password" name="pass" type="password"/>
+                    <?php
+                    if($_SESSION['steps']['step1']) {
+                        echo '<input id="password" name="pass" type="password" value="'.$_SESSION['step_1']['pass'].'"/>';
+                    } else {
+                        echo '<input id="password" name="pass" type="password"/>';
+                    }
+                    ?>
                 </p>
                 <p>
                     <label for="bd">Base de données</label>
-                    <input id="bd" name="bdd"/>
+                    <?php
+                    if($_SESSION['steps']['step1']) {
+                        echo '<input id="bd" name="bdd" value="'.$_SESSION['step_1']['bdd'].'"/>';
+                    } else {
+                        echo '<input id="bd" name="bdd"/>';
+                    }
+                    ?>
                 </p>
             </fieldset>
             <input type="hidden" name="step" value="step_1"/>
@@ -60,15 +84,33 @@ function start_step_two() {
                 <legend>Création compte administrateur</legend>
                 <p>
                     <label for="login">Login</label>
-                    <input id="login" name="login" type="text"/>
+                    <?php
+                    if($_SESSION['steps']['step2']) {
+                        echo '<input id="login" name="login" type="text" value="'.$_SESSION['step_2']['login'].'"/>';
+                    } else {
+                        echo '<input id="login" name="login" type="text"/>';
+                    }
+                    ?>
                 </p>
                 <p>
                     <label for="mail">Mail</label>
-                    <input id="mail" name="mail" placeholder="exemple@exemple.fr" type="email"/>
+                    <?php
+                    if($_SESSION['steps']['step2']) {
+                        echo '<input id="mail" name="mail" placeholder="exemple@exemple.fr" type="email" value="'.$_SESSION['step_2']['mail'].'"/>';
+                    } else {
+                        echo '<input id="mail" name="mail" placeholder="exemple@exemple.fr" type="email"/>';
+                    }
+                    ?>
                 </p>
                 <p>
                     <label for="password">Mot de passe</label>
-                    <input id="password" name="pass" type="password"/>
+                    <?php
+                    if($_SESSION['steps']['step2']) {
+                        echo '<input id="password" name="pass" type="password" value="'.$_SESSION['step_2']['pass'].'"/>';
+                    } else {
+                        echo '<input id="password" name="pass" type="password"/>';
+                    }
+                    ?>
                 </p>
                 <p>
                     <label for="passwordconf">Confirmer mot de passe</label>
@@ -102,7 +144,13 @@ function start_step_three() {
                     <legend>Nom de votre site web</legend>
                     <p style="margin-top:90px;">
                         <label for="nom">Nom</label>
-                        <input id="nom" name="nom" />
+                        <?php
+                        if($_SESSION['steps']['step3']) {
+                            echo '<input id="nom" name="nom" value="'.$_SESSION['step_3']['nom'].'"/>';
+                        } else {
+                            echo '<input id="nom" name="nom" />';
+                        }
+                        ?>
                     </p>
                 </fieldset>
                 <input type="hidden" name="step" value="step_3"/>

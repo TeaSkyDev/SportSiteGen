@@ -84,7 +84,7 @@ if(isset($_POST['step']) || isset($_GET['step'])) {
             if($step == "step_3") {
                 echo '<li class="selected"><a href="#">Récapitulatif</a></li>';
             } else {
-                if($_SESSION['steps']['step4']) {
+                if($_SESSION['steps']['step3']) {
                     echo '<li><a href="index.php?step=step_3">Récapitulatif</a></li>';
                 } else {
                     echo '<li><a href="#">Récapitulatif</a></li>';
