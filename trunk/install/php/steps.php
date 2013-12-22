@@ -3,7 +3,7 @@
 
 function start_step_one() {
 ?>
-    <link rel="stylesheet" href="design.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/design.css" type="text/css" media="screen"/>
     </head>
 
     <body>
@@ -70,7 +70,7 @@ function start_step_two() {
     //var_dump($_POST);
 
     ?>
-    <link rel="stylesheet" href="design.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/design.css" type="text/css" media="screen"/>
     </head>
 
 <body>
@@ -130,7 +130,7 @@ function start_step_three() {
     //var_dump($_POST);
 
     ?>
-    <link rel="stylesheet" href="design.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/design.css" type="text/css" media="screen"/>
     </head>
 
     <body>
@@ -162,7 +162,7 @@ function start_step_three() {
 
 function show_recapitulatif() {
     ?>
-    <link rel="stylesheet" href="stylerecap.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/stylerecap.css" type="text/css" media="screen"/>
     </head>
 
     <body>
@@ -209,8 +209,48 @@ function show_recapitulatif() {
 
                     </table>
                 </fieldset>
-                <input type="button" value="Terminer" id="suivant" name="suivant" />
+                <form method="POST" action="index.php"/>
+                    <input type="hidden" name="step" value="step_4"/>
+                    <input type="submit" value="Terminer" id="suivant" name="suivant" />
+                </form>
             </div>
         </div>
     <?php
+}
+
+function installation() {
+
+    bdd_connexion($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
+    create_connexion_to_bdd_file($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
+
+    echo '<h1 align="center">Création de la base de données</h1>';
+    exec_sql_file("sql/Creation.sql");
+    echo '<h1 align="center">Insertions dans la base de données</h1>';
+
+    $sql_1 = mysql_query("insert into SITE values ('".$_SESSION['step_3']['nom']."')");
+    $sql_2 = mysql_query("insert into PHOTO values (1,'','Photo admin','')");
+    $sql_3 = mysql_query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
+    $sql_4 = mysql_query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."','".$_SESSION['step_2']['pass']."',1,1)");
+
+    if(!$sql_1) {
+        echo '[!] Erreur insertion 1<br>';
+    } else {
+        echo 'Insertion 1 réussie !';
+    }
+    if(!$sql_2) {
+        echo '[!] Erreur insertion 2<br>';
+    } else {
+        echo 'Insertion 2 réussie !';
+    }
+    if(!$sql_3) {
+        echo '[!] Erreur insertion 3<br>';
+    } else {
+        echo 'Insertion 3 réussie !';
+    }
+    if(!$sql_4) {
+        echo '[!] Erreur insertion 4<br>';
+    } else {
+        echo 'Insertion 4 réussie !';
+    }
+
 }

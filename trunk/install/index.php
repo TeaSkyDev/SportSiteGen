@@ -19,12 +19,12 @@ if(!isset($_SESSION['steps'])) {
 	<head>
         <title>SportSiteGen</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <script type="text/javascript" src="fonctions.js"></script>
+        <script type="text/javascript" src="js/fonctions.js"></script>
 
 <?php
 
-require_once("steps.php");
-require_once("fonctions.php");
+require_once("php/steps.php");
+require_once("php/fonctions.php");
 
 if(isset($_POST['step']) || isset($_GET['step'])) {
 
@@ -54,6 +54,9 @@ if(isset($_POST['step']) || isset($_GET['step'])) {
                 $_SESSION['steps']['step3'] = true;
             }
             show_recapitulatif();
+            break;
+        case "step_4":
+            installation();
             break;
         default:
             echo 'Erreur<br>';
@@ -120,17 +123,6 @@ if(isset($_POST['step']) || isset($_GET['step'])) {
         </div>
         </div>
 <?php
-
-
-        /*echo '<nav>';
-			echo '<ul>';
-				echo '<div class="current"> <li><span>1</span> Base de données</li></div>';
-				echo '<li><span>2</span> Administrateur</li>';
-				echo '<li><span>3</span> Nom du site</li>';
-				echo '<li><span>4</span> Récapitulatif</li>';
-			echo '</ul>';
-		echo '</nav>';*/
-
 
     } else {
         echo 'Vous semblez avoir déjà installé ce cms sur ce serveur, un risque de conflit avec la base de données empêche l\'installation.<br>

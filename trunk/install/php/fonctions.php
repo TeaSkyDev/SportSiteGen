@@ -55,17 +55,38 @@ function exec_sql_file($file) {
         }
         $test = explode(";", $content);
 
+        $i = 0;
         foreach($test as $req) {
-            echo $req.'<br>';
             $r = mysql_query($req);
-            if(!$r) {
-                echo 'erreur<br>';
-            } else {
-                echo 'ok';
+            $i++;
+            if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
+                if(!$r) {
+                    echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
+                } else {
+                    echo '<font color="green">Requete n°'.$i.' : OK</font><br>';
+                }
             }
         }
     }
 
+}
+
+function bdd_connexion($server, $login, $pass, $bdd) {
+    mysql_connect($server, $login, $pass);
+    mysql_select_db($bdd);
+}
+
+function create_connexion_to_bdd_file($server, $login, $pass, $bdd) {
+    $code = '
+    <?php
+    mysql_connect("'.$server.'", "'.$login.'", "'.$pass.'");
+    mysql_select_db("'.$bdd.'");
+    ?>
+    ';
+
+    $file = fopen("mysql_connect.php", "a+");
+    fwrite($file, $code);
+    fclose($file);
 }
 
 ?>

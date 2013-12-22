@@ -17,10 +17,6 @@ drop table UTILISATEUR;
 drop table TYPE_USER;
 drop table PHOTO;
 
-
-
-
---1
 create table PHOTO(
        Id number(10) primary key,
        Nom Varchar2(20),
@@ -28,14 +24,14 @@ create table PHOTO(
        Commentaires VarChar2(50)
 );
 
---2
+
 create table TYPE_USER(
        Id number(10) primary key,
        Nom Varchar2(10) unique,
        Description Varchar2(50)
 );
 
---3
+
 create table UTILISATEUR(
        Id number(10) primary key,
        Pseudo Varchar2(10) unique not null,
@@ -44,14 +40,14 @@ create table UTILISATEUR(
        IdTypeUser number(10) not null references TYPE_USER(Id)
 );
 
---4
+
 create table CATEGORIE(
        Id number(10) primary key,
        Nom Varchar2(10) unique,
        Description Varchar2(50)
 );
 
---5
+
 create table INSCRIT(
        Id number(10) primary key,
        Nom Varchar2(20) not null,
@@ -63,7 +59,7 @@ create table INSCRIT(
        IdCategorie number(10) references CATEGORIE(Id)
 );
 
---6
+
 create table TEAM_ADV(
        Id number(10) primary key,
        Nom Varchar2(20) not null unique,
@@ -71,7 +67,7 @@ create table TEAM_ADV(
        Description Varchar2(50)     
 );
 
---7
+
 create table MATCH(
        Id number(10) primary key,
        IdCategorie number(10) references CATEGORIE(Id),
@@ -82,28 +78,28 @@ create table MATCH(
        Commentaires Varchar2(100)
 );
 
---8
+
 create table PHOTO_MATCH(
        IdMatch number(10),
        IdPhoto number(10),
        primary key(IdMatch,IdPhoto)
 );
 
---9
+
 create table APPARTENIR_EQUIPE(
        Id number(10) primary key,
        IdInscrit number(10) not null references INSCRIT(Id),
        IdMatch number(10) not null references MATCH(Id)
 );
 
---10
+
 create table POSTE(
        Id number(10) primary key,
        Nom Varchar2(10),
        Description Varchar2(50)
 );
 
---11
+
 create table TYPE_PARTICIPATION(
        IdAppartenance number(10) references APPARTENIR_EQUIPE(Id),
        HeureDebut number(4,2) not null,
@@ -112,7 +108,7 @@ create table TYPE_PARTICIPATION(
        primary key(IdAppartenance,HeureDebut)
 );
 
---12
+
 create table POINTS(
        Id number(10) primary key,
        Nom Varchar2(10) not null,
@@ -120,7 +116,7 @@ create table POINTS(
        Description Varchar2(50)
 );
 
---13
+
 create table JOUEUR_ADV(
        Id number(10) primary key,
        IdTeamAdv number(10) references TEAM_ADV(Id),
@@ -129,7 +125,7 @@ create table JOUEUR_ADV(
        IdPoste number(10) references POSTE(Id)
 );
 
---14
+
 create table EVENT(
        Id number(10) primary key,
        IdMatch number(10) references MATCH(Id) not null,
@@ -140,7 +136,7 @@ create table EVENT(
        Commentaires Varchar2(50)
 );
 
---15
+
 create table EVENT_ADV(
        Id number(10) primary key,
        IdMatch number(10) references MATCH(Id) not null,
@@ -151,7 +147,7 @@ create table EVENT_ADV(
        Commentaires Varchar2(50)
 );
 
---16
+
 create table TOURNOI(
        Id number(10) primary key,
        Nom Varchar2(15) not null,
@@ -160,19 +156,14 @@ create table TOURNOI(
        DateFin Date not null
 );
 
---17
 create table APPARTENIR_TOURNOI(
        IdTournoi number(10) references TOURNOI(Id),
        IdMatch number(10) references MATCH(Id),
        primary key(IdTournoi,IdMatch)
 );
 
---18
+
 create table SITE(
        Nom Varchar2(25) primary key       
 );
 
-insert into SITE values ("SuperSite De sport");
-insert into PHOTO values (1,"","Photo admin","");
-insert into TYPE_USER values (1,"Administrateur","Grand maitre du site");
-insert into UTILISATEUR values (1,"Admin","admin",1,1);
