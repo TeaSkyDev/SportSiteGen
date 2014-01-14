@@ -9,7 +9,7 @@ drop table TYPE_PARTICIPATION;
 drop table POSTE;
 drop table APPARTENIR_EQUIPE;
 drop table PHOTO_MATCHS;
-drop table MATCHS;
+drop table MATCHSS;
 drop table TEAM_ADV;
 drop table INSCRIT;
 drop table CATEGORIE;
