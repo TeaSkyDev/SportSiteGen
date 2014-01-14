@@ -100,6 +100,19 @@ a.deco{
     background-color: rgb(236,236,236);
     margin:10px;
     padding: 10px;
+    height: 495px;
+}
+
+#LQuickIcon{
+    border-color: rgb(229,229,229);
+    border-style: solid;
+    border-width: 2px;
+    background-color: white;
+    width: 47.5%;
+    padding-left: 10px;
+    cursor: pointer;
+    position: absolute;
+    top:107px;
 }
 
 #quickIcon{
@@ -107,9 +120,14 @@ a.deco{
     border-style: solid;
     border-width: 2px; 
     height:465px;
-    width: 770px;
+    width: 47.5%; /*770px*/
     background-color: white;
     margin-top: -2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: absolute;
+    top:127px;
+    
 }
 
 #quickIcon li{
@@ -131,12 +149,73 @@ a.deco{
     width: 58%;
 }
 
-#LQuickIcon{
+#Luser{
     border-color: rgb(229,229,229);
     border-style: solid;
     border-width: 2px;
     background-color: white;
-    width: 760px;
+    width: 47.5%;
     padding-left: 10px;
     cursor: pointer;
+}
+
+#user{
+    border-color: rgb(229,229,229);
+    border-style: solid;
+    border-width: 2px; 
+    width: 47.5%;
+    background-color: white;
+    margin-top: -2px;
+    padding-left: 5px;
+    padding-right: 5px;    
+    height: auto;
+}
+
+#Lajoute{
+    border-color: rgb(229,229,229);
+    border-style: solid;
+    border-width: 2px;
+    background-color: white;
+    width: 47.5%;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+#ajoute{
+    border-color: rgb(229,229,229);
+    border-style: solid;
+    border-width: 2px; 
+    width: 47.5%;
+    background-color: white;
+    margin-top: -2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: auto;    
+}
+
+#Lconsulte{
+    border-color: rgb(229,229,229);
+    border-style: solid;
+    border-width: 2px;
+    background-color: white;
+    width: 47.5%;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+#consulte{
+    border-color: rgb(229,229,229);
+    border-style: solid;
+    border-width: 2px; 
+    width: 47.5%;
+    background-color: white;
+    margin-top: -2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: auto;    
+}
+
+dl{
+    position: relative;
+    left: 51%;
 }
