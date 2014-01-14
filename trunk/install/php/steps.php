@@ -2,13 +2,8 @@
 
 
 function start_step_one() {
+    include("header.php");
 ?>
-    <link rel="stylesheet" href="css/design.css" type="text/css" media="screen"/>
-    </head>
-
-    <body>
-    <div id="content">
-    <h1>Installation SportSiteGen</h1>
     <div id="wrapper">
     <div id="steps">
         <form id="formElem" name="formElem" action="index.php" method="post" onsubmit="return verif_form_1(this)">
@@ -69,13 +64,8 @@ function start_step_two() {
     echo '# DEBUG :<br>';
     //var_dump($_POST);
 
+    include("header.php");
     ?>
-    <link rel="stylesheet" href="css/design.css" type="text/css" media="screen"/>
-    </head>
-
-<body>
-    <div id="content">
-    <h1>Installation SportSiteGen</h1>
     <div id="wrapper">
     <div id="steps">
         <form id="formElem" name="formElem" action="index.php" method="post" onsubmit="return verif_form_2(this)">
@@ -127,15 +117,8 @@ function start_step_two() {
 
 function start_step_three() {
 
-    //var_dump($_POST);
-
+    include("header.php");
     ?>
-    <link rel="stylesheet" href="css/design.css" type="text/css" media="screen"/>
-    </head>
-
-    <body>
-    <div id="content">
-    <h1>Installation SportSiteGen</h1>
     <div id="wrapper">
         <div id="steps">
             <form id="formElem" name="formElem" action="index.php" method="post" onsubmit="return verif_form_3(this)">
@@ -219,6 +202,7 @@ function show_recapitulatif() {
 }
 
 function installation() {
+    include("header.php");
 
     bdd_connexion($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
     create_connexion_to_bdd_file($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);

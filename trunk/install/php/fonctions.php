@@ -59,19 +59,20 @@ function exec_sql_file($file) {
         foreach($test as $req) {
             $r = mysql_query($req);
             $i++;
-            if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
+            //if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
                 if(!$r) {
                     echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
                 } else {
                     echo '<font color="green">Requete n°'.$i.' : OK</font><br>';
                 }
-            }
+            //}
         }
     }
 
 }
 
 function bdd_connexion($server, $login, $pass, $bdd) {
+    echo "server = ".$server.", login = ".$login.", ".$pass.", ".$bdd."<br>";
     mysql_connect($server, $login, $pass);
     mysql_select_db($bdd);
 }
