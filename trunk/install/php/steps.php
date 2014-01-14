@@ -204,14 +204,12 @@ function show_recapitulatif() {
 function installation() {
     include("header.php");
 
-    $_SESSION['bdd'] = bdd_connexion($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
+    $bdd = bdd_connexion($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
     create_connexion_to_bdd_file($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
 
     echo '<h1 align="center">Création de la base de données</h1>';
-    exec_sql_file("sql/Creation.sql");
+    exec_sql_file($bdd, "sql/Creation.sql");
     echo '<h1 align="center">Insertions dans la base de données</h1>';
-
-    $bdd = $_SESSION['bdd'];
 
     $bdd->beginTransaction();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

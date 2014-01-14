@@ -51,7 +51,7 @@ function recup_info($step) {
     }
 }
 
-function exec_sql_file($file) {
+function exec_sql_file($bdd, $file) {
 
     $f = file($file);
     $content = "";
@@ -62,14 +62,14 @@ function exec_sql_file($file) {
         }
         $test = explode(";", $content);
 
-        $_SESSION['bdd']->beginTransaction();
-        $_SESSION['bdd']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $bdd->beginTransaction();
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $i = 0;
         foreach($test as $req) {
             echo var_dump($req);
             if(!empty($req) && $req != ";") {
-                $r = $_SESSION['bdd']->query($req);
+                $r = $bdd->query($req);
                 $i++;
                 //if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
                     if(!$r) {
@@ -81,7 +81,7 @@ function exec_sql_file($file) {
             }
         }
 
-        $_SESSION['bdd']->commit();
+        $bdd->commit();
     }
 
 }
