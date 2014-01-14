@@ -23,6 +23,13 @@ function check_cms_installed() {
     }
 }
 
+function cms_installed() {
+    $fichier = fopen("cms.conf", "r");
+
+    fseek($fichier, 0);
+    fputs($fichier, "installed 1");
+}
+
 function recup_info($step) {
     switch($step) {
         case "step_1":
@@ -55,35 +62,45 @@ function exec_sql_file($file) {
         }
         $test = explode(";", $content);
 
+        $_SESSION['bdd']->beginTransaction();
+        $_SESSION['bdd']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         $i = 0;
         foreach($test as $req) {
-            $r = mysql_query($req);
-            $i++;
-            //if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
-                if(!$r) {
-                    echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
-                } else {
-                    echo '<font color="green">Requete n°'.$i.' : OK</font><br>';
-                }
-            //}
+            echo var_dump($req);
+            if(!empty($req) && $req != ";") {
+                $r = $_SESSION['bdd']->query($req);
+                $i++;
+                //if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
+                    if(!$r) {
+                        echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
+                    } else {
+                        echo '<font color="green">Requete n°'.$i.' : OK</font><br>';
+                    }
+                //}
+            }
         }
+
+        $_SESSION['bdd']->commit();
     }
 
 }
 
 function bdd_connexion($server, $login, $pass, $bdd) {
     echo "server = ".$server.", login = ".$login.", ".$pass.", ".$bdd."<br>";
-    mysql_connect($server, $login, $pass);
-    mysql_select_db($bdd);
+    //mysql_connect($server, $login, $pass);
+    //mysql_select_db($bdd);
+    return new PDO('mysql:host='.$server.';dbname='.$bdd, $login, $pass);
 }
 
 function create_connexion_to_bdd_file($server, $login, $pass, $bdd) {
-    $code = '
+    /*$code = '
     <?php
     mysql_connect("'.$server.'", "'.$login.'", "'.$pass.'");
     mysql_select_db("'.$bdd.'");
     ?>
-    ';
+    ';*/
+    $code = '<?php $bdd = new PDO(\'mysql:host='.$server.';dbname='.$bdd.'\', \''.$login.'\', \''.$pass.'\'); ?>';
 
     $file = fopen("mysql_connect.php", "a+");
     fwrite($file, $code);

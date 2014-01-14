@@ -5,12 +5,17 @@
  * Script d'installation du cms
  *
  */
+$DEBUG = true;
+
 session_start();
-if(!isset($_SESSION['steps'])) {
+if(!isset($_SESSION['steps']) && !$DEBUG) {
     $_SESSION['steps']['step1'] = false;
     $_SESSION['steps']['step2'] = false;
     $_SESSION['steps']['step3'] = false;
     $_SESSION['steps']['step4'] = false;
+    $_SESSION['bdd'] = NULL;
+} else {
+    require_once("debug.php");
 }
 ?>
 

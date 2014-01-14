@@ -166,4 +166,3 @@ create table APPARTENIR_TOURNOI(
 create table SITE(
        Nom varchar(25) primary key       
 );
-

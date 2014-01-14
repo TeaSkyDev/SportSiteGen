@@ -204,17 +204,24 @@ function show_recapitulatif() {
 function installation() {
     include("header.php");
 
-    bdd_connexion($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
+    $_SESSION['bdd'] = bdd_connexion($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
     create_connexion_to_bdd_file($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
 
     echo '<h1 align="center">Création de la base de données</h1>';
     exec_sql_file("sql/Creation.sql");
     echo '<h1 align="center">Insertions dans la base de données</h1>';
 
-    $sql_1 = mysql_query("insert into SITE values ('".$_SESSION['step_3']['nom']."')");
-    $sql_2 = mysql_query("insert into PHOTO values (1,'','Photo admin','')");
-    $sql_3 = mysql_query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
-    $sql_4 = mysql_query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."','".$_SESSION['step_2']['pass']."',1,1)");
+    $bdd = $_SESSION['bdd'];
+
+    $bdd->beginTransaction();
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."')");
+    $sql_2 = $bdd->query("insert into PHOTO values (1,'','Photo admin','')");
+    $sql_3 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
+    $sql_4 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."','".$_SESSION['step_2']['pass']."',1,1)");
+
+    $bdd->commit();
 
     if(!$sql_1) {
         echo '[!] Erreur insertion 1<br>';
@@ -236,5 +243,9 @@ function installation() {
     } else {
         echo 'Insertion 4 réussie !';
     }
+
+    cms_installed(); 
+
+    echo '<a href="php/test.php">test</a><br>';
 
 }
