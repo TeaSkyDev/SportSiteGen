@@ -24,7 +24,7 @@ function check_cms_installed() {
 }
 
 function cms_installed() {
-    $fichier = fopen("cms.conf", "r");
+    $fichier = fopen("cms.conf", "r+");
 
     fseek($fichier, 0);
     fputs($fichier, "installed 1");
