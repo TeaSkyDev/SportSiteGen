@@ -168,3 +168,10 @@ create table SITE(
        URL varchar(255)
 );
 
+create table NEWS(
+       id int(4),
+       titre varchar(100),
+       date datetime,
+       contenu varchar(1000),
+       primary key(id)
+);

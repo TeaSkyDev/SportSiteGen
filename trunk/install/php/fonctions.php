@@ -96,7 +96,7 @@ function bdd_connexion($server, $login, $pass, $bdd) {
 function create_connexion_to_bdd_file($server, $login, $pass, $bdd) {
     $code = '<?php $bdd = new PDO(\'mysql:host='.$server.';dbname='.$bdd.'\', \''.$login.'\', \''.$pass.'\'); ?>';
 
-    $file = fopen("mysql_connect.php", "a+");
+    $file = fopen("../mysql_connect.php", "a+");
     fseek($file, 0);
     fwrite($file, $code);
     fclose($file);
