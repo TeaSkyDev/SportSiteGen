@@ -9,7 +9,7 @@ drop table TYPE_PARTICIPATION;
 drop table POSTE;
 drop table APPARTENIR_EQUIPE;
 drop table PHOTO_MATCHS;
-drop table MATCHSS;
+drop table MATCHS;
 drop table TEAM_ADV;
 drop table INSCRIT;
 drop table CATEGORIE;
@@ -68,7 +68,7 @@ create table TEAM_ADV(
 );
 
 
-create table MATCHSS(
+create table MATCHS(
        Id integer(10) primary key,
        IdCategorie integer(10) references CATEGORIE(Id),
        IdTeamAdv integer(10) references TEAM_ADV(Id) ,
@@ -164,5 +164,7 @@ create table APPARTENIR_TOURNOI(
 
 
 create table SITE(
-       Nom varchar(25) primary key       
+       Nom varchar(25) primary key,
+       URL varchar(255)
 );
+
