@@ -214,7 +214,7 @@ function installation() {
     $bdd->beginTransaction();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."')");
+    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."')");
     $sql_2 = $bdd->query("insert into PHOTO values (1,'','Photo admin','')");
     $sql_3 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
     $sql_4 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."','".$_SESSION['step_2']['pass']."',1,1)");
@@ -224,26 +224,26 @@ function installation() {
     if(!$sql_1) {
         echo '[!] Erreur insertion 1<br>';
     } else {
-        echo 'Insertion 1 réussie !';
+        echo 'Insertion 1 réussie !<br>';
     }
     if(!$sql_2) {
         echo '[!] Erreur insertion 2<br>';
     } else {
-        echo 'Insertion 2 réussie !';
+        echo 'Insertion 2 réussie !<br>';
     }
     if(!$sql_3) {
         echo '[!] Erreur insertion 3<br>';
     } else {
-        echo 'Insertion 3 réussie !';
+        echo 'Insertion 3 réussie !<br>';
     }
     if(!$sql_4) {
         echo '[!] Erreur insertion 4<br>';
     } else {
-        echo 'Insertion 4 réussie !';
+        echo 'Insertion 4 réussie !<br>';
     }
 
     cms_installed(); 
 
-    echo '<a href="php/test.php">test</a><br>';
+    echo '<a class="lien_cms" href="'.get_url_frontend().'">'.get_url_frontend().'</a><br>';
 
 }
