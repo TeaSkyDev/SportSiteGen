@@ -63,7 +63,7 @@ function exec_sql_file($bdd, $file) {
         $test = explode(";", $content);
 
         $bdd->beginTransaction();
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        //$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $i = 0;
         foreach($test as $req) {
@@ -71,13 +71,13 @@ function exec_sql_file($bdd, $file) {
             if(!empty($req) && $req != ";") {
                 $r = $bdd->query($req);
                 $i++;
-                //if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
+                if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
                     if(!$r) {
                         echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
                     } else {
                         echo '<font color="green">Requete n°'.$i.' : OK</font><br>';
                     }
-                //}
+                }
             }
         }
 
@@ -88,23 +88,27 @@ function exec_sql_file($bdd, $file) {
 
 function bdd_connexion($server, $login, $pass, $bdd) {
     echo "server = ".$server.", login = ".$login.", ".$pass.", ".$bdd."<br>";
-    //mysql_connect($server, $login, $pass);
-    //mysql_select_db($bdd);
     return new PDO('mysql:host='.$server.';dbname='.$bdd, $login, $pass);
 }
 
 function create_connexion_to_bdd_file($server, $login, $pass, $bdd) {
-    /*$code = '
-    <?php
-    mysql_connect("'.$server.'", "'.$login.'", "'.$pass.'");
-    mysql_select_db("'.$bdd.'");
-    ?>
-    ';*/
     $code = '<?php $bdd = new PDO(\'mysql:host='.$server.';dbname='.$bdd.'\', \''.$login.'\', \''.$pass.'\'); ?>';
 
     $file = fopen("mysql_connect.php", "a+");
+    fseek($file, 0);
     fwrite($file, $code);
     fclose($file);
+}
+
+function get_url_frontend() {
+    //"http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"] -> Ne fonctionne pas pour certain protocoles !
+    $url = "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    return substr($url, 0, -17)."frontend/welcome.php";
+}
+
+function get_url_backend() {
+    $url = "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    return substr($url, 0, -20)."backend/index.php";
 }
 
 ?>
