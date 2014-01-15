@@ -20,8 +20,8 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 			case 'new_article':
 				include("newarticle.html");
 				break;
-			case 'deconnexion':
-				include("deconnexion.php");
+			case 'logout':
+				include("php/logout.php");
 				break;
 			default:
 				include("accueil.html");
