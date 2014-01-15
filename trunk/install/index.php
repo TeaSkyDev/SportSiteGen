@@ -9,6 +9,7 @@ $DEBUG = false;
 
 session_start();
 if(!isset($_SESSION['steps']) && !$DEBUG) {
+    unset($_SESSION);
     $_SESSION['steps']['step1'] = false;
     $_SESSION['steps']['step2'] = false;
     $_SESSION['steps']['step3'] = false;
