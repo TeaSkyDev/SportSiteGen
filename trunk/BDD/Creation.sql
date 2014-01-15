@@ -28,13 +28,14 @@ create table PHOTO(
 create table TYPE_USER(
        Id integer(10) primary key,
        Nom varchar(255) unique,
-       Description varchar(50)
+       Description varchar(255)
 );
 
 
 create table UTILISATEUR(
        Id integer(10) primary key,
        Pseudo varchar(10) unique not null,
+       Mail varchar(50) not null,
        Mdp varchar(10) not null,
        IdPhoto integer(10) references PHOTO(Id),
        IdTypeUser integer(10) not null references TYPE_USER(Id)
