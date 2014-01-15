@@ -8,14 +8,15 @@
 $DEBUG = false;
 
 session_start();
-if(!isset($_SESSION['steps']) && !$DEBUG) {
-    unset($_SESSION);
+if((!isset($_SESSION['started']) || !$_SESSION['started'])  && !$DEBUG) {
+    unset($_SESSION['steps']);
     $_SESSION['steps']['step1'] = false;
     $_SESSION['steps']['step2'] = false;
     $_SESSION['steps']['step3'] = false;
     $_SESSION['steps']['step4'] = false;
     $_SESSION['bdd'] = NULL;
-} else {
+    $_SESSION['started'] = true;
+} else if(!isset($_SESSION['steps']) && $DEBUG) {
     require_once("debug.php");
 }
 ?>
