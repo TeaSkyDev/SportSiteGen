@@ -55,6 +55,7 @@ function exec_sql_file($bdd, $file) {
 
     $f = file($file);
     $content = "";
+    $res = false;
 
     if($f) {
         foreach($f as $l) {
@@ -65,17 +66,17 @@ function exec_sql_file($bdd, $file) {
         $bdd->beginTransaction();
         //$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        $res = true;
         $i = 0;
         foreach($test as $req) {
-            echo var_dump($req);
+            //echo var_dump($req);
             if(!empty($req) && $req != ";") {
                 $r = $bdd->query($req);
                 $i++;
                 if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
                     if(!$r) {
                         echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
-                    } else {
-                        echo '<font color="green">Requete n°'.$i.' : OK</font><br>';
+                        $res = false;
                     }
                 }
             }
@@ -83,11 +84,12 @@ function exec_sql_file($bdd, $file) {
 
         $bdd->commit();
     }
+    return $res;
 
 }
 
 function bdd_connexion($server, $login, $pass, $bdd) {
-    echo "server = ".$server.", login = ".$login.", ".$pass.", ".$bdd."<br>";
+    echo "Server = ".$server.", Login = ".$login.", Base = ".$bdd."<br>";
     return new PDO('mysql:host='.$server.';dbname='.$bdd, $login, $pass);
 }
 

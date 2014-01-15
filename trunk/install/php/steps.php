@@ -208,42 +208,45 @@ function installation() {
     create_connexion_to_bdd_file($_SESSION['step_1']['server'], $_SESSION['step_1']['login'], $_SESSION['step_1']['pass'], $_SESSION['step_1']['bdd']);
 
     echo '<h1 align="center">Création de la base de données</h1>';
-    exec_sql_file($bdd, "sql/Creation.sql");
+    $creation_reussie = exec_sql_file($bdd, "sql/Creation.sql");
+    if($creation_reussie) {
+        echo "Création de la base de données réussie !<br>";
+    }
     echo '<h1 align="center">Insertions dans la base de données</h1>';
 
     $bdd->beginTransaction();
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."')");
     $sql_2 = $bdd->query("insert into PHOTO values (1,'','Photo admin','')");
     $sql_3 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
     $sql_4 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."','".$_SESSION['step_2']['pass']."',1,1)");
+    $insertions_reussies = true;
 
     $bdd->commit();
 
     if(!$sql_1) {
-        echo '[!] Erreur insertion 1<br>';
-    } else {
-        echo 'Insertion 1 réussie !<br>';
+        $insertions_reussies = false;
     }
     if(!$sql_2) {
-        echo '[!] Erreur insertion 2<br>';
-    } else {
-        echo 'Insertion 2 réussie !<br>';
+        $insertions_reussies = false;
     }
     if(!$sql_3) {
-        echo '[!] Erreur insertion 3<br>';
-    } else {
-        echo 'Insertion 3 réussie !<br>';
+        $insertions_reussies = false;
     }
     if(!$sql_4) {
-        echo '[!] Erreur insertion 4<br>';
-    } else {
-        echo 'Insertion 4 réussie !<br>';
+        $insertions_reussies = false;
     }
 
-    cms_installed(); 
+    if($insertions_reussies) {
+        echo "Insertions dans la base de données réussies !<br><br>";
+    }
 
-    echo '<a class="lien_cms" href="'.get_url_frontend().'">'.get_url_frontend().'</a><br>';
-
+    if($creation_reussie && $insertions_reussies) {
+        cms_installed(); 
+        echo 'Bravo votre cms est maintenant installe ! <br>Url de votre site : <a class="lien_cms" href="'.get_url_frontend().'">'.get_url_frontend().'</a><br>';
+    } else {
+        session_destroy();
+        echo 'Une erreur c\'est produite pendant l\'installation. <br>Cliquez ici pour faire une nouvelle tentative : <a href="index.php">Nouvelle installation</a>';
+    }
 }

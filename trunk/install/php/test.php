@@ -1,6 +1,7 @@
 <?php
 	//session_start();
 	require_once("../mysql_connect.php");
+	require_once("fonctions.php");
 
 	$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$res = $bdd->query("select * from UTILISATEUR");
@@ -13,4 +14,6 @@
 		echo 'erreur';
 	}	
 	$res->closeCursor();
+
+	echo get_url_site();
 ?>

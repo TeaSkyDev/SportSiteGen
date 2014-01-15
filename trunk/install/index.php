@@ -5,7 +5,7 @@
  * Script d'installation du cms
  *
  */
-$DEBUG = true;
+$DEBUG = false;
 
 session_start();
 if(!isset($_SESSION['steps']) && !$DEBUG) {
@@ -67,40 +67,41 @@ if(isset($_POST['step']) || isset($_GET['step'])) {
             echo 'Erreur<br>';
     }
 
-    echo '<div id="navigation">';
-		echo '<ul>';
+    if($step != "step_4") {
+        echo '<div id="navigation">';
+    		echo '<ul>';
 
-            echo '<li><a href="index.php?step=step_0">Base de données</a></li>';
-            if($step == "step_1") {
-                echo '<li class="selected"><a href="#">Administrateur</a></li>';
-            } else {
-                if($_SESSION['steps']['step2']) {
-                    echo '<li><a href="index.php?step=step_1">Administrateur</a></li>';
+                echo '<li><a href="index.php?step=step_0">Base de données</a></li>';
+                if($step == "step_1") {
+                    echo '<li class="selected"><a href="#">Administrateur</a></li>';
                 } else {
-                    echo '<li><a href="#">Administration</a></li>';
+                    if($_SESSION['steps']['step2']) {
+                        echo '<li><a href="index.php?step=step_1">Administrateur</a></li>';
+                    } else {
+                        echo '<li><a href="#">Administration</a></li>';
+                    }
                 }
-            }
-            if($step == "step_2") {
-                echo '<li class="selected"><a href="#">Site web</a></li>';
-            } else {
-                if($_SESSION['steps']['step3']) {
-                    echo '<li><a href="index.php?step=step_2">Site web</a></li>';
+                if($step == "step_2") {
+                    echo '<li class="selected"><a href="#">Site web</a></li>';
                 } else {
-                    echo '<li><a href="#">Site web</a></li>';
+                    if($_SESSION['steps']['step3']) {
+                        echo '<li><a href="index.php?step=step_2">Site web</a></li>';
+                    } else {
+                        echo '<li><a href="#">Site web</a></li>';
+                    }
                 }
-            }
-            if($step == "step_3") {
-                echo '<li class="selected"><a href="#">Récapitulatif</a></li>';
-            } else {
-                if($_SESSION['steps']['step3']) {
-                    echo '<li><a href="index.php?step=step_3">Récapitulatif</a></li>';
+                if($step == "step_3") {
+                    echo '<li class="selected"><a href="#">Récapitulatif</a></li>';
                 } else {
-                    echo '<li><a href="#">Récapitulatif</a></li>';
+                    if($_SESSION['steps']['step3']) {
+                        echo '<li><a href="index.php?step=step_3">Récapitulatif</a></li>';
+                    } else {
+                        echo '<li><a href="#">Récapitulatif</a></li>';
+                    }
                 }
-            }
-		echo '</ul>';
-	echo '</nav>';
-
+    		echo '</ul>';
+    	echo '</nav>';
+    }
 
 } else {
     /* Si nous sommes à la première étape, on vérifie qu'une installation n'a pas déjà eu lieu à l'aide d'un fichier de config */
