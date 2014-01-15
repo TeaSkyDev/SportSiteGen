@@ -1,7 +1,33 @@
-<html>
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-15 13:01:24
+         compiled from "news.html" */ ?>
+<?php /*%%SmartyHeaderCode:131585384852d677d3f120d9-00204164%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '70d00cb2e9f170373c2c61ebf7b269f45bbe36c1' => 
+    array (
+      0 => 'news.html',
+      1 => 1389787278,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '131585384852d677d3f120d9-00204164',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_52d677d4068124_59061585',
+  'variables' => 
+  array (
+    'Title' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52d677d4068124_59061585')) {function content_52d677d4068124_59061585($_smarty_tpl) {?><html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title><?php echo $_smarty_tpl->tpl_vars['Title']->value;?>
+</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -15,45 +41,35 @@
 					<li>
 						<a href="index.php">Home</a>
 					</li>
-					<li>
+					<li class="selected">
 						<a href="news.php">News</a>
 					</li>
-					<li class="selected">
+					<li>
 						<a href="equipe.php">Equipe</a>
 					</li>
 					<li>
 						<a href="calendrier.php">Calendrier</a>
 					</li>
-					<li>
+					<li >
 						<a href="about.php">About</a>
 					</li>
 				</ul>
 			</div>
-			<div class="body equipe">
+			<div class="body news">
 				<div>
-					<span>Membre</span> <a href="equipe.php" id="paging">> Retour</a>
-					<div class="section">
-						<ul>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player1.png" alt=""> Joueur 1 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player2.png" alt=""> Joueur 2 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player3.png" alt="">  Joueur 3 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player4.png" alt=""> Joueur 4 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player5.png" alt=""> Joueur 5 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player6.png" alt=""> Joueur 6 </a>
-							</li>
-						</ul>
-					</div>
+					<span>News</span>
+					<ul>
+						<li>
+							<a href="news_simple.php"><img src="images/news1.jpg" alt=""></a>
+							<div>
+								<h3>Article Test</h3>
+								<span>25 Déc 2013 | Posted by <span>Akatsubaki</span></span>
+								<p>
+									Ce Site est merveilleux !!!!!!
+								</p>
+								<a href="news_simple.php">Read More</a>
+							</div>
+					</ul>
 				</div>
 				<div class="sidebar">
 					<div class="news">
@@ -125,3 +141,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>
