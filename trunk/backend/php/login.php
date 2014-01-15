@@ -6,14 +6,18 @@ require_once("../../mysql_connect.php");
 /* On vérifie que des données ont été envoyées */
 if(isset($_POST['login']) && isset($_POST['password'])) {
 	$login = $_POST['login'];
-	$pass  = $_POST['password'];
+	$pass  = htmlentities($_POST['password']);
 
 	/* On cherche un utilisateur avec le pseudo demandé */
 	$requete  = $bdd->query("select Mdp from UTILISATEUR where Pseudo = '".$login."'");
-	$res_pass = $requete->fetch();
+	if($requete) {
+		$res_pass = $requete->fetch();
+	} else {
+		$res_pass = null;
+	}
 
 	/* On vérifie que le mot de passe entré est le même que celui associé au pseudo dans la bdd */
-	if(md5($pass) == $res_pass[0]) {
+	if(md5($pass) == $res_pass[0] && $res_pass != null) {
 		$_SESSION['admin_connected'] = true;
 		echo 'Vous etes maintenant connecte.<br><a href="../index.php">Acceder a la page d\'administration</a>';
 	} else {
