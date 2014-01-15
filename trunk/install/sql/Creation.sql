@@ -35,7 +35,7 @@ create table TYPE_USER(
 create table UTILISATEUR(
        Id integer(10) primary key,
        Pseudo varchar(10) unique not null,
-       Mdp varchar(10) not null,
+       Mdp varchar(522) not null,
        IdPhoto integer(10) references PHOTO(Id),
        IdTypeUser integer(10) not null references TYPE_USER(Id)
 );

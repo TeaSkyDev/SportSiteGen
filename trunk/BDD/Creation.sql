@@ -27,7 +27,7 @@ create table PHOTO(
 
 create table TYPE_USER(
        Id integer(10) primary key,
-       Nom varchar(10) unique,
+       Nom varchar(255) unique,
        Description varchar(50)
 );
 
