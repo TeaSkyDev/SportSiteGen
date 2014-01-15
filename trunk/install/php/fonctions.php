@@ -105,12 +105,12 @@ function create_connexion_to_bdd_file($server, $login, $pass, $bdd) {
 function get_url_frontend() {
     //"http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"] -> Ne fonctionne pas pour certain protocoles !
     $url = "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-    return substr($url, 0, -17)."frontend/welcome.php";
+    return substr($url, 0, -17)."frontend/index.php";
 }
 
 function get_url_backend() {
     $url = "http://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
-    return substr($url, 0, -20)."backend/index.php";
+    return substr($url, 0, -17)."backend/index.php";
 }
 
 ?>
