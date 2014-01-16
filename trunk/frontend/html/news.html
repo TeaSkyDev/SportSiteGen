@@ -32,45 +32,30 @@
 			<div class="body news">
 				<div>
 					<span>News</span>
-					<ul>
+					<ul>{foreach from=$News item=news}
 						<li>
-							<a href="index.php?page=news?id_news="><img src="images/news1.jpg" alt=""></a>
+							<a href="index.php?page=news&id_news="><img src= "{$news.img}" alt=""></a>
 							<div>
-								<h3>Article Test</h3>
-								<span>25 Déc 2013 | Posted by <span>Akatsubaki</span></span>
+								<h3>{$news.titre}</h3>
+								<span>{$news.date|date_format:"%d-%m-%Y"} <span></span></span>
 								<p>
-									Ce Site est merveilleux !!!!!!
+								  {$news.contenu}
 								</p>
-								<a href="index.php?page=news?id_news=&details=true">Read More</a>
+								<a href="index.php?page=news&id_news={$news.id}&details=true">Read More</a>
 							</div>
+						</li>
+						{/foreach}
 					</ul>
 				</div>
 				<div class="sidebar">
 					<div class="news">
-						<span>Dernière News</span>
-						<ul>
-							<li>
-								<a href="index.php?page=news&id_news=">Lorem ipsum dolor sit</a> <span>Posted on 23 July 2023</span>
-							</li>
-							<li>
-								<a href="index.php?page=news&id_news=">Donec condimentum</a> <span>Posted on 23 July 2023</span>
-							</li>
-							<li>
-								<a href="index.php?page=news&id_news=">Nulla facilisi</a> <span>Posted on 23 July 2023</span>
-							</li>
-							<li>
-								<a href="index.php?page=news&id_news=">Nunc nec sem nisi</a> <span>Posted on 23 July 2023</span>
-							</li>
-							<li>
-								<a href="index.php?page=news&id_news=">Aliquam quam nulla</a> <span>Posted on 23 July 2023</span>
-							</li>
-							<li>
-								<a href="index.php?page=news&id_news=">Lorem ipsum dolor sit</a> <span>Posted on 23 July 2023</span>
-							</li>
-							<li>
-								<a href="index.php?page=news&id_news=">Donec condimentum</a> <span>Posted on 23 July 2023</span>
-							</li>
-						</ul>
+					  <span>Dernière News</span>
+					  <ul>{foreach from=$Post item=post}
+					    <li>
+					      <a href="index.php?page=news&id_news=">{$post.titre}</a> <span>Posted on {$post.date|date_format:"%d-%m-%Y"}</span>
+					    </li>
+					    {/foreach}
+					  </ul>
 						<a href="index.php?page=news">Read More</a>
 					</div>
 					<div class="section">
