@@ -249,6 +249,7 @@ function installation() {
         echo 'Voici le lien vers ta page d\'administration : <a href="'.get_url_backend().'">'.get_url_backend().'</a><br>';
         echo 'Pensez a les enregistrer dans vos favoris !!';
     } else {
+        unset($_SESSION);
         session_destroy();
         echo 'Une erreur c\'est produite pendant l\'installation. <br>Cliquez ici pour faire une nouvelle tentative : <a href="index.php">Nouvelle installation</a>';
     }
