@@ -32,7 +32,7 @@ function add_TYPE_USER($bdd , $nom, $description){
   $bdd->commit();
 }
 
-function add_UTILISATEUR($bdd, $Pseudo, $Mail, $Mdp, $IdPhoto, $idTypeUser){
+function add_UTILISATEUR($bdd, $Pseudo, $Mail, $Mdp, $IdPhoto, $IdTypeUser){
   $bdd->beginTransaction();
   $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   $bdd->query("insert into UTILISATEUR values(null,'".$Pseudo."','".$Mail."','".$Mdp."',".$IdPhoto.",".$IdTypeUser.")");
@@ -150,6 +150,7 @@ function add_SITE($bdd, $nom, $URL){
   $bdd->commit();       
 }
 
+
 function get_nb_photos($bdd) {
   $nb = $bdd->query("select count(*) from PHOTO");
   if($nb) {
@@ -169,5 +170,29 @@ function get_nb_type_user($bdd) {
     return -1;
   }
 }
+
+function get_PHOTO_byId($bdd, $id){
+  $reponse = $bdd->query("select * from PHOTO where Id = ".$id);
+  $answer = array();
+  while($data = $reponse->fetch()){
+    $answer['Nom'] = $data['Nom'];
+    $answer['Fichier'] = $data['Fichier'];
+    $answer['Commentaire'] = $data['Commentaire'];
+  }
+  return $answer;
+}
+
+
+function get_TYPE_USER_byId($bdd, $id){
+  $reponse = $bdd->query("select * from TYPE_USER where Id = "$id);
+  $answer = array();
+  while($data = $reponse->fetch()){
+    $answer['Nom'] = $data['Nom'];
+    $answer['Description'] = $data['Description'];
+  }
+  return $answer;
+}
+
+
 
 ?>
