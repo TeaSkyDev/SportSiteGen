@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Nouvelle Article</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="./css/newarticle.css" type="text/css" media="screen"/>
+		<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
+    </head>
+    <body>
+    	<div id="contenu">
+    		<p class="titre"> Administration </p>
+    		<p class="bleu" ></p>
+    		<ul class="menu">
+    			<li>Accueil</li>
+    			<li>Utilisateur</li>
+    			<li>Menus</li>
+    			<li>Contenu</li>
+    			<li>Composants</li>
+    			<li>Extension</li>
+                <a class="voirsite" href=""><img src="./Images/voirsite.png">Voir le site</a>
+                <a class="deco" href="index.php?page=logout"><img src="./Images/deco.png">Déconnexion</a>
+            </ul>
+            <div class="entete">
+            	<img src="./Images/newarticle.png">
+            	<h1>Gestion des articles : Ajouter un Article</h1> 
+            </div>
+            <div class="interieur">
+            <p>
+                Ajouter un article
+                <br>
+                <br>
+                Titre <input type="text" name="titre">
+                <br>
+                <br>
+                <form>
+                    Catégorie 
+                    <SELECT name="categorie" size="1">
+                        <OPTION>lundi
+                        <OPTION>mardi
+                        <OPTION>mercredi
+                        <OPTION>jeudi
+                        <OPTION>vendredi
+                    </SELECT>
+                </form>
+                <br>
+                Droit <input type="button" value="définir les droits">
+                <br>
+                <br>
+                <form>
+                    Langues
+                    <SELECT name="categorie" size="1">
+                        <OPTION>lundi
+                        <OPTION>mardi
+                        <OPTION>mercredi
+                        <OPTION>jeudi
+                        <OPTION>vendredi
+                    </SELECT>
+                </form>
+                <br>
+                <form class="texte">
+                    Texte article
+                    <textarea id="editor1" name="editor1" rows="10" cols="80">
+                    </textarea>
+                    <script>
+                        CKEDITOR.replace( 'editor1' );
+                    </script>
+                </form>
+            </p>
+
+	    </div>
+    </body>
+</html>
