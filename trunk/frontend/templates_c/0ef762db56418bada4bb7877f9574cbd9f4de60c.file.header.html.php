@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-16 16:54:49
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-16 17:19:28
          compiled from "html/header.html" */ ?>
 <?php /*%%SmartyHeaderCode:108545583652d8001189fc25-58096370%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ef762db56418bada4bb7877f9574cbd9f4de60c' => 
     array (
       0 => 'html/header.html',
-      1 => 1389887686,
+      1 => 1389889145,
       2 => 'file',
     ),
   ),
@@ -20,13 +20,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'Info' => 0,
-    'Post' => 0,
-    'post' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_52d80011929a01_29221127')) {function content_52d80011929a01_29221127($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/home/gas/www/SportSiteGen/trunk/tpl/libs/plugins/modifier.date_format.php';
-?><html>
+<?php if ($_valid && !is_callable('content_52d80011929a01_29221127')) {function content_52d80011929a01_29221127($_smarty_tpl) {?><html>
 <head>
 	<meta charset="UTF-8">
 	<title>SportGen Template</title>
@@ -67,36 +64,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<?php }?>
 				</ul>
 			</div>
-			<div class="body home">
-				
-				<div class="sidebar">
-					<div class="news">
-					  <span>Dernière News</span>
-					  <ul><?php  $_smarty_tpl->tpl_vars['post'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['post']->_loop = false;
- $_from = $_smarty_tpl->tpl_vars['Post']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
-foreach ($_from as $_smarty_tpl->tpl_vars['post']->key => $_smarty_tpl->tpl_vars['post']->value) {
-$_smarty_tpl->tpl_vars['post']->_loop = true;
-?>
-					    <li>
-					      <a href="index.php?page=news&id_news="><?php echo $_smarty_tpl->tpl_vars['post']->value['titre'];?>
-</a> <span>Posted on <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['post']->value['date'],"%d-%m-%Y");?>
-</span>
-					    </li>
-					    <?php } ?>
-					  </ul>
-						<a href="index.php?page=news">Read More</a>
-					</div>
-					<div class="section">
-						<span>Calendrier</span>
-						<ul>
-							<li>
-								<a href="index.php?page=calendrier&date=">A vs B</a> <span>23 July 2023 @ 9AM</span>
-							</li>
-							<li>
-								<a href="index.php?page=calendrier&date=">A vs C</a> <span>23 July 2023 @ 9AM</span>
-							</li>
-						</ul>
-						<a href="index.php?page=calendrier">Voir Calendrier</a>
-					</div>
-				</div>
-			</div><?php }} ?>
+			<?php }} ?>

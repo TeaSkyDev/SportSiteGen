@@ -7,8 +7,14 @@
  */
 session_start();
 
+require_once("../tpl/libs/Smarty.class.php");
+require("../mysql_connect.php");
+include("fonctions.php");
+$smarty  = new Smarty();
+
 /* On affiche le header */
 include("php/header.php");
+include("php/aside.php");
 
 if(isset($_GET['page']) || isset($_POST['page'])) {
 	$page = $_REQUEST['page'];
@@ -53,5 +59,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 } else {
 	//include("php/accueil.php");
 }
+
+
 
 ?>

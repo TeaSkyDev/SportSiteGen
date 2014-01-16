@@ -38,30 +38,4 @@
 					{/if}
 				</ul>
 			</div>
-			<div class="body home">
-				
-				<div class="sidebar">
-					<div class="news">
-					  <span>Dernière News</span>
-					  <ul>{foreach from=$Post item=post}
-					    <li>
-					      <a href="index.php?page=news&id_news=">{$post.titre}</a> <span>Posted on {$post.date|date_format:"%d-%m-%Y"}</span>
-					    </li>
-					    {/foreach}
-					  </ul>
-						<a href="index.php?page=news">Read More</a>
-					</div>
-					<div class="section">
-						<span>Calendrier</span>
-						<ul>
-							<li>
-								<a href="index.php?page=calendrier&date=">A vs B</a> <span>23 July 2023 @ 9AM</span>
-							</li>
-							<li>
-								<a href="index.php?page=calendrier&date=">A vs C</a> <span>23 July 2023 @ 9AM</span>
-							</li>
-						</ul>
-						<a href="index.php?page=calendrier">Voir Calendrier</a>
-					</div>
-				</div>
-			</div>
+			
