@@ -173,26 +173,130 @@ function get_nb_type_user($bdd) {
 
 function get_PHOTO_byId($bdd, $id){
   $reponse = $bdd->query("select * from PHOTO where Id = ".$id);
-  $answer = array();
-  while($data = $reponse->fetch()){
-    $answer['Nom'] = $data['Nom'];
-    $answer['Fichier'] = $data['Fichier'];
-    $answer['Commentaire'] = $data['Commentaire'];
-  }
-  return $answer;
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
 }
 
 
 function get_TYPE_USER_byId($bdd, $id){
-  $reponse = $bdd->query("select * from TYPE_USER where Id = "$id);
-  $answer = array();
-  while($data = $reponse->fetch()){
-    $answer['Nom'] = $data['Nom'];
-    $answer['Description'] = $data['Description'];
-  }
-  return $answer;
+  $reponse = $bdd->query("select * from TYPE_USER where Id = ".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
 }
 
+function get_UTILISATEUR_byId($bdd, $id){
+  $reponse = $bdd->query("select * from UTILISATEUR where Id = ".$id );
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+
+function get_CATEGORIE_byId($bdd, $id){
+  $reponse = $bdd->query("select * from CATEGORIE where Id = ".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_INSCRIT_byId($bdd, $id){
+  $reponse = $bdd->query("select * from INSCRIT where Id = ".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+
+function get_TEAM_ADV_byId($bdd, $id){
+  $reponse = $bdd->query("select * from TEAM_ADV where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_MATCHS_byId($bdd, $id){
+  $reponse = $bdd->query("select * from MATCHS where Id =".$id);
+  return $data = $reponse->fetch();
+}
+
+function get_PHOTO_MATCHS_byId($bdd, $id){
+  $reponse = $bdd->query("select * from PHOTO_MATCHS where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_APPARTENIR_EQUIPE_byId($bdd, $id){
+  $reponse = $bdd->query("select * from APPARTENIR_EQUIPE where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_POSTE_byId($bdd, $id){
+  $reponse = $bdd->query("select * from POSTE where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_TYPE_PARTICIPATION_byId($bdd, $id){
+  $reponse = $bdd->query("select * from TYPE_PARTICIPATION where Id=".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_POINTS_byId($bdd, $id){
+  $reponse = $bdd->query("select * from POINTS where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_JOUEUR_ADV_byId($bdd, $id){
+  $reponse = $bdd->query("select * from JOUEUR_ADV where Id=".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_EVENT_byId($bdd, $id){
+  $reponse = $bdd->query("select * from EVENT where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_EVENT_ADV_byId($bdd, $id){
+  $reponse = $bdd->query("select * from EVENT_ADV wher Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_TOURNOI_byId($bdd, $id){
+  $reponse = $bdd->query("select * from TOURNOI where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_APPARTENIR_TOURNOI_byId($bdd, $id){
+  $reponse = $bdd->query("select * from APPARTENIR_TOURNOI where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_NEWS_byId($bdd, $id){
+  $reponse = $bdd->query("select * from NEWS where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
 
 
 ?>
