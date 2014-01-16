@@ -143,7 +143,13 @@ function add_APPARTENIR_TOURNOI($bdd, $idTournoi, $idMatch){
 }
 
 
-function add_SITE($bdd, ){
+function add_SITE($bdd, $nom, $URL){
+  $bdd->beginTransaction();
+  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  $bdd->query("insert into SITE values(null,'".$nom."','".$url."')");
+  $bdd->commit();       
 }
+
+
 
 ?>
