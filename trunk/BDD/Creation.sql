@@ -18,7 +18,7 @@ drop table TYPE_USER;
 drop table PHOTO;
 
 create table PHOTO(
-       Id integer(10) primary key,
+       Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(20),
        Fichier varchar(20) unique,
        Commentaires varchar(50)
@@ -26,17 +26,17 @@ create table PHOTO(
 
 
 create table TYPE_USER(
-       Id integer(10) primary key,
+       Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(255) unique,
        Description varchar(255)
 );
 
 
 create table UTILISATEUR(
-       Id integer(10) primary key,
+       Id integer(10) primary key AUTO_INCREMENT,
        Pseudo varchar(10) unique not null,
        Mail varchar(50) not null,
-       Mdp varchar(10) not null,
+       Mdp varchar(522) not null,
        IdPhoto integer(10) references PHOTO(Id),
        IdTypeUser integer(10) not null references TYPE_USER(Id)
 );
@@ -69,7 +69,7 @@ create table TEAM_ADV(
 );
 
 
-create table MATCHSS(
+create table MATCHS(
        Id integer(10) primary key,
        IdCategorie integer(10) references CATEGORIE(Id),
        IdTeamAdv integer(10) references TEAM_ADV(Id) ,
