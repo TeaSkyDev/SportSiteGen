@@ -37,13 +37,13 @@ create table UTILISATEUR(
        Pseudo varchar(10) unique not null,
        Mail varchar(50) not null,
        Mdp varchar(522) not null,
-       IdPhoto integer(10) references PHOTO(Id) AUTO_INCREMENT,
-       IdTypeUser integer(10) not null references TYPE_USER(Id) AUTO_INCREMENT
+       IdPhoto integer(10) references PHOTO(Id),
+       IdTypeUser integer(10) not null references TYPE_USER(Id)
 );
 
 
 create table CATEGORIE(
-       Id integer(10) primary key AUTO_INCREMENT,
+       Id integer(10) primary key,
        Nom varchar(10) unique,
        Description varchar(50)
 );
