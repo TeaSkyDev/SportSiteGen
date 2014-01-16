@@ -1,7 +1,33 @@
-<html>
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-15 13:11:22
+         compiled from "calendrier.html" */ ?>
+<?php /*%%SmartyHeaderCode:83081947752d6782265fd23-15570341%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '2890f41959aa83a60de46dabf52507a31d32019e' => 
+    array (
+      0 => 'calendrier.html',
+      1 => 1389787621,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '83081947752d6782265fd23-15570341',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_52d678226e8862_28699300',
+  'variables' => 
+  array (
+    'Title' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52d678226e8862_28699300')) {function content_52d678226e8862_28699300($_smarty_tpl) {?><html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title><?php echo $_smarty_tpl->tpl_vars['Title']->value;?>
+</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -18,39 +44,51 @@
 					<li>
 						<a href="news.php">News</a>
 					</li>
-					<li class="selected">
+					<li>
 						<a href="equipe.php">Equipe</a>
 					</li>
-					<li>
+					<li class="selected">
 						<a href="calendrier.php">Calendrier</a>
 					</li>
-					<li>
+					<li >
 						<a href="about.php">About</a>
 					</li>
 				</ul>
 			</div>
-			<div class="body equipe">
-				<div>
-					<span>Membre</span> <a href="equipe.php" id="paging">> Retour</a>
-					<div class="section">
+			<div class="body calendrier">
+				<div>				
+					<span>Calendrier</span>
+					<div>			
 						<ul>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player1.png" alt=""> Joueur 1 </a>
+								<span>Championnat de France</span>
+								<div>
+									<span>Stade de france</span> <span>31 Jul 2014 | 7:00</span>
+									<p>
+										BLABLA
+									</p>
+								</div>
+							</li>							
+						</ul>
+						<span>Régional</span>
+						<ul>
+							<li>
+								<span>Tournoi Bourge</span>
+								<div>
+									<span>Stade de Bourge</span> <span>17 Janv 2014 | 9:00</span>
+									<p>
+										BLABLA
+									</p>
+								</div>
 							</li>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player2.png" alt=""> Joueur 2 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player3.png" alt="">  Joueur 3 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player4.png" alt=""> Joueur 4 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player5.png" alt=""> Joueur 5 </a>
-							</li>
-							<li>
-								<a href="fiche_joueur.php"> <img src="images/player6.png" alt=""> Joueur 6 </a>
+								<span>Tournoi Orléans</span>
+								<div>
+									<span>Stade d'Orléans</span> <span>01 Avr 2014 | 8:00</span>
+									<p>
+										BLABLA
+									</p>
+								</div>
 							</li>
 						</ul>
 					</div>
@@ -125,3 +163,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>

@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title>SportGen Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -12,10 +12,10 @@
 		<div class="page">
 			<div class="header">
 				<ul>
-					<li>
-						<a href="index.php">Home</a>
-					</li>
 					<li class="selected">
+						<a href="index.html">Home</a>
+					</li>
+					<li>
 						<a href="news.html">News</a>
 					</li>
 					<li>
@@ -29,37 +29,8 @@
 					</li>
 				</ul>
 			</div>
-			<div class="body news_simple">
-				<div>
-					<span>News</span> <a href="news.html" id="paging">> Back</a>
-					<div>
-						<img src="images/news_photo.jpg" alt="">
-						<h3>Joyeux Noël</h3>
-						<span>25 Déc 2013| Posté par <span>Akatsubaki</span></span>
-						<p>
-							OHOHOHOHOHOHHOHHOHHOHHOHH
-						</p>
-					</div>
-					<div class="section">
-						<h5>Commentaire</h5>
-						<h4>Com 1</h4>
-						<span>Posté le 25 Déc 2013</span>
-						<p>
-							MERRY CHRISTMAS
-						</p>
-					</div>
-					<form action="index.php">
-						<span>Ajouter un commentaire</span>
-						<label for="name">
-							<input type="text" id="name">
-							Nom</label>
-						<label for="email">
-							<input type="text" id="email">
-							Email</label>
-						<textarea name="message" id="message" cols="30" rows="10"></textarea>
-						<input type="submit" value="Submit Comment">
-					</form>
-				</div>
+			<div class="body home">
+				
 				<div class="sidebar">
 					<div class="news">
 						<span>Dernière News</span>
@@ -101,6 +72,28 @@
 						<a href="calendrier.html">Voir Calendrier</a>
 					</div>
 				</div>
+			</div>
+			<div class="sidebar_co">
+				<form action="index.html" method="post">
+					<div id="connexion_menu">
+					<td>
+								<tr>
+									<h3>CONNEXION</h3>
+									<h3>Pseudo</h3>
+									<td><input type="text" id="nickname"></td>
+								</tr>
+								<tr>
+									<h3>Mot de passe</h3>
+									<td><input type="text" id="position"></td>
+								</tr>
+					</td>
+					<br>
+						<input type="submit" value="CONNEXION" id="application-submit">
+					<br>
+						<input type="button" value="S'INSCRIRE" onclick="./inscription.html">
+					</div>
+					
+				</form>
 			</div>
 			<div class="footer">
 				<div>

@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title>SportGen Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -13,15 +13,15 @@
 			<div class="header">
 				<ul>
 					<li>
-						<a href="index.php">Home</a>
+						<a href="index.html">Home</a>
 					</li>
-					<li class="selected">
+					<li>
 						<a href="news.html">News</a>
 					</li>
 					<li>
 						<a href="equipe.html">Equipe</a>
 					</li>
-					<li>
+					<li class="selected">
 						<a href="calendrier.html">Calendrier</a>
 					</li>
 					<li >
@@ -29,36 +29,43 @@
 					</li>
 				</ul>
 			</div>
-			<div class="body news_simple">
-				<div>
-					<span>News</span> <a href="news.html" id="paging">> Back</a>
-					<div>
-						<img src="images/news_photo.jpg" alt="">
-						<h3>Joyeux Noël</h3>
-						<span>25 Déc 2013| Posté par <span>Akatsubaki</span></span>
-						<p>
-							OHOHOHOHOHOHHOHHOHHOHHOHH
-						</p>
+			<div class="body calendrier">
+				<div>				
+					<span>Calendrier</span>
+					<div>			
+						<ul>
+							<li>
+								<span>Championnat de France</span>
+								<div>
+									<span>Stade de france</span> <span>31 Jul 2014 | 7:00</span>
+									<p>
+										BLABLA
+									</p>
+								</div>
+							</li>							
+						</ul>
+						<span>Régional</span>
+						<ul>
+							<li>
+								<span>Tournoi Bourge</span>
+								<div>
+									<span>Stade de Bourge</span> <span>17 Janv 2014 | 9:00</span>
+									<p>
+										BLABLA
+									</p>
+								</div>
+							</li>
+							<li>
+								<span>Tournoi Orléans</span>
+								<div>
+									<span>Stade d'Orléans</span> <span>01 Avr 2014 | 8:00</span>
+									<p>
+										BLABLA
+									</p>
+								</div>
+							</li>
+						</ul>
 					</div>
-					<div class="section">
-						<h5>Commentaire</h5>
-						<h4>Com 1</h4>
-						<span>Posté le 25 Déc 2013</span>
-						<p>
-							MERRY CHRISTMAS
-						</p>
-					</div>
-					<form action="index.php">
-						<span>Ajouter un commentaire</span>
-						<label for="name">
-							<input type="text" id="name">
-							Nom</label>
-						<label for="email">
-							<input type="text" id="email">
-							Email</label>
-						<textarea name="message" id="message" cols="30" rows="10"></textarea>
-						<input type="submit" value="Submit Comment">
-					</form>
 				</div>
 				<div class="sidebar">
 					<div class="news">
@@ -101,6 +108,28 @@
 						<a href="calendrier.html">Voir Calendrier</a>
 					</div>
 				</div>
+			</div>
+			<div class="sidebar_co">
+				<form action="index.html" method="post">
+					<div id="connexion_menu">
+					<td>
+								<tr>
+									<h3>Pseudo : </h3>
+									<td><input type="text" id="nickname"></td>
+								</tr>
+								<tr>
+									<h3>Mot de passe : </h3>
+									<td><input type="text" id="position"></td>
+								</tr>
+					</td>
+					<br>
+						<input type="submit" value="CONNEXION" id="application-submit">
+					<br>
+						<input type="button" value="S'INSCRIRE" onclick="./inscription.html">
+					</div>
+					
+				</form>
+			</div>
 			</div>
 			<div class="footer">
 				<div>

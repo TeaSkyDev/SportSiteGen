@@ -1,0 +1,42 @@
+/*------------------------- Header -------------------------*/
+.header {
+	background:none #030303;
+	height:70px;
+	margin:0 10px;
+	padding:25px 0 0 33px;
+}
+.header a#logo {
+	display:block;
+	float:left;
+	font-family:bevanregular;
+	height:42px;
+	width:320px;
+}
+.header ul {
+	float:right;
+	list-style:none;
+	margin:0;
+	overflow:hidden;
+	padding:9px 33px 0 0;
+}
+.header ul li:first-child {
+	margin:0;
+}
+.header ul li {
+	float:left;
+	margin:0 0 0 36px;
+}
+.header ul li a {
+	color:#fbfbf4;
+	font-family:bevanregular;
+	font-size:14px;
+	font-weight:400;
+	letter-spacing:.025em;
+	line-height:30px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.header ul li.selected a, .header ul li a:hover {
+	color:#ff7500;
+}
+

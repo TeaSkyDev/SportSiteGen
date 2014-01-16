@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title>SportGen Template</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -13,52 +13,47 @@
 			<div class="header">
 				<ul>
 					<li>
-						<a href="index.php">Home</a>
-					</li>
-					<li class="selected">
-						<a href="news.html">News</a>
+						<a href="index.html">Home</a>
 					</li>
 					<li>
+						<a href="news.html">News</a>
+					</li>
+					<li class="selected">
 						<a href="equipe.html">Equipe</a>
 					</li>
 					<li>
 						<a href="calendrier.html">Calendrier</a>
 					</li>
-					<li >
+					<li>
 						<a href="about.html">About</a>
 					</li>
 				</ul>
 			</div>
-			<div class="body news_simple">
+			<div class="body equipe">
 				<div>
-					<span>News</span> <a href="news.html" id="paging">> Back</a>
-					<div>
-						<img src="images/news_photo.jpg" alt="">
-						<h3>Joyeux Noël</h3>
-						<span>25 Déc 2013| Posté par <span>Akatsubaki</span></span>
-						<p>
-							OHOHOHOHOHOHHOHHOHHOHHOHH
-						</p>
-					</div>
+					<span>Equipe</span>
 					<div class="section">
-						<h5>Commentaire</h5>
-						<h4>Com 1</h4>
-						<span>Posté le 25 Déc 2013</span>
-						<p>
-							MERRY CHRISTMAS
-						</p>
+						<ul>
+							<li>
+								<a href="membre_equipe.html"> <img src="images/player1.png" alt=""> Equipe 1 </a>
+							</li>
+							<li>
+								<a href="membre_equipe.html"> <img src="images/player2.png" alt=""> Equipe 2 </a>
+							</li>
+							<li>
+								<a href="membre_equipe.html"> <img src="images/player3.png" alt="">  Equipe 3 </a>
+							</li>
+							<li>
+								<a href="membre_equipe.html"> <img src="images/player4.png" alt=""> Equipe 4 </a>
+							</li>
+							<li>
+								<a href="membre_equipe.html"> <img src="images/player5.png" alt=""> Equipe 5 </a>
+							</li>
+							<li>
+								<a href="membre_equipe.html"> <img src="images/player6.png" alt=""> Equipe 6 </a>
+							</li>
+						</ul>
 					</div>
-					<form action="index.php">
-						<span>Ajouter un commentaire</span>
-						<label for="name">
-							<input type="text" id="name">
-							Nom</label>
-						<label for="email">
-							<input type="text" id="email">
-							Email</label>
-						<textarea name="message" id="message" cols="30" rows="10"></textarea>
-						<input type="submit" value="Submit Comment">
-					</form>
 				</div>
 				<div class="sidebar">
 					<div class="news">

@@ -1,7 +1,33 @@
-<html>
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-15 13:07:21
+         compiled from "equipe.html" */ ?>
+<?php /*%%SmartyHeaderCode:6159000152d67825634c74-23330150%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '4f3c61af93481e94b8838bbafa8ff200528d6896' => 
+    array (
+      0 => 'equipe.html',
+      1 => 1389787606,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '6159000152d67825634c74-23330150',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_52d67825697084_69875938',
+  'variables' => 
+  array (
+    'Title' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52d67825697084_69875938')) {function content_52d67825697084_69875938($_smarty_tpl) {?><html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title><?php echo $_smarty_tpl->tpl_vars['Title']->value;?>
+</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -31,26 +57,26 @@
 			</div>
 			<div class="body equipe">
 				<div>
-					<span>Membre</span> <a href="equipe.php" id="paging">> Retour</a>
+					<span>Equipe</span>
 					<div class="section">
 						<ul>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player1.png" alt=""> Joueur 1 </a>
+								<a href="membre_equipe.php"> <img src="images/player1.png" alt=""> Equipe 1 </a>
 							</li>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player2.png" alt=""> Joueur 2 </a>
+								<a href="membre_equipe.php"> <img src="images/player2.png" alt=""> Equipe 2 </a>
 							</li>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player3.png" alt="">  Joueur 3 </a>
+								<a href="membre_equipe.php"> <img src="images/player3.png" alt="">  Equipe 3 </a>
 							</li>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player4.png" alt=""> Joueur 4 </a>
+								<a href="membre_equipe.php"> <img src="images/player4.png" alt=""> Equipe 4 </a>
 							</li>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player5.png" alt=""> Joueur 5 </a>
+								<a href="membre_equipe.php"> <img src="images/player5.png" alt=""> Equipe 5 </a>
 							</li>
 							<li>
-								<a href="fiche_joueur.php"> <img src="images/player6.png" alt=""> Joueur 6 </a>
+								<a href="membre_equipe.php"> <img src="images/player6.png" alt=""> Equipe 6 </a>
 							</li>
 						</ul>
 					</div>
@@ -125,3 +151,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>

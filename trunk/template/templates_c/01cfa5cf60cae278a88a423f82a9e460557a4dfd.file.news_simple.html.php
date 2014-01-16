@@ -1,7 +1,33 @@
-<html>
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-15 13:12:12
+         compiled from "news_simple.html" */ ?>
+<?php /*%%SmartyHeaderCode:7841854352d67b070e9e39-53423509%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '01cfa5cf60cae278a88a423f82a9e460557a4dfd' => 
+    array (
+      0 => 'news_simple.html',
+      1 => 1389787928,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '7841854352d67b070e9e39-53423509',
+  'function' => 
+  array (
+  ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_52d67b0714d710_50824714',
+  'variables' => 
+  array (
+    'Title' => 0,
+  ),
+  'has_nocache_code' => false,
+),false); /*/%%SmartyHeaderCode%%*/?>
+<?php if ($_valid && !is_callable('content_52d67b0714d710_50824714')) {function content_52d67b0714d710_50824714($_smarty_tpl) {?><html>
 <head>
 	<meta charset="UTF-8">
-	<title>{$Title}</title>
+	<title><?php echo $_smarty_tpl->tpl_vars['Title']->value;?>
+</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<link rel="stylesheet" href="css/body.css" type="text/css">
 	<link rel="stylesheet" href="css/header.css" type="text/css">
@@ -130,3 +156,4 @@
 	</div>
 </body>
 </html>
+<?php }} ?>
