@@ -1,0 +1,1008 @@
+/*------------------------- Body ---------------------------*/
+.body {
+	background:url(../images/bg-content.png) no-repeat left bottom #fbfbf4;
+	margin:0 0 12px;
+	min-height:1188px;
+	padding:12px 10px 10px;
+}
+.body .sidebar div:first-child {
+	min-height:0!important;
+}
+.body.home {
+	background:none #fbfbf4;
+	overflow:hidden;
+}
+.body.home div:first-child {
+	float:left;
+	width:700px;
+}
+.body.home div:first-child .featured {
+	background:url(../images/featured.jpg) no-repeat;
+	border:0;
+	float:none;
+	height:450px;
+	margin:0 0 15px;
+	padding:0;
+	position:relative;
+	width:700px;
+}
+.body.home div:first-child .featured div:first-child {
+	background:url(../images/bg-transparent.png);
+	border:0;
+	bottom:11px;
+	height:120px;
+	left:20px;
+	margin:0;
+	overflow:hidden;
+	padding:0;
+	position:absolute;
+	right:1px;
+	width:679px;
+}
+.body.home div:first-child .featured div:first-child h2 {
+	color:#ff7500;
+	float:left;
+	font-family:bevanregular;
+	font-size:50px;
+	font-weight:400;
+	line-height:38px;
+	margin:0 20px 0 10px;
+	padding:18px 0 0;
+}
+.body.home div:first-child .featured div:first-child p {
+	color:#fbfbf4;
+	float:right;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+	line-height:18px;
+	margin:27px 32px 0 0;
+	width:290px;
+}
+.body.home div:first-child div div:first-child {
+	float:none;
+	margin-bottom:14px;
+}
+.body.home div:first-child div div:first-child h3 {
+	background:url(../images/icons.png) no-repeat;
+	color:#030303;
+	display:block;
+	float:left;
+	font-family:bevanregular;
+	font-size:30px;
+	font-weight:400;
+	height:26px;
+	line-height:24px;
+	margin:0;
+	padding:0 0 0 40px;
+	text-transform:uppercase;
+	width:auto;
+}
+.body.home div:first-child div div:first-child span {
+	display:block;
+	float:right;
+	margin:11px 0 0;
+}
+.body.home div:first-child div div:first-child span a {
+	color:#ff7500;
+	font-family:Arial Black, Helvetica, sans-serif;
+	font-size:12px;
+	text-transform:uppercase;
+}
+.body.home div:first-child div div:first-child ul {
+	clear:both;
+	list-style:none;
+	margin:0;
+	overflow:hidden;
+	padding:7px 0 0;
+}
+.body.home div:first-child div div:first-child ul li {
+	background:none #1f1f1f;
+	border:0;
+	float:left;
+	margin:0 0 0 20px;
+	min-height:293px;
+	padding:10px 10px 0;
+	width:200px;
+}
+.body.home div:first-child div {
+	margin:0 0 11px;
+}
+.body.home div:first-child div div {
+	border-top:4px solid #1f1f1f;
+	padding:10px 0 0;
+}
+.body.home div:first-child div div h3 {
+	background:url(../images/icons.png) no-repeat 0 -31px;
+	color:#030303;
+	display:block;
+	float:left;
+	font-family:bevanregular;
+	font-size:30px;
+	font-weight:400;
+	height:29px;
+	line-height:24px;
+	margin:0;
+	padding:0 0 0 40px;
+	text-transform:uppercase;
+	width:auto;
+}
+.body.home div:first-child div div span {
+	display:block;
+	float:right;
+	margin:11px 0 0;
+}
+.body.home div:first-child div div span a {
+	color:#FF7500;
+	font-family:Arial Black, Helvetica, sans-serif;
+	font-size:12px;
+	text-transform:uppercase;
+}
+.body.home div:first-child div div ul {
+	clear:both;
+	list-style:none outside none;
+	margin:0;
+	overflow:hidden;
+	padding:7px 0 0;
+}
+.body.home div:first-child div div ul li {
+	background:none;
+	border:1px solid #dcdbdb;
+	float:left;
+	margin:0 0 0 20px;
+	min-height:293px;
+	padding:10px 9px;
+	width:200px;
+}
+.body.home div:first-child div div ul li h4 {
+	color:#026593;
+	font-family:Arial Black, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:18px;
+	margin:10px 0 0;
+	text-transform:uppercase;
+}
+.body.home div:first-child div div ul li p {
+	color:#555;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:18px;
+	margin:1px 0 4px;
+}
+.body.home div.sidebar {
+	float:right;
+	width:220px;
+}
+.body.home div.sidebar div {
+	background:none repeat scroll 0 0 #1F1F1F;
+	float:none;
+	margin:0 0 15px;
+	overflow:hidden;
+	width:220px;
+}
+.body.news div:first-child {
+	background:none;
+	border-color:#030303;
+	border-style:none none none solid;
+	border-width:4px;
+	float:left;
+	min-height:1159px;
+	padding:0 0 57px;
+	width:716px;
+}
+.body.news div:first-child span {
+	background:url(../images/icons.png) no-repeat 20px -373px #030303;
+	color:#ff7500;
+	display:block;
+	font-family:bevanregular;
+	font-size:30px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 65px;
+	text-transform:uppercase;
+}
+.body.news div:first-child ul {
+	list-style:none;
+	margin:0;
+	padding:00;
+}
+.body.news div:first-child ul li {
+	background:none #fbfbf4;
+	border-bottom:4px solid #030303;
+	overflow:hidden;
+	padding:24px 15px 13px;
+}
+.body.news div:first-child ul li a {
+	float:left;
+	margin:0 20px 0 0;
+}
+.body.news div:first-child ul li div {
+	border:0 none;
+	margin:0!important;
+	overflow:hidden;
+	padding:0!important;
+}
+.body.news div:first-child ul li div h3 {
+	color:#026593;
+	float:none;
+	font-family:bevanregular;
+	font-size:17px;
+	font-weight:400;
+	line-height:24px;
+	margin:0;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.body.news div:first-child ul li div h3 a:hover {
+	color:#ff7500;
+	text-decoration:underline;
+}
+.body.news div:first-child ul li div span {
+	background:none;
+	color:#5e5e5e;
+	display:inline;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	height:auto;
+	line-height:18px;
+	padding:0;
+	text-transform:none;
+}
+.body.news div:first-child ul li div span span {
+	color:#ff7500;
+	padding:0;
+}
+.body.news div:first-child ul li div p {
+	color:#5e5e5e;
+	font-size:12px;
+	line-height:18px;
+	margin:15px 0;
+}
+.body.news div:first-child ul li div p a {
+	color:#5e5e5e;
+	float:none;
+	font-family:inherit;
+	font-size:12px;
+	margin:0;
+	text-decoration:underline;
+	text-transform:none;
+}
+.body.news div:first-child ul li div a {
+	color:#ff7500;
+	float:right;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:10px;
+	line-height:18px;
+	margin:-20px 0 -25px;
+	padding:0;
+	text-transform:uppercase;
+}
+.body.news div:first-child ul li div > a:hover {
+	color:#ff9c00;
+}
+.body.news div.sidebar div {
+	background:none repeat scroll 0 0 #1F1F1F;
+	float:none;
+	margin:0 0 15px;
+	overflow:hidden;
+	padding:0;
+	width:220px;
+}
+.body.news_simple div:first-child {
+	background:none repeat scroll 0 0 transparent;
+	border-color:#030303;
+	border-style:none none none solid;
+	border-width:4px;
+	float:left;
+	min-height:1169px;
+	padding:0 0 19px;
+	width:716px;
+}
+.body.news_simple div:first-child span:first-child {
+	background:url(../images/icons.png) no-repeat scroll 20px -373px #030303;
+	color:#FF7500;
+	display:block;
+	font-family:bevanregular;
+	font-size:30px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 65px;
+	text-transform:uppercase;
+}
+.body.news_simple div:first-child div {
+	border-bottom:4px solid #030303;
+	clear:both;
+	padding:18px 20px 36px 17px;
+}
+.body.news_simple div:first-child div h3 {
+	color:#026593;
+	font-family:bevanregular;
+	font-size:26px;
+	font-weight:400;
+	line-height:24px;
+	margin:19px 0 3px;
+	text-transform:uppercase;
+}
+.body.news_simple div:first-child div span {
+	color:#5e5e5e;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	line-height:18px;
+}
+.body.news_simple div:first-child div span span:first-child {
+	background:none;
+	color:#ff7500;
+	display:inline;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	height:auto;
+	line-height:18px;
+	padding:0;
+	text-transform:none;
+}
+.body.news_simple div:first-child div p {
+	color:#5e5e5e;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:18px 0 0;
+}
+.body.news_simple div:first-child div.section {
+	border-bottom:4px solid #030303;
+	padding:13px 20px 24px 17px;
+}
+.body.news_simple div:first-child div.section h5 {
+	color:#026593;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	font-weight:400;
+	line-height:18px;
+	margin:0;
+	text-transform:uppercase;
+}
+.body.news_simple div:first-child div.section h4 {
+	color:#ff7500;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	font-weight:400;
+	line-height:18px;
+	margin:18px 0 1px;
+	text-transform:none;
+}
+.body.news_simple div:first-child div.section span {
+	color:#5a5a5a;
+	display:block;
+	font-family:Arial, Helvetica, sans-serif!important;
+	font-size:12px;
+	font-style:italic;
+	font-weight:700;
+	line-height:18px;
+}
+.body.news_simple div:first-child div.section p {
+	color:#5a5a5a;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:18px;
+	margin:0;
+	padding:0 0 0 37px;
+}
+.body.news_simple div:first-child div.section p a {
+	color:#5a5a5a;
+}
+.body.news_simple div:first-child form {
+	background:none #fbfbf4;
+	padding:13px 20px 5px 17px;
+}
+.body.news_simple div:first-child form span:first-child {
+	background:none;
+	color:#026593;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	font-weight:400;
+	height:auto;
+	line-height:18px;
+	margin:0 0 14px;
+	padding:0;
+	text-transform:uppercase;
+}
+.body.news_simple div:first-child form label {
+	color:#5e5e5e;
+	display:block;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	height:35px;
+}
+.body.news_simple div:first-child form label input {
+	background:none #fbfbf4;
+	border:1px solid #989797;
+	cursor:auto;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	height:auto;
+	margin:0 12px 0 0;
+	padding:4px 5px 5px;
+	text-align:left;
+	width:188px;
+}
+.body.news_simple div:first-child form textarea {
+	background:none #fbfbf4;
+	border:1px solid #989797;
+	display:block;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	height:123px;
+	margin:1px 0 23px;
+	overflow:auto;
+	padding:4px 5px;
+	resize:none;
+	width:298px;
+}
+.body.news_simple div:first-child form input {
+	background:none #ff7500;
+	border:1px solid #1f1f1f;
+	cursor:pointer;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:12px;
+	height:30px;
+	text-align:center;
+	width:132px;
+}
+.body.news_simple div:first-child form > input:hover {
+	background:none #ff9c00;
+}
+.body.equipe div:first-child div h3 {
+	color:#026593;
+	font-family:bevanregular;
+	font-size:20px;
+	font-weight:400;
+	line-height:24px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.body.equipe div:first-child div p {
+	color:#5e5e5e;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:14px 0 0;
+}
+.body.equipe div:first-child div.section span:first-child {
+	background:none #030303;
+	font-size:18px;
+	height:37px;
+	line-height:37px;
+	padding:0 0 0 20px;
+}
+.body.equipe div:first-child div.section ul {
+	list-style:none;
+	margin:0;
+	overflow:hidden;
+	padding:22px 0 26px;
+}
+.body.equipe div:first-child div.section ul li {
+	float:left;
+	height:168px;
+	margin:0 0 31px;
+	text-align:center;
+	width:238px;
+}
+.body.equipe div:first-child div.section ul li a {
+	color:#195c86;
+	display:inline-block;
+	font-family:bevanregular;
+	font-size:18px;
+	height:145px;
+	line-height:34px;
+	text-decoration:none;
+	text-transform:uppercase;
+	width:140px;
+}
+.body.fiche_joueur div:first-child div {
+	clear:both;
+	overflow:hidden;
+	padding:18px 20px 13px 17px;
+}
+.body.fiche_joueur div:first-child div span:first-child {
+	background:none;
+	display:block;
+	float:left;
+	height:443px;
+	margin:0 20px 29px 0;
+	padding:0;
+	width:330px;
+}
+.body.fiche_joueur div:first-child div h3 {
+	color:#026593;
+	float:left;
+	font-family:bevanregular;
+	font-size:20px;
+	font-weight:400;
+	line-height:18px;
+	margin:1px 0 0;
+	text-transform:uppercase;
+}
+.body.fiche_joueur div:first-child div p {
+	color:#5e5e5e;
+	float:left;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:17px 0 0;
+	width:328px;
+}
+.body.fiche_joueur div:first-child div p a {
+	color:#5e5e5e;
+	text-decoration:underline;
+}
+.body.fiche_joueur div:first-child div.section {
+	padding:0;
+}
+.body.fiche_joueur div:first-child div.section h3 {
+	float:none;
+}
+.body.fiche_joueur div:first-child div.section p {
+	float:none;
+	width:auto;
+}
+.body.about div:first-child {
+	background:none repeat scroll 0 0 transparent;
+	border-color:#030303;
+	border-style:none none none solid;
+	border-width:4px 4px 5px;
+	float:left;
+	min-height:1179px;
+	padding:0 0 9px;
+	width:716px;
+}
+.body.about div:first-child div {
+	clear:both;
+	padding:18px 20px 35px 17px;
+}
+.body.about div:first-child div h3 {
+	color:#026593;
+	font-family:bevanregular;
+	font-size:20px;
+	font-weight:400;
+	line-height:24px;
+	margin:16px 0 0;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.body.about div:first-child div p {
+	color:#5E5E5E;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:14px 0 30px;
+}
+.body.calendrier div:first-child {
+	background:none repeat scroll 0 0 transparent;
+	border-color:#030303;
+	border-style:none none solid solid;
+	border-width:4px 4px 5px;
+	float:left;
+	min-height:1159px;
+	padding:0 0 10px;
+	width:716px;
+}
+.body.calendrier div:first-child span:first-child {
+	background:url(../images/icons.png) no-repeat scroll 20px -502px #030303;
+	color:#FF7500;
+	display:block;
+	font-family:bevanregular;
+	font-size:30px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 65px;
+	text-transform:uppercase;
+}
+.body.calendrier div:first-child div {
+	clear:both;
+	padding:0;
+}
+.body.calendrier div:first-child div .section {
+	background:url(../images/bg-calendrier.jpg) no-repeat -3px 0;
+	border-style:none none none solid;
+	float:none;
+	height:168px;
+	min-height:0;
+	padding:0;
+}
+.body.calendrier div:first-child div .section span {
+	background:none repeat scroll 0 0 transparent;
+	color:#FBFBF4;
+	display:block;
+	float:left;
+	font-size:26px;
+	height:auto;
+	line-height:24px;
+	margin:47px 25px 0 20px;
+	padding:0;
+	text-shadow:3px 5px 0 #01467C;
+	width:auto;
+}
+.body.calendrier div:first-child div .section div {
+	clear:none;
+	float:left;
+	width:300px;
+}
+.body.calendrier div:first-child div .section div p {
+	color:#FBFBF4;
+	display:block;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:18px;
+	height:auto;
+	line-height:27px;
+	margin:44px 0 0;
+	text-shadow:3px 4px 0 #01467C;
+}
+.body.calendrier div:first-child div span {
+	background:none repeat scroll 0 0 #030303;
+	color:#FF7500;
+	display:block;
+	font-family:bevanregular;
+	font-size:18px;
+	height:37px;
+	line-height:37px;
+	padding:0 0 0 20px;
+	text-transform:uppercase;
+}
+.body.calendrier div:first-child div ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+.body.calendrier div:first-child div ul li {
+	border-top:4px solid #030303;
+	overflow:hidden;
+	padding:15px 40px 19px 20px;
+}
+.body.calendrier div:first-child div ul li span:first-child {
+	background:none;
+	color:#026593;
+	display:block;
+	float:left;
+	font-family:bevanregular;
+	font-size:18px;
+	height:auto;
+	line-height:24px;
+	padding:0;
+	text-transform:uppercase;
+}
+.body.calendrier div:first-child div ul li div {
+	clear:none;
+	float:left;
+	margin:0 0 0 137px;
+	padding:5px 0 0;
+	width:400px;
+}
+.body.calendrier div:first-child div ul li div span {
+	background:none!important;
+	color:#026593!important;
+	display:block!important;
+	float:none!important;
+	font-family:"Arial Black", Gadget, sans-serif!important;
+	font-size:12px!important;
+	height:auto!important;
+	line-height:18px!important;
+	padding:0!important;
+	text-transform:none!important;
+}
+.body.calendrier div:first-child div ul li div p {
+	color:#5e5e5e;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:13px 0 0;
+}
+.body.calendrier div:first-child div ul li div p a {
+	color:#5e5e5e;
+	text-decoration:underline;
+}
+.body.home div:first-child div div:first-child ul li:first-child, .body.home div:first-child div div ul li:first-child, .body.news div:first-child ul li div h3,{
+	margin:0;
+}
+.body.home div:first-child div div:first-child ul li a img:hover, .body.home div:first-child div div ul li a img:hover, .body.news div:first-child ul li a img:hover, .body.equipe div:first-child div.section ul li a img:hover{
+	filter:alpha(opacity=80);
+	opacity:0.8;
+}
+.body.home div:first-child div div:first-child ul li h4{
+	color:#026593;
+	font-family:Arial Black, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:18px;
+	margin:10px 0 0;
+	text-transform:uppercase;
+}
+.body.home div:first-child div div:first-child ul li h4 a, .body.home div:first-child div div ul li h4 a{
+	color:#026593;
+	text-decoration:none;
+}
+.body.home div:first-child div div:first-child ul li h4 a:hover, .body.home div:first-child div div ul li h4 a:hover, .body.equipe div:first-child div h3 a:hover{
+	color:#FF7500;
+	text-decoration:underline;
+}
+.body.home div:first-child div div:first-child ul li p{
+	color:#fbfbf4;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	line-height:18px;
+	margin:1px 0 4px;
+}
+.body.home div.sidebar .news, .body.news div.sidebar .news, .body.news_simple div.sidebar .news, .body.equipe div.sidebar .news, .body.fiche_joueur div.sidebar .news,.body.about div.sidebar .news, .body.calendrier div.sidebar .news {
+	background:none #1f1f1f;
+	float:none;
+	margin:0 0 15px;
+	overflow:hidden;
+	width:220px;
+	border:0;
+}
+.body.home div.sidebar .news span, .body.news div.sidebar .news span, .body.news_simple div.sidebar .news span, .body.equipe div.sidebar .news span:first-child, .body.fiche_joueur div.sidebar .news span,.body.about div.sidebar .news span:first-child, .body.calendrier div.sidebar .news span {
+	background:url(../images/icons.png) no-repeat 19px -60px #ff7500;
+	color:#1f1f1f;
+	display:block;
+	font-family:bevanregular;
+	font-size:15px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 47px;
+	text-transform:uppercase;
+}
+.body.home div.sidebar .news ul, .body.news div.sidebar .news ul, .body.news_simple div.sidebar .news ul, .body.equipe div.sidebar .news ul, .body.fiche_joueur div.sidebar .news ul,.body.about div.sidebar .news ul, .body.calendrier div.sidebar .news ul {
+	list-style:none;
+	margin:0;
+	padding:0 0 1px;
+}
+.body.home div.sidebar .news ul li:hover, .body.home div.sidebar .section ul li:hover, .body.news div.sidebar .news ul li:hover, .body.news div.sidebar .section ul li:hover, .body.news_simple div.sidebar .news ul li:hover, .body.news_simple div.sidebar .section ul li:hover, .body.equipe div.sidebar .news ul li:hover, .body.equipe div.sidebar .section ul li:hover, .body.fiche_joueur div.sidebar .news ul li:hover, .body.fiche_joueur div.sidebar .section ul li:hover,.body.about div.sidebar .news ul li:hover, .body.about div.sidebar .section ul li:hover, .body.calendrier div.sidebar .news ul li:hover, .body.calendrier div.sidebar .section ul li:hover {
+	background:url(../images/bg-list-hover.png) repeat-x;
+}
+.body.home div.sidebar .news ul li, .body.news div.sidebar .news ul li, .body.news_simple div.sidebar .news ul li, .body.equipe div.sidebar .news ul li, .body.fiche_joueur div.sidebar .news ul li,.body.about div.sidebar .news ul li, .body.calendrier div.sidebar .news ul li {
+	background:url(../images/bg-list.png) repeat-x left bottom;
+	height:54px;
+	padding:0 20px;
+	border:0;
+}
+.body.home div.sidebar .news ul li a, .body.news div.sidebar .news ul li a, .body.news_simple div.sidebar .news ul li a, .body.equipe div.sidebar .news ul li a, .body.fiche_joueur div.sidebar .news ul li a, .body.about div.sidebar .news ul li a, .body.calendrier div.sidebar .news ul li a {
+	background:url(../images/icon-arrow-right.png) no-repeat left 6px;
+	color:#fff;
+	display:inline-block;
+	float:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:700;
+	line-height:18px;
+	margin:10px 0 1px;
+	padding:0 0 0 10px;
+	text-decoration:none;
+	text-transform:none;
+}
+.body.home div.sidebar .news ul li span, .body.news div.sidebar .news ul li span, .body.news_simple div.sidebar .news ul li span, .body.equipe div.sidebar .news ul li span, .body.fiche_joueur div.sidebar .news ul li span,.body.about div.sidebar .news ul li span, .body.calendrier div.sidebar .news ul li span {
+	background:none;
+	color:#808282;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:400;
+	line-height:18px;
+	padding:0 0 0 10px;
+	text-transform:none;
+	height: auto;
+}
+.body.home div.sidebar .news a, .body.home div.sidebar .section a, .body.news div.sidebar .news a, .body.news div.sidebar .section a, .body.news_simple div.sidebar .news a, .body.news_simple div.sidebar .section a, .body.equipe div.sidebar .news a, .body.equipe div.sidebar .section a, .body.fiche_joueur div.sidebar .news a, .body.fiche_joueur div.sidebar .section a,.body.about div.sidebar .news a, .body.about div.sidebar .section a, .body.calendrier div.sidebar .news a, .body.calendrier div.sidebar .section a {
+	color:#ff7500;
+	float:right;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:10px;
+	line-height:18px;
+	margin:2px 20px 4px 0;
+	text-transform:uppercase;
+}
+.body.home div.sidebar .news > a:hover, .body.home div.sidebar .section > a:hover, .body.news div.sidebar .news > a:hover, .body.news div.sidebar .section > a:hover, .body.news_simple div.sidebar .news > a:hover, .body.news_simple div.sidebar .section > a:hover, .body.equipe div.sidebar .news > a:hover, .body.equipe div.sidebar .section > a:hover, .body.fiche_joueur div.sidebar .news > a:hover, .body.fiche_joueur div.sidebar .section > a:hover,.body.about div.sidebar .news > a:hover, .body.about div.sidebar .section > a:hover, .body.calendrier div.sidebar .news > a:hover, .body.calendrier div.sidebar .section > a:hover, .body.home div.sidebar div > a:hover, .body.news div.sidebar div > a:hover, .body.news_simple div.sidebar div > a:hover, .body.equipe div.sidebar div > a:hover, .body.fiche_joueur div.sidebar div > a:hover, .body.calendrier div.sidebar div > a:hover{
+	color:#ff9c00;
+}
+.body.home div.sidebar .section, .body.news div.sidebar .section, .body.news_simple div.sidebar .section, .body.equipe div.sidebar .section, .body.fiche_joueur div.sidebar .section,.body.about div.sidebar .section, .body.calendrier div.sidebar .section {
+	background:none repeat scroll 0 0 #1F1F1F;
+	float:none;
+	overflow:hidden;
+	width:220px;
+}
+.body.home div.sidebar .section span, .body.news div.sidebar .section span, .body.news_simple div.sidebar .section span, .body.equipe div.sidebar .section span, .body.fiche_joueur div.sidebar .section span,.body.about div.sidebar .section span, .body.calendrier div.sidebar .section span {
+	background:url(../images/icons.png) no-repeat scroll 19px -100px #FF7500;
+	color:#1F1F1F;
+	display:block;
+	font-family:bevanregular;
+	font-size:15px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 47px;
+	text-transform:uppercase;
+}
+.body.home div.sidebar .section ul, .body.news div.sidebar .section ul, .body.news_simple div.sidebar .section ul, .body.equipe div.sidebar .section ul, .body.fiche_joueur div.sidebar .section ul,.body.about div.sidebar .section ul, .body.calendrier div.sidebar .section ul {
+	list-style:none outside none;
+	margin:0;
+	padding:0 0 5px;
+}
+.body.home div.sidebar .section ul li, .body.news div.sidebar .section ul li, .body.news_simple div.sidebar .section ul li, .body.equipe div.sidebar .section ul li, .body.fiche_joueur div.sidebar .section ul li,.body.about div.sidebar .section ul li, .body.calendrier div.sidebar .section ul li {
+	background:url(../images/bg-list.png) repeat-x scroll left bottom transparent;
+	height:54px;
+	padding:0 20px;
+}
+.body.home div.sidebar .section ul li a, .body.news div.sidebar .section ul li a, .body.news_simple div.sidebar .section ul li a, .body.equipe div.sidebar .section ul li a, .body.fiche_joueur div.sidebar .section ul li a,.body.about div.sidebar .section ul li a, .body.calendrier div.sidebar .section ul li a {
+	color:#fff;
+	display:inline-block;
+	float:none;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
+	font-weight:700;
+	line-height:18px;
+	margin:10px 0 1px;
+	padding:0 0 0 10px;
+	text-decoration:none;
+	text-transform:none;
+}
+.body.home div.sidebar .section ul li span, .body.news div.sidebar .section ul li span, .body.news_simple div.sidebar .section ul li span, .body.equipe div.sidebar .section ul li span, .body.fiche_joueur div.sidebar .section ul li span,.body.about div.sidebar .section ul li span, .body.calendrier div.sidebar .section ul li span {
+	background:none repeat scroll 0 0 transparent;
+	color:#808282;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:400;
+	line-height:18px;
+	padding:0 0 0 10px;
+	text-transform:none;
+}
+.body.home div.sidebar div span, .body.news div.sidebar div span, .body.news_simple div.sidebar div span, .body.equipe div.sidebar div span, .body.fiche_joueur div.sidebar div span,.body.about div.sidebar div span, .body.calendrier div.sidebar div span {
+	background:url(../images/icons.png) no-repeat scroll 19px -137px #FF7500;
+	color:#1F1F1F;
+	display:block;
+	font-family:bevanregular;
+	font-size:15px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 47px;
+	text-transform:uppercase;
+}
+.body.home div.sidebar div ul, .body.news div.sidebar div ul, .body.news_simple div.sidebar div ul, .body.equipe div.sidebar div ul, .body.fiche_joueur div.sidebar div ul,.body.about div.sidebar div ul, .body.calendrier div.sidebar div ul {
+	list-style:none outside none;
+	margin:0;
+	padding:0;
+}
+.body.home div.sidebar div ul li:hover, .body.news div.sidebar div ul li:hover, .body.news_simple div.sidebar div ul li:hover, .body.equipe div.sidebar div ul li:hover, .body.fiche_joueur div.sidebar div ul li:hover,.body.about div.sidebar div ul li:hover, .body.calendrier div.sidebar div ul li:hover {
+	background:url(../images/bg-list-hover.png) repeat-x left bottom #2b2b2b;
+}
+.body.home div.sidebar div ul li, .body.news div.sidebar div ul li, .body.news_simple div.sidebar div ul li, .body.equipe div.sidebar div ul li, .body.fiche_joueur div.sidebar div ul li,.body.about div.sidebar div ul li, .body.calendrier div.sidebar div ul li {
+	background:url(../images/bg-list.png) repeat-x left bottom #1f1f1f;
+	height:auto;
+	padding:0 20px;
+}
+.body.home div.sidebar div ul li p, .body.news div.sidebar div ul li p, .body.news_simple div.sidebar div ul li p, .body.equipe div.sidebar div ul li p, .body.fiche_joueur div.sidebar div ul li p,.body.about div.sidebar div ul li p, .body.calendrier div.sidebar div ul li p {
+	background:url(../images/icon-arrow-right.png) no-repeat scroll left 17px transparent;
+	color:#fff;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:0;
+	padding:12px 0 14px 10px;
+}
+.body.home div.sidebar div ul li p a, .body.news div.sidebar div ul li p a, .body.news_simple div.sidebar div ul li p a, .body.equipe div.sidebar div ul li p a, .body.fiche_joueur div.sidebar div ul li p a,.body.about div.sidebar div ul li p a, .body.calendrier div.sidebar div ul li p a {
+	color:#fff;
+	font-size:12px;
+	font-weight:700;
+	line-height:18px;
+	margin:0;
+	text-transform:none;
+	float:none;
+	text-decoration:none;
+	font-weight:normal;
+	font-family: Arial,Helvetica,sans-serif;
+}
+.body.home div.sidebar div a, .body.news div.sidebar div a, .body.news_simple div.sidebar div a, .body.equipe div.sidebar div a, .body.fiche_joueur div.sidebar div a, .body.about div.sidebar div a, .body.calendrier div.sidebar div a {
+	color:#FF7500;
+	float:right;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:10px;
+	line-height:18px;
+	margin:2px 20px 4px 0;
+	text-transform:uppercase;
+}
+.body.news, .body.news_simple, .body.equipe, .body.fiche_joueur,.body.about, .body.calendrier {
+	overflow:hidden;
+}
+.body.news div:first-child ul li div p a:hover, .body.news_simple div:first-child div p a:hover, .body.news_simple div:first-child div.section p a:hover, .body.equipe div:first-child div p a:hover {
+	color:#ff7500;
+}
+.body.news div.sidebar, .body.news_simple div.sidebar, .body.equipe div.sidebar, .body.fiche_joueur div.sidebar,.body.about div.sidebar, .body.calendrier div.sidebar {
+	background:none #030303;
+	float:right;
+	width:220px;
+}
+.body.news_simple div:first-child a#paging, .body.fiche_joueur div:first-child a#paging,.body.equipe div:first-child a#paging{
+	color:#FF7500;
+	float:right;
+	font-family:bevanregular;
+	font-size:20px;
+	margin:-27px 20px 0;
+	text-transform:uppercase;
+}
+.body.news_simple div:first-child div img, .body.equipe div:first-child div img, .body.fiche_joueur div:first-child div span img,.body.about div:first-child div img {
+	border:5px solid #030303;
+	display:block;
+}
+.body.news_simple div:first-child div p a, .body.equipe div:first-child div p a {
+	color:#5e5e5e;
+}
+.body.news_simple div.sidebar div, .body.equipe div.sidebar div, .body.fiche_joueur div.sidebar div, .body.about div.sidebar div, .body.calendrier div.sidebar div {
+	background:none repeat scroll 0 0 #1F1F1F;
+	border:0;
+	float:none;
+	margin:0 0 15px;
+	overflow:hidden;
+	padding:0;
+	width:220px;
+}
+.body.equipe div:first-child, .body.fiche_joueur div:first-child {
+	background:none repeat scroll 0 0 transparent;
+	border-color:#030303;
+	border-style:none none none solid;
+	border-width:4px 4px 5px;
+	float:left;
+	min-height:1159px;
+	padding:0 0 29px;
+	width:716px;
+}
+.body.equipe div:first-child span:first-child, .body.fiche_joueur div:first-child span, .body.about div:first-child span:first-child {
+	background:url(../images/icons.png) no-repeat scroll 20px -417px #030303;
+	color:#FF7500;
+	display:block;
+	font-family:bevanregular;
+	font-size:30px;
+	height:47px;
+	line-height:44px;
+	padding:0 0 0 65px;
+	text-transform:uppercase;
+}
+.body.equipe div:first-child div{
+	clear:both;
+	padding:18px 20px 13px 17px;
+}
+.body.equipe div:first-child div h3{
+	margin:16px 0 0;
+}
+.body.equipe div:first-child div.section {
+	padding-left:0;
+	padding-right:0;
+}
+.body.fiche_joueur div:first-child div p a:hover,.body.about div:first-child div p a:hover, .body.calendrier div:first-child div ul li div p a:hover {
+	color:#FF7500;
+}
+
+#connexion_menu{
+width: 162px;
+text-align: center;
+color: rgb(255, 117, 0);
+}
+
+.sidebar_co{
+position:absolute;
+right:0px;
+top:192px;
+background: none repeat scroll 0% 0% rgb(3, 3, 3);
+padding:0px 12px 0px 20px;
+color: rgb(251, 251, 244);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

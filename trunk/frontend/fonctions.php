@@ -184,7 +184,7 @@ function get_PHOTO_byId($bdd, $id){
 
 
 function get_TYPE_USER_byId($bdd, $id){
-  $reponse = $bdd->query("select * from TYPE_USER where Id = "$id);
+  $reponse = $bdd->query("select * from TYPE_USER where Id = ".$id);
   $answer = array();
   while($data = $reponse->fetch()){
     $answer['Nom'] = $data['Nom'];

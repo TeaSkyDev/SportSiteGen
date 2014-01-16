@@ -10,20 +10,44 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 	$page = $_REQUEST['page'];
 
 	switch($page) {
-		case 'login':
-			include("html/login.html");
+		case 'connexion':
+			include("html/connexion.html");
 			break;
-		case 'logout':
+		case 'deconnexion':
 			include("php/logout.php");
 			break;
 		case 'inscription':
 			include("html/inscription.html");
 			break;
+		case 'about':
+			include("html/about.html");
+			break;
+		case 'calendrier':
+			include("html/calendrier.html");
+			break;
+		case 'equipe':
+			include("html/equipe.html");
+			break;
+		case 'fiche_joueur':
+			include("html/fiche_joueur.html");
+			break;
+		case 'membre_equipe':
+			include("html/membre_equipe.html");
+			break;
+		case 'news':
+			include("php/news.php");
+			break;
+		case 'news_simple':
+			include("html/news_simple.html");
+			break;
+		case 'new_commentaire':
+			include("php/new_commentaire.php");
+			break;
 		default:
-			include("php/accueil.php");
+			include("html/index.html");
 	}
 } else {
-	include("php/accueil.php");
+	include("html/index.html");
 }
 
 ?>
