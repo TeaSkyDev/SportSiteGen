@@ -6,12 +6,16 @@
  *
  */
 session_start();
+
+/* On affiche le header */
+include("php/header.php");
+
 if(isset($_GET['page']) || isset($_POST['page'])) {
 	$page = $_REQUEST['page'];
 
 	switch($page) {
 		case 'connexion':
-			include("html/connexion.html");
+			include("php/login.php");
 			break;
 		case 'deconnexion':
 			include("php/logout.php");
@@ -44,10 +48,10 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			include("php/new_commentaire.php");
 			break;
 		default:
-			include("html/index.html");
+			include("php/index.php");
 	}
 } else {
-	include("html/index.html");
+	//include("php/accueil.php");
 }
 
 ?>

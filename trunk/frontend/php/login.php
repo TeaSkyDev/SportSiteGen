@@ -1,13 +1,12 @@
 <?php
-require_once("../../mysql_connect.php");
-session_start();
+require_once("../mysql_connect.php");
 /* On vérifie que des données ont été envoyées */
-if(isset($_POST['login']) && isset($_POST['password'])) {
-	$login = $_POST['login'];
+if(isset($_POST['pseudo']) && isset($_POST['password'])) {
+	$pseudo = $_POST['pseudo'];
 	$pass  = htmlentities($_POST['password']);
 
 	/* On cherche un utilisateur avec le pseudo demandé */
-	$requete  = $bdd->query("select * from UTILISATEUR where Pseudo = '".$login."'");
+	$requete  = $bdd->query("select * from UTILISATEUR where Pseudo = '".$pseudo."'");
 	if($requete) {
 		$res_pass = $requete->fetch();
 	} else {
@@ -19,9 +18,11 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
 		$_SESSION['connected'] = true;
 		$_SESSION['user'] = $res_pass; //on garde en mémoire le résultat de la requete, cad les info du user
 		echo 'Vous etes maintenant connecte.<br>';
-		header("Location: ../index.php");
+		header("Location: index.php");
 	} else {
 		echo 'Pseudo &&/|| mot de passe incorrecte.<br><a href="index.php">Nouvelle tentative</a>';
 	}
+} else {
+	include("html/connexion.html");
 }
 ?>

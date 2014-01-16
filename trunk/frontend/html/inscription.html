@@ -30,7 +30,7 @@
 				</ul>
 			</div>
 			<div class="body home">
-				<form action="index.html">
+				<form action="index.php?page=inscription">
 					<div class="body news">
 						<table>	
 								<tr>
@@ -42,8 +42,12 @@
 									<td><input type="text" id="email"></td>
 								</tr>
 								<tr>
-									<td><label for="email"><span>E</span>mail :</label></td>
-									<td><input type="text" id="email"></td>
+									<td><label for="password">Mot de passe :</label></td>
+									<td><input type="text" id="password" name="password"></td>
+								</tr>
+								<tr>
+									<td><label for="password">Mot de passe (verif):</label></td>
+									<td><input type="text" id="password_verif" name="password_verif"></td>
 								</tr>
 						</table>
 						<input type="submit" value="Inscription" id="application-submit">
