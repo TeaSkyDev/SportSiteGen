@@ -321,4 +321,29 @@ function get_NEWS_byId($bdd, $id){
 }
 
 
+function Update_TABLE_byCol($bdd, $TblName, $id, $i, $value){
+  $select = $bdd->query("select * from ".$TblName);
+  $meta = $select->getColumnMeta($i);
+  $name = $meta['name'];
+  $reponse;
+  if($meta['native_type'] == "integer"){
+    $reponse = $bdd->query("UPDATE ".$TblName." SET ".$name."=".$value." where Id=".$id);
+  }
+  else{
+    $reponse = $bdd->query("UPDATE ".$TblName." SET ".$name."='".$value."' where Id=".$id);
+  }
+  if($reponse) return true;
+  else return false;
+}
+
+function Update_TABLE_byName($bdd, $TblName, $id, $name, $value){
+  $select;
+  if(gettype($value) == "integer")
+    $select = $bdd->query("UPDATE ".$TblName." SET ".$name." = ".$value);
+  else 
+    $select = $bdd->query("UPDATE ".$TblName." SET ".$name." = '".$value."'");
+  if($select) return true;
+  else return false;
+}
+
 ?>
