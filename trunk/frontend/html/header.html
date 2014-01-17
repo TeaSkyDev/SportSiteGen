@@ -55,12 +55,11 @@
 	  <div class="section">
 	    <span>Calendrier</span>
 	    <ul>
+	      {foreach from=$Cal item=cal}
 	      <li>
-		<a href="index.php?page=calendrier&date=">A vs B</a> <span>23 July 2023 @ 9AM</span>
+		<a href="index.php?page=calendrier&date=">{$cal.titre}</a> <span>{$cal.date|date_format:"%d-%m-%Y @ %H:%M"} </span>
 	      </li>
-	      <li>
-		<a href="index.php?page=calendrier&date=">A vs C</a> <span>23 July 2023 @ 9AM</span>
-	      </li>
+	      {/foreach}
 	    </ul>
 	    <a href="index.php?page=calendrier">Voir Calendrier</a>
 	  </div>

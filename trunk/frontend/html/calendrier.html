@@ -3,37 +3,17 @@
 				<div>				
 					<span>Calendrier</span>
 					<div>			
-						<ul>
+						<ul>{foreach from=$Event item=event}
 							<li>
-								<span>Championnat de France</span>
+								<span>{$event.titre}</span>
 								<div>
-									<span>Stade de france</span> <span>31 Jul 2014 | 7:00</span>
+									<span>{$event.location}</span> <span>{$event.date|date_format:"%A - %d-%m-%Y %H:%M"}</span>
 									<p>
-										BLABLA
+										{$event.contenu}
 									</p>
 								</div>
-							</li>							
-						</ul>
-						<span>Régional</span>
-						<ul>
-							<li>
-								<span>Tournoi Bourge</span>
-								<div>
-									<span>Stade de Bourge</span> <span>17 Janv 2014 | 9:00</span>
-									<p>
-										BLABLA
-									</p>
-								</div>
-							</li>
-							<li>
-								<span>Tournoi Orléans</span>
-								<div>
-									<span>Stade d'Orléans</span> <span>01 Avr 2014 | 8:00</span>
-									<p>
-										BLABLA
-									</p>
-								</div>
-							</li>
+							</li>	
+							{/foreach}
 						</ul>
 					</div>
 				</div>

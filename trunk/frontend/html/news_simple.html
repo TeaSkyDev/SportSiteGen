@@ -3,22 +3,26 @@
 				<div>
 					<span>News</span> <a href="index.php?page=news" id="paging">> Back</a>
 					<div>
-						<img src="images/news_photo.jpg" alt="">
-						<h3>Joyeux Noël</h3>
-						<span>25 Déc 2013| Posté par <span>Akatsubaki</span></span>
+						<img src="{$News.img}" alt="">
+						<h3>{$News.titre}</h3>
+						<span>{$News.date|date_format:"%d-%m-%Y"} | Posté par <span>{$News.auteur}</span></span>
 						<p>
-							OHOHOHOHOHOHHOHHOHHOHHOHH
+							{$News.contenu}
 						</p>
 					</div>
+					
 					<div class="section">
-						<h5>Commentaire</h5>
-						<h4>Com 1</h4>
-						<span>Posté le 25 Déc 2013</span>
+						<h5>Commentaires</h5>
+						{foreach from=$Coms item=coms}
+						<span>Posté par {$coms.auteur} le {$coms.date|date_format:"%d-%m-%Y à %H:%M"}</span>
 						<p>
-							MERRY CHRISTMAS
+							{$coms.contenu}
 						</p>
+						{/foreach}
 					</div>
-					<form action="index.php?page=new_commentaire">
+					
+					{if $News.connected == 'true'}
+					<form action="index.php?page=news&new_com=true">
 						<span>Ajouter un commentaire</span>
 						<label for="name">
 							<input type="text" id="name" name="pseudo">
@@ -29,6 +33,9 @@
 						<textarea name="message" id="message" cols="30" rows="10"></textarea>
 						<input type="submit" value="Commenter">
 					</form>
+					{else}
+					<span>Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></span><br>
+					{/if}
 				</div>
 				
 			</div>

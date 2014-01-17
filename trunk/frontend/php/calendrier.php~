@@ -1,0 +1,14 @@
+<?php
+$reponse = $bdd->query("select * from EVENEMENT");
+$news = array();
+$i = 0;
+
+for(; $i < 10*($page-1) ; $i++){
+  $data = $reponse->fetch();
+}
+
+while($data = $reponse->fetch()){
+}  
+
+
+?>
