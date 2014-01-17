@@ -18,7 +18,9 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']) {
 
 
 $reponse = $bdd->query("select * from NEWS order by id DESC");
-$news    = array();
+$reponse_e = $bdd->query("select * from EVENEMENT order by id DESC");
+$news  = array();
+$event = array();
 
 $i = 0;
 while($data = $reponse->fetch()){
@@ -28,9 +30,17 @@ while($data = $reponse->fetch()){
   }
   $i++;
 }
+$i = 0;
+while($data = $reponse_e->fetch()){
+  if($i < 6){
+    $event[$i] = $data; 
+  }
+  $i++;
+}
+
 
 $smarty->assign("Post", $news);
-
+$smarty->assign("Cal", $event);
 $smarty->assign("Info", $info);
 $smarty->display("html/header.html");
 ?>

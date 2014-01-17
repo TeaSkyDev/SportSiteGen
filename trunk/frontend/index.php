@@ -37,7 +37,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			include("html/about.html");
 			break;
 		case 'calendrier':
-			include("html/calendrier.html");
+			include("php/calendrier.php");
 			break;
 		case 'equipe':
 			include("html/equipe.html");
