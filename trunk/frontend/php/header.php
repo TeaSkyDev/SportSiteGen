@@ -11,7 +11,7 @@ if(isset($_SESSION['connected']) && $_SESSION['connected']) {
 }
 
 
-$reponse = $bdd->query("select * from NEWS");
+$reponse = $bdd->query("select * from NEWS order by id DESC");
 $news    = array();
 
 $i = 0;
