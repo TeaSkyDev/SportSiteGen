@@ -58,6 +58,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 		case 'new_commentaire':
 			include("php/new_commentaire.php");
 			break;
+        case 'profil':
+            include("php/profil.php");
+            break;
 		case 'erreur':
 			include("php/erreur.php");
 			break;
