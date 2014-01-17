@@ -114,7 +114,7 @@ function add_PHOTO_MATCHS($bdd, $idMatch, $idphoto){
 
 function add_APPARTENIR_EQUIPE($bdd, $equipe, $inscrit, $idMatch){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into APPARTENIR_EQUIPE values(null,".$equipe.",".$inscrit.","$idMatchs.")");
+  $reponse = $bdd->query("insert into APPARTENIR_EQUIPE values(null,".$equipe.",".$inscrit.","$idMatch.")");
   $bdd->commit();     
   if($reponse) return false;
   else return false;
