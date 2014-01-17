@@ -1,18 +1,21 @@
 <?php
-require("../tpl/libs/Smarty.class.php");
-require("../mysql_connect.php");
-$smarty = new Smarty();
-$info   = array();
+//$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$reponse = $bdd->query("select * from NEWS order by id DESC");
+$news    = array();
 
-if(isset($_SESSION['connected']) && $_SESSION['connected']) {
-	$info['connected'] = 'true';
-	$info['pseudo']  = $_SESSION['user']['Pseudo'];
-} else {
-	$info['connected'] = 'false';
-	$info['pseudo']  = "none";
+$i = 0;
+while($data = $reponse->fetch()){
+	if($i < 10){
+	  $news[$i]['id'] = $data['id'];
+	  $news[$i]['titre'] = $data['titre'];
+	  $news[$i]['date'] = $data['date'];
+	  $news[$i]['contenu'] = $data['contenu'];
+	  $news[$i]['img'] = get_PHOTO_byId($bdd, $data['IdPhoto'])['Fichier']; 
+	  $i++;
+	}
 }
 
-$smarty->assign("Info", $info);
+$smarty->assign("News", $news);
 $smarty->display("html/accueil.html");
 ?>
 

@@ -12,19 +12,19 @@
       <div class="page">
 	<div class="header">
 	  <ul>
-	    <li class="selected">
+	    <li {if $Info.page == 'accueil'} class="selected" {/if}>
 	      <a href="index.php">Home</a>
 	    </li>
-	    <li>
+	    <li  {if $Info.page == 'news'} class="selected" {/if}>
 	      <a href="index.php?page=news">News</a>
 	    </li>
-	    <li>
+	    <li {if $Info.page == 'equipe'} class="selected" {/if}>
 	      <a href="index.php?page=equipe">Equipe</a>
 	    </li>
-	    <li>
+	    <li {if $Info.page == 'calendrier'} class="selected" {/if}>
 	      <a href="index.php?page=calendrier">Calendrier</a>
 	    </li>
-	    <li >
+	    <li {if $Info.page == 'about'} class="selected" {/if}>
 	      <a href="index.php?page=about">About</a>
 	    </li>
 	    {if $Info.connected == 'false'}
@@ -32,8 +32,11 @@
 	      <a href="index.php?page=connexion">Connexion</a>
 	    </li>
 	    {else}
-	    <li >
-	      <a href="index.php?page=deconnexion">{$Info.pseudo} - Déconnexion</a>
+	    <li {if $Info.page == 'profil'} class="selected" {/if}>
+	    	<a href="index.php?page=profil">{$Info.pseudo}</a>
+	    </li>
+	    <li>
+	      <a href="index.php?page=deconnexion">Déconnexion</a>
 	    </li>
 	    {/if}
 	  </ul>

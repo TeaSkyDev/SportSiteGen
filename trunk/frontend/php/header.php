@@ -1,6 +1,12 @@
 <?php
 
-$info    = array();
+$info = array();
+
+if(isset($_GET['page']) || isset($_POST['page'])) {
+	$info['page'] = $_REQUEST['page'];
+} else {
+	$info['page'] = "accueil";
+}
 
 if(isset($_SESSION['connected']) && $_SESSION['connected']) {
 	$info['connected'] = 'true';

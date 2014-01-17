@@ -58,10 +58,10 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			include("php/new_commentaire.php");
 			break;
 		default:
-			include("php/index.php");
+			include("php/accueil.php");
 	}
 } else {
-	//include("php/accueil.php");
+	include("php/accueil.php");
 }
 
 
