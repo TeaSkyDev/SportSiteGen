@@ -13,7 +13,7 @@ function add_NEWS($bdd, $titre, $date, $contenu, $IdPhoto, $auteur){
 
 function add_NEWS_COM($bdd, $contenu, $date, $idNews, $idUtilisateur){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$date."',".$idNews.",".$idUtilisateur.")");
+  $reponse = $bdd->query("insert into NEWS_COM values(null,'".$contenu."','".$date."',".$idNews.",".$idUtilisateur.")");
   $bdd->commit();
   if($reponse) return true;
   else return false;
@@ -21,7 +21,7 @@ function add_NEWS_COM($bdd, $contenu, $date, $idNews, $idUtilisateur){
 
 function add_EVENEMENT($bdd, $titre, $date, $contenu, $location){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$date."','".$location."')");
+  $reponse = $bdd->query("insert into EVENEMENT values(null,'".$contenu."','".$date."','".$location."')");
   $bdd->commit();
   if($reponse) return true;
   else return false;
@@ -29,7 +29,7 @@ function add_EVENEMENT($bdd, $titre, $date, $contenu, $location){
 
 function add_EVENEMENT_COM($bdd, $contenu, $idEvenement, $idUtilisateur){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$idEvenement."','".$idUtilisateur."')");
+  $reponse = $bdd->query("insert into EVENEMENT_COM values(null,'".$contenu."','".$idEvenement."','".$idUtilisateur."')");
   $bdd->commit();
   if($reponse) return true;
   else return false;
