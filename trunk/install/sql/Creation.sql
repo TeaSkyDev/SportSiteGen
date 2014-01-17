@@ -90,6 +90,7 @@ create table PHOTO_MATCHS(
 
 create table APPARTENIR_EQUIPE(
        Id integer(10) primary key AUTO_INCREMENT,
+       IdTeam int(10) references TEAM_ADV(Id);
        IdInscrit integer(10) references INSCRIT(Id),
        IdMATCHS integer(10) references MATCHSS(Id)
 );
@@ -202,6 +203,7 @@ create table EVENEMENT(
 create table EVENEMENT_COM(
        id int(7) AUTO_INCREMENT,
        contenu varchar(1000),
+       date datetime,
        idEvenement int(5) references EVENEMENT(Id),
        idUtilisateur int(10) references UTILISATEUR(Id),
        primary key(id)
