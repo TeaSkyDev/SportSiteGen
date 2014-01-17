@@ -22,16 +22,11 @@
 					</div>
 					
 					{if $News.connected == 'true'}
-					<form action="index.php?page=news&new_com=true">
+					<form action="index.php?page=news&new_com=true" method="post">
 						<span>Ajouter un commentaire</span>
-						<label for="name">
-							<input type="text" id="name" name="pseudo">
-							Nom</label>
-						<label for="email">
-							<input type="text" id="email" name="email">
-							Email</label>
 						<textarea name="message" id="message" cols="30" rows="10"></textarea>
-						<input type="submit" value="Commenter">
+						<input type="hidden" name="id_news" value="{$News.id}"/>
+						<input type="submit" value="Commenter"/>
 					</form>
 					{else}
 					<span>Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></span><br>

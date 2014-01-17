@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-17 12:48:09
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-17 15:31:59
          compiled from "html/header.html" */ ?>
 <?php /*%%SmartyHeaderCode:181489864052d911eb8d41e3-69223264%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ef762db56418bada4bb7877f9574cbd9f4de60c' => 
     array (
       0 => 'html/header.html',
-      1 => 1389959285,
+      1 => 1389967999,
       2 => 'file',
     ),
   ),
@@ -22,6 +22,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'Info' => 0,
     'Post' => 0,
     'post' => 0,
+    'Cal' => 0,
+    'cal' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -90,12 +92,17 @@ $_smarty_tpl->tpl_vars['post']->_loop = true;
 	  <div class="section">
 	    <span>Calendrier</span>
 	    <ul>
+	      <?php  $_smarty_tpl->tpl_vars['cal'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['cal']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['Cal']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['cal']->key => $_smarty_tpl->tpl_vars['cal']->value) {
+$_smarty_tpl->tpl_vars['cal']->_loop = true;
+?>
 	      <li>
-		<a href="index.php?page=calendrier&date=">A vs B</a> <span>23 July 2023 @ 9AM</span>
+		<a href="index.php?page=calendrier&date="><?php echo $_smarty_tpl->tpl_vars['cal']->value['titre'];?>
+</a> <span><?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['cal']->value['date'],"%d-%m-%Y @ %H:%M");?>
+ </span>
 	      </li>
-	      <li>
-		<a href="index.php?page=calendrier&date=">A vs C</a> <span>23 July 2023 @ 9AM</span>
-	      </li>
+	      <?php } ?>
 	    </ul>
 	    <a href="index.php?page=calendrier">Voir Calendrier</a>
 	  </div>

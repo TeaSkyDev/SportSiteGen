@@ -10,6 +10,7 @@ session_start();
 require_once("../tpl/libs/Smarty.class.php");
 require("../mysql_connect.php");
 include("fonctions.php");
+$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $smarty  = new Smarty();
 
 /* On affiche le header */
@@ -56,6 +57,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			break;
 		case 'new_commentaire':
 			include("php/new_commentaire.php");
+			break;
+		case 'erreur':
+			include("php/erreur.php");
 			break;
 		default:
 			include("php/accueil.php");

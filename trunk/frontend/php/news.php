@@ -28,6 +28,22 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
 	$smarty->assign("News", $news);
 	$smarty->assign("Coms", $coms);
 	$smarty->display("html/news_simple.html");
+
+	/* Ajout d'un commentaire */
+} else if(isset($_GET['new_com']) && isset($_SESSION['connected']) && $_SESSION['connected']) {
+
+	if(isset($_POST['message'])) {
+		$date = date("Y-m-d H:i:s");
+		$query = add_NEWS_COM($bdd, $_POST['message'], $date, $_POST['id_news'], $_SESSION['user']['Id']);
+		if($query) {
+			header("Location: index.php?page=news&id_news=".$_POST['id_news']."&details=true");
+		} else {
+			header("Location: index.php?page=erreur&msg=Erreur lors de l'ajout de la news !");
+		}
+	} else {
+		header("Location: index.php?page=erreur&msg=Message vide !");
+	}
+
 } else {
 	$page = 0;
 
