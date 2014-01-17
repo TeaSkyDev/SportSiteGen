@@ -185,7 +185,7 @@ create table NEWS_COM(
        contenu varchar(1000),
        idNews int(5) references NEWS(id),
        idUtilisateur int(10) references UTILISATEUR(Id),
-       primary key(id);
+       primary key(id)
 );
 
 
