@@ -3,13 +3,38 @@
 require("../mysql_connect.php");
 
 
-function add_NEWS($bdd, $titre, $date, $contenu){
+function add_NEWS($bdd, $titre, $date, $contenu, $IdPhoto, $auteur){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into NEWS values(null,'".$titre."','".$date."','".$contenu."')");
+  $reponse = $bdd->query("insert into NEWS values(null,'".$titre."','".$date."','".$contenu."','".$IdPhoto."','".$auteur."')");
   $bdd->commit();
   if($reponse) return true;
   else return false;
 }
+
+function add_NEWS_COM($bdd, $contenu, $date, $idNews, $idUtilisateur){
+  $bdd->beginTransaction();
+  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$date."','".$idNews."','".$idUtilisateur."')");
+  $bdd->commit();
+  if($reponse) return true;
+  else return false;
+}
+
+function add_EVENEMENT($bdd, $titre, $date, $contenu, $location){
+  $bdd->beginTransaction();
+  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$date."','".$location."')");
+  $bdd->commit();
+  if($reponse) return true;
+  else return false;
+}
+
+function add_EVENEMENT_COM($bdd, $contenu, $idEvenement, $idUtilisateur){
+  $bdd->beginTransaction();
+  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$idEvenement."','".$idUtilisateur."')");
+  $bdd->commit();
+  if($reponse) return true;
+  else return false;
+}
+
 
 function see_news($bdd){
   $rep = $bdd->query("select * from NEWS");
@@ -315,6 +340,27 @@ function get_APPARTENIR_TOURNOI_byId($bdd, $id){
 
 function get_NEWS_byId($bdd, $id){
   $reponse = $bdd->query("select * from NEWS where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_NEWS_COM_byId($bdd, $id){
+  $reponse = $bdd->query("select * from NEWS_COM where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_EVENEMENT_byId($bdd, $id){
+  $reponse = $bdd->query("select * from EVENEMENT where Id =".$id);
+  if($reponse)
+    return $data = $reponse->fetch();
+  else return false;
+}
+
+function get_EVENEMENT_COM_byId($bdd, $id){
+  $reponse = $bdd->query("select * from EVENEMENT_COM where Id =".$id);
   if($reponse)
     return $data = $reponse->fetch();
   else return false;
