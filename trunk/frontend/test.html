@@ -1,0 +1,10 @@
+<html>
+
+<h1> {$Titre} </h1>
+
+{foreach from=$liste_news item=news}
+<h1>{$news.titre}</h1>
+<p> a ete ecrit le {$news.date|date_format:"%d-%m-%Y"}
+<br/>{$news.contenu}{/foreach}</p>
+
+</html>

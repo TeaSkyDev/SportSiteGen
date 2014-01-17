@@ -30,6 +30,7 @@ while($data = $reponse->fetch()){
 }
 
 
+
 $smarty->assign("News", $news);
 $smarty->display("html/news.html");
 

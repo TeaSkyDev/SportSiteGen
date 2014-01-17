@@ -14,7 +14,7 @@ $smarty  = new Smarty();
 
 /* On affiche le header */
 include("php/header.php");
-include("php/aside.php");
+
 
 if(isset($_GET['page']) || isset($_POST['page'])) {
 	$page = $_REQUEST['page'];

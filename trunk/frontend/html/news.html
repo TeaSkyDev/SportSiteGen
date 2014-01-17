@@ -1,49 +1,47 @@
 
-			<div class="body news">
-				<div>
-					<span>News</span>
-					<ul>{foreach from=$News item=news}
-						<li>
-							<a href="index.php?page=news&id_news="><img src= "{$news.img}" alt=""></a>
-							<div>
-								<h3>{$news.titre}</h3>
-								<span>{$news.date|date_format:"%d-%m-%Y"} <span></span></span>
-								<p>
-								  {$news.contenu}
-								</p>
-								<a href="index.php?page=news&id_news={$news.id}&details=true">Read More</a>
-							</div>
-						</li>
-						{/foreach}
-					</ul>
-				</div>
-				
-			</div>
-			<div class="footer">
-				<div>
-				<ul>
-					<li>
-						<a href="index.php?page=news">News</a>
-					</li>
-					<li>
-						<a href="index.php?page=equipe">Equipe</a>
-					</li>
-					<li>
-						<a href="index.php?page=calendrier">Calendrier</a>
-					</li>
-					<li>
-						<a href="index.php?page=about">About</a>
-					</li>
-				</ul>
-					<p>
-						&#169; Akatsubaki 2013. All Rights Reserved
-					</p>
-				</div>
-				<div class="connect">
-					<span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
-				</div>
-			</div>
-		</div>
+<div class="body news">
+  <div>
+    <span>News</span>
+    <ul>{foreach from=$News item=news}
+      <li>
+	<a href="index.php?page=news&id_news="><img src= "{$news.img}" alt=""></a>
+	<div>
+	  <h3>{$news.titre}</h3>
+	  <span>{$news.date|date_format:"%d-%m-%Y"} <span></span></span>
+	  <p>
+	    {$news.contenu}
+	  </p>
+	  <a href="index.php?page=news&id_news={$news.id}&details=true">Read More</a>
 	</div>
+      </li>
+      {/foreach}
+    </ul>
+  </div>
+  
+</div>
+<div class="footer">
+  <div>
+    <ul>
+      <li>
+	<a href="index.php?page=news">News</a>
+      </li>
+      <li>
+	<a href="index.php?page=equipe">Equipe</a>
+      </li>
+      <li>
+	<a href="index.php?page=calendrier">Calendrier</a>
+      </li>
+      <li>
+	<a href="index.php?page=about">About</a>
+      </li>
+    </ul>
+    <p>
+      &#169; Akatsubaki 2013. All Rights Reserved
+    </p>
+  </div>
+  <div class="connect">
+    <span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
+  </div>
+</div>
 </body>
 </html>
