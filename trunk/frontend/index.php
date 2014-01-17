@@ -27,7 +27,11 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			include("php/logout.php");
 			break;
 		case 'inscription':
-			include("html/inscription.html");
+			if(isset($_GET['traitement']) && $_GET['traitement'] == "true") {
+				include("php/inscription.php");
+			} else {
+				include("html/inscription.html");
+			}
 			break;
 		case 'about':
 			include("html/about.html");

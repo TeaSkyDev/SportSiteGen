@@ -1,22 +1,22 @@
 
 			<div class="body home">
-				<form action="index.php?page=inscription">
+				<form action="index.php?page=inscription&traitement=true" method="post">
 					<div class="body news">
 						<table>	
 								<tr>
 									<td><label for="pseudo"><span>P</span>seudo:</label></td>
-									<td><input type="text" id="nickname"></td>
+									<td><input type="text" id="nickname" name="pseudo"></td>
 								</tr>
 								<tr>
 									<td><label for="email"><span>E</span>mail :</label></td>
-									<td><input type="text" id="email"></td>
+									<td><input type="text" id="email" name="email"></td>
 								</tr>
 								<tr>
 									<td><label for="password">Mot de passe :</label></td>
 									<td><input type="text" id="password" name="password"></td>
 								</tr>
 								<tr>
-									<td><label for="password">Mot de passe (verif):</label></td>
+									<td><label for="password_verif">Mot de passe (verif):</label></td>
 									<td><input type="text" id="password_verif" name="password_verif"></td>
 								</tr>
 						</table>
