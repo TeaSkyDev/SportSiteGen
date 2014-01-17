@@ -25,8 +25,9 @@ $event = array();
 $i = 0;
 while($data = $reponse->fetch()){
   if($i < 6){
-    $news[$i]['titre'] = $data['titre'];
-    $news[$i]['date']  = $data['date'];
+
+    $news[$i] = $data;
+    //$news[$i]['date']  = $data['date'];
   }
   $i++;
 }
