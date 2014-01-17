@@ -183,6 +183,7 @@ create table NEWS(
 create table NEWS_COM(
        id int(7) AUTO_INCREMENT,
        contenu varchar(1000),
+       date datetime,
        idNews int(5) references NEWS(id),
        idUtilisateur int(10) references UTILISATEUR(Id),
        primary key(id)
