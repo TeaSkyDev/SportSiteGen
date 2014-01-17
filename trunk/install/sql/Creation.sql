@@ -90,7 +90,7 @@ create table PHOTO_MATCHS(
 
 create table APPARTENIR_EQUIPE(
        Id integer(10) primary key AUTO_INCREMENT,
-       IdTeam int(10) references TEAM_ADV(Id);
+       IdTeam int(10) references TEAM_ADV(Id),
        IdInscrit integer(10) references INSCRIT(Id),
        IdMATCHS integer(10) references MATCHSS(Id)
 );
