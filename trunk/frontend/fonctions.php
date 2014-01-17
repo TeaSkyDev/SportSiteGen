@@ -5,7 +5,7 @@ require("../mysql_connect.php");
 
 function add_NEWS($bdd, $titre, $date, $contenu, $IdPhoto, $auteur){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into NEWS values(null,'".$titre."','".$date."','".$contenu."','".$IdPhoto."','".$auteur."')");
+  $reponse = $bdd->query("insert into NEWS values(null,'".$titre."','".$date."','".$contenu."',".$IdPhoto.",'".$auteur."')");
   $bdd->commit();
   if($reponse) return true;
   else return false;
@@ -13,7 +13,7 @@ function add_NEWS($bdd, $titre, $date, $contenu, $IdPhoto, $auteur){
 
 function add_NEWS_COM($bdd, $contenu, $date, $idNews, $idUtilisateur){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$date."','".$idNews."','".$idUtilisateur."')");
+  $reponse = $bdd->query("insert into NEWS values(null,'".$contenu."','".$date."',".$idNews.",".$idUtilisateur.")");
   $bdd->commit();
   if($reponse) return true;
   else return false;
@@ -112,9 +112,9 @@ function add_PHOTO_MATCHS($bdd, $idMatch, $idphoto){
   else return false;
 }
 
-function add_APPARTENIR_EQUIPE($bdd, $inscrit, $idMatch){
+function add_APPARTENIR_EQUIPE($bdd, $equipe, $inscrit, $idMatch){
   $bdd->beginTransaction();
-$reponse = $bdd->query("insert into APPARTENIR_EQUIPE values(null,".$idCategorie.",".$idTeamADV.",'".$date."','".$heure."','".$lieu."','".$commentaire."')");
+  $reponse = $bdd->query("insert into APPARTENIR_EQUIPE values(null,".$equipe.",".$inscrit.","$idMatchs.")");
   $bdd->commit();     
   if($reponse) return false;
   else return false;
