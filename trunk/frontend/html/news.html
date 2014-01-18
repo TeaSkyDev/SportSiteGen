@@ -4,9 +4,9 @@
     <span>News</span>
     <ul>{foreach from=$News item=news}
       <li>
-	<a href="index.php?page=news&id_news="><img src= "{$news.img}" alt=""></a>
+	<a href="index.php?page=news&id_news={$news.id}&details=true"><img src= "{$news.img}" alt=""></a>
 	<div>
-	  <h3>{$news.titre}</h3>
+	  <h3>N°{$news.id} | {$news.titre}</h3>
 	  <span>{$news.date|date_format:"%d-%m-%Y"} <span></span></span>
 	  <p>
 	    {$news.contenu}
@@ -16,6 +16,7 @@
       </li>
       {/foreach}
     </ul>
+      -{foreach from=$Pages item=page} <a href="index.php?page=news&page_news={$page}">{$page}</a> - {/foreach}
   </div>
   
 </div>

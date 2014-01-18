@@ -45,34 +45,38 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
 	}
 
 } else {
-	$page = 0;
+	$page = 1;
 
 	if(isset($_GET['page_news'])){
 	  $page = $_GET['page_news'];
 	}
 
-	$nb_page = $bdd->query("select count(*) from NEWS")->fetch()['count(*)']/10;
+	$nb_page = $bdd->query("select count(*) from NEWS")->fetch()['count(*)']/5;
 	$reponse = $bdd->query("select * from NEWS order by id DESC");
 
 	$news = array();
 	$i = 0;
 
-	for(; $i < 10*($page-1) ; $i++){
-	  $data = $reponse->fetch();
+	for(; $i < 5*($page-1) ; $i++){
+	  $reponse->fetch();
 	}
 	 
 	$i = 0;
-
 	while($data = $reponse->fetch()){
-	  $news[$i]['id'] = $data['id'];
-	  $news[$i]['titre'] = $data['titre'];
-	  $news[$i]['date'] = $data['date'];
-	  $news[$i]['contenu'] = $data['contenu'];
-	  $news[$i]['img'] = get_PHOTO_byId($bdd, $data['IdPhoto'])['Fichier']; 
-	  $i++;
+        if($i < 5) {
+            $news[$i] = $data;
+            $news[$i]['img'] = get_PHOTO_byId($bdd, $data['IdPhoto'])['Fichier'];
+        }
+        $i++;
 	}
 
+    $pages = array();
+    for($i = 1; $i < $nb_page+1; $i++) {
+        $pages[$i] = $i;
+    }
+
 	$smarty->assign("News", $news);
+    $smarty->assign("Pages", $pages);
 	$smarty->display("html/news.html");
 }
 ?>
