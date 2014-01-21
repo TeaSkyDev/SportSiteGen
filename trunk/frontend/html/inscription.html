@@ -1,55 +1,55 @@
-
-			<div class="body home">
-				<form action="index.php?page=inscription&traitement=true" method="post">
-					<div class="body news">
-						<table>	
-								<tr>
-									<td><label for="pseudo"><span>P</span>seudo:</label></td>
-									<td><input type="text" id="nickname" name="pseudo"></td>
-								</tr>
-								<tr>
-									<td><label for="email"><span>E</span>mail :</label></td>
-									<td><input type="text" id="email" name="email"></td>
-								</tr>
-								<tr>
-									<td><label for="password">Mot de passe :</label></td>
-									<td><input type="password" id="password" name="password"></td>
-								</tr>
-								<tr>
-									<td><label for="password_verif">Mot de passe (verif):</label></td>
-									<td><input type="password" id="password_verif" name="password_verif"></td>
-								</tr>
-						</table>
-						<input type="submit" value="Inscription" id="application-submit">
-					</div>
-						
-				</form>
-			</div>
-			<div class="footer">
-				<div>
-				<ul>
-					<li>
-						<a href="news.html">News</a>
-					</li>
-					<li>
-						<a href="equipe.html">Equipe</a>
-					</li>
-					<li>
-						<a href="calendrier.html">Calendrier</a>
-					</li>
-					<li>
-						<a href="about.html">About</a>
-					</li>
-				</ul>
-					<p>
-						&#169; Akatsubaki 2013. All Rights Reserved
-					</p>
-				</div>
-				<div class="connect">
-					<span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<script type="text/javascript" src="js/fonction.js"></script>
+<div class="body home">
+  <form action="index.php?page=inscription&traitement=true" method="post" onsubmit = "return verif_form_inscription(this)">
+    <div class="body news">
+      <table>	
+	<tr>
+	  <td><label for="pseudo"><span>P</span>seudo:</label></td>
+	  <td><input type="text" id="nickname" name="pseudo"></td>
+	</tr>
+	<tr>
+	  <td><label for="email"><span>E</span>mail :</label></td>
+	  <td><input type="mail" id="email" name="email"></td>
+	</tr>
+	<tr>
+	  <td><label for="password">Mot de passe :</label></td>
+	  <td><input type="password" id="password" name="password"></td>
+	</tr>
+	<tr>
+	  <td><label for="password_verif">Mot de passe (verif):</label></td>
+	  <td><input type="password" id="password_verif" name="password_verif"></td>
+	</tr>
+      </table>
+      <input type="submit" value="Inscription" id="application-submit">
+    </div>
+    
+  </form>
+</div>
+<div class="footer">
+  <div>
+    <ul>
+      <li>
+	<a href="news.html">News</a>
+      </li>
+      <li>
+	<a href="equipe.html">Equipe</a>
+      </li>
+      <li>
+	<a href="calendrier.html">Calendrier</a>
+      </li>
+      <li>
+	<a href="about.html">About</a>
+      </li>
+    </ul>
+    <p>
+      &#169; Akatsubaki 2013. All Rights Reserved
+    </p>
+  </div>
+  <div class="connect">
+    <span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
+  </div>
+</div>
+</div>
+</div>
 </body>
 </html>
