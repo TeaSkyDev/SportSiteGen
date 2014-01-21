@@ -57,6 +57,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 		case 'new_commentaire':
 			include("php/new_commentaire.php");
 			break;
+		case 'profil':
+			include("php/profil.php");
+			break;
 		default:
 			include("php/accueil.php");
 	}
