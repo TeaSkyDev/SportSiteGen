@@ -10,7 +10,6 @@ session_start();
 require_once("../tpl/libs/Smarty.class.php");
 require("../mysql_connect.php");
 include("fonctions.php");
-$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $smarty  = new Smarty();
 
 /* On affiche le header */
@@ -41,13 +40,13 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			include("php/calendrier.php");
 			break;
 		case 'equipe':
-			include("html/equipe.html");
+			include("php/equipe.php");
 			break;
 		case 'fiche_joueur':
 			include("html/fiche_joueur.html");
 			break;
 		case 'membre_equipe':
-			include("html/membre_equipe.html");
+			include("php/membre_equipe.php");
 			break;
 		case 'news':
 			include("php/news.php");
@@ -57,12 +56,6 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			break;
 		case 'new_commentaire':
 			include("php/new_commentaire.php");
-			break;
-        case 'profil':
-            include("php/profil.php");
-            break;
-		case 'erreur':
-			include("php/erreur.php");
 			break;
 		default:
 			include("php/accueil.php");

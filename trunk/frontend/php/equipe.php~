@@ -1,0 +1,5 @@
+<?php
+
+$nb_pages = $bdd->query("select count(*) from TEAM");
+
+?>

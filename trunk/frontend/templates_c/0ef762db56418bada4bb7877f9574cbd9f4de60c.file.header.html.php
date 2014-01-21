@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-17 15:31:59
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-21 10:15:44
          compiled from "html/header.html" */ ?>
 <?php /*%%SmartyHeaderCode:181489864052d911eb8d41e3-69223264%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ef762db56418bada4bb7877f9574cbd9f4de60c' => 
     array (
       0 => 'html/header.html',
-      1 => 1389967999,
+      1 => 1390295726,
       2 => 'file',
     ),
   ),
@@ -27,7 +27,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_52d911eba23526_99375717')) {function content_52d911eba23526_99375717($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/home/gas/www/SportSiteGen/trunk/tpl/libs/plugins/modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_52d911eba23526_99375717')) {function content_52d911eba23526_99375717($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/home/cadorel/www/SportSiteGen/trunk/tpl/libs/plugins/modifier.date_format.php';
 ?><html>
   <head>
     <meta charset="UTF-8">
@@ -81,7 +81,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['post']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['post']->_loop = true;
 ?>
 	      <li>
-		<a href="index.php?page=news&id_news="><?php echo $_smarty_tpl->tpl_vars['post']->value['titre'];?>
+		<a href="index.php?page=news&id_news=<?php echo $_smarty_tpl->tpl_vars['post']->value['id'];?>
+&details=true"><?php echo $_smarty_tpl->tpl_vars['post']->value['titre'];?>
 </a> <span>Posted on <?php echo smarty_modifier_date_format($_smarty_tpl->tpl_vars['post']->value['date'],"%d-%m-%Y");?>
 </span>
 	      </li>

@@ -1,57 +1,44 @@
 
-			<div class="body equipe">
-				<div>
-					<span>Membre</span> <a href="index.php?page=equipe" id="paging">> Retour</a>
-					<div class="section">
-						<ul>
-							<li>
-								<a href="index.php?page=fiche_joueur&id="> <img src="images/player1.png" alt=""> Joueur 1 </a>
-							</li>
-							<li>
-								<a href="index.php?page=fiche_joueur&id="> <img src="images/player2.png" alt=""> Joueur 2 </a>
-							</li>
-							<li>
-								<a href="index.php?page=fiche_joueur&id="> <img src="images/player3.png" alt="">  Joueur 3 </a>
-							</li>
-							<li>
-								<a href="index.php?page=fiche_joueur&id="> <img src="images/player4.png" alt=""> Joueur 4 </a>
-							</li>
-							<li>
-								<a href="index.php?page=fiche_joueur&id="> <img src="images/player5.png" alt=""> Joueur 5 </a>
-							</li>
-							<li>
-								<a href="index.php?page=fiche_joueur&id="> <img src="images/player6.png" alt=""> Joueur 6 </a>
-							</li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-			<div class="footer">
-				<div>
-				<ul>
-					<li>
-						<a href="index.php?page=news">News</a>
-					</li>
-					<li>
-						<a href="index.php?page=equipe">Equipe</a>
-					</li>
-					<li>
-						<a href="index.php?page=calendrier">Calendrier</a>
-					</li>
-					<li>
-						<a href="index.php?page=about">About</a>
-					</li>
-				</ul>
-					<p>
-						&#169; Akatsubaki 2013. All Rights Reserved
-					</p>
-				</div>
-				<div class="connect">
-					<span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="body equipe">
+  <div>
+    <span>Membre</span> <a href="index.php?page=equipe" id="paging">> Retour</a>
+    <div class="section">
+      <ul>
+	{foreach from=$Membre item=membre}
+	<li>
+	  <a href="index.php?page=fiche_joueur&id="> <img src="{$membre.img}" alt="">{$membre.Nom} {$membre.Prenom} </a>
+	</li>
+	{/foreach}
+      </ul>
+    </div>
+  </div>
+  
+</div>
+<div class="footer">
+  <div>
+    <ul>
+      <li>
+	<a href="index.php?page=news">News</a>
+      </li>
+      <li>
+	<a href="index.php?page=equipe">Equipe</a>
+      </li>
+      <li>
+	<a href="index.php?page=calendrier">Calendrier</a>
+      </li>
+      <li>
+	<a href="index.php?page=about">About</a>
+      </li>
+    </ul>
+    <p>
+      &#169; Akatsubaki 2013. All Rights Reserved
+    </p>
+  </div>
+  <div class="connect">
+    <span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
+  </div>
+</div>
+</div>
+</div>
 </body>
 </html>
