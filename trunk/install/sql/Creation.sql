@@ -91,11 +91,7 @@ create table PHOTO_MATCHS(
 
 create table APPARTENIR_EQUIPE(
        Id integer(10) primary key AUTO_INCREMENT,
-<<<<<<< HEAD
        IdTeam int(10) references TEAM(Id),
-=======
-       IdTeam int(10) references TEAM_ADV(Id),
->>>>>>> 4683b6e964916445c9c6fa4249d3a7c0dc2c5ffd
        IdInscrit integer(10) references INSCRIT(Id),
        IdMATCHS integer(10) references MATCHSS(Id)
 );
@@ -131,14 +127,15 @@ create table JOUEUR(
        Nom varchar(15) not null,
        idPhoto integer(10) references PHOTO(Id),
        Prenom varchar(15),
-       IdPoste integer(10) references POSTE(Id)
+       IdPoste integer(10) references POSTE(Id),
+       Description varchar(255)
 );
 
 
 create table EVENT(
        Id integer(10) primary key AUTO_INCREMENT,
        IdMATCHS integer(10) references MATCHS(Id),
-       IdInscrit integer(10) references INSCRIT(Id),
+       IdJoueur integer(10) references JOUEUR(Id),
        IdPoints integer(10) references POINTS(Id),
        Nom varchar(10),
        Moment Date not null,

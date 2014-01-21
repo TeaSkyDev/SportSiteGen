@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-21 10:17:39
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-21 10:24:39
          compiled from "html/membre_equipe.html" */ ?>
 <?php /*%%SmartyHeaderCode:178693696152de3b3339d808-01552881%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3394003c1369a9bd323106dcaad51bee7a8522b8' => 
     array (
       0 => 'html/membre_equipe.html',
-      1 => 1390295815,
+      1 => 1390296013,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_52de3b334053a1_61929386',
   'variables' => 
   array (
     'Membre' => 0,
     'membre' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_52de3b334053a1_61929386',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_52de3b334053a1_61929386')) {function content_52de3b334053a1_61929386($_smarty_tpl) {?>
 <div class="body equipe">
@@ -36,7 +36,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['membre']->key => $_smarty_tpl->tpl_va
 $_smarty_tpl->tpl_vars['membre']->_loop = true;
 ?>
 	<li>
-	  <a href="index.php?page=fiche_joueur&id="> <img src="<?php echo $_smarty_tpl->tpl_vars['membre']->value['img'];?>
+	  <a href="index.php?page=fiche_joueur&id=<?php echo $_smarty_tpl->tpl_vars['membre']->value['Id'];?>
+"> <img src="<?php echo $_smarty_tpl->tpl_vars['membre']->value['img'];?>
 " alt=""><?php echo $_smarty_tpl->tpl_vars['membre']->value['Nom'];?>
  <?php echo $_smarty_tpl->tpl_vars['membre']->value['Prenom'];?>
  </a>

@@ -43,7 +43,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			include("php/equipe.php");
 			break;
 		case 'fiche_joueur':
-			include("html/fiche_joueur.html");
+			include("php/fiche_joueur.php");
 			break;
 		case 'membre_equipe':
 			include("php/membre_equipe.php");

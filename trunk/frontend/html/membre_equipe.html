@@ -6,7 +6,7 @@
       <ul>
 	{foreach from=$Membre item=membre}
 	<li>
-	  <a href="index.php?page=fiche_joueur&id="> <img src="{$membre.img}" alt="">{$membre.Nom} {$membre.Prenom} </a>
+	  <a href="index.php?page=fiche_joueur&id={$membre.Id}"> <img src="{$membre.img}" alt="">{$membre.Nom} {$membre.Prenom} </a>
 	</li>
 	{/foreach}
       </ul>
