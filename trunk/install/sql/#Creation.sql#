@@ -125,17 +125,16 @@ create table JOUEUR(
        Id integer(10) primary key AUTO_INCREMENT,
        IdTeam integer(10) references TEAM(Id),
        Nom varchar(15) not null,
-       idPhoto integer(10) references PHOTO(Id),
        Prenom varchar(15),
-       IdPoste integer(10) references POSTE(Id),
-       Description varchar(255)
+       idPhoto integer(10) references PHOTO(Id),	
+       IdPoste integer(10) references POSTE(Id)
 );
 
 
 create table EVENT(
        Id integer(10) primary key AUTO_INCREMENT,
        IdMATCHS integer(10) references MATCHS(Id),
-       IdJoueur integer(10) references JOUEUR(Id),
+       IdInscrit integer(10) references INSCRIT(Id),
        IdPoints integer(10) references POINTS(Id),
        Nom varchar(10),
        Moment Date not null,

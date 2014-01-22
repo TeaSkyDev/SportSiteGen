@@ -1,50 +1,50 @@
-
-			<div class="sidebar">
-				<form action="index.php?page=connexion" method="post">
-					<div id="connexion_menu">
-					<td>
-								<tr>
-									<h3>Pseudo : </h3>
-									<td><input type="text" id="nickname" name="pseudo"></td>
-								</tr>
-								<tr>
-									<h3>Mot de passe : </h3>
-									<td><input type="password" id="position" name="password"></td>
-								</tr>
-					</td>
-					<br>
-						<input type="submit" value="CONNEXION" id="application-submit">
-					<br>
-						<input type="button" value="S'INSCRIRE" onclick="document.location.href='index.php?page=inscription'">
-					</div>
-					
-				</form>
-			</div>
-			<div class="footer">
-				<div>
-				<ul>
-					<li>
-						<a href="index.php?page=news">News</a>
-					</li>
-					<li>
-						<a href="index.php?page=equipe">Equipe</a>
-					</li>
-					<li>
-						<a href="index.php?page=calendrier">Calendrier</a>
-					</li>
-					<li>
-						<a href="index.php?page=about">About</a>
-					</li>
-				</ul>
-					<p>
-						&#169; Akatsubaki 2013. All Rights Reserved
-					</p>
-				</div>
-				<div class="connect">
-					<span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<script type="text/javascript" src="js/fonctions.js"></script>
+<div class="sidebar">
+  <form action="index.php?page=connexion" method="post" onsubmit = "return verif_form_connexion(this)">
+    <div id="connexion_menu">
+      <td>
+	<tr>
+	  <h3>Pseudo : </h3>
+	  <td><input type="text" id="nickname" name="pseudo"></td>
+	</tr>
+	<tr>
+	  <h3>Mot de passe : </h3>
+	  <td><input type="password" id="position" name="password"></td>
+	</tr>
+      </td>
+      <br>
+      <input type="submit" value="CONNEXION" id="application-submit">
+      <br>
+      <input type="button" value="S'INSCRIRE" onclick="document.location.href='index.php?page=inscription'">
+    </div>
+    
+  </form>
+</div>
+<div class="footer">
+  <div>
+    <ul>
+      <li>
+	<a href="index.php?page=news">News</a>
+      </li>
+      <li>
+	<a href="index.php?page=equipe">Equipe</a>
+      </li>
+      <li>
+	<a href="index.php?page=calendrier">Calendrier</a>
+      </li>
+      <li>
+	<a href="index.php?page=about">About</a>
+      </li>
+    </ul>
+    <p>
+      &#169; Akatsubaki 2013. All Rights Reserved
+    </p>
+  </div>
+  <div class="connect">
+    <span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
+  </div>
+</div>
+</div>
+</div>
 </body>
 </html>

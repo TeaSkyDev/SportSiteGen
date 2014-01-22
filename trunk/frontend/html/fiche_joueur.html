@@ -1,54 +1,54 @@
 
-			<div class="body fiche_joueur">
-				<div>
-					<span>Nom du joueur</span> <a href="index.php?page=membre_equipe&equipe=" id="paging">> Retour</a>
-					<div>
-						<span><img src="images/player7.png" alt=""></span>
-						<h3>STAT</h3>
-						<p>
-							Bon Joueur !!
-						</p>
-						<div class="section">
-							<h3>Historique</h3>
-							<p>
-								....
-							</p>
-							<p>
-								....
-							</p>
-							<p>
-								....
-							</p>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			<div class="footer">
-				<div>
-				<ul>
-					<li>
-						<a href="index.php?page=news">News</a>
-					</li>
-					<li>
-						<a href="index.php?page=equipe">Equipe</a>
-					</li>
-					<li>
-						<a href="index.php?page=calendrier">Calendrier</a>
-					</li>
-					<li>
-						<a href="index.php?page=about">About</a>
-					</li>
-				</ul>
-					<p>
-						&#169; Akatsubaki 2013. All Rights Reserved
-					</p>
-				</div>
-				<div class="connect">
-					<span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="body fiche_joueur">
+  <div>
+    <span>{$joueur.Prenom} {$joueur.Nom}</span> <a href="index.php?page=membre_equipe&equipe=&id={$joueur.IdTeam}" id="paging"> Retour</a>
+    <div>
+      <span><img src="{$joueur.img}" alt=""></span>
+      <h3>STAT</h3>
+      <p>
+	{$joueur.Description}
+      </p>
+      <div class="section">
+	<h3>Info</h3>
+	<p>
+	  Poste: {$joueur.poste}
+	</p>
+	<p>
+	  {$joueur.descPoste}
+	</p>
+	<p>
+	  ....
+	</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="footer">
+  <div>
+    <ul>
+      <li>
+	<a href="index.php?page=news">News</a>
+      </li>
+      <li>
+	<a href="index.php?page=equipe">Equipe</a>
+      </li>
+      <li>
+	<a href="index.php?page=calendrier">Calendrier</a>
+      </li>
+      <li>
+	<a href="index.php?page=about">About</a>
+      </li>
+    </ul>
+    <p>
+      &#169; Akatsubaki 2013. All Rights Reserved
+    </p>
+  </div>
+  <div class="connect">
+    <span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
+  </div>
+</div>
+</div>
+</div>
 </body>
 </html>
