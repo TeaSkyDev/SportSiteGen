@@ -1,14 +1,15 @@
 <h2 align="center">Profil</h2>
 <table align="center">
+    {if $Profil.modif == "false"}
     <tr>
         <td><img src="{$Profil.img}"/></td>
         <td>
             <table>
                 <tr>
-                    <th>Pseudo : </th><td>{$Profil.Pseudo}</td>
+                    <th>Pseudo : </th><td>{$Profil.Pseudo} <a href="index.php?page=profil&action=modif_Pseudo"><i>(modifier)</i></a></td>
                 </tr>
                 <tr>
-                    <th>Mail :</th><td>{$Profil.Mail}</td>
+                    <th>Mail :</th><td>{$Profil.Mail} <a href="index.php?page=profil&action=modif_Mail"><i>(modifier)</i></a></td>
                 </tr>
                 <tr>
                     <th>Status :</th><td>{$Profil.statu}</td>
@@ -16,4 +17,14 @@
             </table>
         </td>
     </tr>
+    {else}
+    <form method="post" action="index.php?page=profil&action=modif_{$Profil.champ}">
+    <tr>
+        <th>Nouveau {$Profil.champ} : <input type="text" name="new_{$Profil.champ}" /></th>
+    </tr>
+    <tr>
+        <th><input type="submit" value="Valider" /></form></th>
+    </tr>
+    </form>
+    {/if}
 </table>
