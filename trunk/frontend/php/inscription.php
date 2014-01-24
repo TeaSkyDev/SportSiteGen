@@ -6,7 +6,7 @@ if(isset($_POST['pseudo']) && isset($_POST['password']) && isset($_POST['passwor
         } else {
             $_SESSION['connected']        = true;
             $_SESSION['user']['Pseudo']   = $_POST['pseudo'];
-            $_SESSION['user']['password'] = $_POST['password'];
+            $_SESSION['user']['password'] = md5($_POST['password']);
             $_SESSION['user']['Mail']     = $_POST['email'];
             $_SESSION['user']['IdPhoto']  = 1;
             $_SESSION['user']['IdTypeUser'] = 1;
