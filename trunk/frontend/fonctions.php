@@ -63,7 +63,10 @@ function add_TYPE_USER($bdd , $nom, $description){
 
 function add_UTILISATEUR($bdd, $Pseudo, $Mail, $Mdp, $IdPhoto, $IdTypeUser){
   $bdd->beginTransaction();
-  $reponse = $bdd->query("insert into UTILISATEUR values(null,'".$Pseudo."','".$Mail."','".$Mdp."',".$IdPhoto.",".$IdTypeUser.")");
+  $reponse = $bdd->prepare("insert into UTILISATEUR values(null,:pseudo,:mail,'".$Mdp."',".$IdPhoto.",".$IdTypeUser.")");
+  $reponse->bindParam(':pseudo', $Pseudo);
+  $reponse->bindParam(':mail', $Mail);
+  $reponse->execute();
   $bdd->commit();
   if($reponse) return true;
   else return false;
