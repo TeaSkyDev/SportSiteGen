@@ -43,7 +43,58 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
 	} else {
 		header("Location: index.php?page=erreur&msg=Message vide !");
 	}
+} else if(isset($_GET['research']) && isset($_GET['ajax']) && isset($_GET['val'])) {
+    require_once("../../mysql_connect.php");
+    $val = $_GET['val'].'%';
+    $requete = $bdd->prepare("select * from NEWS where titre like :val order by id DESC");
+    $requete->execute(array(':val' => $val));
 
+    $array = array();
+    if($requete) {
+        while($rep = $requete->fetch()) {
+            array_push($array, $rep['titre']);
+        }
+        $res = implode("|", $array);
+        echo $res;
+    } else {
+        echo "erreur";
+    }
+} else if(isset($_GET['research']) && isset($_POST['val'])) {
+
+
+    $val = $_POST['val'].'%';
+    $req_nb_page = $bdd->prepare("select count(*) from NEWS where titre like :val");
+    $req_nb_page->execute(array(':val' => $val));
+    $nb_page = $req_nb_page->fetch()['count(*)']/5;
+    echo "DEBUG: ".$nb_page;
+
+    $reponse = $bdd->prepare("select * from NEWS where titre like :val order by id DESC");
+    $reponse->execute(array(':val' => $val));
+
+    $news = array();
+    $i = 0;
+
+    for(; $i < 5*($page-1) ; $i++){
+        $reponse->fetch();
+    }
+
+    $i = 0;
+    while($data = $reponse->fetch()){
+        if($i < 5) {
+            $news[$i] = $data;
+            $news[$i]['img'] = get_PHOTO_byId($bdd, $data['IdPhoto'])['Fichier'];
+        }
+        $i++;
+    }
+
+    $pages = array();
+    for($i = 1; $i < $nb_page+1; $i++) {
+        $pages[$i] = $i;
+    }
+
+    $smarty->assign("News", $news);
+    $smarty->assign("Pages", $pages);
+    $smarty->display("html/news.html");
 } else {
 	$page = 1;
 
