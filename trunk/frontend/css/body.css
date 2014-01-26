@@ -991,8 +991,18 @@ padding:0px 12px 0px 20px;
 color: rgb(251, 251, 244);
 }
 
-
-
+/* STYLE BARRE DE RECHERCHE DE NEWS */
+.selected_result {
+    border:1px solid black;
+    width:100px;
+    display: block;
+    background-color: red;
+}
+.unselected_result {
+    border:1px solid black;
+    width:100px;
+    display: block;
+}
 
 
 
