@@ -1,5 +1,12 @@
+<form method="post" action="index.php?page=news&research=true">
+    <input type="text" autocomplete="off" name="val" id="champ_recherche" /><input type="submit" value="Rechercher" />
+</form>
+<div id="output" class="hide result"></div>
+<script type="text/javascript" src="js/oXHR.js"></script>
+<script type="text/javascript" src="js/news_research.js"></script>
 
 <div class="body news">
+
   <div>
     <span>News</span>
     <ul>{foreach from=$News item=news}
