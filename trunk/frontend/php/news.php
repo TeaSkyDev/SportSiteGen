@@ -66,7 +66,6 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
     $req_nb_page = $bdd->prepare("select count(*) from NEWS where titre like :val");
     $req_nb_page->execute(array(':val' => $val));
     $nb_page = $req_nb_page->fetch()['count(*)']/5;
-    echo "DEBUG: ".$nb_page;
 
     $reponse = $bdd->prepare("select * from NEWS where titre like :val order by id DESC");
     $reponse->execute(array(':val' => $val));
