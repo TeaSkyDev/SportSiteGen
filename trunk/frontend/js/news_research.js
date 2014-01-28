@@ -8,6 +8,7 @@
     var previousResult = searchElement.value;
     var previousRequest;
     var selectedResult = -1;
+    searchElement.focus();
 
     var xhr = getXMLHttpRequest();
 
