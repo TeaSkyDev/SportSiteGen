@@ -60,6 +60,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 		case 'profil':
 			include("php/profil.php");
 			break;
+		case 'erreur':
+			include("php/erreur.php");
+			break;
 		default:
 			include("php/accueil.php");
 	}
