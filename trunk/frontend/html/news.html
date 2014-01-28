@@ -11,14 +11,14 @@
     <span>News</span>
     <ul>{foreach from=$News item=news}
       <li>
-	<a href="index.php?page=news&id_news={$news.id}&details=true"><img src= "{$news.img}" alt=""></a>
+	<a href="index.php?page=news&id_news={$news.Id}&details=true"><img src= "{$news.img}" alt=""></a>
 	<div>
 	  <h3>N°{$news.Id} | {$news.titre}</h3>
 	  <span>{$news.date|date_format:"%d-%m-%Y"} <span></span></span>
 	  <p>
 	    {$news.contenu}
 	  </p>
-	  <a href="index.php?page=news&id_news={$news.id}&details=true">Read More</a>
+	  <a href="index.php?page=news&id_news={$news.Id}&details=true">Read More</a>
 	</div>
       </li>
       {/foreach}

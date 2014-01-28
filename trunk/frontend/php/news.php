@@ -15,7 +15,7 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
 	}
 
 	/* On récupère les commentaires.. */
-	$query = $bdd->query("select * from NEWS_COM");
+	$query = $bdd->query("select * from NEWS_COM where idNews = ".$_GET['id_news']);
 	$coms = array();
 
 	$i = 0;

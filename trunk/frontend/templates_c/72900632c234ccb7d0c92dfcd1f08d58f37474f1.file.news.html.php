@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-28 08:28:15
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-28 08:34:45
          compiled from "html/news.html" */ ?>
 <?php /*%%SmartyHeaderCode:113030903752d7fb085def72-96736192%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '72900632c234ccb7d0c92dfcd1f08d58f37474f1' => 
     array (
       0 => 'html/news.html',
-      1 => 1390894091,
+      1 => 1390894481,
       2 => 'file',
     ),
   ),
@@ -44,7 +44,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['news']->key => $_smarty_tpl->tpl_vars
 $_smarty_tpl->tpl_vars['news']->_loop = true;
 ?>
       <li>
-	<a href="index.php?page=news&id_news=<?php echo $_smarty_tpl->tpl_vars['news']->value['id'];?>
+	<a href="index.php?page=news&id_news=<?php echo $_smarty_tpl->tpl_vars['news']->value['Id'];?>
 &details=true"><img src= "<?php echo $_smarty_tpl->tpl_vars['news']->value['img'];?>
 " alt=""></a>
 	<div>
@@ -57,7 +57,7 @@ $_smarty_tpl->tpl_vars['news']->_loop = true;
 	    <?php echo $_smarty_tpl->tpl_vars['news']->value['contenu'];?>
 
 	  </p>
-	  <a href="index.php?page=news&id_news=<?php echo $_smarty_tpl->tpl_vars['news']->value['id'];?>
+	  <a href="index.php?page=news&id_news=<?php echo $_smarty_tpl->tpl_vars['news']->value['Id'];?>
 &details=true">Read More</a>
 	</div>
       </li>
