@@ -34,14 +34,15 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
 
 	if(isset($_POST['message'])) {
 		$date = date("Y-m-d H:i:s");
+		
 		$query = add_NEWS_COM($bdd, $_POST['message'], $date, $_POST['id_news'], $_SESSION['user']['Id']);
 		if($query) {
-			header("Location: index.php?page=news&id_news=".$_POST['id_news']."&details=true");
+		  header("Location: index.php?page=news&id_news=".$_POST['id_news']."&details=true");
 		} else {
-			header("Location: index.php?page=erreur&msg=Erreur lors de l'ajout de la news !");
+		  header("Location: index.php?page=erreur&msg=Erreur lors de l'ajout de la news !");
 		}
 	} else {
-		header("Location: index.php?page=erreur&msg=Message vide !");
+	  header("Location: index.php?page=erreur&msg=Message vide !");
 	}
 } else if(isset($_GET['research']) && isset($_GET['ajax']) && isset($_GET['val'])) {
     require_once("../../mysql_connect.php");

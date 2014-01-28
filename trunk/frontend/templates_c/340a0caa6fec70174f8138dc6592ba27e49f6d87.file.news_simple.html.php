@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-28 08:40:25
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-28 08:47:17
          compiled from "html/news_simple.html" */ ?>
 <?php /*%%SmartyHeaderCode:203264929852d9318ff0f693-88705632%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '340a0caa6fec70174f8138dc6592ba27e49f6d87' => 
     array (
       0 => 'html/news_simple.html',
-      1 => 1390894783,
+      1 => 1390895221,
       2 => 'file',
     ),
   ),
@@ -66,7 +66,7 @@ $_smarty_tpl->tpl_vars['coms']->_loop = true;
 					<form action="index.php?page=news&new_com=true" method="post">
 						<span>Ajouter un commentaire</span>
 						<textarea name="message" id="message" cols="30" rows="10"></textarea>
-						<input type="hidden" name="id_news" value="<?php echo $_smarty_tpl->tpl_vars['News']->value['id'];?>
+						<input type="hidden" name="id_news" value="<?php echo $_smarty_tpl->tpl_vars['News']->value['Id'];?>
 "/>
 						<input type="submit" value="Commenter"/>
 					</form>
