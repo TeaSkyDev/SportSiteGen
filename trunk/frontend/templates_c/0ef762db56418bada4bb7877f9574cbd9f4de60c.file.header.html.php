@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-21 10:15:44
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-28 08:25:17
          compiled from "html/header.html" */ ?>
 <?php /*%%SmartyHeaderCode:181489864052d911eb8d41e3-69223264%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '0ef762db56418bada4bb7877f9574cbd9f4de60c' => 
     array (
       0 => 'html/header.html',
-      1 => 1390295726,
+      1 => 1390893898,
       2 => 'file',
     ),
   ),
@@ -36,6 +36,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <link rel="stylesheet" href="css/body.css" type="text/css">
     <link rel="stylesheet" href="css/header.css" type="text/css">
     <link rel="stylesheet" href="css/footer.css" type="text/css">
+      <style>
+          .selected_result {
+              border:1px solid black;
+              width:100px;
+              display: block;
+              background-color: red;
+          }
+          .unselected_result {
+              border:1px solid black;
+              width:100px;
+              display: block;
+          }
+
+      </style>
   </head>
   <body>
     <div class="background">

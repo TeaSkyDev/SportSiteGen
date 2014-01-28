@@ -2,11 +2,11 @@
 
 /* Si on demande le détail d'une news, on affiche son détail sinon toutes les news */
 if(isset($_GET['details']) && isset($_GET['id_news'])) {
-	$query = $bdd->query("select * from NEWS where id = ".$_GET['id_news']);
+	$query = $bdd->query("select * from NEWS where Id = ".$_GET['id_news']);
 
 	$news = array();
 	$news = $query->fetch();
-	$news['img'] = get_PHOTO_byId($bdd, $news['id'])['Fichier'];
+	$news['img'] = get_PHOTO_byId($bdd, $news['Id'])['Fichier'];
 
 	if(isset($_SESSION['connected']) && $_SESSION['connected']) {
 		$news['connected'] = 'true';
