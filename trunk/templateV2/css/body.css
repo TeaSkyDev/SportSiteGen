@@ -975,18 +975,20 @@
 
 #connexion_menu{
 width: 162px;
-text-align: center;
+text-align: left;
+display: inline-block;
 color: rgb(255, 117, 0);
 }
 
 .sidebar_co{
-position:absolute;
-right:0px;
-top:192px;
+position: absolute;
 background: none repeat scroll 0% 0% rgb(3, 3, 3);
-padding:0px 12px 0px 20px;
 color: rgb(251, 251, 244);
+top: 0%;
+right: 0%;
+padding: 0% 12% 0% 15%;
 }
+
 
 
 
