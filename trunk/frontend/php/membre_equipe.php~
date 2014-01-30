@@ -1,9 +1,0 @@
-<?php
-$id = 
-if(isset($_GET['id'])){
-
-}
-$reponse = $bdd->query("select count(*) from 
-
-
-?>
