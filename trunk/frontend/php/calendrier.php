@@ -17,7 +17,6 @@ if($reponse){
   $i = 0;
   while($data = $reponse->fetch()){
     if($i < 10){
-      echo $i;
       $event[$i] = $data;
     }
     $i++;
