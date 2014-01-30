@@ -20,7 +20,11 @@ if(isset($_GET['details']) && isset($_GET['id_news'])) {
 
 	$i = 0;
 	while($data = $query->fetch()) {
-		$coms[$i] = $data;
+		$coms[$i]['Id'] = $data['Id'];
+        $coms[$i]['contenu'] = htmlentities($data['contenu']);
+        $coms[$i]['date'] = $data['date'];
+        $coms[$i]['idNews'] = $data['idNews'];
+        $coms[$i]['idUtilisateur'] = $data['idUtilisateur'];
 		$coms[$i]['auteur'] = get_UTILISATEUR_byId($bdd, $data['idUtilisateur'])['Pseudo'];
 		$i++;
 	}
