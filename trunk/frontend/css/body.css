@@ -5,7 +5,7 @@
 	min-height:1188px;
 	padding:12px 10px 10px;
 }
-.body .sidebar div:first-child {
+.body .sidebar div:first-child{
 	min-height:0!important;
 }
 .body.home {
@@ -1004,18 +1004,65 @@ color: rgb(251, 251, 244);
     display: block;
 }
 
+#erreur{
+    width:400px;
+    word-wrap: break-word;
+    margin-left:190px;
+    margin-top:170px;
+    text-align:center;
+}
+
+#erreur img{
+    width:100px;
+    height:100px;
+}
+
+#blanc{
+    background-color:white;
+    height:600px;
+    width:740px;
+    margin-bottom:10px;
+
+}
+
+#profil{
+    background:url(../images/icons.png) no-repeat scroll 25px -417px #030303;
+    color:#FF7500;
+    display:inline-block;
+    font-weight: normal;
+    font-family:bevanregular;
+    font-size:30px;
+    height:47px;
+    width:650px;
+    margin-left:10px;
+    line-height:44px;
+    padding:0 0 0 70px;
+    text-transform:uppercase;
+    text-align:left;
+    margin-top:12px;
+}
 
 
+#barregauche{
+    position:revalive;
+    margin-left:10px;
+    margin-top:-280px;
+    border-color: rgb(3, 3, 3);
+    border-style: none none solid solid;
+    border-width: 4px 4px 5px;
+    float: left;
+    min-height: 500px;
+    padding: 0px 0px 29px;
+    width: 726px;
+}
 
+#table{
+    margin-top:100px;
+}
 
-
-
-
-
-
-
-
-
+#table img{
+    border: 5px solid rgb(3, 3, 3);
+}
 
 
 

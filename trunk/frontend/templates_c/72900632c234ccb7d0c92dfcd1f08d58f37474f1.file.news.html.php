@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-01-28 08:34:45
+<?php /* Smarty version Smarty-3.1.16, created on 2014-01-30 14:48:07
          compiled from "html/news.html" */ ?>
 <?php /*%%SmartyHeaderCode:113030903752d7fb085def72-96736192%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '72900632c234ccb7d0c92dfcd1f08d58f37474f1' => 
     array (
       0 => 'html/news.html',
-      1 => 1390894481,
+      1 => 1391087160,
       2 => 'file',
     ),
   ),
@@ -26,9 +26,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_52d7fb08648936_98079328')) {function content_52d7fb08648936_98079328($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/home/cadorel/www/SportSiteGen/trunk/tpl/libs/plugins/modifier.date_format.php';
+<?php if ($_valid && !is_callable('content_52d7fb08648936_98079328')) {function content_52d7fb08648936_98079328($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_date_format')) include '/home/gaurin/www/SportSiteGen/trunk/tpl/libs/plugins/modifier.date_format.php';
 ?><form method="post" action="index.php?page=news&research=true">
-    <input type="text" autocomplete="off" name="val" id="champ_recherche" /><input type="submit" value="Rechercher" />
+    <input type="text" autocomplete="off" name="val" id="champ_recherche" />
+    <input type="text" style="display:none"/>
+    <input type="submit" value="Rechercher" />
 </form>
 <div id="output" class="hide result"></div>
 <script type="text/javascript" src="js/oXHR.js"></script>
