@@ -18,16 +18,16 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 
 		switch($page) {
 			case 'new_article':
-				include("newarticle.html");
+				include("php/newarticle.php");
 				break;
 			case 'logout':
 				include("php/logout.php");
 				break;
 			default:
-				include("accueil.html");
+				include("html/accueil.html");
 		}
 	} else {
-		include("accueil.html");
+		include("html/accueil.html");
 	}
 }
 
