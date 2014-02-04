@@ -80,11 +80,12 @@ ul {
 }
 
 .menu a{
-    color:rgb(0,95,153);
-    position: absolute;
+    font-size: 13px;
 }
 
 a.voirsite{
+    color:rgb(0,95,153);
+    position: absolute;
     right:115px;
 }
 
@@ -93,6 +94,8 @@ a.voirsite img, a.deco img{
 }
 
 a.deco{
+    color:rgb(0,95,153);
+    position: absolute;
     right: 10px;
 }
 

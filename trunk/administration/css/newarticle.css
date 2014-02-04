@@ -22,6 +22,13 @@ a{
     text-decoration: none;
 }
 
+#contenu{
+    position: absolute;
+    margin: 1%;
+    text-shadow:1px 1px 1px #fff;
+    width: 98%;
+}
+
 .titre{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px; 
@@ -73,11 +80,12 @@ ul {
 }
 
 .menu a{
-    color:rgb(0,95,153);
-    position: absolute;
+    font-size: 13px;
 }
 
 a.voirsite{
+    color:rgb(0,95,153);
+    position: absolute;
     right:115px;
 }
 
@@ -86,6 +94,8 @@ a.voirsite img, a.deco img{
 }
 
 a.deco{
+    color:rgb(0,95,153);
+    position: absolute;
     right: 10px;
 }
 
