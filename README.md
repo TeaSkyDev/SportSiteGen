@@ -1,53 +1,32 @@
 
-## GÈnÈrateur de site sportif ##
+## G?n?rateur de site sportif ##
 
-En attente d'un magnifique cahier des charges, voici un description globale de l'application, Merci ‡ Cyprien !
+# Qu'est ce que c'est ? #
 
-LEGENDE:
-	?<texte>? => ‡ decider dans le futur
+SportSiteGen est un cms cr√©√© par un groupe d'√©tudiant de l'IUT d'Orl√©ans et qui a pour but la cr√©ation d'un site web
+facilement. Les technologies utilis√©es sont PHP (+Smarty), HTML5, CSS3, Javascript/AJAX et une base de donn√©es MySql.
 
-Je compte sur vous pour remplir l'objectif suivant :
+# Pourquoi celui-ci et pas un autre ? #
 
-*******************OBJECTIFS*******************
+SportSiteGen a pour particularit√© d'√™tre ax√© sur le sport. Ainsi, il sera l'outil parfait pour une √©quipe de sport
+voulant son site web. Celle-ci pourra alors cr√©er et pr√©voir des √©v√®nements sportifs ou tout simplement pour pr√©senter
+l'√©quipe.
 
-logiciel pour generer des sites pour associations sportives.
-	-personalisation ??‡ quel niveau??
-	-new,historique,articles en tout genres
-	-generation de tournois ou autres Èvenements du mÍme type
-	-prÈsentation d'Èquipe et des joueurs
-	-calendrier
-	-classement des championnats
-	-export en pdf de certaines pages
+# Commenter l'installer #
 
-FRONTEND(site visible par tous)
-	
-BACKEND(champs ‡ remplir pour creer le FRONTEND)
-	accesible que de quelques personnes et diffÈrents selon si c'est un admin ou un animateur
+Outil(s) n√©cessaire(s) √† l'installation :
+  - une base de donn√©es MySql
+  - un serveur web
 
-avoir des comptes
-	-admin
-	-animateur(mettre des news)
-	-user commun
-	-non inscrit
+Executez dans le navigateur le fichier /install/index.php puis suivez simplement les instructions.
+Si tout se passe bien, deux liens devraient s'afficher :
+ - le premier donne acc√®s √† la partie "frontend", c'est √† dire celle visible par le public
+ - le second donne acc√®s √† la partie administration du cms
 
-utile pour les sports d'Èquipe ‡ points comme 
-	-football
-	-rugby
-	-floorball
-	-hockey
-	-...
+# Comment participer au projet ? #
 
-?interaction de l'utilisateur avec le CSS ou mÍme de fichier CSS d'autres sites
-en sachant que certaine personnes aiment bien le truc le plus simple possible
-et que d'autres veulent personaliser un max?
+Si vous d√©sirez participer au projet, voici la commande permettant de cloner le d√©pot :
+    git clone https://github.com/EmileCadorel/SportSiteGen.git
 
-*******************REPARTITION*******************
-
-Se donner un truc pour mettre le travai en commun comme SVN
-
-1) se rÈpartir le travail (creer des Èquipes)
-	-maquette du site : le design
-	-la BDD (son contenu et sa maniabilitÈ)
-	-maquette admin (ce qu'il peut changer et comment il peut le faire)
-
-Rendez vous le jeudi aprem ?13h30? pour faire le point, dÈcider des objectifs futurs,rÈsoudre des problËmes ensemble...
+Je vous encourage √† lire le cahier des charges pour y voir plus claire dans le fonctionnement du cms et
+dans son architecture.
