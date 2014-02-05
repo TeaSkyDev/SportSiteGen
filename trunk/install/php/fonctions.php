@@ -73,12 +73,12 @@ function exec_sql_file($bdd, $file) {
             if(!empty($req) && $req != ";") {
                 $r = $bdd->query($req);
                 $i++;
-                if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
+                //if($i >= 19 && $i <= 36) { //On évite d'afficher les erreurs liées au 'drop table' car ces requetes ne sont là que par sécurité
                     if(!$r) {
                         echo '<font color="red">[!] Erreur lors de l\'éxecution de la requête n°'.$i.': '.$req.'</font><br>';
                         $res = false;
                     }
-                }
+                //}
             }
         }
 
