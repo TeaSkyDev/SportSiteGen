@@ -1,23 +1,3 @@
-drop table SITE;
-drop table APPARTENIR_TOURNOI;
-drop table TOURNOI;
-drop table EVENT_ADV;
-drop table EVENT;
-drop table JOUEUR;
-drop table POINTS;
-drop table TYPE_PARTICIPATION;
-drop table POSTE;
-drop table APPARTENIR_EQUIPE;
-drop table PHOTO_MATCHS;
-drop table MATCHS;
-drop table TEAM;
-drop table INSCRIT;
-drop table CATEGORIE;
-drop table UTILISATEUR;
-drop table TYPE_USER;
-drop table PHOTO;
-drop table NEWS;
-
 create table PHOTO(
        Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(20),
