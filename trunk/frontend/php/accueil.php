@@ -6,7 +6,7 @@ $news    = array();
 $i = 0;
 while($data = $reponse->fetch()){
 	if($i < 10){
-	  $news[$i]['id'] = $data['id'];
+	  $news[$i]['id'] = $data['Id'];
 	  $news[$i]['titre'] = $data['titre'];
 	  $news[$i]['date'] = $data['date'];
 	  $news[$i]['contenu'] = $data['contenu'];

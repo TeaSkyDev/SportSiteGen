@@ -3,25 +3,25 @@
     <head>
         <title>Nouvelle Article</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
-        <link rel="stylesheet" href="./css/newarticle.css" type="text/css" media="screen"/>
-		<script type="text/javascript" src="./ckeditor/ckeditor.js"></script>
+        <link rel="stylesheet" href="css/newarticle.css" type="text/css" media="screen"/>
+		<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
     </head>
     <body>
     	<div id="contenu">
     		<p class="titre"> Administration </p>
     		<p class="bleu" ></p>
     		<ul class="menu">
-    			<li>Site</li>
-    			<li>Utilisateur</li>
-    			<li>Menus</li>
-    			<li>Contenu</li>
-    			<li>Composants</li>
-    			<li>Extension</li>
-                <a class="voirsite" href=""><img src="./Images/voirsite.png">Voir le site</a>
-                <a class="deco" href=""><img src="./Images/deco.png">Déconnexion</a>
+    			<li><a href="index.php">Accueil</a></li>
+    			<li><a href=" ">Utilisateur</a></li>
+    			<li><a href=" ">Menus</a></li>
+    			<li><a href=" ">Contenu</a></li>
+    			<li><a href=" ">Composants</a></li>
+    			<li><a href=" ">Extension</a></li>
+                <a class="voirsite" href="../frontend/index.php"  target="_blank"><img src="Images/voirsite.png">Voir le site</a>
+                <a class="deco" href=""><img src="Images/deco.png">Déconnexion</a>
             </ul>
             <div class="entete">
-            	<img src="./Images/newarticle.png">
+            	<img src="Images/newarticle.png">
             	<h1>Gestion des articles : Ajouter un Article</h1> 
             </div>
             <br>
@@ -33,13 +33,30 @@
                     <br>
                     Titre <input type="text" name="titre">
                     <br>
-
-                    Contenu
+                    <br>
+               
+                        Catégorie 
+                        <select name="categorie" size="1">
+                            <option>Résultat</option>
+                            <option>Club</option>
+                        </select>
+               
+                    <br>
+               
+                        Langues
+                        <select name="categorie" size="1">
+                            <option>Français</option>
+                        </select>
+               
+                    <br>
+                    Texte article
+                    
                         <br>
-                        <textarea id="editeur" name="editeur" rows="10" cols="80"></textarea>
+                        <textarea id="editor1" name="editor1" rows="10" cols="80"></textarea>
                         <script>
-                            CKEDITOR.replace( 'editeur' );
+                            CKEDITOR.replace( 'editor1' );
                         </script>
+                    
                     <br>
                     <input type="submit" value=" Envoyer">
                     <input type="button" value="Apercu">

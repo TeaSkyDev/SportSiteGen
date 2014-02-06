@@ -27,12 +27,12 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
 		if($res_type[0] == "Administrateur") {
 			$_SESSION['admin_connected'] = true;
 			//echo 'Vous etes maintenant connecte.<br><a href="../index.php">Acceder a la page d\'administration</a>';
-			header("Location: ../ok.html");
+			header("Location: ../html/ok.html");
 		} else {
-			echo 'Vous n\'etes pas administrateur !<br><a href="../../frontend/index.php">Quitter</a>';	
+			echo 'Vous n\'etes pas administrateur !<br><a href="../frontend/index.php">Quitter</a>';	
 		}
 	} else {
-		echo 'Pseudo &/|| mot de passe incorrecte.<br><a href="../index.php">Nouvelle tentative</a>';
+		echo 'Pseudo &/|| mot de passe incorrecte.<br><a href="index.php">Nouvelle tentative</a>';
 	}
 }
 ?>

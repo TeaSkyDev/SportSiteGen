@@ -3,7 +3,7 @@
     <head>
         <title>Authentifcation</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
-        <link rel="stylesheet" href="../css/authen.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="css/authen.css" type="text/css" media="screen"/>
     </head>
     <body>
     	<div id="contenu">
@@ -20,10 +20,10 @@
 		    		<a href="">Accéder à la page d'accueil du site .</a>
 		    		<br>
 		    		<br>
-		    		<img src="../Images/cadena.png">
+		    		<img src="Images/cadena.png">
 		    	</p>
 		    	<div class="login">
-		    		<form method="post" action="php/login.php" name="form_login">
+		    		<form method="post" action="php/login.php">
 		    		<br>
 		    		<br>	    		
 		    		Identifiant <input id="login" name="login" type="text"/>
@@ -33,15 +33,15 @@
 		    		Mot de passe <input  id="password" name="password" type="password"/>
 		    		<br>
 		    		<br>
-		    		<button id="connexion">
+		    		<button id="connexion" onClick="document.forms.submit();">
 		    			<p>
 		    				Connexion
 		    			</p>
-		    		 	<img src="../Images/connexion.png" onClick="document.forms['form_login'].submit();">
+		    		 	<img src="Images/connexion.png">
 		    		</button>
+		    		<br>
+		    		<br>
 		    		</form>
-		    		<br>
-		    		<br>
 		    	</div>
 		    	<br>
 		    </div>
