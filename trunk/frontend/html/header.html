@@ -60,7 +60,7 @@
 	    <span>Dernière News</span>
 	    <ul>{foreach from=$Post item=post}
 	      <li>
-		<a href="index.php?page=news&id_news={$post.id}&details=true">{$post.titre}</a> <span>Posted on {$post.date|date_format:"%d-%m-%Y"}</span>
+		<a href="index.php?page=news&id_news={$post.Id}&details=true">{$post.titre}</a> <span>Posted on {$post.date|date_format:"%d-%m-%Y"}</span>
 	      </li>
 	      {/foreach}
 	    </ul>

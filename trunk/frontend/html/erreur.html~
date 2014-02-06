@@ -1,25 +1,11 @@
-
-<div class="body calendrier">
+<div class="body erreur">
   <div>				
-    <span>Calendrier</span>
+    <span>Erreur</span>
     <div>			
-      <ul>{foreach from=$Event item=event}
-	<li>
-	  <span>{$event.titre}</span>
-	  <div>
-	    <span>{$event.location}</span> <span>{$event.date|date_format:"%A - %d-%m-%Y %H:%M"}</span>
-	    <p>
-	      {$event.contenu}
-	    </p>
-	  </div>
-	</li>	
-	{/foreach}
-      </ul>
+      <span>{$event.msg}</span>
     </div>
-  </div>
-  
+  </div>  
 </div>
-
 </div>
 <div class="footer">
   <div>
