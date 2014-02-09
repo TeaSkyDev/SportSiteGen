@@ -178,7 +178,7 @@ create table EVENEMENT(
        Id int(5) AUTO_INCREMENT,
        titre varchar(100),
        date datetime,
-       contenu varchar(100),
+       contenu varchar(1000),
        location varchar(100),
        primary key(id)
 );
