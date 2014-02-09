@@ -1,22 +1,45 @@
+<div class="body calendrier">
+    <div>
+        <span>Dernieres News</span>
+        <div>
+            <ul>{foreach from=$News item=news}
+                <li>
+                    <span>{$news.titre}</span>
+                    <div>
+                        <p>
+                            {$news.contenu}
+                        </p>
+                    </div>
+                </li>
+            </ul>{/foreach}
+            <span>Evènement à venir</span>
+            <ul>{foreach from=$Events item=event}
+                <li>
+                    <span>{$event.titre}</span>
+                    <div>
+                        <span>{$event.lieu}</span> <span>{$event.date|date_format:"%d-%m-%Y"}</span>
+                        <p>
+                            {$event.contenu}
+                        </p>
+                    </div>
+                </li>{/foreach}
+            </ul>
+                <span>Match</span>
 
-<div class="body news">
-  <div>
-    <span>News</span>
-    <ul>{foreach from=$News item=news}
-      <li>
-	<a href="index.php?page=news&id_news="><img src= "{$news.img}" alt=""></a>
-	<div>
-	  <h3>{$news.titre}</h3>
-	  <span>{$news.date|date_format:"%d-%m-%Y"} <span></span></span>
-	  <p>
-	    {$news.contenu}
-	  </p>
-	  <a href="index.php?page=news&id_news={$news.id}&details=true">Read More</a>
-	</div>
-      </li>
-      {/foreach}
-    </ul>
-  </div>
+                <ul>foreach from=$Matchs item=match
+                    <li>
+                        <span>$match.titre</span>
+                        <div>
+                            <span>$match.lieu</span> <span>$match.date|date_format:"%d-%m-%Y"</span>
+                            <p>
+                                $match.contenu
+                            </p>
+                        </div>
+                    </li>
+                    /foreach
+                </ul>
+        </div>
+    </div>
   
 </div>
 <div class="footer">
