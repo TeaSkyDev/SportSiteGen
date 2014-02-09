@@ -23,6 +23,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 			case 'new_article':
 				include("php/newarticle.php");
 				break;
+			case 'article':
+				include("html/article.html");
+				break;
 			case 'logout':
 				include("php/logout.php");
 				break;
@@ -33,6 +36,4 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 		include("html/accueil.html");
 	}
 }
-
-
 ?>

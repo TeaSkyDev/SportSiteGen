@@ -8,18 +8,10 @@
     </head>
     <body>
     	<div id="contenu">
-    		<p class="titre"> Administration </p>
-    		<p class="bleu" ></p>
-    		<ul class="menu">
-    			<li><a href="index.php">Accueil</a></li>
-    			<li><a href=" ">Utilisateur</a></li>
-    			<li><a href=" ">Menus</a></li>
-    			<li><a href=" ">Contenu</a></li>
-    			<li><a href=" ">Composants</a></li>
-    			<li><a href=" ">Extension</a></li>
-                <a class="voirsite" href="../frontend/index.php"  target="_blank"><img src="Images/voirsite.png">Voir le site</a>
-                <a class="deco" href=""><img src="Images/deco.png">Déconnexion</a>
-            </ul>
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
             <div class="entete">
             	<img src="Images/newarticle.png">
             	<h1>Gestion des articles : Ajouter un Article</h1> 

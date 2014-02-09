@@ -8,19 +8,9 @@
     <script language=JavaScript src="js/accueil.js"></script>
     <body>
     	<div id="contenu">
-    		<p class="titre"> Administration </p>
-    		<p class="bleu" ></p>
-    		<ul class="menu">
-    			<li><a href="">Articles</a></li>
-    			<li><a href=" ">Membres</a></li>
-    			<li><a href=" ">Matchs</a></li>
-    			<li><a href=" ">Equipes</a></li>
-    			<li><a href=" ">Tournois</a></li>
-    			<li><a href=" ">Fichiers</a></li>
-                <li><a href=" ">Configuration</a></li>
-                <a class="voirsite" href="../frontend/index.php"  target="_blank"><img src="Images/voirsite.png">Voir le site</a>
-                <a class="deco" href="index.php?page=logout"><img src="Images/deco.png">Déconnexion</a>
-            </ul>
+            <?php
+                @include ("header.html");
+            ?>
             <div class="interieur">
                 <dl>
                     <p id="Luser">

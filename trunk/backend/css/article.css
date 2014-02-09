@@ -43,22 +43,6 @@ a{
     margin-top: 5px;
 }
 
-.texte{
-    width:95%;
-    margin: auto;
-}
-
-fieldset{
-    margin :10px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-legend{
-    color:rgb(0,95,153);
-    font-size: 15px;
-}
-
 .interieur{
     background-color: rgb(236,236,236);
     margin:10px;

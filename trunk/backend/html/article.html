@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Article</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="css/article.css" type="text/css" media="screen"/>
+    </head>
+    <script language=JavaScript src="js/accueil.js"></script>
+    <body>
+    	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
+            <div class="entete">
+                    <img src="Images/newarticle.png">
+                    <h1>Gestion des articles : Liste des Articles</h1> 
+            </div>
+            <br>
+            <div class="interieur">
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>Titre</th>
+                        <th></th>
+                    </tr>
+
+                    <?php
+                        $query = "SELECT * FROM news ";
+                        foreach($bdd->query($query) as $data) {
+                    ?>
+
+                    <tr>
+                        <td>
+                            <?php
+                                echo $data['Id'];
+                            ?>
+                        </td>
+                        <td>
+                            <?php 
+                                echo $data['titre'];
+                            ?>
+                        </td>
+                        <td>
+                            <form action=" " method="post">
+                                <input type="hidden" name="id" value="<?php echo $data['Id']; ?>">
+                                <button type="submit">
+                                    <span>-</span>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <?php
+                        }
+                    ?>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
