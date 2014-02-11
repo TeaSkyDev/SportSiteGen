@@ -8,7 +8,7 @@ class News {
 
     public function __construct($bdd) {
 	$this->_bdd = $bdd;
-	$query = $bdd->query("select * from NEWS");
+	$query = $bdd->query("select * from NEWS ORDER BY Id desc");
 	if($query->rowCount() != 0) {
 	    $this->_nb = 0;
 	    while($d = $query->fetch()) {
@@ -28,7 +28,7 @@ class News {
     
 
     public function reload() {
-	$query = $this->_bdd->query("select * from NEWS");
+	$query = $this->_bdd->query("select * from NEWS order by Id desc");
 	if($query->rowCount() != 0) {
 	    $this->_nb = 0;
 	    while($d = $query->fetch()) {
