@@ -1,0 +1,13 @@
+<table align="center">
+    <tr>
+        <th>NEWS</th>
+    </tr>
+    {foreach From=$News item=news}
+    <tr>
+            <td><u>{$news.titre}</u> - <i>{$news.date}</i></td>
+    </tr>
+    <tr>
+            <td>{$news.contenu}</td>
+    </tr>
+    {/foreach}
+</table>

@@ -5,6 +5,7 @@ session_start();
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require_once("php/Init.php");
 require_once("php/Header.php");
+require_once("php/Content.class.php");
 require_once("../tpl/libs/Smarty.class.php");
 $smarty  = new Smarty();
 
@@ -20,16 +21,17 @@ $header = $head->get_content();
 
 /* On récupère le Aside 
 $as = new Aside($bdd);
-$aside = $as->get_content();
+$aside = $as->get_content();*/
 
-/* On récupère le footer 
+/*On récupère le footer
 $fo = new Footer($bdd);
 $footer = $fo->get_content();
+*/
 
-/* On récupère le corps du texte suivant ce qui a été demandé 
+// On récupère le corps du texte suivant ce qui a été demandé
+$content = new Content($bdd, $template, $smarty);
 if(isset($_GET['page']) || isset($_POST['page'])) {
 	$page = $_REQUEST['page'];
-	$content = new Content($bdd, $template);
 
 	switch($page) {
 		case "news":
@@ -41,12 +43,12 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 } else {
 	$content_html = $content->get_html("accueil");
 }
-*/
+
 $smarty->assign("Header", $header);
 $smarty->assign("Name", $name);
-/*$smarty->assign("Aside", $aside);
+//$smarty->assign("Aside", $aside);
 $smarty->assign("Content", $content_html);
-$smarty->assign("Footer", $footer);*/
+//$smarty->assign("Footer", $footer);
 
 $smarty->display("templates/".$template."/index.html");
 
