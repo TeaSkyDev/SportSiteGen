@@ -4,7 +4,6 @@ class Header {
 
 	private $_bdd;
 	private $_data = array();
-	private $_title;
 
 	public function __construct($bdd) {
 		$this->_bdd = $bdd;
@@ -27,15 +26,10 @@ class Header {
             $this->_data[4]['url']   = "index.php?page=inscription";
         }
 
-		$this->_title = "Debug title";
 	}
 
 	public function get_content() {
 		return $this->_data;
-	}
-
-	public function get_title() {
-		return $this->_title;
 	}
 
 }

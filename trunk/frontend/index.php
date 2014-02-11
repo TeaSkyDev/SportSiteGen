@@ -11,13 +11,12 @@ $smarty  = new Smarty();
 /* On initialise le cms en nous connectant à la BDD, on récupérant le template à utiliser, ainsi que les fichiers */
 $init_cms = new Init($bdd);
 $template = $init_cms->get_template();
-echo $template;
+$name     = $init_cms->get_name();
 //$files    = init_cms->get_files();
 
 /* On récupère le header Dont le menu */
 $head = new Header($bdd);
 $header = $head->get_content();
-$title  = $head->get_title();
 
 /* On récupère le Aside 
 $as = new Aside($bdd);
@@ -44,7 +43,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 }
 */
 $smarty->assign("Header", $header);
-$smarty->assign("Title", $title);
+$smarty->assign("Name", $name);
 /*$smarty->assign("Aside", $aside);
 $smarty->assign("Content", $content_html);
 $smarty->assign("Footer", $footer);*/
