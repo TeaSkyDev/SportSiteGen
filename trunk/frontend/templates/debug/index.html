@@ -1,0 +1,14 @@
+<html>
+	<header>
+		<title>{$Title}</title>
+	</header>
+	<body>
+		<table align="center">
+			<tr>
+				{foreach from=$Header item=menu}
+				<td><a href="{$menu.url}">{$menu.title}</a></td>
+				{/foreach}
+			</tr>
+		</table>
+	</body>
+</html>
