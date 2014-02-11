@@ -215,9 +215,9 @@ function installation() {
     echo '<h1 align="center">Insertions dans la base de données</h1>';
 
     $bdd->beginTransaction();
-    //$bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."')");
+    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'debug')");
     $sql_2 = $bdd->query("insert into PHOTO values (1,'avatar_admin','defaut.png','')");
     $sql_3 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
     $sql_4 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");

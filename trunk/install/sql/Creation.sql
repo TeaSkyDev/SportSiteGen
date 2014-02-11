@@ -151,7 +151,8 @@ create table APPARTENIR_TOURNOI(
 
 create table SITE(
        Nom varchar(25) primary key,
-       URL varchar(255)
+       URL varchar(255),
+       current_template varchar(255)
 );
 
 create table NEWS(
