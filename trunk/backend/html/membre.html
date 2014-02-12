@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Article</title>
+        <title>Membres</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
         <link rel="stylesheet" href="css/pagetableau.css" type="text/css" media="screen"/>
     </head>
@@ -14,22 +14,22 @@
             <br>
             <div class="entete">
                     <img src="Images/newarticle.png">
-                    <h1>Gestion des articles : Liste des Articles</h1> 
+                    <h1>Gestion des Membres : Liste des Membres</h1> 
             </div>
             <br>
             <div class="interieur">
                 <div class="article">
                     <table>
                         <tr>
-                            <td>id</td>
-                            <td>Titre</td>
-                            <td>Resumer</td>
+                            <td>Id</td>
+                            <td>Pseudo</td>
+                            <td>Mail</td>
                             <td><br><br></td>
                             <td><br><br></td>
                         </tr>
 
                         <?php
-                            $sql = "SELECT * FROM NEWS ";
+                            $sql = "SELECT * FROM UTILISATEUR ";
                             foreach($bdd->query($sql) as $data) {
                         ?>
 
@@ -41,12 +41,12 @@
                             </td>
                             <td>
                                 <?php 
-                                    echo $data['titre'];
+                                    echo $data['Pseudo'];
                                 ?>
                             </td>
                             <td>
                                 <?php
-                                    echo resume_text($data['contenu'], 100);
+                                    echo $data['Mail'];
                                 ?>
                             </td>
                             <td>
@@ -60,7 +60,7 @@
                             <td>
                                 <form action=" " method="post">
                                     <input type="hidden" name="id" value="<?php echo $data['Id']; ?>">
-                                    <button type="submit">
+                                    <button type="submit" title="supprimer">
                                         <span>X</span>
                                     </button>
                                 </form>
@@ -74,8 +74,8 @@
                 </div>
                 <br>
                 
-                <a href="index.php?page=new_article">
-                    <input type="button" value="Nouvelle Article">
+                <a href="index.php?page=new_membre">
+                    <input type="button" value="Nouvelle Membre">
                 </a>
 
             </div>
