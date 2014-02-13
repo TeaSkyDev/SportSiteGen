@@ -2,11 +2,6 @@
 
 session_start();
 
-/* debug */
-$_SESSION['Pseudo'] = "admin";
-$_SESSION['Id']     = 1;
-$_SESSION['Mail']   = "blblb@sdsdf";
-
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require_once("php/Init.php");
 require_once("php/Header.php");
@@ -19,7 +14,6 @@ $smarty  = new Smarty();
 $init_cms = new Init($bdd);
 $template = $init_cms->get_template();
 $name     = $init_cms->get_name();
-//$files    = init_cms->get_files();
 
 /* On récupère le header Dont le menu */
 $head = new Header($bdd);
@@ -28,7 +22,7 @@ $header = $head->get_content();
 //On récupère le Aside 
 $as = new Aside($bdd);
 $asidenews = $as->get_content_news();
-$asidecal = $as->get_content_calendrier();
+$asidecal  = $as->get_content_calendrier();
 
 
 /*On récupère le footer
