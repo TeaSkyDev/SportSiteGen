@@ -78,7 +78,7 @@ class Calendrier {
 
     public function search_byName($name) {
 	$name = $name."%";
-	$query = $this->_bdd->prepare("select * from NEWS where titre like :name order bu Id DESC");
+	$query = $this->_bdd->prepare("select * from EVENEMENT where titre like :name order bu Id DESC");
 	$query->bindParam(":name", $name);
 	$query->execute();
 	$i = 0;
