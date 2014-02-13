@@ -16,8 +16,8 @@ class Header {
         $this->_data[2]['url']   = "index.php?page=calendrier";
         $this->_data[3]['title'] = "Equipes";
         $this->_data[3]['url']   = "index.php?page=equipes";
-        if(!(isset($_SESSION['connected']) && $_SESSION['connected'] == true)) {
-            $this->_data[4]['title'] = $_SESSION['Pseudo'];
+        if(isset($_SESSION['connected']) && $_SESSION['connected'] == true) {
+            $this->_data[4]['title'] = $_SESSION['user']['Pseudo'];
             $this->_data[4]['url']   = "index.php?page=profil";
             $this->_data[5]['title'] = "Deconnexion";
             $this->_data[5]['url']   = "index.php?page=deconnexion";

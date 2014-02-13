@@ -5,6 +5,7 @@ require_once("Calendrier.php");
 require_once("Equipe.php");
 require_once("Profil.php");
 require_once("Connexion.php");
+require_once("Inscription.php");
 
 class Content {
 
@@ -63,6 +64,17 @@ class Content {
                 }
             } else {
                 return $this->_smarty->fetch("templates/".$this->_template."/connexion.html");
+            }
+        } else if($page == "inscription") {
+            if(isset($_GET['action']) && $_GET['action'] == "insert") {
+                if(Inscription::insert($this->_bdd)) {
+                    header("Location: index.php?page=connexion");
+                } else {
+                    $this->_smarty->assign("Err", "Erreur lors de l'inscription !");
+                    return $this->_smarty->fetch("templates/".$this->_template."/err.html");
+                }
+            } else {
+                return $this->_smarty->fetch("templates/".$this->_template."/inscription.html");
             }
         } else {
             $news_obj = new News($this->_bdd);
