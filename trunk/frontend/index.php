@@ -3,6 +3,7 @@
 session_start();
 
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
+require_once("fonctions.php");
 require_once("php/Init.php");
 require_once("php/Header.php");
 require_once("php/Content.class.php");
@@ -51,6 +52,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "connexion":
         	$content_html = $content->get_html("connexion");
         	break;
+        case "inscription":
+            $content_html = $content->get_html("inscription");
+            break;
         case "deconnexion":
             unset($_SESSION);
             session_destroy();
