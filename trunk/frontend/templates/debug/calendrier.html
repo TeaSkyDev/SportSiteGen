@@ -1,0 +1,13 @@
+<table align="center">
+    <tr>
+        <th>CALENDRIER</th>
+    </tr>
+    {foreach from=$Events item=event}
+    <tr>
+        <th><u>{$event.titre} - {$event.location}</u> - <i>{$event.date}</i></th>
+    </tr>
+    <tr>
+        <td>{$event.contenu}</td>
+    </tr>
+    {/foreach}
+</table>

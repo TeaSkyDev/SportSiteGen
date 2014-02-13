@@ -37,6 +37,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 		case "news":
 			$content_html = $content->get_html("news");
 			break;
+        case "calendrier":
+            $content_html = $content->get_html("calendrier");
+            break;
 		default:
 			$content_html = $content->get_html("accueil");
 	}
