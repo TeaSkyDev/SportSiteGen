@@ -4,7 +4,7 @@ body {
 
 table {
     margin-top: 10px;
-    width: 80%;
+    width: 75%;
     border: 1px solid blue;
 }
 
@@ -14,4 +14,11 @@ th {
 
 td {
     background-color: #9493AC;
+}
+
+.aside {
+    width: 12%;
+    position: absolute;
+    margin-left: 0px;
+    top: 10%;
 }
