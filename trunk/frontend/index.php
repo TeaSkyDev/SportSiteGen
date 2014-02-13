@@ -7,6 +7,7 @@ require_once("php/Init.php");
 require_once("php/Header.php");
 require_once("php/Content.class.php");
 require_once("../tpl/libs/Smarty.class.php");
+require_once("php/Aside.php");
 $smarty  = new Smarty();
 
 /* On initialise le cms en nous connectant à la BDD, on récupérant le template à utiliser, ainsi que les fichiers */
@@ -19,9 +20,11 @@ $name     = $init_cms->get_name();
 $head = new Header($bdd);
 $header = $head->get_content();
 
-/* On récupère le Aside 
+//On récupère le Aside 
 $as = new Aside($bdd);
-$aside = $as->get_content();*/
+$asidenews = $as->get_content_news();
+$asidecal = $as->get_content_calendrier();
+
 
 /*On récupère le footer
 $fo = new Footer($bdd);
@@ -49,7 +52,8 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 
 $smarty->assign("Header", $header);
 $smarty->assign("Name", $name);
-//$smarty->assign("Aside", $aside);
+$smarty->assign("AsideNews", $asidenews);
+$smarty->assign("AsideCal", $asidecal);
 $smarty->assign("Content", $content_html);
 //$smarty->assign("Footer", $footer);
 

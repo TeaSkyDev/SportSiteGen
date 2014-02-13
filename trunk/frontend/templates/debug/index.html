@@ -1,15 +1,27 @@
 <html>
-	<header>
-		<title>{$Name}</title>
-	</header>
-	<body>
-		<table align="center">
-			<tr>
-				{foreach from=$Header item=menu}
-				<td><a href="{$menu.url}">{$menu.title}</a></td>
-				{/foreach}
-			</tr>
-		</table>
-        {$Content}
-	</body>
+  <header>
+    <title>{$Name}</title>
+  </header>
+  <body>
+    <table align="center">
+      <tr>
+	{foreach from=$Header item=menu}
+	<td><a href="{$menu.url}">{$menu.title}</a></td>
+	{/foreach}
+      </tr>
+    </table>
+    {$Content}
+    <table align="center">
+      <h1> ASIDE </h1>
+      <tr>
+	{foreach from=$AsideNews item=it}
+	<td>{$it.titre} |</td>
+	{/foreach}
+      </tr>
+      <tr>
+	{foreach from=$AsideCal item=it}
+	<td>{$it.titre}|</td>
+	{/foreach}
+      </tr>
+  </body>
 </html>
