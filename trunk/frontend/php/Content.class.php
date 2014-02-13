@@ -4,6 +4,7 @@ require_once("News.php");
 require_once("Calendrier.php");
 require_once("Equipe.php");
 require_once("Profil.php");
+require_once("Connexion.php");
 
 class Content {
 
@@ -42,15 +43,27 @@ class Content {
 
             return $this->_smarty->fetch("templates/".$this->_template."/equipes.html");
 
-        } else if($page == "profil") {
-        //} else if($page == "profil" && isset($_SESSION) && $_SESSION['connected']) {
+        } else if($page == "profil" && isset($_SESSION)) {
+            if(isset($_SESSION['connected'])) {
+                $profil_obj = new Profil($this->_bdd);
+                $profil     = $profil_obj->search_byId($_SESSION['user']['Id']);
+                $this->_smarty->assign("Profil", $profil);
 
-            $profil_obj = new Profil($this->_bdd);
-            $profil     = $profil_obj->search_byId($_SESSION['Id']);
-            $this->_smarty->assign("Profil", $profil);
-
-            return $this->_smarty->fetch("templates/".$this->_template."/profil.html");
-
+                return $this->_smarty->fetch("templates/".$this->_template."/profil.html");
+            } else {
+                return "C'est pas bien de bidouiller l'url !!<br>";
+            }
+        } else if($page == "connexion") {
+            if(isset($_GET['action']) && $_GET['action'] == "verif") {
+                if(Connexion::connect($this->_bdd)) {
+                    header("Location: index.php");
+                } else {
+                    $this->_smarty->assign("Err", "Erreur lors de la connexion !");
+                    return $this->_smarty->fetch("templates/".$this->_template."/err.html");
+                }
+            } else {
+                return $this->_smarty->fetch("templates/".$this->_template."/connexion.html");
+            }
         } else {
             $news_obj = new News($this->_bdd);
             $news = $news_obj->get_content();
