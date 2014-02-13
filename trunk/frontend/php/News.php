@@ -82,6 +82,49 @@ class News {
     }
 
 
+    public function search_byId($id) {
+	$query = $this->_bdd->prepare("select * from NEWS where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if($query->rowCount() != 0) {
+	    return $query->fetch();
+	} else {
+	    return false;
+	}
+    }
+
+    public function search_byDate($date) {
+	$query = $this->_bdd->prepare("select * from NEWS where date = :date");
+	$query->bindParam(":date", $date);
+	$query->execute();
+	if($query->rowCount() != 0) {
+	    $return;
+	    $i = 0;
+	    while ($data = $query->fetch()) {
+		$return[$i] = $data;
+		$i++;
+	    }
+	    return $return;
+	} else {
+	    return false;
+	}
+    }
+
+    public function get_content_FromTo($from, $to) {
+	$data = array();
+	$i = 0;
+	while ($from + $i <= $to && isset($this->_data[$from + $i])) {
+	    $data[$i] = $this->_data[$i + $from];
+	    $i++;
+	}
+	return $data;
+    }
+
+    //prend le nombre de news par page en entree
+    public function get_nb_page($nb) {
+	return $this->_nb / $nb;
+    }
+
 
 
 }
