@@ -1,8 +1,12 @@
 <html>
   <header>
     <title>{$Name}</title>
+    {foreach from=$Style item=style}
+    <link rel="stylesheet" href="{$style}" type="text/css">
+    {/foreach}
   </header>
   <body>
+    <h1 align="center">{$Name}</h1>
     <table align="center">
       <tr>
 	{foreach from=$Header item=menu}

@@ -1,7 +1,5 @@
 <?php
 
-//require("../fonctions.php");
-
 class Inscription {
 
     /*

@@ -16,6 +16,9 @@ $init_cms = new Init($bdd);
 $template = $init_cms->get_template();
 $name     = $init_cms->get_name();
 
+$url_style = "templates/".$template."/css/";
+$styles = array($url_style."design.css", $url_style."header.css", $url_style."content.css", $url_style."aside.css");
+
 /* On récupère le header Dont le menu */
 $head = new Header($bdd);
 $header = $head->get_content();
@@ -66,6 +69,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 	$content_html = $content->get_html("accueil");
 }
 
+$smarty->assign("Style", $styles);
 $smarty->assign("Header", $header);
 $smarty->assign("Name", $name);
 $smarty->assign("AsideNews", $asidenews);
