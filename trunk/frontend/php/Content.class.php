@@ -3,6 +3,7 @@
 require_once("News.php");
 require_once("Calendrier.php");
 require_once("Equipe.php");
+require_once("Profil.php");
 
 class Content {
 
@@ -40,6 +41,15 @@ class Content {
             $this->_smarty->assign("Teams", $teams);
 
             return $this->_smarty->fetch("templates/".$this->_template."/equipes.html");
+
+        } else if($page == "profil") {
+        //} else if($page == "profil" && isset($_SESSION) && $_SESSION['connected']) {
+
+            $profil_obj = new Profil($this->_bdd);
+            $profil     = $profil_obj->search_byId($_SESSION['Id']);
+            $this->_smarty->assign("Profil", $profil);
+
+            return $this->_smarty->fetch("templates/".$this->_template."/profil.html");
 
         } else {
             $news_obj = new News($this->_bdd);

@@ -14,7 +14,6 @@ $smarty  = new Smarty();
 $init_cms = new Init($bdd);
 $template = $init_cms->get_template();
 $name     = $init_cms->get_name();
-//$files    = init_cms->get_files();
 
 /* On récupère le header Dont le menu */
 $head = new Header($bdd);
@@ -23,7 +22,7 @@ $header = $head->get_content();
 //On récupère le Aside 
 $as = new Aside($bdd);
 $asidenews = $as->get_content_news();
-$asidecal = $as->get_content_calendrier();
+$asidecal  = $as->get_content_calendrier();
 
 
 /*On récupère le footer
@@ -43,6 +42,12 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "calendrier":
             $content_html = $content->get_html("calendrier");
             break;
+        case "equipes":
+        	$content_html = $content->get_html("equipes");
+        	break;
+        case "profil":
+        	$content_html = $content->get_html("profil");
+        	break;
 		default:
 			$content_html = $content->get_html("accueil");
 	}
