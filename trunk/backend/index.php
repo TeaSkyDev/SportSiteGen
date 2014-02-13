@@ -29,6 +29,12 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 			case 'logout':
 				include("php/logout.php");
 				break;
+            case 'membre':
+                include("html/membre.html");
+                break;
+            case 'new_membre':
+                include("html/newmembre.html");
+                break;
 			default:
 				include("html/accueil.html");
 		}
