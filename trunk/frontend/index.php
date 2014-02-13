@@ -2,6 +2,11 @@
 
 session_start();
 
+/* debug */
+$_SESSION['Pseudo'] = "admin";
+$_SESSION['Id']     = 1;
+$_SESSION['Mail']   = "blblb@sdsdf";
+
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require_once("php/Init.php");
 require_once("php/Header.php");
@@ -43,6 +48,12 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "calendrier":
             $content_html = $content->get_html("calendrier");
             break;
+        case "equipes":
+        	$content_html = $content->get_html("equipes");
+        	break;
+        case "profil":
+        	$content_html = $content->get_html("profil");
+        	break;
 		default:
 			$content_html = $content->get_html("accueil");
 	}
