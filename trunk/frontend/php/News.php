@@ -93,6 +93,22 @@ class News {
 	}
     }
 
+
+    public function search_byName($name) {
+	$name = $name."%";
+	$query = $this->_bdd->prepare("select * from NEWS where titre like :name order by Id DESC");
+	$query->bindParam(":name", $name);
+	$query->execute();
+	$data = array();
+	$i = 0;
+	while($rep = $query->fetch()) {
+	    $data[$i] = $rep;
+	    $i++;
+	}
+	return $data;
+    }
+
+
     public function search_byDate($date) {
 	$query = $this->_bdd->prepare("select * from NEWS where date = :date");
 	$query->bindParam(":date", $date);
