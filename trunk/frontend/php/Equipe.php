@@ -61,7 +61,21 @@ class Equipe {
     }
 
 
+    
+    public function get_content_FromTo($from, $to) {
+	$data = array();
+	$i = 0;
+	while ($from + $i <= $to && isset($this->_data[$from + $i])) {
+	    $data[$i] = $this->_data[$i + $from];
+	    $i++;
+	}
+	return $data;
+    }
 
+
+    public function get_nb_page($nb) {
+	return $this->_nb / $nb;
+    } 
 
 
 
