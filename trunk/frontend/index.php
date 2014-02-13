@@ -48,6 +48,13 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "profil":
         	$content_html = $content->get_html("profil");
         	break;
+        case "connexion":
+        	$content_html = $content->get_html("connexion");
+        	break;
+        case "deconnexion":
+            unset($_SESSION);
+            session_destroy();
+            header("Location:  index.php");
 		default:
 			$content_html = $content->get_html("accueil");
 	}
