@@ -3,6 +3,7 @@
 session_start();
 
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
+require_once("fonctions.php");
 require_once("php/Init.php");
 require_once("php/Header.php");
 require_once("php/Content.class.php");
@@ -14,6 +15,9 @@ $smarty  = new Smarty();
 $init_cms = new Init($bdd);
 $template = $init_cms->get_template();
 $name     = $init_cms->get_name();
+
+$url_style = "templates/".$template."/css/";
+$styles = array($url_style."design.css", $url_style."header.css", $url_style."content.css", $url_style."aside.css");
 
 /* On récupère le header Dont le menu */
 $head = new Header($bdd);
@@ -48,6 +52,16 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "profil":
         	$content_html = $content->get_html("profil");
         	break;
+        case "connexion":
+        	$content_html = $content->get_html("connexion");
+        	break;
+        case "inscription":
+            $content_html = $content->get_html("inscription");
+            break;
+        case "deconnexion":
+            unset($_SESSION);
+            session_destroy();
+            header("Location:  index.php");
 		default:
 			$content_html = $content->get_html("accueil");
 	}
@@ -55,6 +69,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 	$content_html = $content->get_html("accueil");
 }
 
+$smarty->assign("Style", $styles);
 $smarty->assign("Header", $header);
 $smarty->assign("Name", $name);
 $smarty->assign("AsideNews", $asidenews);

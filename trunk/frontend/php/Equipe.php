@@ -14,7 +14,6 @@ class Equipe {
 	    $this->_nb = 0;
 	    while($data = $query->fetch()) {
 		$this->_data[$this->_nb] = $data;
-		echo $data['Nom'];
 		$this->_nb++;
 	    }
 	} 
