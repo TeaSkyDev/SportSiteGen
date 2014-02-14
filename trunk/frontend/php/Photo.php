@@ -27,8 +27,8 @@ class Photo {
     
 
     public function search_byId($id) {
-	if(isset($this->_data[$id])) {
-	    return $this->_data[$id];
+	if(isset($this->_data[$id - 1])) {
+	    return $this->_data[$id - 1];
 	} else {
 	    return false;
 	}

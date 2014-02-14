@@ -8,10 +8,9 @@ class Equipe {
 
     public function __construct($bdd) {
 	$this->_bdd = $bdd;
-
+	$this->_nb = 0;
 	$query = $bdd->query("select * from TEAM order by Id DESC");
 	if($query->rowCount() > 0) {
-	    $this->_nb = 0;
 	    while($data = $query->fetch()) {
 		$this->_data[$this->_nb] = $data;
 		$this->_nb++;
@@ -57,6 +56,18 @@ class Equipe {
 	    return $data;
 	}
 	return false;
+    }
+
+
+    public function search_byId($id) {
+	$query = $this->_bdd->prepare("select * from TEAM where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ($query->rowCount() > 0) {
+	    return $query->fetch();
+	} else {
+	    return false;
+	}
     }
 
 
