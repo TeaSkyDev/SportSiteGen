@@ -30,18 +30,6 @@ create table CATEGORIE(
 );
 
 
-create table INSCRIT(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(20) not null,
-       Prenom varchar(20),
-       Taille integer(10),
-       Poids integer(10),
-       Position varchar(15),
-       IdPhoto integer(10) references PHOTO(Id),
-       IdCategorie integer(10) references CATEGORIE(Id)
-);
-
-
 create table TEAM(
        Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(20) not null unique,
@@ -54,7 +42,10 @@ create table TEAM(
 create table MATCHS(
        Id integer(10) primary key AUTO_INCREMENT,
        IdCategorie integer(10) references CATEGORIE(Id),
-       IdTeamAdv integer(10) references TEAM(Id) ,
+       IdTeam1 integer(10) references TEAM(Id),
+       IdTeam2 integer(10) references TEAM(Id) ,
+       nbPoint1 integer(5),
+       nbPoint2 integer(5),
        DateMATCHS Date not null,
        Heure integer(8) ,
        Lieu varchar(15),
@@ -69,27 +60,10 @@ create table PHOTO_MATCHS(
 );
 
 
-create table APPARTENIR_EQUIPE(
-       Id integer(10) primary key AUTO_INCREMENT,
-       IdTeam int(10) references TEAM(Id),
-       IdInscrit integer(10) references INSCRIT(Id),
-       IdMATCHS integer(10) references MATCHSS(Id)
-);
-
-
 create table POSTE(
        Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(10),
        Description varchar(50)
-);
-
-
-create table TYPE_PARTICIPATION(
-       IdAppartenance integer(10) references APPARTENIR_EQUIPE(Id),
-       HeureDebut integer(8) not null,
-       IdPoste integer(10) references POSTE(Id),
-       HeureFin integer(8) not null,
-       primary key(IdAppartenance,HeureDebut)
 );
 
 
