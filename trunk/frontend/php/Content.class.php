@@ -6,6 +6,7 @@ require_once("Equipe.php");
 require_once("Profil.php");
 require_once("Connexion.php");
 require_once("Inscription.php");
+require_once("Match.php");
 
 class Content {
 
@@ -44,7 +45,24 @@ class Content {
 
             return $this->_smarty->fetch("templates/".$this->_template."/html/equipes.html");
 
-        } else if($page == "profil" && isset($_SESSION)) {
+        } else if ($page == "match") {
+	    $match_obj = new Match($this->_bdd);
+	    $equ_obj = new Equipe($this->_bdd);
+	    $match = $match_obj->get_content();
+	    $data = array();
+	    $i = 0;
+	    while(isset($match[$i])) {
+		$data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
+		$data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
+		$data[$i]['point1'] = $match[$i]['nbPoint1'];
+		$data[$i]['point2'] = $match[$i]['nbPoint2'];
+		$i++;
+	    }
+	    $this->_smarty->assign("Match", $data);
+
+	    return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
+
+	    } else if($page == "profil" && isset($_SESSION)) {
             if(isset($_SESSION['connected'])) {
                 $profil_obj = new Profil($this->_bdd);
                 $profil     = $profil_obj->search_byId($_SESSION['user']['Id']);

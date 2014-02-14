@@ -47,7 +47,6 @@ create table MATCHS(
        nbPoint1 integer(5),
        nbPoint2 integer(5),
        DateMATCHS Date not null,
-       Heure integer(8) ,
        Lieu varchar(15),
        Commentaires varchar(100)
 );
@@ -165,4 +164,13 @@ create table EVENEMENT_COM(
        idEvenement int(5) references EVENEMENT(Id),
        idUtilisateur int(10) references UTILISATEUR(Id),
        primary key(id)
+);
+
+
+
+create table MENU_ELEM (
+       Id integer(2) AUTO_INCREMENT,
+       Nom varchar(255), 
+       url varchar(255),
+       primary key(Id)
 );

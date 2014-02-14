@@ -2,33 +2,38 @@
 
 class Header {
 
-	private $_bdd;
-	private $_data = array();
+    private $_bdd;
+    private $_data = array();
 
-	public function __construct($bdd) {
-		$this->_bdd = $bdd;
-
-		$this->_data[0]['title'] = "Accueil";
-		$this->_data[0]['url']   = "index.php?page=accueil";
-		$this->_data[1]['title'] = "News";
-		$this->_data[1]['url']   = "index.php?page=news";
-        $this->_data[2]['title'] = "Calendrier";
-        $this->_data[2]['url']   = "index.php?page=calendrier";
-        $this->_data[3]['title'] = "Equipes";
-        $this->_data[3]['url']   = "index.php?page=equipes";
+    public function __construct($bdd) {
+	$this->_bdd = $bdd;
+	//cherche tout les Menu Elem
+	$query = $this->_bdd->prepare("select * from MENU_ELEM");
+	$query->execute();
+	$i = 0;
+	if($query->rowCount() > 0) {
+	    while ($data = $query->fetch()) {
+		$this->_data[$i]['title'] = $data['Nom'];
+		$this->_data[$i]['url']   = $data['url'];
+		$i++;
+	    }
+	} 
         if(isset($_SESSION['connected']) && $_SESSION['connected'] == true) {
-            $this->_data[4]['title'] = $_SESSION['user']['Pseudo'];
-            $this->_data[4]['url']   = "index.php?page=profil";
-            $this->_data[5]['title'] = "Deconnexion";
-            $this->_data[5]['url']   = "index.php?page=deconnexion";
+            $this->_data[$i]['title'] = $_SESSION['user']['Pseudo'];
+            $this->_data[$i]['url']   = "index.php?page=profil";
+            $this->_data[$i+1]['title'] = "Deconnexion";
+            $this->_data[$i+1]['url']   = "index.php?page=deconnexion";
+
         } else {
-            $this->_data[4]['title'] = "Connexion";
-            $this->_data[4]['url']   = "index.php?page=connexion";
-            $this->_data[5]['title'] = "Inscription";
-            $this->_data[5]['url']   = "index.php?page=inscription";
+
+            $this->_data[$i]['title'] = "Connexion";
+            $this->_data[$i]['url']   = "index.php?page=connexion";
+            $this->_data[$i+1]['title'] = "Inscription";
+            $this->_data[$i+1]['url']   = "index.php?page=inscription";
+
         }
 
-	}
+    }
 
 	public function get_content() {
 		return $this->_data;
