@@ -1,0 +1,73 @@
+<?php
+    $id = $_POST['id_edit'];
+?>
+
+<!doctype html>
+<html>
+    <head>
+        <title>Nouveaux Membre</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+    </head>
+    <body>
+        <div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
+            <div class="entete">
+                <img src="Images/newarticle.png">
+                <h1>Gestion des Membre : Modifier un Membre</h1> 
+            </div>
+            <br>
+            <div class="interieur">
+                <form method="post" action="index.php?page=membre&action=ajouter">
+                <br>
+                <fieldset>
+                    <legend>Modifier un Membre</legend>
+
+                    <?php 
+                    	$sql = "SELECT * FROM UTILISATEUR WHERE Id= $id ";
+                    	foreach($bdd->query($sql) as $data){
+                    ?>
+                   
+                    <br>
+                        Pseudo : <input type="text" name="titre" value="<?php echo $data['Pseudo']?>">
+                    <br>
+                    <br>
+               
+                        Mail : <input type="text" name="titre" value="<?php echo $data['Mail']?>">
+               
+                    <br>
+                    <?php
+                        $type=$data['IdTypeUser'];
+                    	}
+                        $sql="SELECT * FROM TYPE_USER WHERE id=$type";
+                        foreach ($bdd->query($sql) as $data) {
+                    ?> 
+                    <select name="type">
+                        <option selected> 
+                            <?php
+                                echo $data['Nom'];
+                                }
+                            ?>
+                        </option>
+                        <?php
+                            $sql="SELECT * FROM TYPE_USER WHERE id!=$type";
+                            foreach ($bdd->query($sql) as $data) {
+                        ?>
+                        <option>
+                            <?php
+                                echo $data['Nom'];
+                                }
+                            ?>
+                        </option>
+                    </select>            
+                    <input type="submit" value="Envoyer">
+                </fieldset>
+                <br>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

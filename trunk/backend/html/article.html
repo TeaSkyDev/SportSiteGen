@@ -50,16 +50,16 @@
                                 ?>
                             </td>
                             <td>
-                                <form action=" " method="post">
-                                        <input type="hidden" name="id" value="<?php echo $data['Id']; ?>">
+                                <form action="index.php?page=edit_article" method="post">
+                                        <input type="hidden" name="id_edit" value="<?php echo $data['Id']; ?>">
                                         <button type="submit" title="editer">
                                             <span>Edit</span>
                                         </button>
                                 </form>
                             </td>
                             <td>
-                                <form action=" " method="post">
-                                    <input type="hidden" name="id" value="<?php echo $data['Id']; ?>">
+                                <form action="" method="post">
+                                    <input type="hidden" name="id_supp" value="<?php echo $data['Id']; ?>">
                                     <button type="submit">
                                         <span>X</span>
                                     </button>

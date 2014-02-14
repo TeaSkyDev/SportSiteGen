@@ -3,44 +3,47 @@
     <head>
         <title>Nouveaux Membre</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
-        <link rel="stylesheet" href="css/newarticle.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
     </head>
     <body>
-    	<div id="contenu">
+        <div id="contenu">
             <?php
                 @include ("header.html");
             ?>
             <br>
             <div class="entete">
-            	<img src="Images/newarticle.png">
-            	<h1>Gestion des Membre : Ajouter un Membre</h1> 
+                <img src="Images/newarticle.png">
+                <h1>Gestion des Membre : Ajouter un Membre</h1> 
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=new_article&action=ajouter">
+                <form method="post" action="index.php?page=new_membre&action=ajouter">
                 <br>
                 <fieldset>
                     <legend>Ajouter un Membre</legend>
                     <br>
-                    Pseudo : <input type="text" name="titre">
+                        Pseudo : <input type="text" name="titre">
                     <br>
                     <br>
                
                         Mail : <input type="text" name="titre">
                
                     <br>
+                    <br>
                
                         Mot de passe : <input type="text" name="titre">
                
                     <br>
+                    <br>
 
                         Confirmation Mot de passe : <input type="text" name="titre">
+                    <br>
                     <br>                 
                     <input type="submit" value="Envoyer">
                 </fieldset>
                 <br>
                 </form>
-	        </div>
+            </div>
         </div>
     </body>
 </html>
