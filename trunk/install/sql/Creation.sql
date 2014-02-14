@@ -166,8 +166,6 @@ create table EVENEMENT_COM(
        primary key(id)
 );
 
-
-
 create table MENU_ELEM (
        Id integer(2) AUTO_INCREMENT,
        Nom varchar(255), 

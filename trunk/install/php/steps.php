@@ -218,25 +218,16 @@ function installation() {
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'debug')");
-    $sql_2 = $bdd->query("insert into PHOTO values (1,'avatar_admin','defaut.png','')");
-    $sql_3 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
-    $sql_4 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");
-    $insertions_reussies = true;
+    $sql_2 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
+    $sql_3 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");
 
     $bdd->commit();
 
-    if(!$sql_1) {
-        $insertions_reussies = false;
-    }
-    if(!$sql_2) {
-        $insertions_reussies = false;
-    }
-    if(!$sql_3) {
-        $insertions_reussies = false;
-    }
-    if(!$sql_4) {
-        $insertions_reussies = false;
-    }
+    $insert_autre = exec_sql_file($bdd, "sql/Insertions.sql");
+
+    $insertions_reussies = $sql_1 && $sql_2 && $sql_3 && $insert_autre;
+
+
 
     if($insertions_reussies) {
         echo "Insertions dans la base de données réussies !<br><br>";
@@ -244,7 +235,7 @@ function installation() {
 
     if($creation_reussie && $insertions_reussies) {
         unset($_SESSION);
-        cms_installed(); 
+        //cms_installed(); /* DESACTIVE LE TEMPS DU DEV */
         echo 'Bravo votre cms est maintenant installe ! <br>Url de votre site : <a class="lien_cms" href="'.get_url_frontend().'">'.get_url_frontend().'</a><br>';
         echo 'Voici le lien vers ta page d\'administration : <a href="'.get_url_backend().'">'.get_url_backend().'</a><br>';
         echo 'Pensez a les enregistrer dans vos favoris !!';
