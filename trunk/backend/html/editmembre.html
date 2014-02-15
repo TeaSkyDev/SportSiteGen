@@ -25,7 +25,6 @@
                 <br>
                 <fieldset>
                     <legend>Modifier un Membre</legend>
-
                     <?php 
                     	$sql = "SELECT * FROM UTILISATEUR WHERE Id= $id ";
                     	foreach($bdd->query($sql) as $data){
@@ -39,12 +38,14 @@
                         Mail : <input type="text" name="titre" value="<?php echo $data['Mail']?>">
                
                     <br>
+                    <br>
+                    Type : 
                     <?php
                         $type=$data['IdTypeUser'];
-                    	}
+                        }
                         $sql="SELECT * FROM TYPE_USER WHERE id=$type";
                         foreach ($bdd->query($sql) as $data) {
-                    ?> 
+                    ?>
                     <select name="type">
                         <option selected> 
                             <?php
@@ -62,7 +63,10 @@
                                 }
                             ?>
                         </option>
-                    </select>            
+                        <br>
+                    </select>
+                    <br>
+                    <br>            
                     <input type="submit" value="Envoyer">
                 </fieldset>
                 <br>

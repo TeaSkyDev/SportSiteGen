@@ -2,6 +2,7 @@
     margin:0px;
     padding:0px;
 }
+
 body{
     color:#444444;
     font-size:13px;
@@ -53,13 +54,6 @@ img{
     display: block;
     position: relative;
     margin: auto;
-}
-
-#contenu{
-    position: absolute;
-    margin: 1%;
-    text-shadow:1px 1px 1px #fff;
-    width: 98%;
 }
 
 .texte{
