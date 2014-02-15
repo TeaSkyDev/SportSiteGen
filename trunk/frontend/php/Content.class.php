@@ -56,6 +56,8 @@ class Content {
 		$data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
 		$data[$i]['point1'] = $match[$i]['nbPoint1'];
 		$data[$i]['point2'] = $match[$i]['nbPoint2'];
+		$data[$i]['date'] = $match[$i]['DateMATCHS'];
+		$data[$i]['comm'] = $match[$i]['Commentaires'];
 		$i++;
 	    }
 	    $this->_smarty->assign("Match", $data);

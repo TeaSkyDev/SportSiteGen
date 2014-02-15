@@ -1,0 +1,13 @@
+<table align="center">
+    <tr>
+        <th>Match</th>
+    </tr>
+    {foreach from=$Match item=match}
+    <tr>
+            <td align="center"><u>{$match.name1} - {$match.point1} | {$match.point2} - {$match.name2}
+	    	     |||    {$match.date} - {$match.comm} </td>
+
+    </tr>
+
+    {/foreach}
+</table>
