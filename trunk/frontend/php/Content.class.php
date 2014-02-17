@@ -25,8 +25,9 @@ class Content {
 
             $news_obj = new News($this->_bdd, $param);
             $news     = $news_obj->get_content();
+	    $com      = $news_obj->get_content_com();
             $this->_smarty->assign("News", $news);
-
+	    $this->_smarty->assign("Com", $com);
             return $this->_smarty->fetch("templates/".$this->_template."/html/news.html");
 
         } else if($page == "calendrier") {

@@ -37,7 +37,7 @@ $footer = $fo->get_content();
 // On récupère le corps du texte suivant ce qui a été demandé
 $content = new Content($bdd, $template, $smarty);
 if(isset($_GET['page']) || isset($_POST['page'])) {
-	$page = $_REQUEST['page'];
+    $page = $_REQUEST['page'];
     $param = get_params($_GET); /* On récupère tous les params sauf la page */
 
 	switch($page) {

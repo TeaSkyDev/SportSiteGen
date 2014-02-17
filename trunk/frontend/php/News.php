@@ -5,6 +5,7 @@ class News {
     private $_data = array();
     private $_bdd;
     private $_nb;
+    private $_com_data;
 
     public function __construct($bdd, $param = null) {
         $this->_bdd = $bdd;
@@ -36,6 +37,30 @@ class News {
             $this->_nb = 1;
             $this->_data[0] = $query->fetch();
         }
+	$this->_com_data = $this->get_com_byNewsId($id);
+    }
+
+    public function get_content_com() {
+	return $this->_com_data;
+    }
+
+    public function get_com_byNewsId($id) {
+    	$query = $this->_bdd->prepare("select * from NEWS_COM where idNews = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ($query->rowCount() > 0 ) {
+	    $data = array();
+	    $i = 0;
+	    $profil = new Profil($this->_bdd);
+	    while ( $rep = $query->fetch() ) {
+		$data[$i] = $rep;
+		$data[$i]['utilisateur'] = $profil->search_byId($rep['idUtilisateur'])['Pseudo'];
+		$i++;
+	    }
+	    return $data;
+	} else {
+	    return null;
+	}
     }
 
     public function get_content() {

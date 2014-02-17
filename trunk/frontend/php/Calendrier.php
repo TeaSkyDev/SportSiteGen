@@ -74,7 +74,41 @@ class Calendrier {
 	    return false;
 	}
     }
+    
+    public function get_com_byCalId($id) {
+	$query = $this->_bdd->prepare("select * from EVENEMENT_COM where idEvenement = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ($query->rowCount() > 0 ) {
+	    $data = array();
+	    $i = 0;
+	    while ( $rep = $query->fetch() ) {
+		$data[$i] = $rep;
+		$i++;
+	    }
+	    return $data;
+	} else {
+	    return false;
+	}
+    }
 
+    public function insert_com_byCalId($id, $contenu, $date, $utilisateur) {
+	$query = $this->_bdd->prepare("insert into EVENEMENT_COM values(null, :cont, :date, : id, :util)");
+	$query->bindParam(":cont", $contenu);
+	$query->bindParam(":date", $date);
+	$query->bindParam(":util", $utilisateur);
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+
+    public function delete_com_byId($id) {
+	$query = $this->_bdd->prepare("delete * from EVENEMT_COM where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
 
     public function search_byName($name) {
 	$name = $name."%";
@@ -121,7 +155,7 @@ class Calendrier {
     public function get_nb_page($nb) {
 	return $this->_nb / $nb;
     }
-
+    
 }
 
 
