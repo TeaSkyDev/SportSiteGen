@@ -1,5 +1,5 @@
 <?php
-    $id = $_POST['id_edit'];
+    $id = $_GET['id'];
 ?>
 
 <!doctype html>
@@ -12,6 +12,9 @@
     </head>
     <body>
         <div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
             <br>
             <div class="entete">
                 <img src="Images/newarticle.png">

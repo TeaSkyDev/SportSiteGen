@@ -1,3 +1,5 @@
+<!doctype html>
+<html>
     <head>
         <title>Article</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
@@ -6,6 +8,9 @@
     <script language=JavaScript src="js/accueil.js"></script>
     <body>
     	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
             <br>
             <div class="entete">
                     <img src="Images/newarticle.png">
@@ -19,39 +24,43 @@
                             <td>id</td>
                             <td>Titre</td>
                             <td>Resumer</td>
-                            <td><br><br></td>
-                            <td><br><br></td>
+                            <td>Action</td>
                         </tr>
-			{foreach from=$Article item=article}
+
+                        <?php
+                            $sql = "SELECT * FROM NEWS ";
+                            foreach($bdd->query($sql) as $data) {
+                        ?>
 
                         <tr>
                             <td>
-                              {$article.Id}
-			    </td>
-                            <td>
-                              {$article.titre}
+                                <?php
+                                    echo $data['Id'];
+                                ?>
                             </td>
                             <td>
-                              {$article.contenu}
+                                <?php 
+                                    echo $data['titre'];
+                                ?>
                             </td>
                             <td>
-                                <form action="index.php?page=edit_article" method="post">
-                                        <input type="hidden" name="id_edit" value="{$article.Id}">
-                                        <button type="submit" title="editer">
-                                            <span>Edit</span>
-                                        </button>
-                                </form>
+                                <?php
+                                    echo resume_text($data['contenu'], 100);
+                                ?>
                             </td>
                             <td>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id_supp" value="{$article.Id}">
-                                    <button type="submit">
-                                        <span>X</span>
-                                    </button>
-                                </form>
+                                <button onclick="self.location.href='index.php?page=article&id=<?php echo $data['Id']; ?>'" title="Editer">
+                                    <img src="Images/edition.png">
+                                </button>
+                                <button onclick="self.location.href='index.php?page=article&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                    <img src="Images/suppression.bmp">
+                                </button>
                             </td>
                         </tr>
-			{/foreach}
+
+                        <?php
+                            }
+                        ?>
                     </table>
                 </div>
                 <br>
@@ -63,4 +72,4 @@
             </div>
         </div>
     </body>
-
+</html>

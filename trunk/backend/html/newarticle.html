@@ -8,6 +8,9 @@
     </head>
     <body>
     	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
             <br>
             <div class="entete">
             	<img src="Images/newarticle.png">
@@ -15,7 +18,7 @@
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=new_article&action=ajouter">
+                <form method="post" action="index.php?page=article&action=ajouter">
                 <br>
                 <fieldset>
                     <legend>Ajouter un article</legend>

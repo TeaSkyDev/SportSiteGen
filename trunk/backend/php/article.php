@@ -1,15 +1,30 @@
 <?php
 
-include("News.php");
-$news = new News($bdd);
+/* Vérification des arg de l'url : si une action est demandée on la traite */
+if(isset($_GET['action'])) {
+    $action = $_GET['action']; //on récupère l'action
 
-$data = $news->get_content();
+    /* Si on veut ajouter un news... */
+    if($action == "ajouter") {
 
-for($i = 0 ; $i < $news->get_size() ; $i++) {
-    $data[$i]['contenu'] = resume_text($data[$i]['contenu'],100);
+        //ON AJOUTE LA NEWS ICI DANS LA BDD ICI
+        //function add_NEWS($bdd, $titre, $date, $contenu, $IdPhoto, $auteur){
+        add_NEWS($bdd, $_POST['titre'], date("Y-m-d H:i:s"), $_POST['editor1'], 1, "Admin");
+        echo var_dump($_POST);
+        //header("Location: index.php?page=new_article");
+
+    } else if($action == "supprimer") { /* Sinon si on demande une suppression.. */
+        if(isset($_GET['id'])) {
+            echo "article a supprimer id =".$_GET['id'];
+            /* ATTENDRE QUE LA PAGE AFFICHAGE DES ARTICLES SOIT CREE  */
+            /* PUIS SUPPRIMER LE OU LES ARTICLES QUI ONT ETE COCHES */
+
+        } else {
+            echo "erreur, il manque l'id de la news à supprimer.<br>";
+        }
+    }
+
+} else {
+    include("html/article.html");
 }
-
-$smarty->assign("Article", $data);
-$smarty->display("html/article.html");
-
 ?>

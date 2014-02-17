@@ -7,6 +7,9 @@
     </head>
     <body>
         <div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
             <br>
             <div class="entete">
                 <img src="Images/newarticle.png">
@@ -14,7 +17,7 @@
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=new_membre&action=ajouter">
+                <form method="post" action="index.php?page=membre&action=ajouter">
                 <br>
                 <fieldset>
                     <legend>Ajouter un Membre</legend>
@@ -28,14 +31,32 @@
                     <br>
                     <br>
                
-                        Mot de passe : <input type="password" name="pass">
+                        Mot de passe : <input type="text" name="mdp">
                
                     <br>
                     <br>
 
-                        Confirmation Mot de passe : <input type="password" name="cfpass">
+                        Confirmation Mot de passe : <input type="text" name="cmdp">
                     <br>
-                    <br>                 
+                    <br>
+                    Type : 
+                    <select name="type">
+                    <?php
+                        $sql="SELECT * FROM TYPE_USER";
+                        foreach ($bdd->query($sql) as $data) {
+                    ?>
+                        <option value="<?php echo $data['Id']; ?>">
+                            <?php
+                                echo $data['Nom'];
+                            ?>
+                        </option>
+                        <br>
+                    </select>
+                    <?php
+                        }
+                    ?>  
+                    <br>
+                    <br>           
                     <input type="submit" value="Envoyer">
                 </fieldset>
                 <br>
