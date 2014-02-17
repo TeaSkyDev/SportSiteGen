@@ -1,5 +1,3 @@
-<!doctype html>
-<html>
     <head>
         <title>Article</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
@@ -8,10 +6,6 @@
     <script language=JavaScript src="js/accueil.js"></script>
     <body>
     	<div id="contenu">
-            <?php
-                @include ("header.html");
-
-            ?>
             <br>
             <div class="entete">
                     <img src="Images/newarticle.png">
@@ -28,47 +22,36 @@
                             <td><br><br></td>
                             <td><br><br></td>
                         </tr>
-
-                        <?php
-                            $sql = "SELECT * FROM NEWS order by Id DESC";
-                            foreach($bdd->query($sql) as $data) {
-                        ?>
+			{foreach from=$Article item=article}
 
                         <tr>
                             <td>
-                                <?php
-                                    echo $data['Id'];
-                                ?>
+                              {$article.Id}
+			    </td>
+                            <td>
+                              {$article.titre}
                             </td>
                             <td>
-                                <?php 
-                                    echo $data['titre'];
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                    echo resume_text($data['contenu'], 100);
-                                ?>
+                              {$article.contenu}
                             </td>
                             <td>
                                 <form action="index.php?page=edit_article" method="post">
-                                        <input type="hidden" name="id_edit" value="<?php echo $data['Id']; ?>">
+                                        <input type="hidden" name="id_edit" value="{$article.Id}">
                                         <button type="submit" title="editer">
                                             <span>Edit</span>
                                         </button>
                                 </form>
                             </td>
                             <td>
-                                <form method="post" action="index.php?page=suppr_article" name="form_supp">
-                                    <input type="hidden" name="id_supp" value="<?php echo $data['Id']; ?>"/>
-                                    <input type="submit" value="X"/>
+                                <form action="" method="post">
+                                    <input type="hidden" name="id_supp" value="{$article.Id}">
+                                    <button type="submit">
+                                        <span>X</span>
+                                    </button>
                                 </form>
                             </td>
                         </tr>
-
-                        <?php
-                            }
-                        ?>
+			{/foreach}
                     </table>
                 </div>
                 <br>
@@ -80,4 +63,4 @@
             </div>
         </div>
     </body>
-</html>
+
