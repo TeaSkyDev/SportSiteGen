@@ -1,6 +1,6 @@
 <?php
 
-include("Profil.php");
+
 $profil = new Profil($bdd);
 
 

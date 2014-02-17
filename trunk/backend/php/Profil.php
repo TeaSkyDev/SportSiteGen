@@ -32,9 +32,10 @@ class Profil {
 	return $query->rowCount() == 0;
     }
 
-    public function insert($name, $pass, $photo, $type) {
-	$query = $this->_bdd->prepare("insert into UTILISATEUR values(null, :name, :pass, :photo, :type)");
+    public function insert($name, $mail, $pass, $photo, $type) {
+	$query = $this->_bdd->prepare("insert into UTILISATEUR values(null, :name, :mail, :pass, :photo, :type)");
 	$query->bindParam(":name", $name);
+	$query->bindParam(":mail", $mail);
 	$query->bindParam(":pass", md5($pass));
 	$query->bindParam(":photo", $photo);
 	$query->bindParam(":type", $type);

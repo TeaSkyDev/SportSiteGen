@@ -12,6 +12,7 @@ require("../mysql_connect.php");
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require("php/fonctions.php");
 require_once("../tpl/libs/Smarty.class.php");
+require_once("php/Profil.php");
 $smarty  = new Smarty();
 
 /* Si l'admin n'est pas connecté, on l'envoie sur la page de login */
@@ -44,8 +45,11 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 include("php/membre.php");
                 break;
             case 'new_membre':
-                include("html/newmembre.html");
-                break;
+		if( isset($_GET['action']) ) {
+		    include("php/newmembre.php");
+		} else {
+		    include("html/newmembre.html");
+		} break;
             case 'err':
                 include("php/err.php");
 			default:
