@@ -8,12 +8,9 @@
     <script language=JavaScript src="js/accueil.js"></script>
     <body>
     	<div id="contenu">
-            <?php
-                @include ("header.html");
-            ?>
-            <br>
-            <div class="entete">
-                    <img src="Images/newarticle.png">
+          <br>
+          <div class="entete">
+            <img src="Images/newarticle.png">
                     <h1>Gestion des Membres : Liste des Membres</h1> 
             </div>
             <br>
@@ -27,31 +24,20 @@
                             <td><br><br></td>
                             <td><br><br></td>
                         </tr>
-
-                        <?php
-                            $sql = "SELECT * FROM UTILISATEUR ";
-                            foreach($bdd->query($sql) as $data) {
-                        ?>
-
+			{foreach from=$Membre item=membre}
                         <tr>
                             <td>
-                                <?php
-                                    echo $data['Id'];
-                                ?>
+                              {$membre.Id}
                             </td>
                             <td>
-                                <?php 
-                                    echo $data['Pseudo'];
-                                ?>
+			      {$membre.Pseudo}
                             </td>
                             <td>
-                                <?php
-                                    echo $data['Mail'];
-                                ?>
+			      {$membre.Mail}
                             </td>
                             <td>
                                 <form action="index.php?page=edit_membre" method="post">
-                                        <input type="hidden" name="id_edit" value="<?php echo $data['Id']; ?>">
+                                        <input type="hidden" name="id_edit" value="{$membre.Id}">
                                         <button type="submit" title="editer">
                                             <span>Edit</span>
                                         </button>
@@ -59,23 +45,20 @@
                             </td>
                             <td>
                                 <form action="" method="post">
-                                    <input type="hidden" name="id_supp" value="<?php echo $data['Id']; ?>">
+                                    <input type="hidden" name="id_supp" value="{$membre.Id}">
                                     <button type="submit" title="supprimer">
                                         <span>X</span>
                                     </button>
                                 </form>
                             </td>
                         </tr>
-
-                        <?php
-                            }
-                        ?>
+			{/foreach}
                     </table>
                 </div>
                 <br>
                 
                 <a href="index.php?page=new_membre">
-                    <input type="button" value="Nouvelle Membre">
+                    <input type="button" value="Nouveau Membre">
                 </a>
 
             </div>

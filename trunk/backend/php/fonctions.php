@@ -395,4 +395,19 @@ function Update_TABLE_byName($bdd, $TblName, $id, $name, $value){
   else return false;
 }
 
+
+
+function resume_text($txt, $limit) {
+    $length = strlen($txt);
+    $res    = $txt;
+    if(is_numeric($limit)) {
+        if($length > $limit) {
+            /* On coupe à limit, on évite de couper un mot avec strpos */
+            $res = substr($res, 0, strpos($res, ' ', $limit));
+            $res .= "...";
+        }
+    }
+    return $res;
+}
+
 ?>
