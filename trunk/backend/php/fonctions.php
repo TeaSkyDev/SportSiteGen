@@ -201,11 +201,22 @@ function add_SITE($bdd, $nom, $URL){
 }
 
 
+function get_nb_news($bdd) {
+    $nb = $bdd->query("select count(*) from NEWS");
+    if($nb) {
+	$res = $nb->fetch();
+	return $res['count(*)'];
+    } else {
+	return -1;
+    }
+}
+
+
 function get_nb_photos($bdd) {
   $nb = $bdd->query("select count(*) from PHOTO");
   if($nb) {
     $res = $nb->fetch();
-    return $res[0];
+    return $res['count(*)'];
   } else {
     return -1;
   }
@@ -215,7 +226,7 @@ function get_nb_type_user($bdd) {
   $nb = $bdd->query("select count(*) from TYPE_USER");
   if($nb) {
     $res = $nb->fetch();
-    return $res[0];
+    return $res['count(*)'];
   } else {
     return -1;
   }
@@ -394,8 +405,6 @@ function Update_TABLE_byName($bdd, $TblName, $id, $name, $value){
   if($select) return true;
   else return false;
 }
-
-
 
 function resume_text($txt, $limit) {
     $length = strlen($txt);

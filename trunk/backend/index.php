@@ -16,7 +16,12 @@ $smarty  = new Smarty();
 
 /* Si l'admin n'est pas connecté, on l'envoie sur la page de login */
 if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
-	$_SESSION['admin_connected'] = false;
+	if(isset($_GET['page'])) {
+        if($_GET['page'] == "err") {
+            include("php/err.php");
+        }
+    }
+    $_SESSION['admin_connected'] = false;
 	include("html/authen.html");
 } else { /* Sinon on vérifie si il a demandé une page en particulier */
 	if(isset($_GET['page']) || isset($_POST['page'])) {
@@ -26,6 +31,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 			case 'new_article':
 				include("php/newarticle.php");
 				break;
+            case 'suppr_article':
+                include("php/suppr_article.php");
+                break;
 			case 'article':
 				include("html/article.html");
 				break;
@@ -38,6 +46,8 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'new_membre':
                 include("html/newmembre.html");
                 break;
+            case 'err':
+                include("php/err.php");
 			default:
 				include("html/accueil.html");
 		}

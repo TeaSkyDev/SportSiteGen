@@ -14,6 +14,13 @@ a{
     text-decoration: none;
 }
 
+div{
+    -webkit-box-shadow: 1px 1px 5px rgba(50, 50, 50, 0.79);
+    -moz-box-shadow:    1px 1px 5px rgba(50, 50, 50, 0.79);
+    box-shadow:         1px 1px 5px rgba(50, 50, 50, 0.79);
+    border-radius: 10px;
+}
+
 .titre{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px; 
@@ -82,4 +89,17 @@ a.deco{
     color:rgb(0,95,153);
     position: absolute;
     right: 10px;
+}
+
+#contenu{
+    position: absolute;
+    margin: 1%;
+    text-shadow:1px 1px 1px #fff;
+    width: 98%;
+}
+
+.interieur{
+    background-color: rgb(236,236,236);
+    margin:10px;
+    padding: 10px;
 }
