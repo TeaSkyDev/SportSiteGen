@@ -20,10 +20,10 @@ class Content {
         $this->_smarty   = $smarty;
     }
 
-    public function get_html($page) {
+    public function get_html($page, $param = null) {
         if($page == "news") {
-            
-            $news_obj = new News($this->_bdd);
+
+            $news_obj = new News($this->_bdd, $param);
             $news     = $news_obj->get_content();
             $this->_smarty->assign("News", $news);
 
@@ -46,23 +46,23 @@ class Content {
             return $this->_smarty->fetch("templates/".$this->_template."/html/equipes.html");
 
         } else if ($page == "match") {
-	    $match_obj = new Match($this->_bdd);
-	    $equ_obj = new Equipe($this->_bdd);
-	    $match = $match_obj->get_content();
-	    $data = array();
-	    $i = 0;
-	    while(isset($match[$i])) {
-		$data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
-		$data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
-		$data[$i]['point1'] = $match[$i]['nbPoint1'];
-		$data[$i]['point2'] = $match[$i]['nbPoint2'];
-		$data[$i]['date'] = $match[$i]['DateMATCHS'];
-		$data[$i]['comm'] = $match[$i]['Commentaires'];
-		$i++;
-	    }
-	    $this->_smarty->assign("Match", $data);
+            $match_obj = new Match($this->_bdd);
+            $equ_obj = new Equipe($this->_bdd);
+            $match = $match_obj->get_content();
+            $data = array();
+            $i = 0;
+            while(isset($match[$i])) {
+                $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
+                $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
+                $data[$i]['point1'] = $match[$i]['nbPoint1'];
+                $data[$i]['point2'] = $match[$i]['nbPoint2'];
+                $data[$i]['date'] = $match[$i]['DateMATCHS'];
+                $data[$i]['comm'] = $match[$i]['Commentaires'];
+            $i++;
+            }
+            $this->_smarty->assign("Match", $data);
 
-	    return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
+            return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
 
 	    } else if($page == "profil" && isset($_SESSION)) {
             if(isset($_SESSION['connected'])) {

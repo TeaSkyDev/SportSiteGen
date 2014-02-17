@@ -38,10 +38,11 @@ $footer = $fo->get_content();
 $content = new Content($bdd, $template, $smarty);
 if(isset($_GET['page']) || isset($_POST['page'])) {
 	$page = $_REQUEST['page'];
+    $param = get_params($_GET); /* On récupère tous les params sauf la page */
 
 	switch($page) {
 		case "news":
-			$content_html = $content->get_html("news");
+			$content_html = $content->get_html("news", $param);
 			break;
         case "calendrier":
             $content_html = $content->get_html("calendrier");

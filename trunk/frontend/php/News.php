@@ -6,18 +6,38 @@ class News {
     private $_bdd;
     private $_nb;
 
-    public function __construct($bdd) {
-	$this->_bdd = $bdd;
-	$query = $bdd->query("select * from NEWS ORDER BY Id desc");
-	if($query->rowCount() != 0) {
-	    $this->_nb = 0;
-	    while($d = $query->fetch()) {
-		$this->_data[$this->_nb] = $d;
-		$this->_nb++;
-	    }
-	}
+    public function __construct($bdd, $param = null) {
+        $this->_bdd = $bdd;
+	    if(isset($param) && $param != null) {
+            if($param['v1'] == "lire_news" && isset($param['v2'])) {
+                $this->get_one_news($param['v2']);
+            } else {
+                $this->get_all_news();
+            }
+        } else {
+            $this->get_all_news();
+        }
     }
-    
+
+    public function get_all_news() {
+        $query = $this->_bdd->query("select * from NEWS ORDER BY Id desc");
+        if($query->rowCount() != 0) {
+            $this->_nb = 0;
+            while($d = $query->fetch()) {
+                $this->_data[$this->_nb] = $d;
+                $this->_nb++;
+            }
+        }
+    }
+
+    public function get_one_news($id) {
+        $query = $this->_bdd->query("select * from NEWS where Id = ".$id);
+        if($query->rowCount() != 0) {
+            $this->_nb = 1;
+            $this->_data[0] = $query->fetch();
+        }
+    }
+
     public function get_content() {
 	return $this->_data;
     }

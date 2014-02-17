@@ -4,7 +4,7 @@
     </tr>
     {foreach from=$News item=news}
     <tr>
-        <td><u>{$news.titre}</u> - <i>{$news.date}</i></td>
+        <td><a href="index.php?page=news&v1=lire_news&v2={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></td>
     </tr>
     <tr>
         <td>{$news.contenu}</td>
