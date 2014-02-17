@@ -29,10 +29,11 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
 			//echo 'Vous etes maintenant connecte.<br><a href="../index.php">Acceder a la page d\'administration</a>';
 			header("Location: ../html/ok.html");
 		} else {
-			echo 'Vous n\'etes pas administrateur !<br><a href="../frontend/index.php">Quitter</a>';	
+            header("Location: ../frontend/index.php?page=err&msg=Page reservee aux administrateurs.");
 		}
 	} else {
-		echo 'Pseudo &/|| mot de passe incorrecte.<br><a href="index.php">Nouvelle tentative</a>';
-	}
+        $msg = urlencode('Pseudo &&/|| mot de passe incorrecte.');
+	    header("Location: ../index.php?page=err&msg=".$msg);
+    }
 }
 ?>
