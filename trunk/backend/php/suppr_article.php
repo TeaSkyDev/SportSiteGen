@@ -3,8 +3,8 @@
 echo var_dump($_GET);
 echo var_dump($_POST);
 
-if(isset($_POST['id_supp']) && isset($_GET['page'])) {
-        if(Delete_byID($bdd, "NEWS", $_POST['id_supp'])) {
+if(isset($_GET['id']) && isset($_GET['page'])) {
+        if(Delete_byID($bdd, "NEWS", $_GET['id'])) {
             header("Location: index.php?page=article");
         } else {
             $msg = "Erreur lors de la suppression.";

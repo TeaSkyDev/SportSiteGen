@@ -1,7 +1,7 @@
 .tableau {
     margin:0px;
     padding:0px;
-    width:100%;
+    width:99%;
     border:1px solid #000000;
     
     -moz-border-radius-bottomleft:0px;
@@ -28,34 +28,6 @@
     height:100%;
     margin:0px;
     padding:0px;
-}
-
-.tableau tr:last-child td:last-child {
-    -moz-border-radius-bottomright:0px;
-    -webkit-border-bottom-right-radius:0px;
-    border-bottom-right-radius:0px;
-}
-
-.tableau table tr:first-child td:first-child {
-    -moz-border-radius-topleft:0px;
-    -webkit-border-top-left-radius:0px;
-    border-top-left-radius:0px;
-}
-
-.tableau table tr:first-child td:last-child {
-    -moz-border-radius-topright:0px;
-    -webkit-border-top-right-radius:0px;
-    border-top-right-radius:0px;
-}
-
-.tableau tr:last-child td:first-child{
-    -moz-border-radius-bottomleft:0px;
-    -webkit-border-bottom-left-radius:0px;
-    border-bottom-left-radius:0px;
-}
-
-.tableau tr:hover td{
-    
 }
 
 .tableau tr:nth-child(odd){
