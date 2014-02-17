@@ -35,7 +35,7 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 include("php/suppr_article.php");
                 break;
 			case 'article':
-				include("html/article.html");
+				include("php/article.php");
 				break;
 			case 'logout':
 				include("php/logout.php");
