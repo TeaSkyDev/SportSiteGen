@@ -10,8 +10,8 @@ if(isset($_GET['action'])) {
         //ON AJOUTE LA NEWS ICI DANS LA BDD ICI
         //function add_NEWS($bdd, $titre, $date, $contenu, $IdPhoto, $auteur){
         add_NEWS($bdd, $_POST['titre'], date("Y-m-d H:i:s"), $_POST['editor1'], 1, "Admin");
-        echo var_dump($_POST);
-        //header("Location: index.php?page=new_article");
+        //echo var_dump($_POST);
+        header("Location: index.php?page=article");
 
     } else if($action == "supprimer") { /* Sinon si on demande une suppression.. */
         if(isset($_GET['id_news'])) {
