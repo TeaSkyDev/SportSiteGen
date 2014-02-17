@@ -395,6 +395,12 @@ function Update_TABLE_byName($bdd, $TblName, $id, $name, $value){
   else return false;
 }
 
+function Delete_byID($bdd, $TblName, $id) {
+    $req = $bdd->query("DELETE FROM ".$TblName." WHERE Id = ".$id);
+    if($req) return true;
+    else return false;
+}
+
 function resume_text($txt, $limit) {
     $length = strlen($txt);
     $res    = $txt;
@@ -407,5 +413,7 @@ function resume_text($txt, $limit) {
     }
     return $res;
 }
+
+
 
 ?>

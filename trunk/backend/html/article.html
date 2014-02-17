@@ -59,11 +59,9 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="" method="post">
-                                    <input type="hidden" name="id_supp" value="<?php echo $data['Id']; ?>">
-                                    <button type="submit">
-                                        <span>X</span>
-                                    </button>
+                                <form method="post" action="index.php?page=suppr_article" name="form_supp">
+                                    <input type="hidden" name="id_supp" value="<?php echo $data['Id']; ?>"/>
+                                    <input type="submit" value="X"/>
                                 </form>
                             </td>
                         </tr>

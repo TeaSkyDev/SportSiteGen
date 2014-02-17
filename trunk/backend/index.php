@@ -28,6 +28,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 			case 'new_article':
 				include("php/newarticle.php");
 				break;
+            case 'suppr_article':
+                include("php/suppr_article.php");
+                break;
 			case 'article':
 				include("html/article.html");
 				break;
@@ -40,6 +43,8 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'new_membre':
                 include("html/newmembre.html");
                 break;
+            case 'err':
+                include("php/err.php");
 			default:
 				include("html/accueil.html");
 		}
