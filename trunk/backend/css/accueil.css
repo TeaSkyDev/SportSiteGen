@@ -1,3 +1,10 @@
+.interieur{
+    background-color: rgb(236,236,236);
+    margin:10px;
+    padding: 10px;
+    height: 495px;
+}
+
 #LQuickIcon{
     border-color: rgb(229,229,229);
     border-style: solid;

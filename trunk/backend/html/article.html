@@ -49,10 +49,10 @@
                                 ?>
                             </td>
                             <td>
-                                <button onclick="self.location.href='index.php?page=article&id=<?php echo $data['Id']; ?>'" title="Editer">
+                                <button onclick="self.location.href='index.php?page=edit_article&id=<?php echo $data['Id']; ?>'" title="Editer">
                                     <img src="Images/edition.png">
                                 </button>
-                                <button onclick="self.location.href='index.php?page=suppr_article&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                <button onclick="self.location.href='index.php?page=article&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
                                     <img src="Images/suppression.bmp">
                                 </button>
                             </td>
