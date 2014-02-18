@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Match</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+    </head>
+    <body>
+    	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
+            <div class="entete">
+                    <img src="Images/newarticle.png">
+                    <h1>Gestion des Matchs : Liste des Matchs</h1> 
+            </div>
+            <br>
+            <div class="interieur">
+                <div class="tableau">
+                    <table>
+                        <tr>
+                            <td>Id</td>
+                            <td>Catégorie</td>
+                            <td>Equipe adverse</td>
+                            <td>Date</td>
+                            <td>Heure</td>
+                            <td>Lieu</td>
+                            <td>Score</td>
+                            <td>Action</td>
+                        </tr>
+
+                        <?php
+                            $sql = "SELECT * FROM MATCHS order by Id DESC ";
+                            foreach($bdd->query($sql) as $data) {
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php
+                                    echo $data['Id'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $data['IdCategorie'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['IdTeamAdv'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['DateMATCHS'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['Heure'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['Lieu'];
+                                ?>
+                            </td>
+                            <td>
+                                recuperer score
+                            </td>
+                            <td>
+                                <button onclick="self.location.href='index.php?page=edit_match&id=<?php echo $data['Id']; ?>'" title="Editer">
+                                    <img src="Images/edition.png">
+                                </button>
+                                <button onclick="self.location.href='index.php?page=match&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                    <img src="Images/suppression.bmp">
+                                </button>
+                            </td>
+                        </tr>
+
+                        <?php
+                            }
+                        ?>
+                    </table>
+                </div>
+                <br>
+                
+                <a href="index.php?page=new_membre">
+                    <input type="button" value="Nouvelle Membre">
+                </a>
+
+            </div>
+        </div>
+    </body>
+</html>
