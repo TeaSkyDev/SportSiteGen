@@ -45,7 +45,7 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 			$content_html = $content->get_html("news", $param);
 			break;
         case "calendrier":
-            $content_html = $content->get_html("calendrier");
+            $content_html = $content->get_html("calendrier", $param);
             break;
         case "equipes":
         	$content_html = $content->get_html("equipes");

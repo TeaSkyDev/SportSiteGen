@@ -38,10 +38,20 @@ class Content {
             return $this->_smarty->fetch("templates/".$this->_template."/html/news.html");
 	    
         } else if($page == "calendrier") {
-
-            $events_obj = new Calendrier($this->_bdd);
+            $events_obj = new Calendrier($this->_bdd, $param);
             $events     = $events_obj->get_content();
+	    $com        = $events_obj->get_content_com();
+	    $simple = array();
+	    $simple['one'] = isset($param['v1']);
+	    if ( $simple['one'] ) {
+		if( $simple['one'] ) {
+		    $simple['connected'] = isset($_SESSION['connected']);
+		    $simple['Id'] = $events[0]['Id'];
+		}	
+	    }
             $this->_smarty->assign("Events", $events);
+	    $this->_smarty->assign("Com", $com);
+	    $this->_smarty->assign("NSimple", $simple);
 
             return $this->_smarty->fetch("templates/".$this->_template."/html/calendrier.html");
 
