@@ -4,7 +4,6 @@ drop table TOURNOI;
 drop table EVENT_ADV;
 drop table EVENT;
 drop table JOUEUR;
-drop table POINTS;
 drop table MENU_ELEM;
 drop table POSTE;
 drop table PHOTO_MATCHS;

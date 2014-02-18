@@ -41,7 +41,7 @@ create table TEAM(
 
 create table MATCHS(
        Id integer(10) primary key AUTO_INCREMENT,
-       IdCategorie integer(10) references CATEGORIE(Id),
+       joue integer(1), 
        IdTeam1 integer(10) references TEAM(Id),
        IdTeam2 integer(10) references TEAM(Id) ,
        nbPoint1 integer(5),
@@ -62,14 +62,6 @@ create table PHOTO_MATCHS(
 create table POSTE(
        Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(10),
-       Description varchar(50)
-);
-
-
-create table POINTS(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(10) not null,
-       NbPoints integer(2) not null,
        Description varchar(50)
 );
 
