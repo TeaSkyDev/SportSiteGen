@@ -56,6 +56,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "connexion":
         	$content_html = $content->get_html("connexion");
         	break;
+	case "match":
+	        $content_html = $content->get_html("match");
+	        break;
         case "inscription":
             $content_html = $content->get_html("inscription");
             break;
