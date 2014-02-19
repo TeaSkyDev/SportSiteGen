@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(11, 22, 22);
+}
+
+#titre{
+    color:white;
+    text-align:center;
+}
+
+#menu{
+    width:100%;
+}
+
+table {
+    margin-top: 10px;
+    width: 75%;
+    border: 1px solid blue;
+}
+
+tr {
+    background-color: #7470E3;
+}
+#menu td {
+    text-align:center;
+}
+
+td {
+    background-color: #9493AC;
+}
+
+.aside {
+    margin-top:50px;
+    width: 12%;
+    position: absolute;
+    margin-left: 0px;
+    top: 10%;
+}
