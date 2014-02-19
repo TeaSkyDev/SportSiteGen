@@ -1,0 +1,39 @@
+
+<html>
+  <header>
+    <title>{$Name}</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {foreach from=$Style item=style}
+    <link rel="stylesheet" href="{$style}" type="text/css">
+    {/foreach}
+  </header>
+  <body>
+    <h1 id="titre">{$Name}</h1>
+    <table id="menu">
+      <tr>
+	{foreach from=$Header item=menu}
+	<td><a href="{$menu.url}">{$menu.title}</a></td>
+	{/foreach}
+      </tr>
+    </table>
+    {$Content}
+    <table class="aside">
+        <tr>
+            <th>LAST NEWS</th>
+        </tr>
+        {foreach from=$AsideNews item=it}
+        <tr>
+	        <td>{$it.titre}</td>
+        </tr>
+        {/foreach}
+        <tr>
+            <th>LAST EVENTS</th>
+        </tr>
+        {foreach from=$AsideCal item=it}
+        <tr>
+	        <td>{$it.titre}</td>
+        </tr>
+        {/foreach}
+    </table>
+  </body>
+</html>
