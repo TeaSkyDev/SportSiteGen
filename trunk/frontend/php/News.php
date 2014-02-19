@@ -9,16 +9,24 @@ class News {
 
     public function __construct($bdd, $param = null) {
         $this->_bdd = $bdd;
-	    if(isset($param) && $param != null) {
+	if(isset($param) && $param != null) {
             if($param['v1'] == "lire_news" && isset($param['v2'])) {
                 $this->get_one_news($param['v2']);
-            } else {
-                $this->get_all_news();
-            }
-        } else {
-            $this->get_all_news();
-        }
+		if ( isset($param['news_com']) && $param['news_com'] == 'true') {
+		    if($this->add_com_byNewsId($_POST['id_news'], $_POST['message'])){
+			header("Location:index.php?page=news&v1=lire_news&v2=".$param['v2']);
+		    } else {
+			//header("Location:index.php?page=err&msg=");	
+		    }
+		}
+	    } else {
+		$this->get_all_news();
+	    }
+	} else {
+	    $this->get_all_news();
+	}
     }
+
 
     public function get_all_news() {
         $query = $this->_bdd->query("select * from NEWS ORDER BY Id desc");
@@ -62,6 +70,19 @@ class News {
 	    return null;
 	}
     }
+
+    public function add_com_byNewsId($id, $text) {
+	$date = date("Y-m-d H:i:s");
+
+	$user = $_SESSION['user']['Id'];
+	$query = $this->_bdd->prepare("insert into NEWS_COM values(null, :text, :date, :idnews, :iduser)");
+	$query->bindParam(":text", $text);
+	$query->bindParam(":date", $date);
+	$query->bindParam(":idnews", $id);
+	$query->bindParam(":iduser", $user);
+	$query->execute();
+	return $query->rowCount() == 1;
+    } 
 
     public function get_content() {
 	return $this->_data;

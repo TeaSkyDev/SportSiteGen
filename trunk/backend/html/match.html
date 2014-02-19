@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Membres</title>
+        <title>Match</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
         <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
     </head>
@@ -13,7 +13,7 @@
             <br>
             <div class="entete">
                     <img src="Images/newarticle.png">
-                    <h1>Gestion des Membres : Liste des Membres</h1> 
+                    <h1>Gestion des Matchs : Liste des Matchs</h1> 
             </div>
             <br>
             <div class="interieur">
@@ -21,13 +21,17 @@
                     <table>
                         <tr>
                             <td>Id</td>
-                            <td>Pseudo</td>
-                            <td>Mail</td>
+                            <td>Catégorie</td>
+                            <td>Equipe adverse</td>
+                            <td>Date</td>
+                            <td>Heure</td>
+                            <td>Lieu</td>
+                            <td>Score</td>
                             <td>Action</td>
                         </tr>
 
                         <?php
-                            $sql = "SELECT * FROM UTILISATEUR order by Id DESC";
+                            $sql = "SELECT * FROM MATCHS order by Id DESC ";
                             foreach($bdd->query($sql) as $data) {
                         ?>
 
@@ -39,19 +43,37 @@
                             </td>
                             <td>
                                 <?php 
-                                    echo $data['Pseudo'];
+                                    echo $data['IdCategorie'];
                                 ?>
                             </td>
                             <td>
                                 <?php
-                                    echo $data['Mail'];
+                                    echo $data['IdTeamAdv'];
                                 ?>
                             </td>
                             <td>
-                                <button onclick="self.location.href='index.php?page=edit_membre&id=<?php echo $data['Id']; ?>'" title="Editer">
+                                <?php
+                                    echo $data['DateMATCHS'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['Heure'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['Lieu'];
+                                ?>
+                            </td>
+                            <td>
+                                recuperer score
+                            </td>
+                            <td>
+                                <button onclick="self.location.href='index.php?page=edit_match&id=<?php echo $data['Id']; ?>'" title="Editer">
                                     <img src="Images/edition.png">
                                 </button>
-                                <button onclick="self.location.href='index.php?page=membre&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                <button onclick="self.location.href='index.php?page=match&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
                                     <img src="Images/suppression.bmp">
                                 </button>
                             </td>
