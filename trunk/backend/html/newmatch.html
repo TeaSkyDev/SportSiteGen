@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Nouvelle Article</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="css/calendrier.css" type="text/css" media="screen"/>
+        <script type="text/javascript" src="js/calendrier.js"></script>
+    </head>
+    <body>
+    	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
+            <div class="entete">
+            	<img src="Images/newarticle.png">
+            	<h1>Gestion des Matchs : Ajouter un Match</h1> 
+            </div>
+            <br>
+            <div class="interieur">
+                <form method="post" action="index.php?page=match&action=ajouter">
+                <br>
+                <fieldset>
+                    <legend>Ajouter un Match</legend>
+                    <br>
+                    Catégorie : 
+                    <select name="cate">
+                    <?php
+                        $sql="SELECT * FROM CATEGORIE";
+                        foreach ($bdd->query($sql) as $data) {
+                    ?>
+                        <option value="<?php echo $data['Id']; ?>">
+                            <?php
+                                echo $data['Nom'];
+                            ?>
+                        </option>
+                        <br>
+                    <?php
+                        }
+                    ?>
+                    </select>
+                    <br>
+                    <br>
+                    Equipe adverse :
+                    <select name="team">
+                    <?php
+                        $sql="SELECT * FROM TEAM";
+                        foreach ($bdd->query($sql) as $data) {
+                    ?>
+                        <option value="<?php echo $data['Id']; ?>">
+                            <?php
+                                echo $data['Nom'];
+                            ?>
+                        </option>
+                        <br>
+                    <?php
+                        }
+                    ?>
+                    </select>
+                    <br>
+                    <br>
+                    Date :
+                    <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+                        <tr>
+                            <td id="ds_calclass"></td>
+                        </tr>
+                    </table>
+                    <input type="text" name="date1" onclick="ds_sh(this);" />
+                    <br>
+                    <br>
+                    Lieu : <input type="text" name="lieu">
+                    <br>
+                    <br>
+                    <input type="submit" value=" Envoyer">
+                    <input type="button" value="Apercu">
+                </fieldset>
+                <br>
+                </form>
+	        </div>
+        </div>
+    </body>
+</html>
