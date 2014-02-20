@@ -29,7 +29,7 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 				include("php/article.php");
 				break;
 			case 'new_article':
-				include("html/article.html");
+				include("html/newarticle.html");
 				break;
             case 'suppr_article':
                 include("php/suppr_article.php");
