@@ -1,19 +1,21 @@
 body {
-    background-color: #CCCCCC;
+    background-color: grey;
 }
 
 table {
     margin-top: 10px;
     width: 75%;
-    border: 1px solid blue;
+    border: 2px solid blue;
 }
 
 th {
-    background-color: #7470E3;
+    background-color: black;
+    color : white;
 }
 
 td {
-    background-color: #9493AC;
+    background-color: white;
+    color : black;
 }
 
 .aside {
