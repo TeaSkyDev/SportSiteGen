@@ -7,7 +7,14 @@
     {/foreach}
   </header>
   <body>
-    <h1 align="center">{$Name}</h1>
+    <div id="fond">
+      <div class="ruban">    
+        <h2>{$Name}</h2>    
+      </div>    
+      <div class="ruban_gauche"></div>
+      <div class="ruban_droit"></div>
+    </div>
+    <!-- <h1 align="center">{$Name}</h1> -->
     <table align="center">
       <tr>
 	{foreach from=$Header item=menu}

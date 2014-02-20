@@ -18,7 +18,7 @@
     </tr>
     {foreach from=$Events item=event}
     <tr>
-        <th><u>{$event.titre} - {$event.location}</u> - <i>{$event.date}</i></th>
+        <td><a href="index.php?page=calendrier&v1=lire_event&v2={$event.Id}"><u>{$event.titre} - {$event.location}</u></a> - <i>{$event.date}</i></td>
     </tr>
     <tr>
         <td>{$event.contenu}</td>
