@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <title>Configuration</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+</head>
+<body>
+<div id="contenu">
+    <?php
+                @include ("header.html");
+            ?>
+    <br>
+    <div class="entete">
+        <img src="Images/newarticle.png">
+        <h1>Configuration</h1>
+    </div>
+    <br>
+    <div class="interieur">
+        <form method="post" action="index.php?page=configuration">
+            <br>
+            <fieldset>
+                <legend>Modifier le template</legend>
+
+                <br>
+                Templates :
+                <select name="template">
+                    <?php
+                    	$templates = scan_directory("../frontend/templates");
+                    	foreach($templates as $elem){
+                    ?>
+                    <option value="<?php echo $elem; ?>"><?php echo $elem; ?></option>
+                    <?php } ?>
+                </select>
+                <br>
+                <br>
+
+                <input type="submit" value="Modifier">
+            </fieldset>
+            <br>
+        </form>
+    </div>
+</div>
+</body>
+</html>

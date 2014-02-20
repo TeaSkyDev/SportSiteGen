@@ -414,6 +414,16 @@ function resume_text($txt, $limit) {
     return $res;
 }
 
+function scan_directory($directory) {
+    $dir = opendir($directory) or die ("Erreur ouverture du dossier");
+    $res = array();
+    while($elem = readdir($dir)) {
+        if(is_dir($directory."/".$elem) && $elem != "." && $elem != "..") {
+            array_push($res, $elem);
+        }
+    }
+    return $res;
+}
 
 
 ?>
