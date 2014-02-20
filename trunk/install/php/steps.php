@@ -236,8 +236,8 @@ function installation() {
     if($creation_reussie && $insertions_reussies) {
         unset($_SESSION);
         //cms_installed(); /* DESACTIVE LE TEMPS DU DEV */
-        echo 'Bravo votre cms est maintenant installe ! <br>Url de votre site : <a class="lien_cms" href="'.get_url_frontend().'">'.get_url_frontend().'</a><br>';
-        echo 'Voici le lien vers ta page d\'administration : <a href="'.get_url_backend().'">'.get_url_backend().'</a><br>';
+        echo 'Bravo votre cms est maintenant installe ! <br>Url de votre site : <a class="lien_cms" href="'.get_url_frontend().'" target="_blank">'.get_url_frontend().'</a><br>';
+        echo 'Voici le lien vers ta page d\'administration : <a href="'.get_url_backend().'" target="_blank">'.get_url_backend().'</a><br>';
         echo 'Pensez a les enregistrer dans vos favoris !!';
     } else {
         unset($_SESSION);
