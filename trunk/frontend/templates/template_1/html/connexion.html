@@ -1,89 +1,21 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>SportGen Template</title>
-	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<link rel="stylesheet" href="css/body.css" type="text/css">
-	<link rel="stylesheet" href="css/header.css" type="text/css">
-	<link rel="stylesheet" href="css/footer.css" type="text/css">
-</head>
-<body>
-	<div class="background">
-		<div class="connexion">
-		
-		</div>
-		<div class="page">
-			<div class="header">
-				<ul>
-					<li class="selected">
-						<a href="index.html">Home</a>
-					</li>
-					<li>
-						<a href="news.html">News</a>
-					</li>
-					<li>
-						<a href="equipe.html">Equipe</a>
-					</li>
-					<li>
-						<a href="calendrier.html">Calendrier</a>
-					</li>
-					<li >
-						<a href="about.html">About</a>
-					</li>
-					<li >
-						<a href="connexion.html">Connexion</a>
-					</li>
-					<li >
-						<a href="match.html">Match</a>
-					</li>
-				</ul>
-			</div>
-			<div class="sidebar">
-				<form action="index.html" method="post">
-					<div id="connexion_menu">
-					<td>
-								<tr>
-									<h3>Pseudo : </h3>
-									<td><input type="text" id="nickname"></td>
-								</tr>
-								<tr>
-									<h3>Mot de passe : </h3>
-									<td><input type="text" id="position"></td>
-								</tr>
-					</td>
-					<br>
-						<input type="submit" value="CONNEXION" id="application-submit">
-					<br>
-						<input type="button" value="S'INSCRIRE" onclick="./inscription.html">
-					</div>
-					
-				</form>
-			</div>
-			<div class="footer">
-				<div>
-				<ul>
-					<li>
-						<a href="news.html">News</a>
-					</li>
-					<li>
-						<a href="equipe.html">Equipe</a>
-					</li>
-					<li>
-						<a href="calendrier.html">Calendrier</a>
-					</li>
-					<li>
-						<a href="about.html">About</a>
-					</li>
-				</ul>
-					<p>
-						&#169; Akatsubaki 2013. All Rights Reserved
-					</p>
-				</div>
-				<div class="connect">
-					<span>Follow Us</span> <a href="" id="fb">fb</a> <a href="" id="twitter">twitter</a> <a href="" id="googleplus">google+</a> <a href="" id="contact">contact</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
-</html>
+
+
+            <form action="index.php?page=connexion" method="post" onsubmit = "return verif_form_connexion(this)">
+                <div id="connexion_menu">
+                    <td>
+                        <tr>
+                            <h3>Pseudo : </h3>
+                            <td><input type="text" id="nickname" name="pseudo"></td>
+                        </tr>
+                        <tr>
+                            <h3>Mot de passe : </h3>
+                            <td><input type="password" id="position" name="password"></td>
+                        </tr>
+                    </td>
+                    <br>
+                    <input type="submit" value="CONNEXION" id="application-submit">
+                    <br>
+                    <input type="button" value="S'INSCRIRE" onclick="document.location.href='index.php?page=inscription'">
+                </div>
+
+            </form>
