@@ -3,11 +3,17 @@
 
 include ("Tournoi.php");
 include ("../../mysql_connect.php");
-$param['v1'] = "lire_tourn";
-$param['v2'] = 1;
-$tour = new Tournoi($bdd, $param);
 
-echo var_dump($tour->get_content());
-echo var_dump($tour->get_content_match());
+$tour = new Tournoi($bdd);
+$data = $tour->get_treeTab_byId(1);
 
+?>
+
+
+<script>
+var tab = <?php echo json_encode($data); ?>
+</script>
+
+<?php
+include("../js/test.html");
 ?>

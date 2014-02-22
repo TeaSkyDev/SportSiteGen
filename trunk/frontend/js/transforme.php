@@ -17,6 +17,7 @@ for ( $j = 0 ; $j < 5 ; $j++) {
 
 <script>
 var tab = <?php echo json_encode($tab); ?>
+
 </script>
 
 <?php 

@@ -21,14 +21,18 @@ function BinaryTree (nbNode, tab) {
 
 		for (var i = 0 ; i < tmp  ; i++) {
 		    var color, textcolor, antcolor;
-		    if ( this._equipe[j][i]['gagne'] == "true" ) {
+		    if ( this._equipe[j][i]['gagne'] == 'true' ) {
 			color = "gold";
 			antcolor = "black";
 			textcolor = "black";
+		    } else if ( this._equipe[j][i]['gagne'] == 'none') {
+			color = "black";
+			antcolor = "black";
+			textcolor = "white";
 		    } else {
 			color = "black";
 			antcolor = "gold";
-			textcolor = "white";
+			textcolor = "white";	
 		    }
 		    this.displayNode(this._equipe[j][i]['nom'], 
 				     (j * 110), i*this._height + (this._height/2) - this._size/2, 
@@ -79,5 +83,5 @@ function BinaryTree (nbNode, tab) {
 
 
 
-var arbre = new BinaryTree(8, tab);
+var arbre = new BinaryTree(tab[0].length, tab);
 arbre.display();

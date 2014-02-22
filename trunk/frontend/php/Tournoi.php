@@ -1,6 +1,7 @@
 <?php
 
-
+require_once("Match.php");
+require_once("Equipe.php");
 
 class Tournoi {
   
@@ -79,6 +80,52 @@ class Tournoi {
 	return $this->_match_data;
     }
 
+
+    public function get_treeTab_byId($id) {
+	$query = $this->_bdd->prepare("select * from APPARTENIR_TOURNOI where IdTournoi = :id order by NumTour");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ( $query->rowCount() != 0 ) {
+	    $match = new Match($this->_bdd);
+	    $equipe = new Equipe($this->_bdd);
+	    $i = 0;
+	    $data = array();
+	    $anc_numTour = 0;
+	    while ( $rep = $query->fetch() ) {
+		if ( $anc_numTour != $rep['NumTour'] ) {
+		    $anc_numTour = $rep['NumTour'];
+		    $i = 0;
+		}
+		$cur_match = $match->search_byId($rep['IdMATCHS']);
+		$data[$rep['NumTour']][$i]['nom'] = $equipe->search_byId($cur_match['IdTeam1'])['Nom'];
+		$data[$rep['NumTour']][$i+1]['nom'] = $equipe->search_byId($cur_match['IdTeam2'])['Nom'];
+
+		if ( $cur_match['nbPoint1'] > $cur_match['nbPoint2'] ) {
+		    $data[$rep['NumTour']][$i]['gagne'] = 'true';
+		    $data[$rep['NumTour']][$i+1]['gagne'] = 'false';
+		} else if ( $cur_match['nbPoint1'] < $cur_match['nbPoint2'] ) {
+		    $data[$rep['NumTour']][$i]['gagne'] = 'false';
+		    $data[$rep['NumTour']][$i+1]['gagne'] = 'true';
+		} else {
+		    $data[$rep['NumTour']][$i]['gagne'] = 'none';
+		    $data[$rep['NumTour']][$i+1]['gagne'] = 'none';
+		    
+		}
+		$i += 2;
+	    }
+	    if ( isset ( $data[0] ) && isset($data[log(count($data[0]), 2) - 1][0])) {
+		if ( $data[log(count($data[0]), 2) - 1][0]['gagne'] == 'true') {
+		    $data[log(count($data[0]), 2)][0]['nom'] =  $data[log(count($data[0]), 2) - 1][0]['nom'];
+		} else if ($data[log(count($data[0]), 2) - 1][1]['gagne'] == 'true'){
+		    $data[log(count($data[0]), 2)][0]['nom'] =  $data[log(count($data[0]), 2) - 1][1]['nom'];
+		}
+	    }
+
+	    return $data;
+	} else {
+	    return null;
+	}
+    }
 
 
 
