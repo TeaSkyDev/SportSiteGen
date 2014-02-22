@@ -119,6 +119,7 @@ class Tournoi {
 		} else if ($data[log(count($data[0]), 2) - 1][1]['gagne'] == 'true'){
 		    $data[log(count($data[0]), 2)][0]['nom'] =  $data[log(count($data[0]), 2) - 1][1]['nom'];
 		}
+		$data[log(count($data[0]), 2)][0]['gagne'] = 'true';
 	    }
 
 	    return $data;
