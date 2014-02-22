@@ -59,15 +59,15 @@ class Profil {
     }
 
 
-    public function search_byName($name) {
-	$query = $this->_bdd->prepare("select * from UTILISATEUR where Pseudo = :name");
-	$query->bindParam(":name", $name);
-	$query->execute();
-	if( $query->rowCount() != 0) {
-	    return $query->fetch();
-	} else {
-	    return false;
-	}
+    public function search_byName($bdd, $name) {
+        $query = $bdd->prepare("select * from UTILISATEUR where Pseudo = :name");
+        $query->bindParam(":name", $name);
+        $query->execute();
+        if($query->rowCount() != 0) {
+            return $query->fetch();
+        } else {
+            return false;
+        }
     }
 
 

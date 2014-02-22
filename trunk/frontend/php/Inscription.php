@@ -1,5 +1,7 @@
 <?php
 
+//require("Profil.php");
+
 class Inscription {
 
     /*
@@ -13,12 +15,9 @@ class Inscription {
                 if(!add_UTILISATEUR($bdd, $_POST['pseudo'], $_POST['email'], md5($_POST['password']), 1, 1)) {
                     return false;
                 } else {
-                    $_SESSION['connected']        = true;
-                    $_SESSION['user']['Pseudo']   = $_POST['pseudo'];
-                    $_SESSION['user']['password'] = md5($_POST['password']);
-                    $_SESSION['user']['Mail']     = $_POST['email'];
-                    $_SESSION['user']['IdPhoto']  = 1;
-                    $_SESSION['user']['IdTypeUser'] = 1;
+                    $data = Profil::search_byName($bdd, $_POST['pseudo']);
+                    $_SESSION['connected'] = true;
+                    $_SESSION['user']      = $data;
                     return true;
                 }
             } else {
