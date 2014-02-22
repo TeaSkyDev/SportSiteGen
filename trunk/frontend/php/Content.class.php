@@ -77,7 +77,7 @@ class Content {
                 $data[$i]['point2'] = $match[$i]['nbPoint2'];
                 $data[$i]['date'] = $match[$i]['DateMATCHS'];
                 $data[$i]['comm'] = $match[$i]['Commentaires'];
-            $i++;
+		$i++;
             }
             $this->_smarty->assign("Match", $data);
 
@@ -85,7 +85,21 @@ class Content {
 
 	} else if ( $page == "tournoi" ) {
 	    $tournoi_obj = new Tournoi($this->_bdd, $param);
+	    $equ_obj = new Equipe($this->_bdd);
 	    $tournoi = $tournoi_obj->get_content();
+	    $match      = $tournoi_obj->get_content_match();
+	    $data = array();
+	    $i = 0;
+	    while ( isset($match[$i]) ) {
+		$data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
+		$data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
+		$data[$i]['point1'] = $match[$i]['nbPoint1'];
+                $data[$i]['point2'] = $match[$i]['nbPoint2'];
+                $data[$i]['date'] = $match[$i]['DateMATCHS'];
+                $data[$i]['comm'] = $match[$i]['Commentaires'];
+		$i++;
+	    }
+	    $this->_smarty->assign("Match", $data);
 	    $this->_smarty->assign("Tournoi", $tournoi);
 	    return $this->_smarty->fetch("templates/".$this->_template."/html/tournoi.html");
 
