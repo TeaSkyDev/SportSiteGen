@@ -1,6 +1,6 @@
 <?php
 
-include ("Match.php");
+
 
 class Tournoi {
   

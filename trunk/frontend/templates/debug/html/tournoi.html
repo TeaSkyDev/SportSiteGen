@@ -1,0 +1,13 @@
+<table align="center">
+    <tr>
+        <th>Tournoi</th>
+    </tr>
+    {foreach from=$Tournoi item=tour}
+    <tr>
+      <td> {$tour.Nom} - {$tour.DateDebut} / {$tour.DateFin} </td>
+    </tr>
+    <tr> 
+      <td> {$tour.Description} </td>
+    </tr>
+    {/foreach}
+</table>

@@ -62,6 +62,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
         case "inscription":
             $content_html = $content->get_html("inscription");
             break;
+	case "tournoi":
+	    $content_html = $content->get_html("tournoi", $param);
+	    break;
         case "deconnexion":
             unset($_SESSION);
             session_destroy();

@@ -7,6 +7,7 @@ require_once("Profil.php");
 require_once("Connexion.php");
 require_once("Inscription.php");
 require_once("Match.php");
+require_once("Tournoi.php");
 
 class Content {
 
@@ -82,7 +83,13 @@ class Content {
 
             return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
 
-	    } else if($page == "profil" && isset($_SESSION)) {
+	} else if ( $page == "tournoi" ) {
+	    $tournoi_obj = new Tournoi($this->_bdd, $param);
+	    $tournoi = $tournoi_obj->get_content();
+	    $this->_smarty->assign("Tournoi", $tournoi);
+	    return $this->_smarty->fetch("templates/".$this->_template."/html/tournoi.html");
+
+	}else if($page == "profil" && isset($_SESSION)) {
             if(isset($_SESSION['connected'])) {
                 $profil_obj = new Profil($this->_bdd);
                 $profil     = $profil_obj->search_byId($_SESSION['user']['Id']);
