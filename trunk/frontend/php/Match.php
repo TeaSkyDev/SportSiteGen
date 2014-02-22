@@ -54,6 +54,18 @@ class Match {
     }
 
 
+    public function search_byId($id) {
+
+	$query = $this->_bdd->prepare("select * from MATCHS where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ( $query->rowCount() != 0 ) {
+	    return $query->fetch();
+	} else {
+	    return false;
+	}
+    }
+
 
 
 
