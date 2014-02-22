@@ -110,6 +110,7 @@ create table TOURNOI(
 create table APPARTENIR_TOURNOI(
        IdTournoi integer(10) references TOURNOI(Id),
        IdMATCHS integer(10) references MATCHS(Id),
+       NumTour integer(5),
        primary key(IdTournoi,IdMATCHS)
 );
 
