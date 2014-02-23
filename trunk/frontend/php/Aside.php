@@ -16,8 +16,8 @@ class Aside {
 
     
     /**
-     brief construit l'objet
-     param bdd la base de donnees a laquelle sera rattache l'objet
+     \brief construit l'objet
+     \param bdd la base de donnees a laquelle sera rattache l'objet
      */
     public function __construct($bdd) {
 	$news = new News($bdd);
@@ -28,9 +28,9 @@ class Aside {
 
 
     /**
-     brief cree un tableau des 10 dernieres news 
-     param void
-     return tableau des 10 dernieres news ( ! peut etre vide )
+     \brief cree un tableau des 10 dernieres news 
+     \param void
+     \returntableau des 10 dernieres news ( ! peut etre vide )
      */
     public function get_content_news() {
 	$i = 0;
@@ -44,9 +44,9 @@ class Aside {
 
 
     /**
-     brief cree un tableau des 10 dernier evenement 
-     param void
-     return tableau des 10 derniers evenement ( ! peut etre vide )
+     \brief cree un tableau des 10 dernier evenement 
+     \param void
+     \returntableau des 10 derniers evenement ( ! peut etre vide )
      */
     public function get_content_calendrier() {
 	$i = 0; 
