@@ -104,13 +104,11 @@ class Content {
 	    if ( $simple['one'] ) {
 		$tree_tab = $tournoi_obj->get_treeTab_byId($param['v2']);
 	    }
-	    ?>
-		<script>
-		     var tab = <?php echo json_encode($tree_tab); ?>;
-	    </script>
-		  <?php
-		  $this->_smarty->assign("NSimple", $simple);
-		  $this->_smarty->assign("Match", $data);
+	    echo "<script>";
+	    echo "var tab ="; echo json_encode($tree_tab); echo ";";
+	    echo "</script>";
+	    $this->_smarty->assign("NSimple", $simple);
+	    $this->_smarty->assign("Match", $data);
 	    $this->_smarty->assign("Tournoi", $tournoi);
 	    return $this->_smarty->fetch("templates/".$this->_template."/html/tournoi.html");
 

@@ -4,16 +4,10 @@
 include ("Tournoi.php");
 include ("../../mysql_connect.php");
 
-$tour = new Tournoi($bdd);
-$data = $tour->get_treeTab_byId(1);
 
-?>
+$tou = new Tournoi($bdd);
 
+$data = $tou->calc_nextMatch_byMatchsId(1,2);
+echo var_dump($data);
 
-<script>
-var tab = <?php echo json_encode($data); ?>
-</script>
-
-<?php
-include("../js/test.html");
 ?>
