@@ -32,6 +32,14 @@ class Profil {
 	return $query->rowCount() == 0;
     }
 
+
+    public static function  s_exist($bdd, $name) {
+	$query = $bdd->prepare("select * from UTILISATEUR where Pseudo = :name");
+	$query->bindParam(":name", $name);
+	$query->execute();
+	return $query->rowCount() == 0;
+    }
+
     public function insert($name, $mail, $pass, $photo, $type) {
 	$query = $this->_bdd->prepare("insert into UTILISATEUR values(null, :name, :mail, :pass, :photo, :type)");
 	$query->bindParam(":name", $name);
@@ -40,11 +48,29 @@ class Profil {
 	$query->bindParam(":photo", $photo);
 	$query->bindParam(":type", $type);
 	$query->execute();
-	return $query->rowCount() == 0;
+	return $query->rowCount() == 1;
+    }
+
+    public static function s_insert($bdd, $name, $mail, $pass, $photo, $type) {
+	$query = $bdd->prepare("insert into UTILISATEUR values(null, :name, :mail, :pass, :photo, :type)");
+	$query->bindParam(":name", $name);
+	$query->bindParam(":mail", $mail);
+	$query->bindParam(":pass", md5($pass));
+	$query->bindParam(":photo", $photo);
+	$query->bindParam(":type", $type);
+	$query->execute();
+	return $query->rowCount() == 1;
     }
 
     public function delete_byName($name) {
 	$query = $this->_bdd->prepare("delete * from UTILISATEUR where Pseudo = :name");
+	$query->bindParam(":name", $name);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+    public static function s_delete_byName($bdd, $name) {
+	$query = $bdd->prepare("delete * from UTILISATEUR where Pseudo = :name");
 	$query->bindParam(":name", $name);
 	$query->execute();
 	return $query->rowCount() == 1;
@@ -59,8 +85,16 @@ class Profil {
     }
 
 
-    public function search_byName($bdd, $name) {
-        $query = $bdd->prepare("select * from UTILISATEUR where Pseudo = :name");
+    public static function s_delete_byId($bdd, $id) {
+	$query = $bdd->prepare("delete * from UTILISATEUR where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+
+    public function search_byName($name) {
+        $query = $this->_bdd->prepare("select * from UTILISATEUR where Pseudo = :name");
         $query->bindParam(":name", $name);
         $query->execute();
         if($query->rowCount() != 0) {
@@ -70,6 +104,17 @@ class Profil {
         }
     }
 
+    public static function s_search_byName($bdd, $name) {
+	$query = $bdd->prepare("select * from UTILISATEUR where Pseudo = :name");
+	$query->bindParam(":name", $name);
+        $query->execute();
+        if($query->rowCount() != 0) {
+            return $query->fetch();
+        } else {
+            return false;
+        }
+	
+    }
 
     public function search_byId($id) {
 	$query = $this->_bdd->prepare("select * from UTILISATEUR where Id = :id");
@@ -82,6 +127,17 @@ class Profil {
 	}
     }
 
+
+    public static function s_search_byId($bdd, $id) {
+	$query = $bdd->prepare("select * from UTILISATEUR where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ($query->rowCount() != 0) {
+	    return $query->fetch();
+	} else {
+	    return false;
+	}
+    }
     
 
 

@@ -13,7 +13,7 @@ class Connexion {
 			$pass   = $_POST['password'];
 
 			/* On cherche un utilisateur avec le pseudo demandé */
-			$user = Profil::search_byName($bdd, $pseudo);
+			$user = Profil::s_search_byName($bdd, $pseudo);
 
 			/* On vérifie que le mot de passe entré est le même que celui associé au pseudo dans la bdd */ 
 			if($user) {
