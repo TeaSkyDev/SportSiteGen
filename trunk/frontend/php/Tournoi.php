@@ -173,6 +173,20 @@ class Tournoi {
     }
 
 
+    public function calc_Tournoi_byMatchsId($data) {
+	$tou = array();
+	if ( log(count($data), 2)*10%10 == 0 ) {
+	    $j = 0;
+	    for ( $i = 0 ; $i < count($data) ; $i+=2 ) {
+		$tou[$j] = $this->calc_nextMatch_byMatchsId($data[$i]['Id'], $data[$i+1]['Id']);
+		$j++;
+	    }
+	    return $tou;
+	} else {
+	    return null;
+	}
+    }
+    
 
 }
 
