@@ -9,7 +9,8 @@ class Init {
   public function __construct($bdd) {
     $this->_bdd = $bdd;
 
-    $query = $this->_bdd->query("select Nom, current_template from SITE");
+    $query = $this->_bdd->prepare("select Nom, current_template from SITE");
+    $query->execute();
     if($query->rowCount() != 0) {
       $data = $query->fetch();
       $this->_template = $data['current_template'];

@@ -29,7 +29,8 @@ class News {
 
 
     public function get_all_news() {
-        $query = $this->_bdd->query("select * from NEWS ORDER BY Id desc");
+        $query = $this->_bdd->prepare("select * from NEWS ORDER BY Id desc");
+	$query->execute();
         if($query->rowCount() != 0) {
             $this->_nb = 0;
             while($d = $query->fetch()) {

@@ -9,7 +9,8 @@ class Equipe {
     public function __construct($bdd) {
 	$this->_bdd = $bdd;
 	$this->_nb = 0;
-	$query = $bdd->query("select * from TEAM order by Id DESC");
+	$query = $bdd->prepare("select * from TEAM order by Id DESC");
+	$query->execute();
 	if($query->rowCount() > 0) {
 	    while($data = $query->fetch()) {
 		$this->_data[$this->_nb] = $data;

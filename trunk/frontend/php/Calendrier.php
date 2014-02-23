@@ -78,7 +78,8 @@ class Calendrier {
      \return void
      */
     public function get_all_event() {
-	$query = $this->_bdd->query("select * from EVENEMENT order by id DESC");
+	$query = $this->_bdd->prepare("select * from EVENEMENT order by id DESC");
+	$query->execute();
 	$this->_nb = 0;
 	if ( $query->rowCount() > 0 ) {
 	    while ( $data = $query->fetch() ) {
