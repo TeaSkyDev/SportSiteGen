@@ -1,10 +1,21 @@
 <?php
 
+  /*
+   ========================================
+   Classe qui gere les differents menus
+   ========================================
+   */
+
+
 class Header {
 
-    private $_bdd;
-    private $_data = array();
-
+    private $_bdd; /* base de donnees rattache */
+    private $_data = array(); /* les elements du menu */
+    
+    /** 
+     \brief construit l'objet en chargeant les elements du menu
+     \param bdd la base de donnees
+    */
     public function __construct($bdd) {
 	$this->_bdd = $bdd;
 	//cherche tout les Menu Elem
@@ -34,10 +45,15 @@ class Header {
         }
 
     }
-
-	public function get_content() {
-		return $this->_data;
-	}
+    
+    /**
+     \brief renvoi les elements du menu
+     \param void 
+     \return tableau d'element de menu
+     */
+    public function get_content() {
+	return $this->_data;
+    }
 
 }
 
