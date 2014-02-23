@@ -9,18 +9,38 @@ require_once("Inscription.php");
 require_once("Match.php");
 require_once("Tournoi.php");
 
+
+/*
+ ==============================================
+ Classe qui gere le parsing de toute les pages
+ ==============================================
+*/
+
+
 class Content {
 
-    private $_bdd;
-    private $_template;
-    private $_smarty;
+    private $_bdd; /* base de donnees rattache */
+    private $_template; /* le nom du dossier de template courant */
+    private $_smarty; /* systeme de parsing */
 
+    /*
+     \brief construit l'objet
+     \param bdd la base de donne 
+     \param template le nom du template a parse
+     \param smarty le systeme de parsing 
+     */
     public function __construct($bdd, $template, $smarty) {
         $this->_bdd      = $bdd;
         $this->_template = $template;
         $this->_smarty   = $smarty;
     }
-
+    
+    /*
+     \brief genere le code html en fonction des pages demande
+     \param page la page demande
+     \param param les parametre optionnel de chargement
+     \return page parser avec smarty
+     */
     public function get_html($page, $param = null) {
         if($page == "news") {
 	    

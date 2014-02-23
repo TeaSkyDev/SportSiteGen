@@ -1,9 +1,17 @@
 <?php
 
+  /*
+   ======================================================
+   Classe qui gere la connexion utilisateur
+   ======================================================
+  */
+
+
+
 class Connexion {
 
     /*
-     *  Si des données ont été envoyées (post), on vérifie si pseudo et mdp concordent
+     * \brief  Si des données ont été envoyées (post), on vérifie si pseudo et mdp concordent
      *  \param bdd : représente la connexion à la bdd
      *  \return : true si la connexion s'est déroulée correctement sinon false
      */
