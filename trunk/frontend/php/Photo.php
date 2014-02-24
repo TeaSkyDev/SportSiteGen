@@ -1,12 +1,22 @@
 <?php
 
 
+  /*
+   ==============================================================
+   Classe qui gere les photo dans la base de donnees
+   ==============================================================
+   */
+
 class Photo {
 
-    private $_bdd;
-    private $_data;
-    private $_nb;
+    private $_bdd; /* la base de donnees */
+    private $_data; /* les photos */
+    private $_nb; /* le nombre de photo */
 
+    /**
+     \brief construit les photo
+     \param bdd la base de donnees
+     */
     public function __construct($bdd) {
 	$this->_bdd = $bdd;
 
@@ -20,12 +30,21 @@ class Photo {
 	}
     }
 
-
+    /**
+     \brief renvoi les donnees des photo
+     \param void
+     \return un tableau de photo
+     */
     public function get_content() {
 	return $this->_data;
     }
     
-
+    
+    /**
+     \brief cherche une photo en fonction de son identifiant
+     \param id l'identifiant de la photo
+     \return une photo ou false
+     */
     public function search_byId($id) {
 	if(isset($this->_data[$id - 1])) {
 	    return $this->_data[$id - 1];
@@ -34,7 +53,13 @@ class Photo {
 	}
     }
 
-
+    /**
+     \brief ajoute une photo a la base de donnees
+     \param nom le nom de la photo
+     \param fichier le nom du fichier de la photo
+     \param commentaire les commentaires sur la photo
+     \return vrai si reussi faux sinon
+     */
     public function insert($nom, $fichier, $commentaire) {
 	$query = $this->_bdd->prepare("insert into PHOTO value(null, :nom, :fichier, :com)");
 	$query->bindParam(":nom", $nom);
@@ -43,6 +68,20 @@ class Photo {
 	$query->execute();
 	return $query->rowCount() == 1;
     }
+
+
+    /**
+     \brief supprime une photo en focntion de son id
+     \param id l'identifiant de la photo
+     \return vrai si reussi faux sinon
+     */
+    public function delete_byId($id) {
+	$query = $this->_bdd->prepare("delete * from PHOTO where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
 
 
 }
