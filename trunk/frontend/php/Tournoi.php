@@ -3,13 +3,24 @@
 require_once("Match.php");
 require_once("Equipe.php");
 
+/*
+ =========================================================
+ Classe qui gere les tournoi et les matchs de tournoi
+ =========================================================
+ */
+
 class Tournoi {
   
-    private $_bdd;
-    private $_data;
-    private $_nb;
-    private $_match_data;
+    private $_bdd; /* la base de donnees */
+    private $_data; /* les donnees de tournoi */
+    private $_nb; /* le nombre de tournoi */
+    private $_match_data; /* les matchs de tournoi */
   
+    /**
+     \brief construit l'objet
+     \param bdd la base de donnees
+     \param param les valeur de get ( v1='lire_tour'&v2={IdTourn} )
+     */
     public function __construct($bdd, $param = null) {
 	$this->_bdd = $bdd;
 	if ( isset($param) && $param != null ) {
@@ -23,7 +34,10 @@ class Tournoi {
 	}
     }
   
-
+    /**
+     \brief charge un tournoi en fonction de son id
+     \param id l'identifiant du tournoi
+     */
     public function  get_one_tournoi($id) {
 	$query = $this->_bdd->prepare("select * from TOURNOI where Id = :id");
 	$query->bindParam(":id", $id);
@@ -39,7 +53,10 @@ class Tournoi {
     }
 
 
-  
+    /**
+     \brief charge tout les tournoi
+     \param void
+     */
     public function get_all_tournoi() {
 	$query = $this->_bdd->prepare("select * from TOURNOI order by id DESC");
 	$query->execute();
@@ -52,7 +69,11 @@ class Tournoi {
 	}
     }
 
-  
+    /**
+     \brief cherche les match d'un tournoi en fonction de son id
+     \param id l'identifiant du tournoi
+     \return un tableau de match ou false
+     */
     public function get_match_byTouId($id) {
 	$query = $this->_bdd->prepare("select * from APPARTENIR_TOURNOI where IdTournoi = :id");
 	$query->bindParam(":id", $id);
@@ -71,16 +92,30 @@ class Tournoi {
 	}
     }
 
-
+    
+    /**
+     \brief renvoi les info sur le tournoi
+     \param void
+     \return un tableau de tournoi
+     */
     public function get_content() {
 	return $this->_data;
     }
-
+    
+    /**
+     \brief renvoi les matchs
+     \param void
+     \return un tableau de matchs
+     */
     public function get_content_match() {
 	return $this->_match_data;
     }
 
-
+    /**
+     \brief cherche les informations sur les matchs d'un tournoi pour pouvoir creer l'arbre
+     \param id l'identifiant d'un tournoi
+     \return un tableau de match organiser pour l'arbre ou null
+     */
     public function get_treeTab_byId($id) {
 	$query = $this->_bdd->prepare("select * from APPARTENIR_TOURNOI where IdTournoi = :id order by NumTour");
 	$query->bindParam(":id", $id);
@@ -128,7 +163,13 @@ class Tournoi {
 	}
     }
 
-
+    /**
+     \brief ajoute un match a un touenoi
+     \param id l'identifiant du tournoi
+     \param idMatch l'identifiant du match
+     \param numTour le numero de tour ( commencant a 0 )
+     \return vrai si reussi faux sinon
+     */
     public function add_match_byTouId($id, $idMatch, $numTour) {
 	$query = $this->_bdd->prepare("insert into APPARTENIR_TOURNOI values(:id, :match, :tour)");
 	$query->bindParam(":id", $id);
@@ -139,7 +180,11 @@ class Tournoi {
     }
 
 
-
+    /**
+     \brief calcule le gagnant d'un match
+     \param data les information d'un match
+     \return un id d'equipe ou null
+     */
     private function calc_gagnant_byMatchData($data) {
 	if ( isset($data['nbPoint1']) && isset($data['nbPoint2']) ) {
 	    if ( $data['nbPoint1'] > $data['nbPoint2'] ) {
@@ -152,7 +197,12 @@ class Tournoi {
 	}
     }
 
-
+    /**
+     \brief calcule le prochain match en fonction de deux matchs
+     \param id1 identifiant match1
+     \param id2 identifiant match2
+     \return deux id d'equipe ou null
+     */
     public function calc_nextMatch_byMatchsId($id1, $id2) {
 	$query1 = $this->_bdd->prepare("select * from MATCHS where Id = :id");
 	$query2 = $this->_bdd->prepare("select * from MATCHS where Id = :id");
@@ -172,7 +222,11 @@ class Tournoi {
 	}
     }
 
-
+    /**
+     \brief calcule le prochain tour d'un tournoi 
+     \param data un tableau de match de taille 2^x
+     \return un tableau de paires d'identifiant d'equipe ou null
+     */
     public function calc_Tournoi_byMatchsId($data) {
 	$tou = array();
 	if ( log(count($data), 2)*10%10 == 0 ) {
