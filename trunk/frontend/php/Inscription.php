@@ -2,10 +2,18 @@
 
 //require("Profil.php");
 
+
+
+  /*
+   ======================================================
+   Classe qui inscrit un nouvel utilisateur dans la base
+   ======================================================
+   */
+
 class Inscription {
 
     /*
-     *  Si des données ont été envoyées (post), on tente de les insérer dans la bdd
+     *  \brief Si des données ont été envoyées (post), on tente de les insérer dans la bdd
      *  \param bdd : représente la connexion à la bdd
      *  \return : true si l'insertion s'est bien passée sinon false
      */
