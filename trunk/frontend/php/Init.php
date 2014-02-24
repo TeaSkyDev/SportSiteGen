@@ -1,11 +1,22 @@
 <?php
 
+  /*
+   =====================================================
+   Classe qui selectionne le template et le nom du Site
+   =====================================================
+   */
+
+
 class Init {
 	
-  private $_template;
-  private $_name;
-  private $_bdd;
+    private $_template; /* nom de template charge de la base */
+    private $_name; /* nom du site */
+    private $_bdd; /* base de donnees rattache */
 
+    /**
+     \brief construit l'objet
+     \param bdd la base de donnees
+     */
   public function __construct($bdd) {
     $this->_bdd = $bdd;
 
@@ -20,11 +31,21 @@ class Init {
       $this->_template = NULL;
     }
   }
-
+  
+  /**
+   \brief renvoi le nom de dossier de template
+   \param void
+   \return nom du dossier
+   */
   public function get_template() {
     return $this->_template;
   }
 
+  /**
+   \brief renvoi le nom du site
+   \param void
+   \return nom du site
+   */
   public function get_name() {
       return $this->_name;
   }
