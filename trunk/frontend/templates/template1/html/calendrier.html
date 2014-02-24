@@ -1,15 +1,15 @@
-<table align="center">
-  <tr>
-    <th>CALENDRIER</th>
-  </tr>
-  {foreach from=$Events item=event}
-  <tr>
-    <td><a href="index.php?page=calendrier&v1=lire_event&v2={$event.Id}">{$event.titre} - {$event.location}</a> - <i>{$event.date}</i></td>
-  </tr>
-  <tr>
-    <td>{$event.contenu}</td>
-  </tr>
-  {/foreach}
+<table class="partie" align="center">
+    <tr>
+        <th><img src="templates/debug/images/gauche.png"/><span>CALENDRIER</span><img src="templates/debug/images/droite.png"/></th>
+    </tr>
+    {foreach from=$Events item=event}
+    <tr>
+        <td><a href="index.php?page=calendrier&v1=lire_event&v2={$event.Id}">{$event.titre} - {$event.location}</a> - <i>{$event.date}</i></td>
+    </tr>
+    <tr>
+        <td>{$event.contenu}</td>
+    </tr>
+    {/foreach}
 </table>
 <table align="center">
   {foreach from=$Com item=com}
@@ -25,12 +25,12 @@
 {if $NSimple.connected == 1}
 <table align="center">
   <tr>
-    <th><form action="index.php?page=calendrier&v1=lire_event&v2={$NSimple.Id}&news_com=true" method="post" >
-	<textarea name="message" id="message" cols="30" rows="10" ></textarea><br/>
-	<input type="hidden" name="id_cal" value="{$NSimple.Id}" />
-	<input type="submit" value="Commenter"/>
-      </form>
-    </th>
+  <th><form action="index.php?page=calendrier&v1=lire_event&v2={$NSimple.Id}&news_com=true" method="post" >
+  <textarea name="message" id="message" cols="30" rows="10" ></textarea><br/>
+  <input type="hidden" name="id_cal" value="{$NSimple.Id}" />
+  <input type="submit" value="Commenter"/>
+</form>
+  </th>
   </tr>
 </table>
 {else}
