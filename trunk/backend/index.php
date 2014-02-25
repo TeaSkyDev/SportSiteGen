@@ -43,6 +43,12 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'membre':
                 include("html/membre.html");
                 break;
+			case 'equipe':
+                include("html/equipe.html");
+                break;
+			case 'new_equipe':
+                include("html/newequipe.html");
+                break;
             case 'new_membre':
                 include("html/newmembre.html");
                 break;

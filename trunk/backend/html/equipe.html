@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Equipes</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+    </head>
+    <script language=JavaScript src="js/accueil.js"></script>
+    <body>
+    	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
+            <div class="entete">
+                    <img src="Images/newarticle.png">
+                    <h1>Gestion des equipes : Liste des equipes</h1> 
+            </div>
+            <br>
+            <div class="interieur">
+                <div class="tableau">
+                    <table>
+                        <tr>
+                            <td>Id</td>
+                            <td>Nom</td>
+                            <td>Description</td>
+                            <td>Action</td>
+                        </tr>
+
+                        <?php
+                            $sql = "SELECT * FROM TEAM ";
+                            foreach($bdd->query($sql) as $data) {
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php
+                                    echo $data['Id'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php 
+                                    echo $data['Nom'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo resume_text($data['Description'], 100);
+                                ?>
+                            </td>
+                            <td>
+                                <button onclick="self.location.href='index.php?page=edit_article&id=<?php echo $data['Id']; ?>'" title="Editer">
+                                    <img src="Images/edition.png">
+                                </button>
+                                <button onclick="self.location.href='index.php?page=article&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                    <img src="Images/suppression.bmp">
+                                </button>
+                            </td>
+                        </tr>
+
+                        <?php
+                            }
+                        ?>
+                    </table>
+                </div>
+                <br>
+
+
+                <a href="index.php?page=new_equipe">
+                    <input type="button" value="Nouvelle equipe" onclick="self.location.href='index.php?page=new_equipe'">
+                </a>
+
+            </div>
+        </div>
+    </body>
+</html>
