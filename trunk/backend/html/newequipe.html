@@ -17,44 +17,58 @@
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=membre&action=ajouter">
+                <form method="post" action="index.php?page=equipe&action=ajouter">
                 <br>
                 <fieldset>
                     <legend>Ajouter une equipe</legend>
                     <br>
-                        Pseudo : <input type="text" name="pseudo">
+                        Nom : <input type="text" name="nom">
                     <br>
                     <br>
                
-                        Mail : <input type="text" name="mail">
+                        Photo : 
+                        <select name="photo">
+                            <?php
+                                $sql="SELECT * FROM PHOTO";
+                                foreach ($bdd->query($sql) as $data) {
+                            ?>
+                                <option value="<?php echo $data['Id']; ?>">
+                                    <?php
+                                        echo $data['Nom'];
+                                    ?>
+                                </option>
+                                <br>
+                            <?php
+                                }
+                            ?>
+                        </select>
                
                     <br>
                     <br>
                
-                        Mot de passe : <input type="text" name="mdp">
+                        Categorie : 
+                        <select name="categorie">
+                            <?php
+                                $sql="SELECT * FROM CATEGORIE";
+                                foreach ($bdd->query($sql) as $data) {
+                            ?>
+                                <option value="<?php echo $data['Id']; ?>">
+                                    <?php
+                                        echo $data['Nom'];
+                                    ?>
+                                </option>
+                                <br>
+                            <?php
+                                }
+                            ?>
+                        </select>
                
                     <br>
                     <br>
 
-                        Confirmation Mot de passe : <input type="text" name="cmdp">
-                    <br>
-                    <br>
-                    Type : 
-                    <select name="type">
-                    <?php
-                        $sql="SELECT * FROM TYPE_USER";
-                        foreach ($bdd->query($sql) as $data) {
-                    ?>
-                        <option value="<?php echo $data['Id']; ?>">
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                        Description : 
                         <br>
-                    </select>
-                    <?php
-                        }
-                    ?>  
+                        <textarea name="description" rows="10" cols="50"></textarea>
                     <br>
                     <br>           
                     <input type="submit" value="Envoyer">
