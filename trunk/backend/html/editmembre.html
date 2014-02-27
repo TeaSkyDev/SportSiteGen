@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Nouveaux Membre</title>
+        <title>Modifier Membre</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
         <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
     </head>
@@ -47,7 +47,7 @@
                         foreach ($bdd->query($sql) as $data) {
                     ?>
                     <select name="type">
-                        <option selected> 
+                        <option value="<?php echo $data['Id']; ?>" selected> 
                             <?php
                                 echo $data['Nom'];
                                 }
@@ -57,7 +57,7 @@
                             $sql="SELECT * FROM TYPE_USER WHERE id!=$type";
                             foreach ($bdd->query($sql) as $data) {
                         ?>
-                        <option>
+                        <option value="<?php echo $data['Id']; ?>">
                             <?php
                                 echo $data['Nom'];
                                 }
