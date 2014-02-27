@@ -419,11 +419,15 @@ function resume_text($txt, $limit) {
     return $res;
 }
 
-function get_params($var_get) {
+function get_params($var_get, $var_post = null) {
     $res = array();
     foreach($var_get as $key => $value) {
         if($key != "page") {
-            //array_push($res, array($key => $value));
+            $res[$key] = $value;
+        }
+    }
+    if(isset($var_post)) {
+        foreach($var_post as $key => $value) {
             $res[$key] = $value;
         }
     }

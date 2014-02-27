@@ -1,11 +1,14 @@
 <table align="center">
 	<tr>
-		<th>{$Profil.Id} - {$Profil.Pseudo}</th>
+		<th>PROFIL</th>
+	</tr>
+    <tr>
+         <td>Pseudo : {$Profil.Pseudo} <i><a href="index.php?page=profil&v1=modif_pseudo">(modifier)</a></i></td>
+    </tr>
+	<tr>
+		<td>Mail : {$Profil.Mail} <i><a href="index.php?page=profil&v1=modif_mail">(modifier)</a></i></td>
 	</tr>
 	<tr>
-		<td>Mail : {$Profil.Mail}</td>
-	</tr>
-	<tr>
-		<td>Mdp : {$Profil.Mdp}</td>
+		<td>Mdp : {$Profil.Mdp} <i><a href="index.php?page=profil&v1=modif_password">(modifier)</a></i></td>
 	</tr>
 </table>
