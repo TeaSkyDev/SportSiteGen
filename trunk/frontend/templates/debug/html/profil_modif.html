@@ -58,12 +58,16 @@
 {/if}
 
 {if $Modif == "photo"}
-<form method="post" action="index.php?page=profil&v1=modif_photo&v2=true">
+<form method="post" action="index.php?page=profil&v1=modif_photo&v2=true" enctype="multipart/form-data">
+    <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
     <table align="center">
         <tr>
             <th colspan="2">Modification de la photo</th>
         </tr>
-
+        <tr>
+            <th>Parcourir : </th>
+            <td><input type="file" name="photo"/></td>
+        </tr>
         <tr>
             <th colspan="2"><input type="submit" value="Modifier"/></th>
         </tr>

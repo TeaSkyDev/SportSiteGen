@@ -8,6 +8,7 @@ require_once("Connexion.php");
 require_once("Inscription.php");
 require_once("Match.php");
 require_once("Tournoi.php");
+require_once("Photo.php");
 
 
 /*
@@ -135,8 +136,7 @@ class Content {
         } else if($page == "profil" && isset($_SESSION)) {
             if(isset($_SESSION['connected'])) {
                 if(!isset($param)) {
-                    $profil_obj = new Profil($this->_bdd);
-                    $profil     = $profil_obj->search_byId($_SESSION['user']['Id']);
+                    $profil     = Profil::s_search_byId($this->_bdd, $_SESSION['user']['Id']);
                     $this->_smarty->assign("Profil", $profil);
 
                     return $this->_smarty->fetch("templates/".$this->_template."/html/profil.html");
@@ -177,7 +177,15 @@ class Content {
                             }
                             break;
                         case "modif_photo":
-                            $Modif = "photo";
+                            if(isset($param['v2']) && $param['v2'] == "true") {
+                                if(Profil::s_set_photo($this->_bdd, $_SESSION['user']['Id'])) {
+                                    header("Location: index.php?page=profil");
+                                } else {
+                                    $err = true;
+                                }
+                            } else {
+                                $Modif = "photo";
+                            }
                             break;
                         default:
                             $Modif = "pseudo";

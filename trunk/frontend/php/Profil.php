@@ -220,7 +220,9 @@ class Profil {
         $query->bindParam(":id", $id);
         $query->execute();
         if ($query->rowCount() != 0) {
-            return $query->fetch();
+            $data = $query->fetch();
+            $data['Photo'] = Photo::s_search_byId($bdd, $data['IdPhoto'])['Fichier'];
+            return $data;
         } else {
             return false;
         }
@@ -237,8 +239,52 @@ class Profil {
         return $query->execute(array(':val' => $val, ':id' => $id));
     }
 
-}
+    /**
+    * \brief Met à jour la photo de l'utilisateur et copie le fichier dans le repertoire ../photos/utilisateurs/
+    * \param bdd représente la connexion à la base de données
+    * \param id_user l'identifiant de l'utilisateur
+    * \return vrai si reussi faux sinon
+     */
+    public static function s_set_photo($bdd, $id_user) {
 
+
+            if ($_FILES['photo']['error']) {
+                switch ($_FILES['photo']['error']){
+                    case 1:
+                        echo"Le fichier dépasse la limite autorisée par le serveur (fichier php.ini) !";
+                        break;
+                    case 2:
+                        echo "Le fichier dépasse la limite autorisée dans le formulaire HTML !";
+                        break;
+                    case 3:
+                        echo "L'envoi du fichier a été interrompu pendant le transfert !";
+                        break;
+                    case 4:
+                        echo "Le fichier que vous avez envoyé a une taille nulle !";
+                        break;
+                }
+                header("Location: html/err.html");
+                return false;
+            } else {
+                $path = '../photos/utilisateurs/';
+                move_uploaded_file($_FILES['photo']['tmp_name'], $path.$_FILES['photo']['name']);
+
+                $id_photo = Photo::s_insert($bdd, $_FILES['photo']['name'], "Photo utilisateur");
+                if($id_photo != -1) {
+                    if(!Profil::s_set_profilById($bdd, "IdPhoto", $id_photo, $id_user)) {
+                        //header("Location: html/err.html");
+                        return false;
+                    }
+                } else {
+                    //header("Location: html/err.html");
+                    return false;
+                }
+                //header("Location: html/err.html");
+                return true;
+            }
+    }
+
+}
 
 
 ?>
