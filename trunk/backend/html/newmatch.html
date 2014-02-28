@@ -1,11 +1,12 @@
 <!doctype html>
 <html>
     <head>
-        <title>Nouvelle Article</title>
+        <title>Nouveau Match</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
         <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
         <link rel="stylesheet" href="css/calendrier.css" type="text/css" media="screen"/>
         <script type="text/javascript" src="js/calendrier.js"></script>
+        <script type="text/javascript" src="js/heure.js"></script>
     </head>
     <body>
     	<div id="contenu">
@@ -24,52 +25,52 @@
                 <fieldset>
                     <legend>Ajouter un Match</legend>
                     <br>
-                    Catégorie : 
-                    <select name="cate">
-                    <?php
-                        $sql="SELECT * FROM CATEGORIE";
-                        foreach ($bdd->query($sql) as $data) {
-                    ?>
-                        <option value="<?php echo $data['Id']; ?>">
+                        Equipe 1 :
+                        <select name="team1">
                             <?php
-                                echo $data['Nom'];
+                                $sql="SELECT * FROM TEAM";
+                                foreach ($bdd->query($sql) as $data) {
+                                    echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+                                }
                             ?>
-                        </option>
-                        <br>
-                    <?php
-                        }
-                    ?>
-                    </select>
+                        </select>
+                        <pre>   Score : <input class="score" name="score1" type="text" value="0"> </pre>
                     <br>
                     <br>
-                    Equipe adverse :
-                    <select name="team">
-                    <?php
-                        $sql="SELECT * FROM TEAM";
-                        foreach ($bdd->query($sql) as $data) {
-                    ?>
-                        <option value="<?php echo $data['Id']; ?>">
+                        Equipe 2 :
+                        <select name="team2">
                             <?php
-                                echo $data['Nom'];
+                                //$equipe1=$_POST['team1'];
+                                $sql="SELECT * FROM TEAM";
+                                foreach ($bdd->query($sql) as $data) {
+                                    //if($data['Id']!=$equipe){
+                                        echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+                                    //}
+                                }
                             ?>
-                        </option>
-                        <br>
-                    <?php
-                        }
-                    ?>
-                    </select>
+                        </select>
+                        <pre>   Score : <input class="score" name="score2" type="text" value="0"> </pre>
                     <br>
                     <br>
-                    Date :
-                    <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
-                        <tr>
-                            <td id="ds_calclass"></td>
-                        </tr>
-                    </table>
-                    <input type="text" name="date1" onclick="ds_sh(this);" />
+                        Date :
+                        <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+                            <tr>
+                                <td id="ds_calclass"></td>
+                            </tr>
+                        </table>
+                        <input type="text" name="date" onclick="ds_sh(this);" />
                     <br>
                     <br>
-                    Lieu : <input type="text" name="lieu">
+                        Heure :
+                        <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclas" style="display: none;">
+                            <tr>
+                                <td id="ds_calclas"></td>
+                            </tr>
+                        </table>
+                        <input type="text" name="heure" onclick="ds_heure(this);" />
+                    <br>
+                    <br>
+                        Lieu : <input type="text" name="lieu">
                     <br>
                     <br>
                     <input type="submit" value=" Envoyer">

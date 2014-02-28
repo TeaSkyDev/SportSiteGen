@@ -55,6 +55,26 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'edit_equipe':
                 include("html/editequipe.html");
                 break;
+/*MATCH*/
+            case 'match':
+                include("html/match.html");
+                break;
+            case 'new_match':
+                include("html/newmatch.html");
+                break;
+            case 'edit_match':
+                include("html/editmatch.html");
+                break;
+/*TOURNOIS*/
+            case 'tournois':
+                include("html/tournois.html");
+                break;
+            case 'new_tournois':
+                include("html/newtournois.html");
+                break;
+            case 'edit_tournois':
+                include("html/edittournois.html");
+                break;
 /*AUTRE*/
             case 'logout':
                 include("php/logout.php");
