@@ -208,7 +208,7 @@ class Content {
         } else if($page == "inscription") {
             if(isset($_GET['action']) && $_GET['action'] == "insert") {
                 if(Inscription::insert($this->_bdd)) {
-                    header("Location: index.php?page=connexion");
+                    header("Location: index.php");
                 } else {
                     $this->_smarty->assign("Err", "Erreur lors de l'inscription !");
                     return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
