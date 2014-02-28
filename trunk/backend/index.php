@@ -10,6 +10,7 @@
 session_start();
 require("../mysql_connect.php");
 require("php/fonctions.php");
+require("php/Profil.php");
 
 /* Si l'admin n'est pas connecté, on l'envoie sur la page de login */
 if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
@@ -44,6 +45,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 break;
             case 'edit_membre':
                 include("html/editmembre.html");
+                break;
+            case 'suppr_membre':
+                include("php/membre.php");
                 break;
 /*EQUIPE*/
             case 'equipe':
