@@ -97,9 +97,10 @@ class Profil {
      */
     public static function s_insert($bdd, $name, $mail, $pass, $photo, $type) {
         $query = $bdd->prepare("insert into UTILISATEUR values(null, :name, :mail, :pass, :photo, :type)");
+        $pass_md5 = md5($pass);
         $query->bindParam(":name", $name);
         $query->bindParam(":mail", $mail);
-        $query->bindParam(":pass", md5($pass));
+        $query->bindParam(":pass", $pass_md5);
         $query->bindParam(":photo", $photo);
         $query->bindParam(":type", $type);
         $query->execute();
