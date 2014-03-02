@@ -21,12 +21,14 @@
                     <table>
                         <tr>
                             <td>Id</td>
-                            <td>Catégorie</td>
-                            <td>Equipe adverse</td>
+                            <td>Joué</td>
+                            <td>Equipe 1</td>
+                            <td>Equipe 2</td>
+                            <td>Score 1</td>
+                            <td>Score 2</td>
                             <td>Date</td>
-                            <td>Heure</td>
                             <td>Lieu</td>
-                            <td>Score</td>
+                            <td>Commentaire</td>
                             <td>Action</td>
                         </tr>
 
@@ -43,22 +45,43 @@
                             </td>
                             <td>
                                 <?php 
-                                    echo $data['IdCategorie'];
+                                    if($data['joue']==1){
+                                        echo "<img scr='Images/valider.jpg'>";  
+                                    }
+                                    else {
+                                        echo  " ";  
+                                    }
+                                ?>
+                            </td>
+                             <td>
+                                <?php
+                                    $sql="SELECT * FROM TEAM WHERE Id='".$data['IdTeam1']."'";
+                                    foreach ($bdd->query($sql) as $equipe) {
+                                        echo $equipe['Nom'];
+                                    }
+                                ?>
+                            </td>
+                             <td>
+                                <?php
+                                    $sql="SELECT * FROM TEAM WHERE Id='".$data['IdTeam2']."'";
+                                    foreach ($bdd->query($sql) as $equipe) {
+                                        echo $equipe['Nom'];
+                                    }
                                 ?>
                             </td>
                             <td>
                                 <?php
-                                    echo $data['IdTeamAdv'];
+                                    echo $data['nbPoint1'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['nbPoint1'];
                                 ?>
                             </td>
                             <td>
                                 <?php
                                     echo $data['DateMATCHS'];
-                                ?>
-                            </td>
-                            <td>
-                                <?php
-                                    echo $data['Heure'];
                                 ?>
                             </td>
                             <td>

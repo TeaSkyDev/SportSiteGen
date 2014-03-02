@@ -26,11 +26,21 @@
                     <legend>Ajouter un Match</legend>
                     <br>
                         Equipe 1 :
-                        <select name="team1">
+                        <select name="team1" onchange="location.href='index.php?page=new_match&equipe1=' + this.options[this.selectedIndex].value;">
                             <?php
                                 $sql="SELECT * FROM TEAM";
                                 foreach ($bdd->query($sql) as $data) {
-                                    echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+                                    if(isset($_GET['equipe1'])){
+                                        if($data['Id']==$_GET['equipe1']){
+                                            echo "<option value='".$data['Id']."' selected>".$data['Nom']."</option><br>";
+                                        }
+                                        else{
+                                            echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+                                        }
+                                    }
+                                    else{
+                                        echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+                                    }
                                 }
                             ?>
                         </select>
@@ -40,12 +50,16 @@
                         Equipe 2 :
                         <select name="team2">
                             <?php
-                                //$equipe1=$_POST['team1'];
-                                $sql="SELECT * FROM TEAM";
-                                foreach ($bdd->query($sql) as $data) {
-                                    //if($data['Id']!=$equipe){
-                                        echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
-                                    //}
+                                if(isset($_GET['equipe1'])){
+                                    $sql="SELECT * FROM TEAM";
+                                    foreach ($bdd->query($sql) as $data) {
+                                        if($data['Id']!=$_GET['equipe1']){
+                                            echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+                                        }
+                                    }
+                                }
+                                else {
+                                    echo "<option value='-1'>Choisir une Equipe 1</option>";
                                 }
                             ?>
                         </select>
@@ -74,7 +88,6 @@
                     <br>
                     <br>
                     <input type="submit" value=" Envoyer">
-                    <input type="button" value="Apercu">
                 </fieldset>
                 <br>
                 </form>

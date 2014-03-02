@@ -75,7 +75,6 @@ function draw() {
 }
 
 function ds_heure(t) {
-	alert(t);
 	ds_heure=0;
 	ds_minute=0;
 	ds_element = t;
