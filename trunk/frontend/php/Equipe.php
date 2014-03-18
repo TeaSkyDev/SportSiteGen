@@ -27,6 +27,10 @@ class Equipe {
 	if($query->rowCount() > 0) {
 	    while($data = $query->fetch()) {
 		$this->_data[$this->_nb] = $data;
+		$photo = Photo::s_search_byId($this->_bdd, $data['idPhoto']);
+		if ( $photo != null ) {
+		    $this->_data[$this->_nb]['img'] = $photo['Fichier'];
+		}
 		$this->_nb++;
 	    }
 	} 
