@@ -48,7 +48,9 @@ class News {
         if($query->rowCount() != 0) {
             $this->_nb = 0;
             while($d = $query->fetch()) {
-                $this->_data[$this->_nb] = $d;
+                $photo = Photo::s_search_byId($this->_bdd, $d['IdPhoto']);
+		$this->_data[$this->_nb] = $d;
+		$this->_data[$this->_nb]['img'] = $photo['Fichier'];
                 $this->_nb++;
             }
         }
@@ -63,6 +65,8 @@ class News {
         if($query->rowCount() != 0) {
             $this->_nb = 1;
             $this->_data[0] = $query->fetch();
+	    $photo = Photo::s_search_byId($this->_bdd, $this->_data[0]['IdPhoto']);
+	    $this->_data[0]['img'] = $photo['Fichier'];
         }
 	$this->_com_data = $this->get_com_byNewsId($id);
     }
