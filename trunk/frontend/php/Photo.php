@@ -43,14 +43,17 @@ class Photo {
     /**
     \brief cherche une photo en fonction de son identifiant
     \param id l'identifiant de la photo
-    \return une photo ou false
+    \return une photo ou null
      */
     public function search_byId($id) {
-        if(isset($this->_data[$id - 1])) {
-            return $this->_data[$id - 1];
-        } else {
-            return false;
-        }
+	$query = $this->_bbd->prepare("select * from PHOTO where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	if ( $query->rowCount == 1 ) {
+	    return $query->fetch();
+	} else {
+	    return null;
+	}
     }
 
     /**

@@ -30,8 +30,8 @@ $asidecal  = $as->get_content_calendrier();
 
 
 /*On récupère le footer
-$fo = new Footer($bdd);
-$footer = $fo->get_content();
+  $fo = new Footer($bdd);
+  $footer = $fo->get_content();
 */
 
 // On récupère le corps du texte suivant ce qui a été demandé
@@ -39,42 +39,17 @@ $content = new Content($bdd, $template, $smarty);
 if(isset($_GET['page']) || isset($_POST['page'])) {
     $page = $_REQUEST['page'];
     $param = get_params($_GET, $_POST); /* On récupère tous les params sauf la page */
+    $content_html = $content->get_html($page, $param);
 
-	switch($page) {
-		case "news":
-			$content_html = $content->get_html("news", $param);
-			break;
-        case "calendrier":
-            $content_html = $content->get_html("calendrier", $param);
-            break;
-        case "equipes":
-        	$content_html = $content->get_html("equipes");
-        	break;
-        case "profil":
-        	$content_html = $content->get_html("profil", $param);
-        	break;
-        case "connexion":
-        	$content_html = $content->get_html("connexion");
-        	break;
-	case "match":
-	        $content_html = $content->get_html("match");
-	        break;
-        case "inscription":
-            $content_html = $content->get_html("inscription");
-            break;
-	case "tournois":
-	    $content_html = $content->get_html("tournois", $param);
-	    break;
-        case "deconnexion":
-            unset($_SESSION);
-            session_destroy();
-            header("Location:  index.php");
-		default:
-			$content_html = $content->get_html("accueil");
-	}
+    if ($page == "deconnexion"){
+	unset($_SESSION);
+	session_destroy();
+	header("Location:  index.php");
+    }
 } else {
-	$content_html = $content->get_html("accueil");
+    $content_html = $content->get_html("accueil");
 }
+
 
 $smarty->assign("Style", $styles);
 $smarty->assign("Header", $header);

@@ -58,16 +58,22 @@ class Joueur {
     /**
      \brief cherche les joueur appartenant a l'equipe en fonction de son Id
      \param id l'identifiant de l'equipe
-     \return un tableau de joueur ou false
+     \return un tableau de joueur ou null
      */
     public function search_byTeamId($id) {
 	$query = $this->_bdd->prepare("select * from JOUEUR where IdTeam = :id");
 	$query->bindParam(":id", $id);
 	$query->execute();
 	if ($query->rowCount() != 0) {
-	    return $query->fetch();
+	    $data = array();
+	    $i = 0;
+	    while ( $rep = $query->fetch() ) {
+		$data[$i] = $rep;
+		$i++;
+	    }
+	    return $data;
 	} else {
-	    return false;
+	    return null;
 	}
     }
 

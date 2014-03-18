@@ -3,6 +3,7 @@
 require_once("News.php");
 require_once("Calendrier.php");
 require_once("Equipe.php");
+require_once("Joueur.php");
 require_once("Profil.php");
 require_once("Connexion.php");
 require_once("Inscription.php");
@@ -269,6 +270,26 @@ class Content {
     }
 
 
+
+    /*
+      \brief genere la page html des membre d'une equipe
+      \param param l'identifiant de l'equipe
+      \return la page parser avec smarty
+     */
+    public function get_html_membre_equipe($param) {
+
+	if ( isset($param['id'] )) {
+	    $joueur = new Joueur($this->_bdd);
+	    $tab = $joueur->search_byTeamId($param['id']);
+	    if ( $tab != null ) {
+		$this->_smarty->fetch("templates/".$this->_template."/html/membre_equipe.html");
+	    }
+	} else {
+	    header("Location:index.php");
+	}
+    }
+
+
     /*
       \brief genere le code html en fonction des pages demande
       \param page la page demande
@@ -276,13 +297,16 @@ class Content {
       \return page parser avec smarty
     */
     public function get_html($page, $param = null) {
+	echo var_dump($param);
         if($page == "news") {
 	    return $this->get_html_news($param);
         } else if($page == "calendrier") {
 	    return $this->get_html_calendrier($param);
         } else if($page == "equipes") {
 	    return $this->get_html_equipe();
-	} else if ($page == "match") {
+	} else if ($page == "membre_equipe") {
+	    return $this->get_html_membre_equipe($param);
+	}else if ($page == "match") {
 	    return $this->get_html_match();
         } else if ( $page == "tournois" ) {
 	    return $this->get_html_tournoi($param);
