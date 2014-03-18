@@ -160,8 +160,19 @@ create table EVENEMENT_COM(
 );
 
 create table MENU_ELEM (
-       Id integer(2) AUTO_INCREMENT,
+       Id integer(1) AUTO_INCREMENT,
        Nom varchar(255), 
        url varchar(255),
        primary key(Id)
 );
+
+create table FICHE ( 
+       Id integer(10) AUTO_INCREMENT, 
+       IdMatch integer(10) references MATCHS(Id),
+       NbCarton1 integer(1),
+       NbCarton2 integer(1),
+       Point1 integer(5),
+       Point2 integer(5),
+       primary key (Id, IdMatch)
+);
+

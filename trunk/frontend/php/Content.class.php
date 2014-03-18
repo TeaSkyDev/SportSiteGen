@@ -97,16 +97,17 @@ class Content {
 
     /*
       \brief genere le code html de la page match
-      \param void
+      \param l'identifiant optionnel du match
       \return renvoi la page parser avec smarty
     */
-    public function get_html_match() {
-	$match_obj = new Match($this->_bdd);
+    public function get_html_match($param) {
+	$match_obj = new Match($this->_bdd, $param);
 	$equ_obj = new Equipe($this->_bdd);
 	$match = $match_obj->get_content();
 	$data = array();
 	$i = 0;
 	while(isset($match[$i])) {
+	    $data[$i]['Id'] = $match[$i]['Id'];
 	    $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
 	    $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
 	    $data[$i]['point1'] = $match[$i]['nbPoint1'];
@@ -115,7 +116,14 @@ class Content {
 	    $data[$i]['comm'] = $match[$i]['Commentaires'];
 	    $i++;
 	}
+	$simple['one'] = isset($param['v1']);
+	$fiche = array();
+	if ( $simple['one'] ) {
+	    $fiche = $match_obj->get_fiche_content();
+	}
 	$this->_smarty->assign("Match", $data);
+	$this->_smarty->assign("NSimple", $simple);
+	$this->_smarty->assign("Fiche", $fiche);
 	return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");	
     }
 
@@ -132,6 +140,7 @@ class Content {
 	$data = array();
 	$i = 0;
 	while ( isset($match[$i]) ) {
+	    $data[$i]['Id'] = $match[$i]['Id'];
 	    $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
 	    $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
 	    $data[$i]['point1'] = $match[$i]['nbPoint1'];
@@ -328,7 +337,7 @@ class Content {
 	} else if ($page == "fiche_joueur") {
 	    return $this->get_html_fiche_joueur($param);
 	}else if ($page == "match") {
-	    return $this->get_html_match();
+	    return $this->get_html_match($param);
         } else if ( $page == "tournois" ) {
 	    return $this->get_html_tournoi($param);
 	} else if($page == "profil" && isset($_SESSION)) {
