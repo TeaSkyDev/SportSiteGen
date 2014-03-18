@@ -1,54 +1,54 @@
 <html>
-<head>
-	<meta charset="UTF-8">
-	<title>{$Name}</title>
-	<link rel="stylesheet" href="templates/template_1/css/style.css" type="text/css">
-	<link rel="stylesheet" href="templates/template_1/css/body.css" type="text/css">
-	<link rel="stylesheet" href="templates/template_1/css/header.css" type="text/css">
-	<link rel="stylesheet" href="css/footer.css" type="text/css">
+  <head>
+    <meta charset="UTF-8">
+    <title>{$Name}</title>
+    <link rel="stylesheet" href="templates/template_1/css/style.css" type="text/css">
+    <link rel="stylesheet" href="templates/template_1/css/body.css" type="text/css">
+    <link rel="stylesheet" href="templates/template_1/css/header.css" type="text/css">
+    <link rel="stylesheet" href="css/footer.css" type="text/css">
     <script type="text/javascript" src="js/fonction.js"></script>
-</head>
-<body>
-	<div class="background">
-		<div class="page">
-			<div class="header">
-				<ul>
-					{foreach from=$Header item=menu}
-					<li>
-						<a href="{$menu.url}">{$menu.title}</a>
-					</li>
-					{/foreach}
-				</ul>
-			</div>
-			{$Content}
-				<div class="sidebar">
-					<div class="news">
-						<span>Dernière News</span>
-						<ul>
-							{foreach from=$AsideNews item=it}
-					        <li>
-						        <a href="news.html">{$it.titre}</a> <span>{$it.date}</span>
-					        </li>
-					        {/foreach}
-						</ul>
-						<a href="news.html">Read More</a>
-					</div>
-					<div class="section">
-						<span>Calendrier</span>
-						<ul>
-							{foreach from=$AsideCal item=it}
-					        <li>
-						        <a href="calendrier.html">{$it.titre}</a> <span>{$it.date}</span>
-					        </li>
-					        {/foreach}
-						</ul>
-						<a href="calendrier.html">Voir Calendrier</a>
-					</div>
-				</div>
-			</div>
-			
-			
-		</div>
+  </head>
+  <body>
+    <div class="background">
+      <div class="page">
+	<div class="header">
+	  <ul>
+	    {foreach from=$Header item=menu}
+	    <li>
+	      <a href="{$menu.url}">{$menu.title}</a>
+	    </li>
+	    {/foreach}
+	  </ul>
 	</div>
+	{$Content}
+	<div class="sidebar">
+	  <div class="news">
+	    <span>Dernière News</span>
+	    <ul>
+	      {foreach from=$AsideNews item=it}
+	      <li>
+		<a href="index.php?page=news&v1=lire_news&v2={$it.Id}">{$it.titre}</a> <span>{$it.date}</span>
+	      </li>
+	      {/foreach}
+	    </ul>
+	    <a href="index.php?page=news">Read More</a>
+	  </div>
+	  <div class="section">
+	    <span>Calendrier</span>
+	    <ul>
+	      {foreach from=$AsideCal item=it}
+	      <li>
+		<a href="index.php?page=calendrier&v1=lire_event&v2={$it.Id}">{$it.titre}</a> <span>{$it.date}</span>
+	      </li>
+	      {/foreach}
+	    </ul>
+	    <a href="index.php?page=calendrier">Voir Calendrier</a>
+	  </div>
+	</div>
+      </div>
+      
+      
+    </div>
+</div>
 </body>
 </html>
