@@ -69,6 +69,10 @@ class Joueur {
 	    $i = 0;
 	    while ( $rep = $query->fetch() ) {
 		$data[$i] = $rep;
+		$photo = Photo::s_search_byId($this->_bdd, $rep['idPhoto']);
+		if ( $photo != null ) {
+		    $data[$i]['img'] = $photo['Fichier'];
+		}
 		$i++;
 	    }
 	    return $data;

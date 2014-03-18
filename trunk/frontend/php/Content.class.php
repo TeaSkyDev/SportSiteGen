@@ -277,15 +277,13 @@ class Content {
       \return la page parser avec smarty
      */
     public function get_html_membre_equipe($param) {
-
 	if ( isset($param['id'] )) {
 	    $joueur = new Joueur($this->_bdd);
 	    $tab = $joueur->search_byTeamId($param['id']);
-	    if ( $tab != null ) {
-		$this->_smarty->fetch("templates/".$this->_template."/html/membre_equipe.html");
-	    }
+	    $this->_smarty->assign("MEquipe", $tab);
+	    return $this->_smarty->fetch("templates/".$this->_template."/html/membre_equipe.html");
 	} else {
-	    header("Location:index.php");
+	    header("Location: index.php");
 	}
     }
 
@@ -297,7 +295,6 @@ class Content {
       \return page parser avec smarty
     */
     public function get_html($page, $param = null) {
-	echo var_dump($param);
         if($page == "news") {
 	    return $this->get_html_news($param);
         } else if($page == "calendrier") {
