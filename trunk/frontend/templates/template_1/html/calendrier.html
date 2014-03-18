@@ -1,22 +1,22 @@
 
-			<div class="body calendrier">
-				<div>
-					<span>Calendrier</span>
-					<div>
-						<ul>
-                            {foreach from=$Events item=event}
-							<li>
-								<span><a href="index.php?page=calendrier&v1=lire_event&v2={$event.Id}">{$event.titre}</a></span>
-								<div>
-									<span>{$event.location}</span> <span>{$event.date}</span>
-									<p>
-                                        {$event.contenu}
-									</p>
-								</div>
-							</li>
-                            {/foreach}
-						</ul>
+<div class="body calendrier">
+  <div>
+    <span>Calendrier</span>
+    <div>
+      <ul>
+        {foreach from=$Events item=event}
+	<li>
+	  <span><a href="index.php?page=calendrier&v1=lire_event&v2={$event.Id}">{$event.titre}</a></span>
+	  <div>
+	    <span>{$event.location}</span> <span>{$event.date}</span>
+	    <p>
+              {$event.contenu}
+	    </p>
+	  </div>
+	</li>
+        {/foreach}
+      </ul>
 
-					</div>
-				</div>
-		    </div>
+    </div>
+  </div>
+
