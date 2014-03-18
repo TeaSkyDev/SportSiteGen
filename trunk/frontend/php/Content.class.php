@@ -289,6 +289,28 @@ class Content {
 
 
     /*
+      \brief genere la page html d'une fiche de joueur
+      \param l'identifiant du joueur
+      \return une page parser avec smarty
+     */
+    public function get_html_fiche_joueur($param) {
+	if ( isset($param['id'] )) {
+	    $joueur = new Joueur($this->_bdd);
+	    $elem = $joueur->search_byId($param['id']);
+	    if ( $joueur != false ) {
+		$photo = Photo::s_search_byId($this->_bdd, $elem['idPhoto']);
+		$elem['img'] = $photo['Fichier'];
+	    }
+	    $this->_smarty->assign("joueur", $elem);
+	    return $this->_smarty->fetch("templates/".$this->_template."/html/fiche_joueur.html");
+	} else {
+	    header("Location: index.php");
+	}
+    }
+
+
+
+    /*
       \brief genere le code html en fonction des pages demande
       \param page la page demande
       \param param les parametre optionnel de chargement
@@ -303,6 +325,8 @@ class Content {
 	    return $this->get_html_equipe();
 	} else if ($page == "membre_equipe") {
 	    return $this->get_html_membre_equipe($param);
+	} else if ($page == "fiche_joueur") {
+	    return $this->get_html_fiche_joueur($param);
 	}else if ($page == "match") {
 	    return $this->get_html_match();
         } else if ( $page == "tournois" ) {
