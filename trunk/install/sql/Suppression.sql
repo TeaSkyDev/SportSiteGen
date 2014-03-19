@@ -17,3 +17,4 @@ drop table NEWS;
 drop table NEWS_COM;
 drop table EVENEMENT;
 drop table EVENEMENT_COM;
+drop table FICHE;

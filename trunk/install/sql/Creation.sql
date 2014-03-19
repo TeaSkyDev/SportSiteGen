@@ -175,4 +175,3 @@ create table FICHE (
        Point2 integer(5),
        primary key (Id, IdMatch)
 );
-
