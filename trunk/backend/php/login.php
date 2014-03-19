@@ -29,7 +29,8 @@ if(isset($_POST['login']) && isset($_POST['password'])) {
 			//echo 'Vous etes maintenant connecte.<br><a href="../index.php">Acceder a la page d\'administration</a>';
 			header("Location: ../html/ok.html");
 		} else {
-            header("Location: ../frontend/index.php?page=err&msg=Page reservee aux administrateurs.");
+            $msg = urlencode('Page reservee aux administrateurs.');
+            header("Location: ../index.php?page=err&msg=".$msg);
 		}
 	} else {
         $msg = urlencode('Pseudo &&/|| mot de passe incorrecte.');
