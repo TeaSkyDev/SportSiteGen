@@ -6,7 +6,7 @@ insert into MENU_ELEM values(null, 'Equipes', 'index.php?page=equipes');
 insert into MENU_ELEM values(null, 'Tournois', 'index.php?page=tournois');
 
 insert into UTILISATEUR values(null, 'Pantoufle', 'pantoufle@hotmail.fr', 'd324c7a8e87b8a2585bf12b61d0824a3', 1, 1);
-insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')
+insert into TYPE_USER values (1,'Administrateur','Grand maitre du site');
 insert into TYPE_USER values(2, 'Utilisateur', 'Utilisateur classique');
 
 insert into PHOTO values (1,'avatar_admin','defaut.png','');
