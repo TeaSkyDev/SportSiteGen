@@ -23,12 +23,15 @@
                             <td>Id</td>
                             <td>Pseudo</td>
                             <td>Mail</td>
+                            <td>Status</td>
                             <td>Action</td>
                         </tr>
 
                         <?php
                             $sql = "SELECT * FROM UTILISATEUR order by Id DESC";
                             foreach($bdd->query($sql) as $data) {
+                                $sql2 = "SELECT Nom from TYPE_USER where Id = ".$data['IdTypeUser'];
+                                $status = $bdd->query($sql2)->fetch()['Nom'];
                         ?>
 
                         <tr>
@@ -46,6 +49,9 @@
                                 <?php
                                     echo $data['Mail'];
                                 ?>
+                            </td>
+                            <td>
+                                <?php echo $status; ?>
                             </td>
                             <td>
                                 <button onclick="self.location.href='index.php?page=edit_membre&id=<?php echo $data['Id']; ?>'" title="Editer">
