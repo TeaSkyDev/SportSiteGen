@@ -108,3 +108,7 @@ p a {
 a:hover{
     color : red;
 }
+
+canvas {
+    border: solid 1px;
+}

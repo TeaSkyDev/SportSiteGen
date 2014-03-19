@@ -22,6 +22,7 @@ $styles = array($url_style."design.css", $url_style."header.css", $url_style."co
 /* On récupère le header Dont le menu */
 $head = new Header($bdd);
 $header = $head->get_content();
+$connect = $head->get_content_connexion();
 
 //On récupère le Aside 
 $as = new Aside($bdd);
@@ -57,6 +58,7 @@ $smarty->assign("Name", $name);
 $smarty->assign("AsideNews", $asidenews);
 $smarty->assign("AsideCal", $asidecal);
 $smarty->assign("Content", $content_html);
+$smarty->assign("Connect", $connect);
 //$smarty->assign("Footer", $footer);
 
 $smarty->display("templates/".$template."/index.html");

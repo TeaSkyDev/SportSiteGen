@@ -18,18 +18,17 @@
 				<h1 id="titre">{$Name}</h1>
 			</a>
 		<nav id="menu">
-			<ul>			
-				<li><a href="index.php?page=accueil">ACCUEIL<br><span>ACCUEIL<span><mark>H</mark></a></li>
-				<li><a href="index.php?page=news">NEWS<br><span>LES DERNIERS EVENEMENTS<span><mark>J</mark></a></li>
-				<li><a href="index.php?page=calendrier">CALENDRIER<br><span>LES PROCHAINS EVENEMENTS<span><mark>c</mark></a></li>
-				<li><a href="index.php?page=match">MATCHS<br><span>LES RENCONTRES<span><mark>g</mark></a></li>
-				<li><a href="index.php?page=equipes">EQUIPES<br><span>LES JOUEURS<span><mark>A</mark></a></li>
+			<ul>
+			  {foreach from=$Header item=menu}
+			  <li><a href="{$menu.url}">{$menu.title}<br></a></li>
+			  {/foreach}
 			</ul>
 		</nav>
 		
 		<nav id="top">
-			<li><a href="index.php?page=inscription">Inscription</a></li>
-			<li><a href="index.php?page=connexion">Connexion</a></li>
+		  {foreach from=$Connect item=connect}
+		  <li><a href="{$connect.url}">{$connect.title}</a></li>
+		  {/foreach}
 		</nav>
 		
 		

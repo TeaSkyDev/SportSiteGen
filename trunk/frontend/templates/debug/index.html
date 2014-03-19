@@ -20,6 +20,9 @@
 	{foreach from=$Header item=menu}
 	<td><a href="{$menu.url}">{$menu.title}</a></td>
 	{/foreach}
+	{foreach from=$Connect item=connect}
+	<td><a href="{$connect.url}">{$connect.title}</a></td>
+	{/foreach}
       </tr>
     </table>
     {$Content}

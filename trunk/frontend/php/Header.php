@@ -11,7 +11,7 @@ class Header {
 
     private $_bdd; /* base de donnees rattache */
     private $_data = array(); /* les elements du menu */
-    
+    private $_data_connect;
     /** 
      \brief construit l'objet en chargeant les elements du menu
      \param bdd la base de donnees
@@ -30,17 +30,17 @@ class Header {
 	    }
 	} 
         if(isset($_SESSION['connected']) && $_SESSION['connected'] == true) {
-            $this->_data[$i]['title'] = $_SESSION['user']['Pseudo'];
-            $this->_data[$i]['url']   = "index.php?page=profil";
-            $this->_data[$i+1]['title'] = "Deconnexion";
-            $this->_data[$i+1]['url']   = "index.php?page=deconnexion";
+            $this->_data_connect[0]['title'] = $_SESSION['user']['Pseudo'];
+            $this->_data_connect[0]['url']   = "index.php?page=profil";
+            $this->_data_connect[1]['title'] = "Deconnexion";
+            $this->_data_connect[1]['url']   = "index.php?page=deconnexion";
 
         } else {
 
-            $this->_data[$i]['title'] = "Connexion";
-            $this->_data[$i]['url']   = "index.php?page=connexion";
-            $this->_data[$i+1]['title'] = "Inscription";
-            $this->_data[$i+1]['url']   = "index.php?page=inscription";
+            $this->_data_connect[0]['title'] = "Connexion";
+            $this->_data_connect[0]['url']   = "index.php?page=connexion";
+            $this->_data_connect[1]['title'] = "Inscription";
+            $this->_data_connect[1]['url']   = "index.php?page=inscription";
 
         }
 
@@ -53,6 +53,10 @@ class Header {
      */
     public function get_content() {
 	return $this->_data;
+    }
+
+    public function get_content_connexion() {
+	return $this->_data_connect;
     }
 
 }
