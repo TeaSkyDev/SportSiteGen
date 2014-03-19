@@ -3,6 +3,7 @@ insert into MENU_ELEM values(null, 'News', 'index.php?page=news');
 insert into MENU_ELEM values(null, 'Calendrier', 'index.php?page=calendrier');
 insert into MENU_ELEM values(null, 'Matchs', 'index.php?page=match');
 insert into MENU_ELEM values(null, 'Equipes', 'index.php?page=equipes');
+insert into MENU_ELEM values(null, 'Tournois', 'index.php?page=tournois');
 
 insert into UTILISATEUR values(null, 'Pantoufle', 'pantoufle@hotmail.fr', 'd324c7a8e87b8a2585bf12b61d0824a3', 1, 1);
 insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')
