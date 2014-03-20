@@ -1,13 +1,10 @@
 <table class="partie" align="center">
     <tr>
-        <th><img src="templates/template1/images/gauche.png"/><span>MATCHS</span><img src="templates/template1/images/droite.png"/></th>
+      <th id="matchs"><img src="templates/template1/images/gauche.png"/><span>MATCHS</span><img src="templates/template1/images/droite.png"/></th>
     </tr>
     {foreach from=$Match item=match}
     <tr>
-            <td align="center"><u>{$match.name1} - {$match.point1} | {$match.point2} - {$match.name2}
-	    	     |||    {$match.date} - {$match.comm} </td>
-
+      <td align="center" id="case"><span>{$match.date} - {$match.comm}</span><br><mark>{$match.name1}</mark> - {$match.point1} | {$match.point2} - <mark>{$match.name2}</mark></td>
     </tr>
-
     {/foreach}
 </table>

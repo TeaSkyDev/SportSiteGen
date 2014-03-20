@@ -326,15 +326,31 @@ table {
 	width:45%;
 }
 
+#case{
+    border-color:#660000;
+    border-style:dotted;
+    border-width:3px;
+    color:#8d020f;
+    font-size:1.2em;
+    text-decoration:none;
+    padding-top:10px;
+    padding-bottom:10px;
+}
 
+#case span{
+    color:black;
+    font-size:1.3em;
+}
 
+#case mark{
+    padding-right:5px;
+    padding-left:5px;
+    background-color:grey;
+    color:white;
+}
 
-
-
-
-
-
-
-
+#avatar{
+    margin-left:150px;
+}
 
 

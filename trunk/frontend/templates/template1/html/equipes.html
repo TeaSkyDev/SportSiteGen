@@ -1,7 +1,10 @@
-<table align="center">
-	{foreach from=$Teams item=team}
-	<tr>
-		<td><b>{$team.Nom}</b></td>
-	</tr>
-	{/foreach}
+<table class="partie" align="center">
+  <tr>
+    <th id="matchs"><img src="templates/template1/images/gauche.png"/><span>EQUIPES</span><img src="templates/template1/images/droite.png"/></th>
+  </tr>
+  {foreach from=$Teams item=team}
+  <tr>
+    <td><img id="avatar" src="templates/template1/images/avatar.png" width="50" height="50"/><b> {$team.Nom}</b></td>
+  </tr>
+  {/foreach}
 </table>
