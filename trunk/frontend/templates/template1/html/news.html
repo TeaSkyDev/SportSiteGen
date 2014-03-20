@@ -11,7 +11,7 @@
   </tr>
   {/foreach}
 </table>
-<table align="center">
+<table align="center" class="partie">
   {foreach from=$Com item=com}
   <tr>
     <td><u>{$com.utilisateur}</u></a> - <i>{$com.date}</td>
@@ -34,7 +34,7 @@
   </tr>
 </table>
 {else}
-<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></span><br>
+<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion" class="connect" >Se connecter</a></span><br>
 
 {/if}
 {/if}

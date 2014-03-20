@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 15:40:29
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 17:49:30
          compiled from "templates/template1/html/calendrier.html" */ ?>
 <?php /*%%SmartyHeaderCode:2048183177532ab1cbbfbd98-79345709%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '533aafd2bfa4afe81ed2176b838fe89e9adf3035' => 
     array (
       0 => 'templates/template1/html/calendrier.html',
-      1 => 1395326422,
+      1 => 1395334164,
       2 => 'file',
     ),
   ),
@@ -81,7 +81,7 @@ $_smarty_tpl->tpl_vars['com']->_loop = true;
   </tr>
 </table>
 <?php } else { ?>
-<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></span><br>
+<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion" class="connect">Se connecter</a></span><br>
 
 <?php }?>
 <?php }?>

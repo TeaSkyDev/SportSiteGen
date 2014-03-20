@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 15:03:17
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 17:46:26
          compiled from "templates/template1/html/equipes.html" */ ?>
 <?php /*%%SmartyHeaderCode:1918220108532ab1f3803679-26537508%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e6c0cbeb3ab37e2f1c3714cb2f2f2d613dcb0a2e' => 
     array (
       0 => 'templates/template1/html/equipes.html',
-      1 => 1395324194,
+      1 => 1395333983,
       2 => 'file',
     ),
   ),
@@ -36,7 +36,7 @@ $_smarty_tpl->tpl_vars['team']->_loop = true;
   <tr>
     <td>
       <a href="index.php?page=membre_equipe&id=<?php echo $_smarty_tpl->tpl_vars['team']->value['Id'];?>
-"> <img id="avatar" src=<?php echo $_smarty_tpl->tpl_vars['team']->value['img'];?>
+"> <img id="avatar" src=../photos/<?php echo $_smarty_tpl->tpl_vars['team']->value['img'];?>
  alt=""  width="50" height="50" /><?php echo $_smarty_tpl->tpl_vars['team']->value['Nom'];?>
  </a>
     </td>

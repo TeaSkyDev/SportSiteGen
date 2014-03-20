@@ -317,6 +317,16 @@ table {
     width:45%;
 }
 
+.connect:hover{
+    color:#B72D2D;
+}
+
+.connect{
+    color:#8B0F0F;
+    text-decoration:none;
+}
+
+
 
 
 #case{
@@ -458,15 +468,39 @@ table {
 }
 
 #gagne{
-    width:15px;
-    hight:10px;
-    border: 1px black solid;
+    display:inline-block;
+    width:70px;
+    height:30px;
+    border:1px black solid;
+    background-color:green;
+    margin-right:10px;
+    margin-bottom:-10px;
 }
 
-#predu{
-
+#perdu{
+    display:inline-block;
+    width:70px;
+    height:30px;
+    border:1px black solid;
+    background-color:red;
+    margin-right:10px;
+    margin-bottom:-10px;
 }
 
 #egalite{
-    
+    display:inline-block;
+    width:70px;
+    height:30px;
+    border:1px black solid;
+    background-color:orange;
+    margin-bottom:-10px;
+}
+
+.tournoi a:hover{
+    color:#B72D2D;
+}
+
+.tournoi a{
+    color:#8B0F0F;
+    text-decoration:none;
 }

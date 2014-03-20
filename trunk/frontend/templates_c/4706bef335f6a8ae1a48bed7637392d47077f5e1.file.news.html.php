@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 10:16:32
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 17:51:53
          compiled from "templates/template1/html/news.html" */ ?>
 <?php /*%%SmartyHeaderCode:59931722532ab1f0c1d930-21686243%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4706bef335f6a8ae1a48bed7637392d47077f5e1' => 
     array (
       0 => 'templates/template1/html/news.html',
-      1 => 1395231509,
+      1 => 1395334311,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_532ab1f0cd5991_38995183',
   'variables' => 
   array (
     'News' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'NSimple' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_532ab1f0cd5991_38995183',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_532ab1f0cd5991_38995183')) {function content_532ab1f0cd5991_38995183($_smarty_tpl) {?><table class="partie" align="center">
   <tr>
@@ -48,7 +48,7 @@ $_smarty_tpl->tpl_vars['news']->_loop = true;
   </tr>
   <?php } ?>
 </table>
-<table align="center">
+<table align="center" class="partie">
   <?php  $_smarty_tpl->tpl_vars['com'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['com']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['Com']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['com']->key => $_smarty_tpl->tpl_vars['com']->value) {
@@ -80,7 +80,7 @@ $_smarty_tpl->tpl_vars['com']->_loop = true;
   </tr>
 </table>
 <?php } else { ?>
-<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></span><br>
+<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion" class="connect" >Se connecter</a></span><br>
 
 <?php }?>
 <?php }?>
