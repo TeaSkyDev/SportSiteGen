@@ -59,6 +59,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'edit_equipe':
                 include("php/gerer_equipe.php");
                 break;
+            case 'suppr_equipe':
+                include("php/gerer_equipe.php");
+                break;
 /*MATCH*/
             case 'match':
                 include("html/match.html");
