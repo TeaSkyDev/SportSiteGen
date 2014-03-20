@@ -9,6 +9,9 @@ insert into UTILISATEUR values(null, 'Pantoufle', 'pantoufle@hotmail.fr', 'd324c
 insert into TYPE_USER values (1,'Administrateur','Grand maitre du site');
 insert into TYPE_USER values(2, 'Utilisateur', 'Utilisateur classique');
 
+insert into CATEGORIE values(null, 'Junior', 'Equipe moins de 16 ans');
+insert into CATEGORIE values(null, 'Senior', 'Equipe plus de 16 ans');
+
 insert into PHOTO values (1,'avatar_admin','defaut.png','');
 
 insert into NEWS values(null, 'Nouveau site en ligne !', '2014-02-03 00:00:00', 'Que dites vous de ce nouveau super site ??', 1, 'admin');
