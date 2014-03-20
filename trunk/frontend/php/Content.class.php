@@ -114,6 +114,7 @@ class Content {
 	    $data[$i]['point2'] = $match[$i]['nbPoint2'];
 	    $data[$i]['date'] = $match[$i]['DateMATCHS'];
 	    $data[$i]['comm'] = $match[$i]['Commentaires'];
+	    $data[$i]['Lieu'] = $match[$i]['Lieu']; 
 	    $i++;
 	}
 	$simple['one'] = isset($param['v1']);
