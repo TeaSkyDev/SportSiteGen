@@ -54,10 +54,10 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 include("html/equipe.html");
                 break;
             case 'new_equipe':
-                include("html/newequipe.html");
+                include("php/gerer_equipe.php");
                 break;
             case 'edit_equipe':
-                include("html/editequipe.html");
+                include("php/gerer_equipe.php");
                 break;
 /*MATCH*/
             case 'match':

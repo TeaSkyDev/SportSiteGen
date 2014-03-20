@@ -23,6 +23,7 @@
                         <tr>
                             <td>Id</td>
                             <td>Nom</td>
+                            <td>Categorie</td>
                             <td>Description</td>
                             <td>Action</td>
                         </tr>
@@ -30,6 +31,7 @@
                         <?php
                             $sql = "SELECT * FROM TEAM ";
                             foreach($bdd->query($sql) as $data) {
+                                $categorie = $bdd->query("select Nom from CATEGORIE where Id = ".$data['IdCategorie'])->fetch()['Nom'];
                         ?>
 
                         <tr>
@@ -41,6 +43,11 @@
                             <td>
                                 <?php 
                                     echo $data['Nom'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $categorie;
                                 ?>
                             </td>
                             <td>
