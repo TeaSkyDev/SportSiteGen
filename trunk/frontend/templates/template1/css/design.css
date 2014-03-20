@@ -367,6 +367,9 @@ table {
     text-decoration:none;
 }
 
+
+
+
 .membre{
     border: 1px grey solid;
     border-radius:5px;
@@ -394,4 +397,76 @@ table {
 
 .membre a u{
     text-decoration:none;
+}
+
+.section{
+    margin-top:30px;
+    text-align:left;
+    margin-left:100px;
+}
+
+#stats{
+    margin-top:50px;
+    color:#8d020f;
+    font-size:1.8em;
+    text-decoration:underline;
+}
+
+
+
+
+
+
+
+#profil td{
+    border-color:#660000;
+    border-style:dotted;
+    border-width:3px;
+    color:#8d020f;
+    font-size:1.2em;
+    text-decoration:none;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin-left:150px;
+}
+
+#profil tr span{
+    color:#8d020f;
+    font-size:2.2em;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+
+
+
+
+
+.tournoi span{
+    color:#8d020f;
+    font-size:2.2em;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.tournoi{
+    border: 1px grey solid;
+    border-radius:5px;
+    padding:20px;
+    box-shadow: 1px 1px 12px #555;
+    width:71%;
+}
+
+#gagne{
+    width:15px;
+    hight:10px;
+    border: 1px black solid;
+}
+
+#predu{
+
+}
+
+#egalite{
+    
 }

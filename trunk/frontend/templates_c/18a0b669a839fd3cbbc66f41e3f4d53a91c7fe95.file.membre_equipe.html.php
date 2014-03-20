@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 16:08:11
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 16:29:00
          compiled from "templates/template1/html/membre_equipe.html" */ ?>
 <?php /*%%SmartyHeaderCode:696017771532af56a94b373-25779329%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '18a0b669a839fd3cbbc66f41e3f4d53a91c7fe95' => 
     array (
       0 => 'templates/template1/html/membre_equipe.html',
-      1 => 1395328087,
+      1 => 1395329336,
       2 => 'file',
     ),
   ),
@@ -27,14 +27,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <?php if ($_valid && !is_callable('content_532af56a9da5e1_82851097')) {function content_532af56a9da5e1_82851097($_smarty_tpl) {?><div>
   <div class="membre">
     <img src="templates/template1/images/gauche.png"/><span><b>MEMBRES</b></span><img src="templates/template1/images/droite.png"/>
-    <a href="index.php?page=equipes"><br> Retour </a> 
+    <a href="index.php?page=equipes"><br><br>Retour </a> 
     <div class="section">
-      <?php  $_smarty_tpl->tpl_vars['joueur'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['joueur']->_loop = false;
+      <ul>
+	<?php  $_smarty_tpl->tpl_vars['joueur'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['joueur']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['MEquipe']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['joueur']->key => $_smarty_tpl->tpl_vars['joueur']->value) {
 $_smarty_tpl->tpl_vars['joueur']->_loop = true;
 ?>
-      <ul>
 	<li>
 	  <a href="index.php?page=fiche_joueur&id=<?php echo $_smarty_tpl->tpl_vars['joueur']->value['Id'];?>
 "> <img src="<?php echo $_smarty_tpl->tpl_vars['joueur']->value['img'];?>
@@ -42,8 +42,8 @@ $_smarty_tpl->tpl_vars['joueur']->_loop = true;
  <?php echo $_smarty_tpl->tpl_vars['joueur']->value['Nom'];?>
  </a>
 	</li>
+	<?php } ?>
       </ul>
-      <?php } ?>
     </div>
   </div>
 

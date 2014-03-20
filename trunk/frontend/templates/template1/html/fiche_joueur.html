@@ -1,12 +1,14 @@
 <div class="body fiche_joueur">
-  <div>
-    <span>{$joueur.Prenom} {$joueur.Nom} <a href="index.php?page=membre_equipe&id={$joueur.IdTeam}"> Retour </a> </span>
-    <div>
-      <span><img src={$joueur.img} alt=""></span>
-      <h3>STAT</h3>
-      <p>
-	{$joueur.Description}
-      </p>
-      </div>
-    </div>
+  <div class="membre">
+    <img src="templates/template1/images/gauche.png"/><span><b>{$joueur.Prenom} {$joueur.Nom}</b></span><img src="templates/template1/images/droite.png"/>
+    <br><br>
+    <a href="index.php?page=membre_equipe&id={$joueur.IdTeam}"> Retour </a> </span>
+<div>
+  <span><img src={$joueur.img} alt=""></span>
+  <h3 id="stats">STATS</h3>
+  <p>
+    {$joueur.Description}
+  </p>
+</div>
+</div>
 
