@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 10:14:29
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 18:29:46
          compiled from "templates/template1/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:65845914553298c858b5dc0-40369328%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '57e66c29187aee2acb7c10323dd61b8d9152fa1d' => 
     array (
       0 => 'templates/template1/index.html',
-      1 => 1395306762,
+      1 => 1395336582,
       2 => 'file',
     ),
   ),
@@ -90,7 +90,7 @@ $_smarty_tpl->tpl_vars['connect']->_loop = true;
 
 		
 		<table class="aside">
-			<tr>
+		  <tr>
 				<th>LAST NEWS</th>
 			</tr>
 			<?php  $_smarty_tpl->tpl_vars['it'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['it']->_loop = false;
@@ -99,7 +99,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['it']->key => $_smarty_tpl->tpl_vars['
 $_smarty_tpl->tpl_vars['it']->_loop = true;
 ?>
 			<tr>
-				<td><?php echo $_smarty_tpl->tpl_vars['it']->value['titre'];?>
+			  <td><a href="index.php?page=news&v1=lire_news&v2=<?php echo $_smarty_tpl->tpl_vars['it']->value['Id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['it']->value['titre'];?>
 </td>
 			</tr>
 			<?php } ?>

@@ -35,12 +35,12 @@
 		{$Content}
 		
 		<table class="aside">
-			<tr>
+		  <tr>
 				<th>LAST NEWS</th>
 			</tr>
 			{foreach from=$AsideNews item=it}
 			<tr>
-				<td>{$it.titre}</td>
+			  <td><a href="index.php?page=news&v1=lire_news&v2={$it.Id}">{$it.titre}</td>
 			</tr>
 			{/foreach}
 			<tr>

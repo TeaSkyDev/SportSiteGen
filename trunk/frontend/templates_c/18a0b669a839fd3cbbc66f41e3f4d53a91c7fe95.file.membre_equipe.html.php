@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 16:29:00
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 18:11:42
          compiled from "templates/template1/html/membre_equipe.html" */ ?>
 <?php /*%%SmartyHeaderCode:696017771532af56a94b373-25779329%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '18a0b669a839fd3cbbc66f41e3f4d53a91c7fe95' => 
     array (
       0 => 'templates/template1/html/membre_equipe.html',
-      1 => 1395329336,
+      1 => 1395335497,
       2 => 'file',
     ),
   ),
@@ -38,7 +38,7 @@ $_smarty_tpl->tpl_vars['joueur']->_loop = true;
 	<li>
 	  <a href="index.php?page=fiche_joueur&id=<?php echo $_smarty_tpl->tpl_vars['joueur']->value['Id'];?>
 "> <img src="<?php echo $_smarty_tpl->tpl_vars['joueur']->value['img'];?>
-" alt=""> <?php echo $_smarty_tpl->tpl_vars['joueur']->value['Prenom'];?>
+" alt="" width="150"> <?php echo $_smarty_tpl->tpl_vars['joueur']->value['Prenom'];?>
  <?php echo $_smarty_tpl->tpl_vars['joueur']->value['Nom'];?>
  </a>
 	</li>
