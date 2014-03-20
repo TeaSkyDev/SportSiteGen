@@ -1,0 +1,15 @@
+<div class="body equipe">
+  <div>
+    <span>Membre <a href="index.php?page=equipes"> Retour </a></span> 
+    <div class="section">
+      {foreach from=$MEquipe item=joueur}
+      <ul>
+	<li>
+	  <a href="index.php?page=fiche_joueur&id={$joueur.Id}"> <img src="{$joueur.img}" alt=""> {$joueur.Prenom} - {$joueur.Nom} </a>
+	</li>
+      </ul>
+      {/foreach}
+    </div>
+  </div>
+
+

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 10:15:55
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 15:40:29
          compiled from "templates/template1/html/calendrier.html" */ ?>
 <?php /*%%SmartyHeaderCode:2048183177532ab1cbbfbd98-79345709%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '533aafd2bfa4afe81ed2176b838fe89e9adf3035' => 
     array (
       0 => 'templates/template1/html/calendrier.html',
-      1 => 1395231509,
+      1 => 1395326422,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_532ab1cbcb9cb2_14116573',
   'variables' => 
   array (
     'Events' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'NSimple' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_532ab1cbcb9cb2_14116573',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_532ab1cbcb9cb2_14116573')) {function content_532ab1cbcb9cb2_14116573($_smarty_tpl) {?><table class="partie" align="center">
     <tr>
@@ -49,7 +49,7 @@ $_smarty_tpl->tpl_vars['event']->_loop = true;
     </tr>
     <?php } ?>
 </table>
-<table align="center">
+<table align="center" class="partie">
   <?php  $_smarty_tpl->tpl_vars['com'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['com']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['Com']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['com']->key => $_smarty_tpl->tpl_vars['com']->value) {

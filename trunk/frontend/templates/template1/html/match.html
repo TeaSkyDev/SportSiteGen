@@ -4,7 +4,12 @@
     </tr>
     {foreach from=$Match item=match}
     <tr>
-      <td align="center" id="case"><span>{$match.date} - {$match.comm}</span><br><mark>{$match.name1}</mark> - {$match.point1} | {$match.point2} - <mark>{$match.name2}</mark></td>
+      <td align="center" id="case"> 
+	<span>Le {$match.date} à {$match.Lieu}</span>
+	<br><br>
+	<mark>{$match.name1}</mark> - {$match.point1} | {$match.point2} - <mark>{$match.name2}</mark>
+      </td>
+      {/foreach}
     </tr>
-    {/foreach}
+
 </table>

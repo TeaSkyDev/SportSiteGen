@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 11:28:42
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 15:52:16
          compiled from "templates/template1/html/match.html" */ ?>
 <?php /*%%SmartyHeaderCode:1937811229532ab1f20cfee9-24372449%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'a3455da66b52f3ff92ae198cb616f24416156091' => 
     array (
       0 => 'templates/template1/html/match.html',
-      1 => 1395311319,
+      1 => 1395327128,
       2 => 'file',
     ),
   ),
@@ -34,14 +34,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['match']->key => $_smarty_tpl->tpl_var
 $_smarty_tpl->tpl_vars['match']->_loop = true;
 ?>
     <tr>
-      <td align="center" id="case"><span><?php echo $_smarty_tpl->tpl_vars['match']->value['date'];?>
- - <?php echo $_smarty_tpl->tpl_vars['match']->value['comm'];?>
-</span><br><mark><?php echo $_smarty_tpl->tpl_vars['match']->value['name1'];?>
+      <td align="center" id="case"> 
+	<span>Le <?php echo $_smarty_tpl->tpl_vars['match']->value['date'];?>
+ à <?php echo $_smarty_tpl->tpl_vars['match']->value['Lieu'];?>
+</span>
+	<br><br>
+	<mark><?php echo $_smarty_tpl->tpl_vars['match']->value['name1'];?>
 </mark> - <?php echo $_smarty_tpl->tpl_vars['match']->value['point1'];?>
  | <?php echo $_smarty_tpl->tpl_vars['match']->value['point2'];?>
  - <mark><?php echo $_smarty_tpl->tpl_vars['match']->value['name2'];?>
-</mark></td>
+</mark>
+      </td>
+      <?php } ?>
     </tr>
-    <?php } ?>
+
 </table>
 <?php }} ?>

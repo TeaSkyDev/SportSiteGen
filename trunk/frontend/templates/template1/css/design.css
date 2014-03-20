@@ -193,46 +193,41 @@
 
 
 
-@font-face{
-	font-family: icons;
-	src: url('../images/icons.ttf');
-}
-
 
 body {
-	background: url('../images/bg-main.png') repeat center;
+    background: url('../images/bg-main.png') repeat center;
 }
 
 #top{
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 100;
-	height: 1.6em;
-	line-height: 1.2;
-	background-color: #570e0f;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
-	padding: 3px 6px;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 100;
+    height: 1.6em;
+    line-height: 1.2;
+    background-color: #570e0f;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 3px 6px;
 }
 
 #top a{
-	color: #ecdede;
-	font-size:1em;
-	text-decoration:none;
+    color: #ecdede;
+    font-size:1em;
+    text-decoration:none;
 }
 
 #titre{
     color:#8d020f;
-	margin-top:-100px;
-	margin-bottom:100px;
-	font-size:3em;
+    margin-top:-100px;
+    margin-bottom:100px;
+    font-size:3em;
 }
 
 #menu{
-	text-align:center;
+    text-align:center;
     width:100%;
-	margin-bottom:50px;
+    margin-bottom:50px;
 }
 
 #menu a{
@@ -258,11 +253,11 @@ li{
 }
 
 #img{
-	display:block;
-	width:200px; /*changement possible*/
-	height:150px; /*changement possible*/
-	margin-left:-1130px;
-	margin-top:25px;
+    display:block;
+    width:200px; /*changement possible*/
+    height:150px; /*changement possible*/
+    margin-left:-1130px;
+    margin-top:25px;
 }
 
 
@@ -276,22 +271,18 @@ table {
 }
 
 #menu mark{
-	display:block;
-	font-family:icons;
-	font-size:25em;
-	color:rgba(153, 0, 0, 0.1);
-	background-color:rgba(153, 0, 0, 0);
-	z-index:-1;
-	margin-top:-70px;
-}
-
-#ok{
-	font-family:icons;
+    display:block;
+    font-family:icons;
+    font-size:25em;
+    color:rgba(153, 0, 0, 0.1);
+    background-color:rgba(153, 0, 0, 0);
+    z-index:-1;
+    margin-top:-70px;
 }
 
 .aside tr {
     color:#ecdede;
-	background-color: #660000;
+    background-color: #660000;
 }
 
 .aside td {
@@ -308,23 +299,25 @@ table {
 
 
 .partie span{
-	color:#8d020f;
-	font-size:2.2em;
-	margin-left:10px;
-	margin-right:10px;
+    color:#8d020f;
+    font-size:2.2em;
+    margin-left:10px;
+    margin-right:10px;
 }
 
 .partie{
-	border: 1px grey solid;
-	border-radius:5px;
-	padding:20px;
-	box-shadow: 1px 1px 12px #555;
+    border: 1px grey solid;
+    border-radius:5px;
+    padding:20px;
+    box-shadow: 1px 1px 12px #555;
 }
 
 .nomcase{
-	text-align:right;
-	width:45%;
+    text-align:right;
+    width:45%;
 }
+
+
 
 #case{
     border-color:#660000;
@@ -333,13 +326,14 @@ table {
     color:#8d020f;
     font-size:1.2em;
     text-decoration:none;
-    padding-top:10px;
-    padding-bottom:10px;
+    padding-top:20px;
+    padding-bottom:20px;
 }
 
 #case span{
     color:black;
     font-size:1.3em;
+    text-decoration:underline;
 }
 
 #case mark{
@@ -349,8 +343,55 @@ table {
     color:white;
 }
 
+#saut{
+    hight:10px;
+}
+
+
 #avatar{
     margin-left:150px;
 }
 
 
+
+.partie a:hover{
+    color:#B72D2D;
+}
+
+.partie a{
+    color:#8B0F0F;
+    text-decoration:none;
+}
+
+.partie a u{
+    text-decoration:none;
+}
+
+.membre{
+    border: 1px grey solid;
+    border-radius:5px;
+    padding:20px;
+    box-shadow: 1px 1px 12px #555;
+    margin-top: 10px;
+    width: 71%;
+}
+
+.membre span{
+    color:#8d020f;
+    font-size:2.2em;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+.membre a:hover{
+    color:#B72D2D;
+}
+
+.membre a{
+    color:#8B0F0F;
+    text-decoration:none;
+}
+
+.membre a u{
+    text-decoration:none;
+}
