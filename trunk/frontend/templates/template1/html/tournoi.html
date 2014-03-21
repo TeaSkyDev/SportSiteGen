@@ -14,7 +14,7 @@
     <table>
       {foreach from=$Match item=match}
       <tr>
-	<td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} ||| {$match.date} </a></td>
+	<td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} le {$match.date} </a></td>
       </tr>
       <tr>
 	<td>Description: {$match.comm} </td>

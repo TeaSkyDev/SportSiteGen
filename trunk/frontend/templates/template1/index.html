@@ -12,49 +12,49 @@
   
   
   <body>
-	  <center>
-			<a style="text-decoration:none;" href="index.php?page=accueil">
-				<img id="img" src="templates/template1/images/hockey.png" title="Illustration" alt="Illustration">
-				<h1 id="titre">{$Name}</h1>
-			</a>
-		<nav id="menu">
-			<ul>
-			  {foreach from=$Header item=menu}
-			  <li><a href="{$menu.url}">{$menu.title}<br></a></li>
-			  {/foreach}
-			</ul>
-		</nav>
-		
-		<nav id="top">
-		  {foreach from=$Connect item=connect}
-		  <li><a href="{$connect.url}">{$connect.title}</a></li>
-		  {/foreach}
-		</nav>
-		
-		
-		{$Content}
-		
-		<table class="aside">
-		  <tr>
-				<th>LAST NEWS</th>
-			</tr>
-			{foreach from=$AsideNews item=it}
-			<tr>
-			  <td><a href="index.php?page=news&v1=lire_news&v2={$it.Id}">{$it.titre}</td>
-			</tr>
-			{/foreach}
-			<tr>
-				<th>LAST EVENTS</th>
-			</tr>
-			{foreach from=$AsideCal item=it}
-			<tr>
-				<td>{$it.titre}</td>
-			</tr>
-			{/foreach}
-		</table>
-		
-			
-	</center>
+    <center>
+      <a style="text-decoration:none;" href="index.php?page=accueil">
+	<img id="img" src="templates/template1/images/hockey.png" title="Illustration" alt="Illustration">
+	<h1 id="titre">{$Name}</h1>
+      </a>
+      <nav id="menu">
+	<ul>
+	  {foreach from=$Header item=menu}
+	  <li><a href="{$menu.url}">{$menu.title}<br></a></li>
+	  {/foreach}
+	</ul>
+      </nav>
+      
+      <nav id="top">
+	{foreach from=$Connect item=connect}
+	<li><a href="{$connect.url}">{$connect.title}</a></li>
+	{/foreach}
+      </nav>
+      
+      
+      {$Content}
+      
+      <table class="aside">
+	<tr>
+	  <th>LAST NEWS</th>
+	</tr>
+	{foreach from=$AsideNews item=it}
+	<tr class="lienaside">
+	  <td><a href="index.php?page=news&v1=lire_news&v2={$it.Id}">{$it.titre}</td>
+	</tr>
+	{/foreach}
+	<tr>
+	  <th>LAST EVENTS</th>
+	</tr>
+	{foreach from=$AsideCal item=it}
+	<tr class="lienaside">
+	  <td><a href="index.php?page=calendrier&v1=lire_event&v2={$it.Id}">{$it.titre}</td>
+	</tr>
+	{/foreach}
+      </table>
+      
+      
+    </center>
   </body>
   
 </html>

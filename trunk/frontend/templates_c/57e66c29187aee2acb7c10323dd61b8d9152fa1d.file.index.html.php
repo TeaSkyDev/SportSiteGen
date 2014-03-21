@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 18:29:46
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-21 08:39:34
          compiled from "templates/template1/index.html" */ ?>
 <?php /*%%SmartyHeaderCode:65845914553298c858b5dc0-40369328%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '57e66c29187aee2acb7c10323dd61b8d9152fa1d' => 
     array (
       0 => 'templates/template1/index.html',
-      1 => 1395336582,
+      1 => 1395387571,
       2 => 'file',
     ),
   ),
@@ -53,74 +53,75 @@ $_smarty_tpl->tpl_vars['style']->_loop = true;
   
   
   <body>
-	  <center>
-			<a style="text-decoration:none;" href="index.php?page=accueil">
-				<img id="img" src="templates/template1/images/hockey.png" title="Illustration" alt="Illustration">
-				<h1 id="titre"><?php echo $_smarty_tpl->tpl_vars['Name']->value;?>
+    <center>
+      <a style="text-decoration:none;" href="index.php?page=accueil">
+	<img id="img" src="templates/template1/images/hockey.png" title="Illustration" alt="Illustration">
+	<h1 id="titre"><?php echo $_smarty_tpl->tpl_vars['Name']->value;?>
 </h1>
-			</a>
-		<nav id="menu">
-			<ul>
-			  <?php  $_smarty_tpl->tpl_vars['menu'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['menu']->_loop = false;
+      </a>
+      <nav id="menu">
+	<ul>
+	  <?php  $_smarty_tpl->tpl_vars['menu'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['menu']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['Header']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['menu']->key => $_smarty_tpl->tpl_vars['menu']->value) {
 $_smarty_tpl->tpl_vars['menu']->_loop = true;
 ?>
-			  <li><a href="<?php echo $_smarty_tpl->tpl_vars['menu']->value['url'];?>
+	  <li><a href="<?php echo $_smarty_tpl->tpl_vars['menu']->value['url'];?>
 "><?php echo $_smarty_tpl->tpl_vars['menu']->value['title'];?>
 <br></a></li>
-			  <?php } ?>
-			</ul>
-		</nav>
-		
-		<nav id="top">
-		  <?php  $_smarty_tpl->tpl_vars['connect'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['connect']->_loop = false;
+	  <?php } ?>
+	</ul>
+      </nav>
+      
+      <nav id="top">
+	<?php  $_smarty_tpl->tpl_vars['connect'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['connect']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['Connect']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['connect']->key => $_smarty_tpl->tpl_vars['connect']->value) {
 $_smarty_tpl->tpl_vars['connect']->_loop = true;
 ?>
-		  <li><a href="<?php echo $_smarty_tpl->tpl_vars['connect']->value['url'];?>
+	<li><a href="<?php echo $_smarty_tpl->tpl_vars['connect']->value['url'];?>
 "><?php echo $_smarty_tpl->tpl_vars['connect']->value['title'];?>
 </a></li>
-		  <?php } ?>
-		</nav>
-		
-		
-		<?php echo $_smarty_tpl->tpl_vars['Content']->value;?>
+	<?php } ?>
+      </nav>
+      
+      
+      <?php echo $_smarty_tpl->tpl_vars['Content']->value;?>
 
-		
-		<table class="aside">
-		  <tr>
-				<th>LAST NEWS</th>
-			</tr>
-			<?php  $_smarty_tpl->tpl_vars['it'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['it']->_loop = false;
+      
+      <table class="aside">
+	<tr>
+	  <th>LAST NEWS</th>
+	</tr>
+	<?php  $_smarty_tpl->tpl_vars['it'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['it']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['AsideNews']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['it']->key => $_smarty_tpl->tpl_vars['it']->value) {
 $_smarty_tpl->tpl_vars['it']->_loop = true;
 ?>
-			<tr>
-			  <td><a href="index.php?page=news&v1=lire_news&v2=<?php echo $_smarty_tpl->tpl_vars['it']->value['Id'];?>
+	<tr class="lienaside">
+	  <td><a href="index.php?page=news&v1=lire_news&v2=<?php echo $_smarty_tpl->tpl_vars['it']->value['Id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['it']->value['titre'];?>
 </td>
-			</tr>
-			<?php } ?>
-			<tr>
-				<th>LAST EVENTS</th>
-			</tr>
-			<?php  $_smarty_tpl->tpl_vars['it'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['it']->_loop = false;
+	</tr>
+	<?php } ?>
+	<tr>
+	  <th>LAST EVENTS</th>
+	</tr>
+	<?php  $_smarty_tpl->tpl_vars['it'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['it']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['AsideCal']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['it']->key => $_smarty_tpl->tpl_vars['it']->value) {
 $_smarty_tpl->tpl_vars['it']->_loop = true;
 ?>
-			<tr>
-				<td><?php echo $_smarty_tpl->tpl_vars['it']->value['titre'];?>
+	<tr class="lienaside">
+	  <td><a href="index.php?page=calendrier&v1=lire_event&v2=<?php echo $_smarty_tpl->tpl_vars['it']->value['Id'];?>
+"><?php echo $_smarty_tpl->tpl_vars['it']->value['titre'];?>
 </td>
-			</tr>
-			<?php } ?>
-		</table>
-		
-			
-	</center>
+	</tr>
+	<?php } ?>
+      </table>
+      
+      
+    </center>
   </body>
   
 </html>

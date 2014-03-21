@@ -504,3 +504,13 @@ table {
     color:#8B0F0F;
     text-decoration:none;
 }
+
+
+.lienaside a:hover{
+    color:red;
+}
+
+.lienaside a{
+    color:white;
+    text-decoration:none;
+}

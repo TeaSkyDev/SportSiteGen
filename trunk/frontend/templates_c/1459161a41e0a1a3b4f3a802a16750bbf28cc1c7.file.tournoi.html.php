@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 17:15:52
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-21 08:12:57
          compiled from "templates/template1/html/tournoi.html" */ ?>
 <?php /*%%SmartyHeaderCode:1760553765532b0542565e98-25280328%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1459161a41e0a1a3b4f3a802a16750bbf28cc1c7' => 
     array (
       0 => 'templates/template1/html/tournoi.html',
-      1 => 1395332118,
+      1 => 1395385975,
       2 => 'file',
     ),
   ),
@@ -59,7 +59,7 @@ $_smarty_tpl->tpl_vars['match']->_loop = true;
 	<td> <a href="index.php?page=match&v1=lire_match&v2=<?php echo $_smarty_tpl->tpl_vars['match']->value['Id'];?>
 "><?php echo $_smarty_tpl->tpl_vars['match']->value['name1'];?>
  vs <?php echo $_smarty_tpl->tpl_vars['match']->value['name2'];?>
- ||| <?php echo $_smarty_tpl->tpl_vars['match']->value['date'];?>
+ le <?php echo $_smarty_tpl->tpl_vars['match']->value['date'];?>
  </a></td>
       </tr>
       <tr>
