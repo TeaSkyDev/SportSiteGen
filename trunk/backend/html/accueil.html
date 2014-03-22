@@ -20,7 +20,7 @@
                         </a>
                     <p>
                     <?php
-                    $sql = $bdd->query("select * from NEWS limit 0,5");
+                    $sql = $bdd->query("select * from NEWS order by Id desc limit 0,5");
                     echo '<ul id="user">';
                     while($data = $sql->fetch()) {
                         echo '<li>'.$data['titre'].'</li>';
@@ -35,7 +35,7 @@
                         </a>
                     <p>
                     <?php
-                    $sql = $bdd->query("select * from NEWS_COM limit 0,5");
+                    $sql = $bdd->query("select * from NEWS_COM order by Id desc limit 0,5");
                     echo '<ul id="consulte">';
                     while($data = $sql->fetch()) {
                         echo '<li>'.$data['contenu'].'</li>';
