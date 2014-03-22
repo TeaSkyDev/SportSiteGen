@@ -16,47 +16,49 @@
                     <p id="Luser">
                         <a href="#" onclick="showmenu(document.getElementById('user'),'user');">
                             <img name="user" src="Images/fermer.png">
-                            Les 5 derniers utilisateurs connectés
+                            Les 5 dernières news
                         </a>
                     <p>
-
-                    <ul id="user">
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                    </ul>
+                    <?php
+                    $sql = $bdd->query("select * from NEWS limit 0,5");
+                    echo '<ul id="user">';
+                    while($data = $sql->fetch()) {
+                        echo '<li>'.$data['titre'].'</li>';
+                    }
+                    echo '</ul>';
+                    ?>
 
                     <p id="Lconsulte">
                         <a href="#" onclick="showmenu(document.getElementById('consulte'),'consulte');">
                             <img name="consulte" src="Images/fermer.png">
-                            Les 5 articles les plus consultés
+                            Les 5 derniers commentaires
                         </a>
                     <p>
+                    <?php
+                    $sql = $bdd->query("select * from NEWS_COM limit 0,5");
+                    echo '<ul id="consulte">';
+                    while($data = $sql->fetch()) {
+                        echo '<li>'.$data['contenu'].'</li>';
+                    }
+                    echo '</ul>';
+                    ?>
 
-                    <ul id="consulte">
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                    </ul>
 
                     <p id="Lajoute">
                         <a href="#" onclick="showmenu(document.getElementById('ajoute'),'ajoute');">
                             <img name="ajoute" src="Images/fermer.png">
-                            Les 5 derniers articles ajoutés
+                            Les 5 derniers inscrits
                         </a>
                     <p>
+                    <?php
+                    $sql = $bdd->query("select * from UTILISATEUR order by Id desc limit 0,5");
+                    echo '<ul id="ajoute">';
+                    while($data = $sql->fetch()) {
+                        echo '<li>'.$data['Pseudo'].'</li>';
+                    }
+                    echo '</ul>';
+                    ?>
 
-                    <ul id="ajoute">
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                        <li> Requete SQL </li>
-                    </ul>
 
                 </dl>
                 <p id="LQuickIcon">
