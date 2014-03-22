@@ -58,6 +58,11 @@ create table PHOTO_MATCHS(
        primary key(IdMATCHS,IdPhoto)
 );
 
+create table PHOTO_TOURNOIS(
+        IdTOURNOIS integer(10),
+        idPhoto integer(10),
+        primary key(idTOURNOIS,idPhoto)
+);
 
 create table POSTE(
        Id integer(10) primary key AUTO_INCREMENT,

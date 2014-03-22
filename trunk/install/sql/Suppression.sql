@@ -7,6 +7,7 @@ drop table JOUEUR;
 drop table MENU_ELEM;
 drop table POSTE;
 drop table PHOTO_MATCHS;
+drop table PHOTO_TOURNOIS;
 drop table MATCHS;
 drop table TEAM;
 drop table CATEGORIE;
