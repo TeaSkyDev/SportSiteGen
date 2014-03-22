@@ -1,0 +1,18 @@
+<div class="body equipe">
+  <div>
+    <span> Connexion </span>
+    <form action="index.php?page=connexion&action=verif" method="post" onsubmit = "return verif_form_connexion(this)">
+      <div id="connexion_menu">
+ 	<tr>
+		<th>Pseudo : </th><td><input type="text" name="pseudo"/></td>
+	</tr>
+	<tr>
+		<th>Mdp : </th><td><input type="password" name="password"/></td>
+	</tr>
+	<br>
+	<input type="submit" value="CONNEXION" id="application-submit">
+	<br>
+	<input type="button" value="S'INSCRIRE" onclick="document.location.href='index.php?page=inscription'">
+    </form>
+    </div>
+  </div>
