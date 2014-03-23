@@ -25,7 +25,11 @@ if(isset($_GET['type'])) {
 
                     for($i = 0; $i < $nb_files; $i++) {
                         $path .= "/";
-                        move_uploaded_file($_FILES['photo']['tmp_name'][$i], $path.$i."_".$_FILES['photo']['name'][$i]);
+                        if(move_uploaded_file($_FILES['photo']['tmp_name'][$i], $path.$i."_".$_FILES['photo']['name'][$i])) {
+                            $bdd->query("insert into PHOTO values(null, '".$_FILES['photo']['name'][$i]."', '/matchs/".$_POST['id_match']."/".$_FILES['photo']['name'][$i]."', 'aucune')");
+                            $id_photo = $bdd->query("select MAX(Id) as id_max from PHOTO")->fetch()['id_max'];
+                            $bdd->query("insert into PHOTO_MATCHS values(".$_POST['id_match'].", ".$id_photo.")");
+                        }
                     }
 
                     header("Location: index.php?page=photos_matchs");
