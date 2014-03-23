@@ -142,6 +142,21 @@ class Equipe {
         }
     }
 
+    /** (static)
+    \brief cherche une equipe en fonction de son identifiant
+    \param id l'identifiant de l'equipe
+    \return renvoi l'equipe ou false
+     */
+    static public function s_search_byId($bdd, $id) {
+        $query = $bdd->prepare("select * from TEAM where Id = :id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+        if ($query->rowCount() > 0) {
+            return $query->fetch();
+        } else {
+            return false;
+        }
+    }
 
     /**
     \brief renvoi le equipe entre une debut et une fin
