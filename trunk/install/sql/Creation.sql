@@ -46,7 +46,7 @@ create table MATCHS(
        IdTeam2 integer(10) references TEAM(Id) ,
        nbPoint1 integer(5),
        nbPoint2 integer(5),
-       DateMATCHS Date not null,
+       DateMATCHS datetime not null,
        Lieu varchar(15),
        Commentaires varchar(100)
 );
