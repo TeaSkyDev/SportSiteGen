@@ -20,7 +20,7 @@
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=match&action=ajouter">
+                <form method="post" action="index.php?page=new_match&action=ajouter">
                 <br>
                 <fieldset>
                     <legend>Ajouter un Match</legend>
@@ -87,6 +87,13 @@
                         Lieu : <input type="text" name="lieu">
                     <br>
                     <br>
+                    Match joue :
+                    <select name="joue">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                    </select>
+                    Commentaires :
+                    <textarea name="com" cols="30" rows="10" ></textarea><br/>
                     <input type="submit" value=" Envoyer">
                 </fieldset>
                 <br>
