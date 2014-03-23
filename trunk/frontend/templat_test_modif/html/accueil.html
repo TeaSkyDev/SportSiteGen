@@ -16,6 +16,20 @@
       </li>
       {/foreach}
     </ul>
-	
+	<span>Event</span>
+	   <ul>
+      {foreach from=$News item=news}
+      <li>
+	<a href="index.php?page=calendrier&v1=lire_news&v2={$news.Id}"><img src="images/news1.jpg" alt=""></a>
+	<div>
+	  <h3><a href="index.php?page=calendrier&v1=lire_event&v2={$event.Id}"><u>{$event.titre}</u></a></h3>
+	  <span>{$news.date}</span>
+	  <p>
+	    {$event.location} - {$event.date}
+	  </p>
+	</div>
+      </li>
+      {/foreach}
+    </ul>
   </div>
   
