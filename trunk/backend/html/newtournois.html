@@ -1,97 +1,54 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Nouvelle equipe</title>
-        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
-        <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="css/calendrier.css" type="text/css" media="screen"/>
-        <script type="text/javascript" src="js/calendrier.js"></script>
-    </head>
-    <body>
-        <div id="contenu">
-            <?php
-                @include ("header.html");
-            ?>
-            <br>
-            <div class="entete">
-                <img src="Images/newarticle.png">
-                <h1>Gestion des equipes : Ajouter une equipe</h1> 
-            </div>
-            <br>
-            <div class="interieur">
-                <form method="post" action="index.php?page=tournois&action=ajouter">
-                    <fieldset>
-                        <legend>Parametre</legend>
-                        Nom: 
-                            <input type="text" name="nom">
-                        Date debut:
-                            <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
-                                <tr>
-                                    <td id="ds_calclass"></td>
-                                </tr>
-                            </table>
-                            <input type="text" name="datedebut" onclick="ds_sh(this);" />
-                        Date Fin:
-                        <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
-                            <tr>
-                                <td id="ds_calclass"></td>
-                            </tr>
-                        </table>
-                        <input type="text" name="datefin" onclick="ds_sh(this);" />
-                    </fieldset>
-                    <div class="tableau">
-                        <table>
-                            <tr>
-                                <td>Selection</td>
-                                <td>Equipe 1</td>
-                                <td>Equipe 2</td>
-                                <td>Action</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <!-- tous stocker dans un tableau php pour gerer l'ord-->
-                                    <select name="match">
-                                        <?php
-                                            $sql="SELECT * FROM MATCHS";
-                                            foreach ($bdd->query($sql) as $data) {
-                                                $query="SELECT * FROM TEAM WHERE Id=".$data['IdTeam1'];
-                                                foreach ($bdd->query($query) as $equipe) {
-                                                    $equipe1=$equipe['Nom'];
-                                                }
-
-                                                $query="SELECT * FROM TEAM WHERE Id=".$data['IdTeam2'];
-                                                foreach ($bdd->query($query) as $equipe) {
-                                                    $equipe2=$equipe['Nom'];
-                                                }
-                                                echo "<option value='".$data['Id']."'>".$equipe1." vs ".$equipe2."</option><br>";
-                                            }
-                                        ?>
-                                    </select>
-                                </td>
-                                <td>
-                                    <?php
-                                        echo $equipe1;
-                                    ?>
-                                </td>
-                                <td>
-                                    <?php
-                                        echo $equipe2;
-                                    ?>
-                                </td>
-                                <td>
-                                    <button onclick="self.location.href='index.php?page=match&id=<?php echo $data['Id']; ?>'" title="Editer">
-                                    <img src="Images/edition.png">
-                                    </button>
-                                    <button onclick="self.location.href='index.php?page=match&id=<?php echo $data['Id']; ?>'" title="Supprimer">
-                                        <img src="Images/suppression.bmp">
-                                    </button>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </body>
+  <head>
+    <title>Nouveau Tournoi</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/calendrier.css" type="text/css" media="screen"/>
+    <script type="text/javascript" src="js/calendrier.js"></script>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/newarticle.png">
+        <h1>Gestion des Tournois : Ajouter un tournoi</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <form method="post" action="index.php?page=tournois&action=ajouter">
+          <fieldset>
+            <legend>Parametre</legend>
+            Nom: 
+            <input type="text" name="nom">
+            Date debut:
+            <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+              <tr>
+                <td id="ds_calclass"></td>
+              </tr>
+            </table>
+            <input type="text" name="datedebut" onclick="ds_sh(this);" />
+            Date Fin:
+            <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+              <tr>
+                <td id="ds_calclass"></td>
+              </tr>
+            </table>
+            <input type="text" name="datefin" onclick="ds_sh(this);" />
+            Nb Equipe:
+	    <input type="text" name="nbequipe">
+	  </fieldset>
+	  <fieldset>
+	    <legend> Description </legend>
+		<textarea name="description" rows="10" cols="50"> </textarea>
+	  </fieldset>
+	  <input type="submit" value="Envoyer">
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
