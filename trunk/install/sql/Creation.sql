@@ -109,7 +109,9 @@ create table TOURNOI(
        Nom varchar(15) not null,
        Description varchar(50),
        DateDebut Date not null,
-       DateFin Date not null
+       DateFin Date not null,
+       nbEquipe integer(5) not null
+       
 );
 
 create table APPARTENIR_TOURNOI(

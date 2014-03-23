@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Nouvelle Categorie</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/icon_equipe.png">
+        <h1>Gestion des equipes : Ajouter une Categorie</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <form method="post" action="index.php?page=new_categorie&action=ajouter">
+          <br>
+          <fieldset>
+            <legend>Ajouter une categorie</legend>
+            <br>
+            Nom : <input type="text" name="nom">
+            <br>
+            <br>
+            Description : 
+            <br>
+            <textarea name="description" rows="10" cols="50"></textarea>
+            <br>
+            <br>           
+            <input type="submit" value="Envoyer">
+          </fieldset>
+          <br>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

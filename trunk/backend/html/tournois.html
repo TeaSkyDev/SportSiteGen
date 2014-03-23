@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Tournois</title>
+        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+        <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+    </head>
+    <body>
+    	<div id="contenu">
+            <?php
+                @include ("header.html");
+            ?>
+            <br>
+            <div class="entete">
+                    <img src="Images/icon_tournois.png">
+                    <h1>Gestion des Tournois : Liste des Tournois</h1> 
+            </div>
+            <br>
+            <div class="interieur">
+                <div class="tableau">
+                    <table>
+                        <tr>
+                            <td>Id</td>
+                            <td>Nom</td>
+                            <td>Description</td>
+                            <td>Date debut</td>
+                            <td>Date fin</td>
+			    <td>Action</td>
+                        </tr>
+
+                        <?php
+                            $sql = "SELECT * FROM TOURNOI order by Id DESC ";
+                            foreach($bdd->query($sql) as $data) {
+                        ?>
+
+                        <tr>
+                            <td>
+                                <?php
+                                    echo $data['Id'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['Nom'];
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                    echo $data['Description'];
+                                ?>
+                            </td>
+			    <td>
+			      <?php
+				 echo $data['DateDebut'];
+			      ?>
+			    </td>
+			    <td>
+			      <?php
+				 echo $data['DateFin'];
+				 ?>
+			    </td>
+                            <td>
+                                <button onclick="self.location.href='index.php?page=edit_tournois&id=<?php echo $data['Id']; ?>'" title="Editer">
+                                    <img src="Images/edition.png">
+                                </button>
+                                <button onclick="self.location.href='index.php?page=tournois&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                    <img src="Images/suppression.bmp">
+                                </button>
+                            </td>
+                        </tr>
+
+                        <?php
+                            }
+                        ?>
+                    </table>
+                </div>
+                <br>
+                
+                <a href="index.php?page=new_tournois">
+                    <input type="button" value="Nouveau Tournoi">
+                </a>
+
+            </div>
+        </div>
+    </body>
+</html>

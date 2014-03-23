@@ -66,8 +66,7 @@ function ds_template_main_above(t) {
 		 + '<td class="ds_head" style="cursor: pointer" onclick="ds_nm();">&gt;</td>'
 		 + '<td class="ds_head" style="cursor: pointer" onclick="ds_ny();">&gt;&gt;</td>'
 		 + '</tr>'
-		 + '<tr>'
-		 + '<td colspan="7" class="ds_head">' + t + '</td>'
+		 + '<tr>'		 + '<td colspan="7" class="ds_head">' + t + '</td>'
 		 + '</tr>'
 		 + '<tr>';
 }
@@ -185,7 +184,7 @@ function ds_format_date(d, m, y) {
 	m2 = m2.substr(m2.length - 2);
 	d2 = '00' + d;
 	d2 = d2.substr(d2.length - 2);
-	return d2 + '/' + m2 + '/' + y;
+	return y + '/' + m2 + '/' + d;
 }
 
 function ds_onclick(d, m, y) {

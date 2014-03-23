@@ -1,110 +1,109 @@
 <?php
-    $id = $_GET['id'];
-?>
+   $id = $_GET['id'];
+   ?>
 
 <!doctype html>
 <html>
-    <head>
-        <title>Modifier Equipe</title>
-        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
-        <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
-    </head>
-    <body>
-        <div id="contenu">
-            <?php
-                @include ("header.html");
-            ?>
-            <br>
-            <div class="entete">
-                <img src="Images/newarticle.png">
-                <h1>Gestion des Equipes : Modifier une Equipe</h1> 
-            </div>
-            <br>
-            <div class="interieur">
-                <form method="post" action="index.php?page=edit_equipe&action=edit&id=<?php echo $id ?>">
-                <br>
-                <fieldset>
-                    <legend>Modifier une Equipe</legend>
+  <head>
+    <title>Modifier Equipe</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/newarticle.png">
+        <h1>Gestion des Equipes : Modifier une Equipe</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <form method="post" action="index.php?page=edit_equipe&action=edit&id=<?php echo $id ?>">
+          <br>
+          <fieldset>
+            <legend>Modifier une Equipe</legend>
 
-                    <?php 
-                    	$sql = "SELECT * FROM TEAM WHERE Id= $id ";
-                    	foreach($bdd->query($sql) as $data){
-                    ?>
-                   
-                    <br>
-                        Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
-                    <br>
-                    <br>
-                        Photo : 
-                        <?php
-                                $categorie=$data['IdCategorie'];
-                                $photo=$data['idPhoto'];
-                                $description=$data['Description'];
-                            }
-                            $sql="SELECT * FROM PHOTO WHERE id=$photo";
-                            foreach ($bdd->query($sql) as $data) {
-                        ?>
-                        <select name="photo">
-                            <option value="<?php echo $data['Id']; ?>"selected> 
-                                <?php
-                                    echo $data['Nom'];
-                                    }
-                                ?>
-                            </option>
-                            <?php
-                                $sql="SELECT * FROM TYPE_USER WHERE id!=$photo";
-                                foreach ($bdd->query($sql) as $data) {
-                            ?>
-                            <option value="<?php echo $data['Id']; ?>">
-                                <?php
-                                    echo $data['Nom'];
-                                    }
-                                ?>
-                            </option>
-                            <br>
-                        </select>
-                        <br>
-                        <br>
-                            Categorie : 
-                            <select name="categorie">
-                                <?php
-                                    $sql="SELECT * FROM CATEGORIE WHERE Id=$categorie";
-                                    foreach ($bdd->query($sql) as $data) {
-                                ?>
-                                <option value="<?php echo $data['Id']; ?>" selected> 
-                                    <?php
-                                        echo $data['Nom'];
-                                        }
-                                    ?>
-                                </option>
-                                <?php
-                                    $sql="SELECT * FROM CATEGORIE WHERE Id!=$categorie";
-                                    foreach ($bdd->query($sql) as $data) {
-                                ?>
-                                <option value="<?php echo $data['Id']; ?>">
-                                    <?php
-                                        echo $data['Nom'];
-                                        }
-                                    ?>
-                                </option>
-                                <br>
-                            </select>
-                        <br>
-                        <br>
-                        Description : 
-                        <br>
-                        <textarea name="description" rows="10" cols="50">
-                            <?php
-                                echo $description;
-                            ?>
-                        </textarea>
-                    <br>
-                    <br>           
-                    <input type="submit" value="Envoyer">
-                </fieldset>
-                <br>
-                </form>
-            </div>
-        </div>
-    </body>
+            <?php 
+               $sql = "SELECT * FROM TEAM WHERE Id= $id ";
+               foreach($bdd->query($sql) as $data){
+            ?>
+            
+            <br>
+            Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
+            <br>
+            <br>
+            Photo : 
+            <?php
+               $categorie=$data['IdCategorie'];
+               $photo=$data['idPhoto'];
+               $description=$data['Description'];
+               }
+               $sql="SELECT * FROM PHOTO WHERE id=$photo";
+               foreach ($bdd->query($sql) as $data) {
+            ?>
+            <select name="photo">
+              <option value="<?php echo $data['Id']; ?>"selected> 
+                <?php
+                   echo $data['Nom'];
+                   }
+                   ?>
+              </option>
+              <?php
+                 $sql="SELECT * FROM TYPE_USER WHERE id!=$photo";
+                 foreach ($bdd->query($sql) as $data) {
+              ?>
+              <option value="<?php echo $data['Id']; ?>">
+                <?php
+                   echo $data['Nom'];
+                   }
+                   ?>
+              </option>
+              <br>
+            </select>
+            <br>
+            <br>
+            Categorie : 
+            <select name="categorie">
+              <?php
+                 $sql="SELECT * FROM CATEGORIE WHERE Id=$categorie";
+                 foreach ($bdd->query($sql) as $data) {
+              ?>
+              <option value="<?php echo $data['Id']; ?>" selected> 
+                <?php
+                   echo $data['Nom'];
+                   }
+                   ?>
+              </option>
+              <?php
+                 $sql="SELECT * FROM CATEGORIE WHERE Id!=$categorie";
+                 foreach ($bdd->query($sql) as $data) {
+              ?>
+              <option value="<?php echo $data['Id']; ?>">
+                <?php
+                   echo $data['Nom'];
+                   }
+                   ?>
+              </option>
+              <br>
+            </select>
+            <br>
+            <br>
+            Description : 
+            <br>
+            <textarea name="description" rows="10" cols="50"><?php
+                 echo $description;
+                 ?>
+            </textarea>
+            <br>
+            <br>           
+            <input type="submit" value="Envoyer">
+          </fieldset>
+          <br>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
