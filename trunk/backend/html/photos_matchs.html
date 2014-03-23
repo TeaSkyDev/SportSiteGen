@@ -25,6 +25,7 @@
                     <td>
                         Choix du match :
                         <select name="matchs" onchange="location.href='index.php?page=photos_matchs&match=' + this.options[this.selectedIndex].value;">
+                            <option></option>
                             <?php
                             if(isset($_GET['match'])) {
                                 $sql = $bdd->query("select * from MATCHS where Id = ".$_GET['match']);
@@ -46,6 +47,26 @@
                                 } else {
                                     echo $opt;
                                 }
+                            }
+                        echo '</select>';
+                            if(isset($_GET['match'])) {
+                                echo '<form method="post" action="index.php?page=new_photo&type=match" enctype="multipart/form-data">';
+                                //echo '<input type="hidden" name="MAX_FILE_SIZE" value="2097152">';
+                                echo '<input type="hidden" name="id_match" value="'.$_GET['match'].'">';
+                                echo '<table>';
+                                    echo '<tr>';
+                                        echo '<th>Upload</th>';
+                                    echo '</tr>';
+                                    for($i = 0; $i < 5; $i++) {
+                                    echo '<tr>';
+                                        echo '<td><input type="file" name="photo[]"/></td>';
+                                    echo '</tr>';
+                                    }
+                                    echo '<tr>';
+                                        echo '<td><input type="submit" value=" Envoyer"></td>';
+                                    echo '</tr>';
+                                echo '</table>';
+                                echo '</form>';
                             }
 
                             ?>
