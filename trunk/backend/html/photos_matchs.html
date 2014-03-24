@@ -75,6 +75,25 @@
                     </td>
                 </tr>
             </table>
+            <?php
+            if(isset($_GET['match'])) {
+            $sql = $bdd->query("select IdPhoto from PHOTO_MATCHS where IdMATCHS = ".$_GET['match']);
+            echo '<table>';
+                echo '<tr><th colspan="4">Photos du match</th></tr>';
+                $i = 0;
+                while($data = $sql->fetch()) {
+                    $photo = $bdd->query("select Fichier from PHOTO where Id = ".$data['IdPhoto'])->fetch()['Fichier'];
+                    if($i == 0) {
+                        echo '<tr>';
+                    } else if($i%4 == 0) {
+                        echo '</tr>';
+                    }
+                    echo '<td><img src="'.$photo.'"/></td>';
+                    $i++;
+                }
+            echo '</table>';
+            }
+            ?>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 create table PHOTO(
        Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(20),
-       Fichier varchar(20) unique,
+       Fichier varchar(255) unique,
        Commentaires varchar(50)
 );
 
