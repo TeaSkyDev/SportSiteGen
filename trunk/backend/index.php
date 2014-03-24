@@ -99,6 +99,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'photos_matchs':
                 include("html/photos_matchs.html");
                 break;
+            case 'photos_tournois':
+                include("html/photos_tournois.html");
+                break;
             case 'new_photo':
                 include("php/photos.php");
                 break;

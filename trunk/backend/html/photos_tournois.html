@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <title>Photos - Matchs</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+</head>
+<script language=JavaScript src="js/accueil.js"></script>
+<body>
+<div id="contenu">
+    <?php
+                @include ("header.html");
+                include("php/Equipe.php");
+            ?>
+    <br>
+    <div class="entete">
+        <img src="Images/icon_image.png">
+        <h1>Ajouter des photos d'un tournois</h1>
+    </div>
+    <br>
+    <div class="interieur">
+        <div class="tableau">
+            <table>
+                <tr>
+                    <td>
+                        Choix du tournois :
+                        <select name="tournois" onchange="location.href='index.php?page=photos_tournois&tournoi=' + this.options[this.selectedIndex].value;">
+                            <option></option>
+                            <?php
+                            if(isset($_GET['tournoi'])) {
+                                $sql = $bdd->query("select * from TOURNOI where Id = ".$_GET['tournoi']);
+                                $data = $sql->fetch();
+                                echo '<option value="'.$data['Id'].'">'.$data['Nom'].' Debut : '.$data['DateDebut'].' Fin : '.$data['DateFin'].'</option>';
+                            }
+
+                            $sql = $bdd->query("select * from TOURNOI order by Id desc");
+                            while($data = $sql->fetch()) {
+                                $opt = '<option value="'.$data['Id'].'">'.$data['Nom'].' Debut : '.$data['DateDebut'].' Fin : '.$data['DateFin'].'</option>';
+                                if(isset($_GET['tournoi'])) {
+                                    if($data['Id'] != $_GET['tournoi']) {
+                                        echo $opt;
+                                    }
+                                } else {
+                                    echo $opt;
+                                }
+                            }
+                            echo '</select>';
+                        if(isset($_GET['tournoi'])) {
+                        echo '<form method="post" action="index.php?page=new_photo&type=tournoi" enctype="multipart/form-data">';
+                        //echo '<input type="hidden" name="MAX_FILE_SIZE" value="2097152">';
+                        echo '<input type="hidden" name="id_tournoi" value="'.$_GET['tournoi'].'">';
+                        echo '<table>';
+                            echo '<tr>';
+                                echo '<th>Upload</th>';
+                                echo '</tr>';
+                            for($i = 0; $i < 5; $i++) {
+                            echo '<tr>';
+                                echo '<td><input type="file" name="photo[]"/></td>';
+                                echo '</tr>';
+                            }
+                            echo '<tr>';
+                                echo '<td><input type="submit" value=" Envoyer"></td>';
+                                echo '</tr>';
+                            echo '</table>';
+                        echo '</form>';
+                        }
+
+                        ?>
+
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <?php
+            if(isset($_GET['tournoi'])) {
+                $sql = $bdd->query("select IdPhoto from PHOTO_TOURNOIS where IdTOURNOIS = ".$_GET['tournoi']);
+                echo '<table>';
+                echo '<tr><th colspan="4">Photos du tournoi</th></tr>';
+                $i = 0;
+                while($data = $sql->fetch()) {
+                    $photo = $bdd->query("select Fichier from PHOTO where Id = ".$data['IdPhoto'])->fetch()['Fichier'];
+                    if($i == 0) {
+                        echo '<tr>';
+                    } else if($i%4 == 0) {
+                        echo '</tr>';
+                    }
+                    echo '<td><img src="'.$photo.'"/></td>';
+                    $i++;
+                }
+                echo '</table>';
+            }
+            ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>
