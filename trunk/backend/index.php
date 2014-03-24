@@ -84,13 +84,13 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 break;
             /*TOURNOIS*/
             case 'tournois':
-                include("html/tournois.html");
+                include("php/gerer_tournois.php");
                 break;
             case 'new_tournois':
-                include("html/newtournois.html");
+                include("php/gerer_tournois.php");
                 break;
             case 'edit_tournois':
-                include("html/edittournois.html");
+                include("php/gerer_tournois.php");
                 break;
             /* PHOTOS */
             case 'photos':
