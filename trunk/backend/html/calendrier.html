@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Calendrier</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+  </head>
+  <script language=JavaScript src="js/accueil.js"></script>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/icon_equipe.png">
+        <h1>Gestion du Calendrier : Liste des Evenements</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <div class="tableau">
+          <table>
+            <tr>
+              <td>Titre</td>
+              <td>Date</td>
+              <td>Contenu</td>
+              <td>Location</td>
+	      <td>Action</td>
+            </tr>
+	    <?php
+	      $sql = "SELECT * from EVENEMENT";
+	       foreach($bdd->query($sql) as $data) {
+	    ?>
+            <tr>
+              <td>
+                <?php 
+                   echo $data['titre'];
+                   ?>
+              </td>
+              <td>
+                <?php
+                   echo $data['date'];
+                   ?>
+              </td>
+              <td>
+                <?php
+                   echo resume_text($data['contenu'], 100);
+                   ?>
+              </td>
+	      <td>
+		<?php
+		   echo $data['location'];
+		   ?>
+	      </td>
+              <td>
+                <button onclick="self.location.href='index.php?page=edit_event&id=<?php echo $data['Id']; ?>'" title="Editer">
+                  <img src="Images/edition.png">
+                </button>
+                <button onclick="self.location.href='index.php?page=calendrier&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                  <img src="Images/suppression.bmp">
+                </button>
+              </td>
+            </tr>
+
+            <?php
+               }
+               ?>
+          </table>
+        </div>
+        <br>
+
+
+        <a href="index.php?page=new_event">
+          <input type="button" value="Nouvelle Evenement" onclick="self.location.href='index.php?page=new_event'">
+        </a>
+
+      
+    </div>
+  </body>
+</html>
