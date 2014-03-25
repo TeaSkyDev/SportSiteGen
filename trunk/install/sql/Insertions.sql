@@ -42,7 +42,7 @@ insert into POSTE values(3,'Attaquant','');
 insert into TEAM values(1,'Tigres',1,1,'');
 insert into TEAM values(2,'Panthères',1,1,'');
 
-insert into TOURNOI values(1,'Tournoi des 6 terrains','','2014-01-02 00:00:00'),'2014-01-04 00:00:00',6;
+insert into TOURNOI values(1,'Tournoi des 6 terrains','','2014-01-02 00:00:00'),'2014-01-04 00:00:00',6);
 
 insert into TYPE_USER values(null, 'Utilisateur', 'Utilisateur classique');
 
