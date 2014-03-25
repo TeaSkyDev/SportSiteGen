@@ -88,6 +88,7 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 break;
             case 'new_match':
             case 'edit_match':
+            case 'suppr_match':
                 include("php/gerer_match.php");
                 break;
             /*TOURNOIS*/
