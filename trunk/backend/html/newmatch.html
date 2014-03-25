@@ -27,6 +27,7 @@
                     <br>
                         Equipe 1 :
                         <select name="team1" onchange="location.href='index.php?page=new_match&equipe1=' + this.options[this.selectedIndex].value;">
+                            <option></option>
                             <?php
                                 $sql="SELECT * FROM TEAM";
                                 foreach ($bdd->query($sql) as $data) {
