@@ -1,0 +1,76 @@
+{if $Modif == "pseudo"}
+<form method="post" action="index.php?page=profil&v1=modif_pseudo&v2=true">
+  <table align="center">
+    <tr>
+      <th colspan="2">Modification du pseudo</th>
+    </tr>
+    <tr>
+      <th>Pseudo : </th>
+      <td><input type="text" name="pseudo"/></td>
+    </tr>
+    <tr>
+      <th colspan="2"><input type="submit" value="Modifier"/></th>
+    </tr>
+  </table>
+</form>
+{/if}
+
+{if $Modif == "password"}
+<form method="post" action="index.php?page=profil&v1=modif_password&v2=true">
+  <table align="center">
+    <tr>
+      <th colspan="2">Modification du mot de passe</th>
+    </tr>
+    <tr>
+      <th>Ancien mot de passe : </th>
+      <td><input type="password" name="ancien_password"/></td>
+    </tr>
+    <tr>
+      <th>Mot de passe : </th>
+      <td><input type="password" name="password"/></td>
+    </tr>
+    <tr>
+      <th>Vérification : </th>
+      <td><input type="password" name="verif_password"/></td>
+    </tr>
+    <tr>
+      <th colspan="2"><input type="submit" value="Modifier"/></th>
+    </tr>
+  </table>
+</form>
+{/if}
+
+{if $Modif == "mail"}
+<form method="post" action="index.php?page=profil&v1=modif_mail&v2=true">
+  <table align="center">
+    <tr>
+      <th colspan="2">Modification du mail</th>
+    </tr>
+    <tr>
+      <th>Ancien mot du mail : </th>
+      <td><input type="text" name="mail"/></td>
+    </tr>
+    <tr>
+      <th colspan="2"><input type="submit" value="Modifier"/></th>
+    </tr>
+  </table>
+</form>
+{/if}
+
+{if $Modif == "photo"}
+<form method="post" action="index.php?page=profil&v1=modif_photo&v2=true" enctype="multipart/form-data">
+  <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+  <table align="center">
+    <tr>
+      <th colspan="2">Modification de la photo</th>
+    </tr>
+    <tr>
+      <th>Parcourir : </th>
+      <td><input type="file" name="photo"/></td>
+    </tr>
+    <tr>
+      <th colspan="2"><input type="submit" value="Modifier"/></th>
+    </tr>
+  </table>
+</form>
+{/if}

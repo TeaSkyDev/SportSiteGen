@@ -447,7 +447,27 @@ table {
     margin-right:10px;
 }
 
+#profil a{
+    text-decoration: underline;
+}
 
+#profil mark{
+    background-color: rgba(0, 0, 0, 0);
+    color:CC0033;
+}
+
+
+
+.modif{
+    border: 1px grey solid;
+    border-radius:5px;
+    padding:20px;
+    box-shadow: 1px 1px 12px #555;
+}
+
+.rapprocher th{
+    margin-right:100px;
+}
 
 
 
@@ -514,3 +534,5 @@ table {
     color:white;
     text-decoration:none;
 }
+
+

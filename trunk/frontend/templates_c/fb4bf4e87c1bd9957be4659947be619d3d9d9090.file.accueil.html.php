@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 10:15:27
+<?php /* Smarty version Smarty-3.1.16, created on 2014-03-25 15:13:51
          compiled from "templates/template_1/html/accueil.html" */ ?>
 <?php /*%%SmartyHeaderCode:184591733532ab1af80ddb9-75138453%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'fb4bf4e87c1bd9957be4659947be619d3d9d9090' => 
     array (
       0 => 'templates/template_1/html/accueil.html',
-      1 => 1395231509,
+      1 => 1395755006,
       2 => 'file',
     ),
   ),
@@ -15,17 +15,16 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_532ab1af8cc031_90490871',
   'variables' => 
   array (
     'News' => 0,
     'news' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_532ab1af8cc031_90490871',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_532ab1af8cc031_90490871')) {function content_532ab1af8cc031_90490871($_smarty_tpl) {?>
-<div class="body news">
+<?php if ($_valid && !is_callable('content_532ab1af8cc031_90490871')) {function content_532ab1af8cc031_90490871($_smarty_tpl) {?><div class="body news">
   <div>
     <span>News</span>
     <ul>
@@ -53,6 +52,7 @@ $_smarty_tpl->tpl_vars['news']->_loop = true;
       </li>
       <?php } ?>
     </ul>
+	
   </div>
   
 <?php }} ?>

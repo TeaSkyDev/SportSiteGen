@@ -1,10 +1,16 @@
 <table align="center" id="profil" class="partie">
-	<tr><img src="templates/template1/images/gauche.png"/><span style="color:#8d020f;font-size:2.2em;"><b>{$Profil.Pseudo}</b></span><img src="templates/template1/images/droite.png"/>
-	</tr>
-	<tr>
-		<td>Mail : {$Profil.Mail}</td>
-	</tr>
-	<tr>
-		<td>Mdp : {$Profil.Mdp}</td>
-	</tr>
+  <tr><img src="templates/template1/images/gauche.png"/><span style="color:#8d020f;font-size:2.2em;"><b>{$Profil.Pseudo}</b></span><img src="templates/template1/images/droite.png"/>
+  </tr>
+  <tr>
+    <td><img src="../photos/utilisateurs/{$Profil.Photo}"/><i><a href="index.php?page=profil&v1=modif_photo">(modifier)</a></i></td>
+  </tr>
+  <tr>
+    <td>Pseudo : <mark>{$Profil.Pseudo}</mark> <i><a href="index.php?page=profil&v1=modif_pseudo">(modifier)</a></i></td>
+  </tr>
+  <tr>
+    <td>Mail : <mark>{$Profil.Mail}</mark> <i><a href="index.php?page=profil&v1=modif_mail">(modifier)</a></i></td>
+  </tr>
+  <tr>
+    <td>Mdp : <mark>{$Profil.Mdp}</mark> <i><a href="index.php?page=profil&v1=modif_password">(modifier)</a></i></td>
+  </tr>
 </table>
