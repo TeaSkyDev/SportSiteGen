@@ -218,14 +218,13 @@ function installation() {
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'debug')");
-    $sql_2 = $bdd->query("insert into TYPE_USER values (1,'Administrateur','Grand maitre du site')");
-    $sql_3 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");
+    $sql_2 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");
 
     $bdd->commit();
 
     $insert_autre = exec_sql_file($bdd, "sql/Insertions.sql");
 
-    $insertions_reussies = $sql_1 && $sql_2 && $sql_3 && $insert_autre;
+    $insertions_reussies = $sql_1 && $sql_2 && $insert_autre;
 
 
 
