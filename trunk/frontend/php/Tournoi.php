@@ -117,7 +117,7 @@ class Tournoi {
      \return un tableau de match organiser pour l'arbre ou null
      */
     public function get_treeTab_byId($id) {
-	$query = $this->_bdd->prepare("select * from APPARTENIR_TOURNOI where IdTournoi = :id order by NumTour");
+	$query = $this->_bdd->prepare("select * from APPARTENIR_TOURNOI where IdTournoi = :id order by NumTour, IdMatchs");
 	$query->bindParam(":id", $id);
 	$query->execute();
 	if ( $query->rowCount() != 0 ) {

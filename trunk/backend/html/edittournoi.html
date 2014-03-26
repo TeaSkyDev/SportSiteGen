@@ -58,7 +58,7 @@
 		   <td>Action</td>
 		 </tr>
 		 <?php
-		    $sql = "select * from APPARTENIR_TOURNOI where IdTournoi = $id && NumTour = $j - 1";
+		    $sql = "select * from APPARTENIR_TOURNOI where IdTournoi = $id && NumTour = $j - 1 order by IdMATCHS";
 		    $query = $bdd->prepare($sql);
 		 $query->execute();
 	  while ( $da = $query->fetch()) {
