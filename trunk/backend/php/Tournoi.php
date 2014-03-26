@@ -181,6 +181,24 @@ class Tournoi {
 
 
     /**
+     \brief ajoute un match a un tournoi
+     \param $bdd la base de donnee ou ajouter
+     \param id l'identifiant du tournoi
+     \param idMatch l'identifiant du match
+     \param numTour le numero de tour ( commencant a 0 )
+     \return vrai si reussi faux sinon
+     */
+    public function s_add_match_byTouId($bdd, $id, $idMatch, $numTour) {
+	$query = $bdd->prepare("insert into APPARTENIR_TOURNOI values(:id, :match, :tour)");
+	$query->bindParam(":id", $id);
+	$query->bindParam(":match", $idMatch);
+	$query->bindParam(":tour", $numTour);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+
+    /**
      \brief ajout un tournoi 
      \param Nom le nom du tournoi
      \param Description la description

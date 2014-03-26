@@ -101,6 +101,9 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
             case 'edit_tournois':
                 include("php/gerer_tournois.php");
                 break;
+	case 'new_tourn_match':
+	    include("php/gerer_tournois.php");
+	    break;
             /* PHOTOS */
             case 'photos':
                 include("html/photos.html");

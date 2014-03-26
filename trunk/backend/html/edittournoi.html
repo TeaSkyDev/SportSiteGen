@@ -21,173 +21,123 @@
         <h1>Gestion des Tournois : Modifier un Tournoi</h1> 
       </div>
       <br>
-	  
+      
       <div class="interieur">
-          <br>
-          <fieldset>
-            <legend>Modifier un Tournoi</legend>
+        <br>
+        <fieldset>
+          <legend>Modifier un Tournoi</legend>
 
-            <?php 
-               $sql = "SELECT * FROM TOURNOI WHERE Id= $id ";
-	       $query = $bdd->prepare($sql);
-	    $query->execute();
-	    $data = null;
-	    if ( $query->rowCount() != 0 ) {
-	    $data = $query->fetch();
-	    }
-            ?>
-	    <?php
-	       for ( $j = 1 ; $j < log($data['nbEquipe'], 2)+1 ; $j++) {
-				   ?>
-	       <div class="tableau">
-		 <table>
-		   <legend> Tour n° <?php echo $j?> </legend>
-		   <tr>
+          <?php 
+             $sql = "SELECT * FROM TOURNOI WHERE Id= $id ";
+	     $query = $bdd->prepare($sql);
+	  $query->execute();
+	  $data = null;
+	  if ( $query->rowCount() != 0 ) {
+	  $Tourn = $query->fetch();
+	  }
+          ?>
+	  <div class="tableau">
+	  <?php
+	     for ( $j = 1 ; $j < log($Tourn['nbEquipe'], 2)+1 ; $j++) {
+				 ?>
+
+	       <table>
+		 <legend> Tour n° <?php echo $j?> </legend>
+		 <tr>
 		   
-		     <td>Joue</td>
-		     <td>Equipe 1</td>
-		     <td>Equipe 2</td>
-		     <td>Score 1</td>
-		     <td>Score 2</td>
-		     <td>Date</td>
-		     <td>Lieu</td>
-		     <td>Commentaire</td>
-		     <td>Action</td>
-		   </tr>
-		   <?php
-		      $sql = "select * from APPARTENIR_TOURNOI where IdTournoi = $id && NumTour = $j - 1";
+		   <td>Joue</td>
+		   <td>Equipe 1</td>
+		   <td>Equipe 2</td>
+		   <td>Score 1</td>
+		   <td>Score 2</td>
+		   <td>Date</td>
+		   <td>Lieu</td>
+		   <td>Commentaire</td>
+		   <td>Action</td>
+		 </tr>
+		 <?php
+		    $sql = "select * from APPARTENIR_TOURNOI where IdTournoi = $id && NumTour = $j - 1";
 		    $query = $bdd->prepare($sql);
-		   $query->execute();
-	    for ($i = 0 ; $i < $query->rowCount() ; $i++) {
-	      $da = $query->fetch();
-	      $sql = "select * from MATCHS where Id = '".$da['IdMATCHS']."'";
-	      $q = $bdd->prepare($sql);
-	      $q->execute();
+		 $query->execute();
+	  while ( $da = $query->fetch()) {
+	    $sql = "select * from MATCHS where Id = '".$da['IdMATCHS']."'";
+	    $q = $bdd->prepare($sql);
+	    $q->execute();
+	  if ( $q->rowCount() == 0) {
+	  $bdd->query("delete from APPARTENIR_TOURNOI where IdMATCHS = '".$da['IdMATCHS']."'");
+	  header("Location:index.php?page=edit_tournois&id=".$_GET['id']);
+	  }
 	    if ( $q->rowCount() == 1) {
-	      $d = $q->fetch();
-	      ?><tr>
-		  
-		     <td><?php if ($d ['joue'] == 1) echo "<img src='Images/valider.jpg'>"; 
-			       else echo " ";?></td>
-		     <td><?php
-			    $sql = "SELECT * FROM TEAM where Id='".$d['IdTeam1']."'";
-			    foreach($bdd->query($sql) as $equipe) {
-		     echo $equipe['Nom'];
-		       }
-		       ?></td>
-		     <td><?php 
-			    $sql = "SELECT * FROM TEAM where Id='".$d['IdTeam2']."'";
-			    foreach($bdd->query($sql) as $equipe) {
-		       echo $equipe['Nom'];
-		       }  
-		       ?></td>
-		     <td> <?php echo $d['nbPoint1']; ?></td>
-		     <td><?php echo $d['nbPoint2']; ?></td>
-		     <td><?php echo $d['DateMATCHS']; ?></td>
-		     <td><?php echo $d['Lieu']; ?></td>
-		     <td><?php echo $d['Commentaires']; ?></td>
-		     <td>
-		       <button onclick="self.location.href='index.php?page=edit_match&id=<?php echo $d['Id']; ?>'" title="Editer">
-			 <img src="Images/edition.png">
-		       </button>
-		       <button onclick="self.location.href='index.php?page=match&action=supprimer&id=<?php echo $d['Id']; ?>'" title="Supprimer">
-			 <img src="Images/suppression.bmp">
-		       </button>
-		     </td>
-		   </tr>
+	    $d = $q->fetch();
+	    ?><tr>
 		   
-		   <?php
-		      }
-		      ?>       <form method="post" action="index.php?page=edit_tournois&action=edit&id=<?php echo $id ?>">
-		     <?php
-			for  ($i = $query->rowCount() ; $i < $data['nbEquipe']/($j+1) ; $i++) {
-							     ?>
-		     <tr>
-		      
-		       <td></td>
-		       <td><select name="team1" onchange="location.href='index.php?page=edit_tournois&id=$id&equipe1=' + this.option[this.selectedIndex].value;">
-			   <?php
-			      $sql = "SELECT * FROM TEAM";
-			      foreach($bdd->query($sal) as $data) {
-			   if ( isset($_GET['equipe1'])) {
-			   if ($datat['Id'] == $_GET['equipe1']) {
-			   echo "<option value='".$data['Id']."'selected>".$data['Nom']."</option>";
-			   } else {
-			   echo "<option value='".$data['Id']."'selected>".$data['Nom']."</option>";
-			   }
-			   } else {
-		           echo "<option value='".$data['Id']."'>".$data['Nom']."</option>";
-			   }
-			   }
-			   ?>
-		       </select></td>
-		       <td><select name="team2">
-			   <?php
-			      if ( isset($_GET['equipe1'])) {
-			      $sql = "SELECT * FROM TEAM";
-			      foreach( $bdd->query($sql) as $data) {
-			   if ( $data['Id'] != $_GET['equipe1']) {
-			   echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
-                           }
-			   } 
-			   } else {
-			   echo "<option value='-1'> Choisir une Equipe 1</option>";
-			   }
-			   ?>
-		       </select></td>
-		       <td><pre width="10px"> <input class="score" name="score1" type="text" value="0" cols="2"> </pre></td>
-		       <td><pre width="10px"> <input class="score" name="score2" type="text" value="0" cols="2"> </pre></td>
-		       
-		       <td> 
-			 <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
-                           <tr>
-                             <td id="ds_calclass"></td>
-                           </tr>
-			 </table>
-			 <input type="text" name="date" onclick="ds_sh(this);" />
-			 <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclas" style="display: none;">
-                           <tr>
-                             <td id="ds_calclas"></td>
-                           </tr>
-			 </table>
-			 <input type="text" name="heure" onclick="ds_heure(this);" />
-		       </td>
-		       <td> <input type="text" name="lieu"></td>
-		       <td> <textarea name="com" cols="10" rows="2"> </textarea></td>
-		       <td> <input type="submit" value="Envoyer">
-		     </tr>
-		     <?php
-			}
-?>
-		   </form>
-		   <?php
-
-			}
-			
-			
-
-			
-			}
-			?>
-
-
-	       </div>
-	       <br>
-               </table>
-               <br>
-               Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
-               <br>
-               <br>
-               Description : 
-               <br>
-               <textarea name="description" rows="10" cols="50"><?php
-								   echo $data['Description'];
-								   ?>
-               </textarea>
-               <br>
-               <br>           
-          </fieldset>
-      </div>
-    </div>
-  </body>
+		   <td><?php if ($d ['joue'] == 1) echo "<img src='Images/valider.jpg'>"; 
+			     else echo " ";?></td>
+		   <td><?php
+			  $sql = "SELECT * FROM TEAM where Id='".$d['IdTeam1']."'";
+			  
+			  foreach($bdd->query($sql) as $equipe) {
+		     echo $equipe['Nom'];
+		     }
+		     ?></td>
+		   <td><?php 
+			  $sql = "SELECT * FROM TEAM where Id='".$d['IdTeam2']."'";
+			  foreach($bdd->query($sql) as $equipe) {
+		     echo $equipe['Nom'];
+		     }  
+		     ?></td>
+		   <td> <?php echo $d['nbPoint1']; ?></td>
+		   <td><?php echo $d['nbPoint2']; ?></td>
+		   <td><?php echo $d['DateMATCHS']; ?></td>
+		   <td><?php echo $d['Lieu']; ?></td>
+		   <td><?php echo $d['Commentaires']; ?></td>
+		   <td>
+		     <button onclick="self.location.href='index.php?page=edit_tournois&action=editer_match&id=<?php echo $_GET['id'] ?>&id_match=<?php echo $d['Id']; ?>'" title="Editer">
+		       <img src="Images/edition.png">
+		     </button>
+		     <button onclick="self.location.href='index.php?page=tournois&action=supprimer_match&id=<?php echo $id?>&id_match=<?php echo $d['Id']; ?>'" title="Supprimer">
+		       <img src="Images/suppression.bmp">
+		     </button>
+		   </td>
+		 </tr>
+		 <?php
+		    }
+		    }
+		    ?>      
+		 <?php
+		    if ( $query->rowCount() < intval($Tourn['nbEquipe']/($j+1))) {
+					      
+					      ?>
+	       </table>
+	       <form method="post" action="index.php?page=new_tourn_match&id=<?php echo $id ?>&tour=<?php echo $j-1 ?>">
+		 <input type="submit" value="Nouveau Match">
+	       </form>
+	       <?php
+		  }
+		  }
+		  ?>
+	       <form method="post" action="index.php?page=edit_tournois&action=edit&id=<?php echo $id ?>">   
+		 
+		 <br>
+</table>
+<br>
+Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
+<br>
+<br>
+Description : 
+<br>
+<textarea name="description" rows="10" cols="50"><?php
+						    echo $data['Description'];
+						    ?>
+</textarea>
+<br>
+<br>
+<input type="submit" value="Envoyer">
+</form>
+<br>
+<br>           
+</fieldset>
+</div>
+</div>
+</body>
 </html>

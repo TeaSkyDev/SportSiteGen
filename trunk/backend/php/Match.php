@@ -151,6 +151,37 @@ class Match {
         return $query->rowCount() == 1;
     }
 
+
+    /**
+       \brief met a jour un match dans la base de données (fonction statique)
+       \param bdd la base de donnees rattache 
+       \param id l'identifiant a mettre a jour
+       \param team1 l'identifiant de la premiere equipe
+       \param team2 l'identifiant de la deuxieme equipe
+       \param point1 le nombre de point de la premiere equipe
+       \param point2 le nombre de point de la deuxieme equipe
+       \param date la date du match
+       \param lieu le lieu du match
+       \param comm le commentaire du match
+       \return vrai si reussi faux sinon
+     */
+    static public function s_update($bdd, $id, $jouer, $team1, $team2, $point1, $point2, $date, $lieu, $comm) {
+        $query = $bdd->prepare("UPDATE MATCHS SET joue=:joue,IdTeam1=:id1,IdTeam2=:id2,nbPoint1=:poi1,nbPoint2=:poi2,DateMATCHS=:date,Lieu=:lieu,Commentaires=:com WHERE Id=:id");
+        $query->bindParam(":joue", $joue);
+        $query->bindParam(":id1", $team1);
+        $query->bindParam(":id2", $team2);
+        $query->bindParam(":poi1", $point1);
+        $query->bindParam(":poi2", $point2);
+        $query->bindParam(":date", $date);
+        $query->bindParam(":lieu", $lieu);
+        $query->bindParam(":com", $comm);
+	$query->bindParam(":id", $id);
+        $query->execute();
+        return $query->rowCount() == 1;
+    }
+
+
+
     /**
     \brief renvoi une tableau de match entre deux indices
     \param from premier match a renvoyer
