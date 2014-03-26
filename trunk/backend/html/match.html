@@ -70,7 +70,7 @@
                             </td>
                             <td>
                                 <?php
-                                    echo $data['nbPoint1'];
+                                    echo $data['nbPoint2'];
                                 ?>
                             </td>
                             <td>
@@ -87,7 +87,7 @@
                                 recuperer score
                             </td>
                             <td>
-                                <button onclick="self.location.href='index.php?page=edit_match&action=editer&id_match=<?php echo $data['Id']; ?>'" title="Editer">
+                                <button onclick="self.location.href='index.php?page=edit_match&id_match=<?php echo $data['Id']; ?>'" title="Editer">
                                     <img src="Images/edition.png">
                                 </button>
                                 <button onclick="self.location.href='index.php?page=suppr_match&action=supprimer&id_match=<?php echo $data['Id']; ?>'" title="Supprimer">
