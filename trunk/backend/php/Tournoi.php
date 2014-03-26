@@ -240,6 +240,23 @@ class Tournoi {
     }
     
 
+    
+    /**
+       \brief supprime de la base de donnees le tournoi
+       \param bdd la base de donnees
+       \param id l'identifiant du tournoi
+       \return vrai si reussi faux sinon
+     */
+    static public function s_delete_byId($bdd,$id) {
+	$query = $bdd->prepare("delete from APPARTENIR_TOURNOI where IdTournoi=:id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	$query = $bdd->prepare("delete from TOURNOI where Id=:id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    } 
+
 
 
     /**
