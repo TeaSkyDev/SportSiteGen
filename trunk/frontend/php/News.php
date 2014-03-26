@@ -113,6 +113,7 @@ class News {
      */
     public function add_com_byNewsId($id, $text) {
 	$date = date("Y-m-d H:i:s");
+	$text = htmlentities($text);
 
 	$user = $_SESSION['user']['Id'];
 	$query = $this->_bdd->prepare("insert into NEWS_COM values(null, :text, :date, :idnews, :iduser)");
