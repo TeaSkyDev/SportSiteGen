@@ -192,8 +192,12 @@ class Content {
 		    break;
 		case "modif_password":
 		    if(isset($param['v2']) && $param['v2'] == "true" && isset($param['password'])) {
-			if(Profil::s_set_profilById($this->_bdd, "password", $param['password'], $_SESSION['user']['Id'])) {
-			    header("Location: index.php?page=profil");
+			if(md5($param['ancien_password']) == $_SESSION['user']['Mdp']) {
+			    if(Profil::s_set_profilById($this->_bdd, "Mdp", $param['password'], $_SESSION['user']['Id'])) {
+				header("Location: index.php?page=profil");
+			    } else {
+				$err = true;
+			    }
 			} else {
 			    $err = true;
 			}
