@@ -60,9 +60,7 @@ function BinaryTree (nbNode, tab) {
 		tmp = tmp/2;
 		this._height = this._height*2;
 	    }
-	} else {
-	    alert("Pas possible arbre mal forme");
-	}
+	} 
     }
 
 

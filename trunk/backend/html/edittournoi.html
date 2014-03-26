@@ -38,7 +38,9 @@
           ?>
 	  <div class="tableau">
 	  <?php
+	     $tmp = $Tourn['nbEquipe'];
 	     for ( $j = 1 ; $j < log($Tourn['nbEquipe'], 2)+1 ; $j++) {
+				 $tmp = $tmp/2;
 				 ?>
 
 	       <table>
@@ -60,16 +62,16 @@
 		    $query = $bdd->prepare($sql);
 		 $query->execute();
 	  while ( $da = $query->fetch()) {
-	    $sql = "select * from MATCHS where Id = '".$da['IdMATCHS']."'";
-	    $q = $bdd->prepare($sql);
-	    $q->execute();
+	  $sql = "select * from MATCHS where Id = '".$da['IdMATCHS']."'";
+	  $q = $bdd->prepare($sql);
+	  $q->execute();
 	  if ( $q->rowCount() == 0) {
 	  $bdd->query("delete from APPARTENIR_TOURNOI where IdMATCHS = '".$da['IdMATCHS']."'");
 	  header("Location:index.php?page=edit_tournois&id=".$_GET['id']);
 	  }
-	    if ( $q->rowCount() == 1) {
-	    $d = $q->fetch();
-	    ?><tr>
+	  if ( $q->rowCount() == 1) {
+	  $d = $q->fetch();
+	  ?><tr>
 		   
 		   <td><?php if ($d ['joue'] == 1) echo "<img src='Images/valider.jpg'>"; 
 			     else echo " ";?></td>
@@ -105,7 +107,8 @@
 		    }
 		    ?>      
 		 <?php
-		    if ( $query->rowCount() < intval($Tourn['nbEquipe']/($j+1))) {
+		 
+		    if ( $query->rowCount() < $tmp) {
 					      
 					      ?>
 	       </table>
@@ -121,13 +124,13 @@
 		 <br>
 </table>
 <br>
-Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
+Nom <input type="text" name="nom" value="<?php echo $Tourn['Nom']?>">
 <br>
 <br>
 Description : 
 <br>
 <textarea name="description" rows="10" cols="50"><?php
-						    echo $data['Description'];
+						    echo $Tourn['Description'];
 						    ?>
 </textarea>
 <br>
