@@ -1,105 +1,105 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Nouveau Match</title>
-        <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
-        <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="css/calendrier.css" type="text/css" media="screen"/>
-        <script type="text/javascript" src="js/calendrier.js"></script>
-        <script type="text/javascript" src="js/heure.js"></script>
-    </head>
-    <body>
-    	<div id="contenu">
-            <?php
-                @include ("header.html");
-            ?>
+  <head>
+    <title>Nouveau Match</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/calendrier.css" type="text/css" media="screen"/>
+    <script type="text/javascript" src="js/calendrier.js"></script>
+    <script type="text/javascript" src="js/heure.js"></script>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/matchs.jpg">
+        <h1>Gestion des Matchs : Ajouter un Match</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <form method="post" action="index.php?page=new_match&action=ajouter">
+          <br>
+          <fieldset>
+            <legend>Ajouter un Match</legend>
             <br>
-            <div class="entete">
-            	<img src="Images/matchs.jpg">
-            	<h1>Gestion des Matchs : Ajouter un Match</h1> 
-            </div>
+            Equipe 1 :
+            <select name="team1" onchange="location.href='index.php?page=new_match&equipe1=' + this.options[this.selectedIndex].value;">
+              <option></option>
+              <?php
+                 $sql="SELECT * FROM TEAM";
+                 foreach ($bdd->query($sql) as $data) {
+              if(isset($_GET['equipe1'])){
+              if($data['Id']==$_GET['equipe1']){
+              echo "<option value='".$data['Id']."' selected>".$data['Nom']."</option><br>";
+              }
+              else{
+              echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+              }
+              }
+              else{
+              echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+              }
+              }
+              ?>
+            </select>
+            <pre>   Score : <input class="score" name="score1" type="text" value="0"> </pre>
             <br>
-            <div class="interieur">
-                <form method="post" action="index.php?page=new_match&action=ajouter">
-                <br>
-                <fieldset>
-                    <legend>Ajouter un Match</legend>
-                    <br>
-                        Equipe 1 :
-                        <select name="team1" onchange="location.href='index.php?page=new_match&equipe1=' + this.options[this.selectedIndex].value;">
-                            <option></option>
-                            <?php
-                                $sql="SELECT * FROM TEAM";
-                                foreach ($bdd->query($sql) as $data) {
-                                    if(isset($_GET['equipe1'])){
-                                        if($data['Id']==$_GET['equipe1']){
-                                            echo "<option value='".$data['Id']."' selected>".$data['Nom']."</option><br>";
-                                        }
-                                        else{
-                                            echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
-                                        }
-                                    }
-                                    else{
-                                        echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
-                                    }
-                                }
-                            ?>
-                        </select>
-                        <pre>   Score : <input class="score" name="score1" type="text" value="0"> </pre>
-                    <br>
-                    <br>
-                        Equipe 2 :
-                        <select name="team2">
-                            <?php
-                                if(isset($_GET['equipe1'])){
-                                    $sql="SELECT * FROM TEAM";
-                                    foreach ($bdd->query($sql) as $data) {
-                                        if($data['Id']!=$_GET['equipe1']){
-                                            echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
-                                        }
-                                    }
-                                }
-                                else {
-                                    echo "<option value='-1'>Choisir une Equipe 1</option>";
-                                }
-                            ?>
-                        </select>
-                        <pre>   Score : <input class="score" name="score2" type="text" value="0"> </pre>
-                    <br>
-                    <br>
-                        Date :
-                        <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
-                            <tr>
-                                <td id="ds_calclass"></td>
-                            </tr>
-                        </table>
-                        <input type="text" name="date" onclick="ds_sh(this);" />
-                    <br>
-                    <br>
-                        Heure :
-                        <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclas" style="display: none;">
-                            <tr>
-                                <td id="ds_calclas"></td>
-                            </tr>
-                        </table>
-                        <input type="text" name="heure" onclick="ds_heure(this);" />
-                    <br>
-                    <br>
-                        Lieu : <input type="text" name="lieu">
-                    <br>
-                    <br>
-                    Match joue :
-                    <select name="joue">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                    </select>
-                    Commentaires :
-                    <textarea name="com" cols="30" rows="10" ></textarea><br/>
-                    <input type="submit" value=" Envoyer">
-                </fieldset>
-                <br>
-                </form>
-	        </div>
-        </div>
-    </body>
+            <br>
+            Equipe 2 :
+            <select name="team2">
+              <?php
+                 if(isset($_GET['equipe1'])){
+                 $sql="SELECT * FROM TEAM";
+                 foreach ($bdd->query($sql) as $data) {
+              if($data['Id']!=$_GET['equipe1']){
+              echo "<option value='".$data['Id']."'>".$data['Nom']."</option><br>";
+              }
+              }
+              }
+              else {
+              echo "<option value='-1'>Choisir une Equipe 1</option>";
+              }
+              ?>
+            </select>
+            <pre>   Score : <input class="score" name="score2" type="text" value="0"> </pre>
+            <br>
+            <br>
+            Date :
+            <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclass" style="display: none;">
+              <tr>
+                <td id="ds_calclass"></td>
+              </tr>
+            </table>
+            <input type="text" name="date" onclick="ds_sh(this);" />
+            <br>
+            <br>
+            Heure :
+            <table class="ds_box" cellpadding="0" cellspacing="0" id="ds_conclas" style="display: none;">
+              <tr>
+                <td id="ds_calclas"></td>
+              </tr>
+            </table>
+            <input type="text" name="heure" onclick="ds_heure(this);" />
+            <br>
+            <br>
+            Lieu : <input type="text" name="lieu">
+            <br>
+            <br>
+            Match joue :
+            <select name="joue">
+              <option value="0">0</option>
+              <option value="1">1</option>
+            </select>
+            Commentaires :
+            <textarea name="com" cols="30" rows="10" ></textarea><br/>
+            <input type="submit" value=" Envoyer">
+          </fieldset>
+          <br>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
