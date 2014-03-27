@@ -83,12 +83,9 @@
                 $i = 0;
                 while($data = $sql->fetch()) {
                     $photo = $bdd->query("select Fichier from PHOTO where Id = ".$data['IdPhoto'])->fetch()['Fichier'];
-                    if($i == 0) {
-                        echo '<tr>';
-                    } else if($i%4 == 0) {
-                        echo '</tr>';
-                    }
-                    echo '<td><img src="'.$photo.'"/></td>';
+	            ?>
+	            <tr><td><img src= "<?php echo $photo ?>"/></td></tr>
+		    <?php
                     $i++;
                 }
             echo '</table>';
