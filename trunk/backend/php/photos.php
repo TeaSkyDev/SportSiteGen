@@ -79,6 +79,39 @@ if(isset($_GET['type'])) {
             $msg = "Il manque l'id !";
             header("Location: index.php?page=err&msg=".$msg);
         }
+    } else if ( $_GET['type'] == "autres" ) {
+	if (isset($_FILES )) {
+	    $nb_files = 0;
+	    for($i = 0; $i < $NB_MAX_FILES; $i++) {
+		if(!empty($_FILES['photo']['name'][$i])) {
+		    $nb_files++;
+		}
+	    }
+	    if($nb_files > 0) {
+		$path = "../photos/autres";
+		//si le dossier correspondant au tournois n'existe pas on le créé
+		if(!opendir($path)) {
+		    if(!mkdir($path)) {
+			$msg = "Erreur lors de la création du dossier.";
+			header("Location: index.php?page=err&msg=".$msg);
+		    }
+		}
+
+		for($i = 0; $i < $nb_files; $i++) {
+		    $path .= "/";
+		    if(move_uploaded_file($_FILES['photo']['tmp_name'][$i], $path.$_FILES['photo']['name'][$i])) {
+			$bdd->query("insert into PHOTO values(null, '".$_FILES['photo']['name'][$i]."', '../photos/autres/".$_FILES['photo']['name'][$i]."', 'aucune')");
+		    }
+		}
+		header("Location: index.php?page=photo_class");
+	    }
+	} else {
+	    $msg = "Aucun fichier";
+	    header("Location: index.php?page=err&msg=".$msg);
+	}
+    } else {
+	$msg = "Il manque l'id !";
+	header("Location: index.php?page=err&msg=".$msg);
     }
 }
 
