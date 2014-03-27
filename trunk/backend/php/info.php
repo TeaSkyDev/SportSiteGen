@@ -1,9 +1,8 @@
 <?php
-$msg = isset($_GET['msg']) == TRUE ? $_GET['msg'] : "Aucun message";
+$msg  = isset($_GET['msg']) == TRUE ? $_GET['msg'] : "Aucun message";
+$page = isset($_GET['page_r']) == TRUE ? $_GET['page_r'] : "accueil";
 
-echo '<table align="center" style="border:1px solid green">
-	<tr>
-		<th>'.$msg.'</th>
-	</tr>
-</table>';
+echo '<script language="javascript">alert("'.$msg.'");
+document.location.href="index.php?page='.$page.'"
+</script>';
 ?>

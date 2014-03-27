@@ -9,11 +9,11 @@ if ( isset($_GET['action'] ) ) {
 		header("Location:index.php?page=equipe");
 	    } else {
 		$msg = "Erreur lors de l'ajout de la categorie.";
-		header("Location: index.php?page=err&msg=".$msg);
+		header("Location: index.php?page=err&page_r=new_categorie&msg=".$msg);
 	    }
 	} else {
 	    $msg = "Erreur, toutes les donnees ne sont pas presentes.";
-	    header("Location: index.php?page=err&msg=".$msg);
+	    header("Location: index.php?page=err&page_r=new_categorie&msg=".$msg);
 	}
     } else if ( $_GET['action'] == "edit" && isset($_GET['id'])) {
 	if ( isset($_POST['nom']) && isset($_POST['description']) ) {
@@ -22,11 +22,11 @@ if ( isset($_GET['action'] ) ) {
 		    header("Location:index.php?page=equipe");
 		} else {
 		    $msg = "Erreur lors de la modification de la categorie.";
-		    header("Location:index.php?page=err&msg=".$msg);
+		    header("Location:index.php?page=err&page_r=edit_categorie&msg=".$msg);
 		}
 	    } else {
 		$msg = "Erreur lors de la modification de la categorie.(del)";
-		header("Location:index.php?page=err&msg=".$msg);
+		header("Location:index.php?page=err&page_r=edit_categorie&msg=".$msg);
 	    }
 	} else {
 	    $msg = "Erreur toutes les donnees ne sont pas presentes.";
@@ -37,7 +37,7 @@ if ( isset($_GET['action'] ) ) {
 	    header("Location: index.php?page=equipe");
 	} else {
 	    $msg = "Erreur lors de la suppression de la categorie.(del)";
-	    header("Location:index.php?page=err&msg=".$msg);
+	    header("Location:index.php?page=err&page_r=equipe&msg=".$msg);
 	}
     }
  } else {

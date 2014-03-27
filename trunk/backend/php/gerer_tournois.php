@@ -8,24 +8,29 @@ if ( isset($_GET['action'] )) {
 	    $date_debut = strtotime($_POST['datedebut']);
 	    $date_fin   = strtotime($_POST['datefin']);
 	    if($date_fin >= $date_debut) {
-		if ( log($_POST['nbequipe'], 2)*10%10 == 0 ) {
-		    if ( Tournoi::s_insert($bdd, $_POST['nom'], $_POST['description'], $_POST['datedebut'], $_POST['datefin'], $_POST['nbequipe'] )) {
-			header("Location: index.php?page=tournois");
+		if(gettype($_POST['nbequipe']) == "integer") {
+		    if ( log($_POST['nbequipe'], 2)*10%10 == 0 ) {
+			if ( Tournoi::s_insert($bdd, $_POST['nom'], $_POST['description'], $_POST['datedebut'], $_POST['datefin'], $_POST['nbequipe'] )) {
+			    header("Location: index.php?page=tournois");
+			} else {
+			    $msg = "Erreur lors de l'ajout du tournoi.";
+			    header("Location: index.php?page=err&page_r=new_tournois&msg=".$msg);
+			}
 		    } else {
-			$msg = "Erreur lors de l'ajout du tournoi.";
+			$msg = "Vous ne pouvez pas faire un tournoi avec ".$_POST['nbequipe']." equipes (! log2(".$_POST['nbequipe'].")) impossible";
 			header("Location: index.php?page=err&msg=".$msg);
 		    }
 		} else {
-		    $msg = "Vous ne pouvez pas faire un tournoi avec ".$_POST['nbequipe']." equipes (! log2(".$_POST['nbequipe'].")) impossible";
-		    header("Location: index.php?page=err&msg=".$msg);
+		    $msg = "Le nombre d'equipe doit etre un entier !";
+		    header("Location: index.php?page=err&page_r=new_tournois&msg=".$msg);
 		}
 	    } else {
 		$msg = "Dates incorrectes !";
-		header("Location: index.php?page=err&msg=".$msg);
+		header("Location: index.php?page=err&page_r=new_tournois&msg=".$msg);
 	    }
 	} else {
 	    	$msg = "Erreur toute les donnees ne sont pas remplie.";
-		header("Location: index.php?page=err&msg=".$msg);
+		header("Location: index.php?page=err&page_r=new_tournois&msg=".$msg);
 	}
     } else if ( $_GET['action'] == 'ajouter_match') {
 	if ( isset($_GET['id']) && isset($_GET['id'])) {

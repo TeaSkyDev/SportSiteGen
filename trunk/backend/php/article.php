@@ -11,7 +11,7 @@ if(isset($_GET['action'])) {
             header("Location: index.php?page=article");    
         } else {
             $msg = "Erreur lors de l'ajout d'une news.";
-            header("Location: index.php?page=err&msg=".$msg);
+            header("Location: index.php?page=err&page_r=new_article&msg=".$msg);
         }
     } else if($action == "supprimer") { /* Sinon si on demande une suppression.. */
         if(isset($_GET['id'])) {
@@ -19,11 +19,11 @@ if(isset($_GET['action'])) {
                 header("Location: index.php?page=article");
             } else {
                 $msg = "Erreur lors de la suppression.";
-                header("Location: index.php?page=err&msg=".$msg);
+                header("Location: index.php?page=err&page_r=article&msg=".$msg);
             }
         } else {
             $msg = "Erreur, il manque l'id de la news à supprimer.<br>";
-            header("Location: index.php?page=err&msg=".$msg);
+            header("Location: index.php?page=err&page_r=article&msg=".$msg);
         }
     } else if ($action == "edit") {
 	$new = new News($bdd);
@@ -31,7 +31,7 @@ if(isset($_GET['action'])) {
 	    header("Location: index.php?page=article");
 	} else {
 	    $msg = "Erreur lors de la mise a jour d'une news.";
-            header("Location: index.php?page=err&msg=".$msg);
+            header("Location: index.php?page=err&page_r=article&msg=".$msg);
 	}
     }
 

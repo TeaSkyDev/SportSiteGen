@@ -17,7 +17,7 @@ if(isset($_GET['action'])) {
                header("Location: index.php?page=match");
             } else {
                 $msg = "Erreur lors de l'ajout d'un match.";
-                header("Location: index.php?page=err&msg=".$msg);
+                header("Location: index.php?page=err&page_r=new_match&msg=".$msg);
             }
         }
     } else if($_GET['action'] == "editer") {
@@ -36,7 +36,7 @@ if(isset($_GET['action'])) {
                     header("Location: index.php?page=match");
                 } else {
                     $msg = "Erreur lors de l'ajout d'un match.";
-                    header("Location: index.php?page=err&msg=".$msg);
+                    header("Location: index.php?page=err&page_r=edit_match&msg=".$msg);
                 }
             }
         }
@@ -44,7 +44,10 @@ if(isset($_GET['action'])) {
         if(isset($_GET['id_match'])) {
             $bdd->query("delete from MATCHS where Id = ".$_GET['id_match']);
             header("Location: index.php?page=match");
-        }
+        } else {
+	     $msg = "Erreur lors de la suppression d'un match.";
+	     header("Location: index.php?page=err&page_r=match&page_r=edit_match&msg=".$msg);
+	}
     } else {
         include("html/newmatch.html");
     }
