@@ -50,6 +50,13 @@
     color:#000000;
 }
 
+.tableau td img {
+    margin: 0 auto;
+    width: 10%;
+    height: 10%;
+}
+
+
 .tableau tr:last-child td{
     border-width:0px 1px 0px 0px;
 }

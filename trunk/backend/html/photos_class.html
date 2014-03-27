@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Photos - Autres</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+  </head>
+  <script language=JavaScript src="js/accueil.js"></script>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         include("php/Equipe.php");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/icon_image.png">
+        <h1>Ajouter une photo</h1>
+      </div>
+      <br>
+      <div class="interieur">
+	<div class="tableau">
+          <table>
+            <tr>
+	      
+	      <form method="post" action="index.php?page=new_photo&type=autres" enctype="multipart/form-data">
+		
+		<input type="hidden" name="id_match" value="'.$_GET['match'].'">
+		<table>
+		  <tr>
+		    <th>Upload</th>
+		  </tr>
+		  <?php
+                     for($i = 0; $i < 5; $i++) {
+				      ?>
+		     <tr>
+		       <td><input type="file" name="photo[]"/></td>
+		     </tr>
+                     <?php
+			}
+			?>
+		  <tr>
+		    <td><input type="submit" value=" Envoyer"></td>
+		  </tr>
+		</table>
+	      </form>
+	    </tr>
+	  </table>
+	  <table>
+	    <tr><th colspan="4">Photos du match</th></tr>
+	    <?php $i = 0;
+		  $sql = "SELECT * from PHOTO";
+		  $query = $bdd->query($sql);
+	    while($data = $query->fetch()) {
+		  $q = $bdd->prepare("select * from PHOTO_MATCHS where IdPhoto =".$data['Id']);
+		  $q2 = $bdd->prepare("select * from PHOTO_TOURNOIS where IdPhoto =".$data['Id']);
+		  $q->execute();
+		  $q2->execute();
+		  if ( $q->rowCount() == 0 && $q2->rowCount() == 0 ) {
+		  ?>
+	    <tr><td><img src= "<?php echo $data['Fichier'] ?>"/></td></tr>
+	    <?php
+               $i++;
+	       }
+               }
+	       ?>
+	  </table>
+	  
+	</div>
+      </div>
+    </div>
+  </body>
+</html>
