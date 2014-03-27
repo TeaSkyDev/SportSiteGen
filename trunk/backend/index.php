@@ -123,6 +123,7 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
                 break;
             case 'err':
                 include("php/err.php");
+		break;
             case 'info':
                 include("php/info.php");
                 break;
