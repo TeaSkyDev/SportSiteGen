@@ -43,19 +43,19 @@ class Content {
       \return page parser avec smarty
     */
     public function get_html_news($param) {
-	$news_obj = new News($this->_bdd, $param);
-	$news     = $news_obj->get_content();
-	$com      = $news_obj->get_content_com();
-	$simple = array();
-	$simple['one'] = isset($param['v1']);
-	if( $simple['one'] ) {
-	    $simple['connected'] = isset($_SESSION['connected']);
-	    $simple['Id'] = $news[0]['Id'];
-	}
-	$this->_smarty->assign("News", $news);
-	$this->_smarty->assign("Com", $com);
-	$this->_smarty->assign("NSimple", $simple);
-	return $this->_smarty->fetch("templates/".$this->_template."/html/news.html");
+        $news_obj = new News($this->_bdd, $param);
+        $news     = $news_obj->get_content();
+        $com      = $news_obj->get_content_com();
+        $simple = array();
+        $simple['one'] = isset($param['v1']) && $param['v1'] == "lire_news";
+        if( $simple['one'] ) {
+            $simple['connected'] = isset($_SESSION['connected']);
+            $simple['Id'] = $news[0]['Id'];
+        }
+        $this->_smarty->assign("News", $news);
+        $this->_smarty->assign("Com", $com);
+        $this->_smarty->assign("NSimple", $simple);
+        return $this->_smarty->fetch("templates/".$this->_template."/html/news.html");
     }
 
 
@@ -65,22 +65,22 @@ class Content {
       \return la page parser avec smarty
     */
     public function get_html_calendrier($param) {
-	$events_obj = new Calendrier($this->_bdd, $param);
-	$events     = $events_obj->get_content();
-	$com        = $events_obj->get_content_com();
-	$simple = array();
-	$simple['one'] = isset($param['v1']);
-	if ( $simple['one'] ) {
-	    if( $simple['one'] ) {
-		$simple['connected'] = isset($_SESSION['connected']);
-		$simple['Id'] = $events[0]['Id'];
-	    }
-	}
-	$this->_smarty->assign("Events", $events);
-	$this->_smarty->assign("Com", $com);
-	$this->_smarty->assign("NSimple", $simple);
+        $events_obj = new Calendrier($this->_bdd, $param);
+        $events     = $events_obj->get_content();
+        $com        = $events_obj->get_content_com();
+        $simple = array();
+        $simple['one'] = isset($param['v1']);
+        if ( $simple['one'] ) {
+            if( $simple['one'] ) {
+                $simple['connected'] = isset($_SESSION['connected']);
+                $simple['Id'] = $events[0]['Id'];
+            }
+        }
+        $this->_smarty->assign("Events", $events);
+        $this->_smarty->assign("Com", $com);
+        $this->_smarty->assign("NSimple", $simple);
 
-	return $this->_smarty->fetch("templates/".$this->_template."/html/calendrier.html");
+        return $this->_smarty->fetch("templates/".$this->_template."/html/calendrier.html");
     }
 
     /*
@@ -90,9 +90,9 @@ class Content {
     */
     public function get_html_equipe() {
         $teams_obj = new Equipe($this->_bdd);
-	$teams     = $teams_obj->get_content();
-	$this->_smarty->assign("Teams", $teams);
-	return $this->_smarty->fetch("templates/".$this->_template."/html/equipes.html");	
+        $teams     = $teams_obj->get_content();
+        $this->_smarty->assign("Teams", $teams);
+        return $this->_smarty->fetch("templates/".$this->_template."/html/equipes.html");
     }
 
     /*
@@ -101,31 +101,31 @@ class Content {
       \return renvoi la page parser avec smarty
     */
     public function get_html_match($param) {
-	$match_obj = new Match($this->_bdd, $param);
-	$equ_obj = new Equipe($this->_bdd);
-	$match = $match_obj->get_content();
-	$data = array();
-	$i = 0;
-	while(isset($match[$i])) {
-	    $data[$i]['Id'] = $match[$i]['Id'];
-	    $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
-	    $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
-	    $data[$i]['point1'] = $match[$i]['nbPoint1'];
-	    $data[$i]['point2'] = $match[$i]['nbPoint2'];
-	    $data[$i]['date'] = $match[$i]['DateMATCHS'];
-	    $data[$i]['comm'] = $match[$i]['Commentaires'];
-	    $data[$i]['Lieu'] = $match[$i]['Lieu']; 
-	    $i++;
-	}
-	$simple['one'] = isset($param['v1']);
-	$fiche = array();
-	if ( $simple['one'] ) {
-	    $fiche = $match_obj->get_fiche_content();
-	}
-	$this->_smarty->assign("Match", $data);
-	$this->_smarty->assign("NSimple", $simple);
-	$this->_smarty->assign("Fiche", $fiche);
-	return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");	
+        $match_obj = new Match($this->_bdd, $param);
+        $equ_obj = new Equipe($this->_bdd);
+        $match = $match_obj->get_content();
+        $data = array();
+        $i = 0;
+        while(isset($match[$i])) {
+            $data[$i]['Id'] = $match[$i]['Id'];
+            $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
+            $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
+            $data[$i]['point1'] = $match[$i]['nbPoint1'];
+            $data[$i]['point2'] = $match[$i]['nbPoint2'];
+            $data[$i]['date'] = $match[$i]['DateMATCHS'];
+            $data[$i]['comm'] = $match[$i]['Commentaires'];
+            $data[$i]['Lieu'] = $match[$i]['Lieu'];
+            $i++;
+        }
+        $simple['one'] = isset($param['v1']);
+        $fiche = array();
+        if ( $simple['one'] ) {
+            $fiche = $match_obj->get_fiche_content();
+        }
+        $this->_smarty->assign("Match", $data);
+        $this->_smarty->assign("NSimple", $simple);
+        $this->_smarty->assign("Fiche", $fiche);
+        return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
     }
 
     /*
@@ -134,34 +134,34 @@ class Content {
       \return renvoi la page parser avec smarty
     */
     public function get_html_tournoi($param) {
-	$tournoi_obj = new Tournoi($this->_bdd, $param);
-	$equ_obj = new Equipe($this->_bdd);
-	$tournoi = $tournoi_obj->get_content();
-	$match      = $tournoi_obj->get_content_match();
-	$data = array();
-	$i = 0;
-	while ( isset($match[$i]) ) {
-	    $data[$i]['Id'] = $match[$i]['Id'];
-	    $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
-	    $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
-	    $data[$i]['point1'] = $match[$i]['nbPoint1'];
-	    $data[$i]['point2'] = $match[$i]['nbPoint2'];
-	    $data[$i]['date'] = $match[$i]['DateMATCHS'];
-	    $data[$i]['comm'] = $match[$i]['Commentaires'];
-	    $i++;
-	}
-	$simple['one'] = isset($param['v1']);
-	$tree_tab = array();
-	if ( $simple['one'] ) {
-	    $tree_tab = $tournoi_obj->get_treeTab_byId($param['v2']);
-	}
-	echo "<script>";
-	echo "var tab ="; echo json_encode($tree_tab); echo ";";
-	echo "</script>";
-	$this->_smarty->assign("NSimple", $simple);
-	$this->_smarty->assign("Match", $data);
-	$this->_smarty->assign("Tournoi", $tournoi);
-	return $this->_smarty->fetch("templates/".$this->_template."/html/tournoi.html");	
+        $tournoi_obj = new Tournoi($this->_bdd, $param);
+        $equ_obj = new Equipe($this->_bdd);
+        $tournoi = $tournoi_obj->get_content();
+        $match      = $tournoi_obj->get_content_match();
+        $data = array();
+        $i = 0;
+        while ( isset($match[$i]) ) {
+            $data[$i]['Id'] = $match[$i]['Id'];
+            $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
+            $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
+            $data[$i]['point1'] = $match[$i]['nbPoint1'];
+            $data[$i]['point2'] = $match[$i]['nbPoint2'];
+            $data[$i]['date'] = $match[$i]['DateMATCHS'];
+            $data[$i]['comm'] = $match[$i]['Commentaires'];
+            $i++;
+        }
+        $simple['one'] = isset($param['v1']);
+        $tree_tab = array();
+        if ( $simple['one'] ) {
+            $tree_tab = $tournoi_obj->get_treeTab_byId($param['v2']);
+        }
+        echo "<script>";
+        echo "var tab ="; echo json_encode($tree_tab); echo ";";
+        echo "</script>";
+        $this->_smarty->assign("NSimple", $simple);
+        $this->_smarty->assign("Match", $data);
+        $this->_smarty->assign("Tournoi", $tournoi);
+        return $this->_smarty->fetch("templates/".$this->_template."/html/tournoi.html");
     }
 
     /*
@@ -170,78 +170,78 @@ class Content {
       \return renvoi la page charger avec smarty
     */
     public function get_html_profil($param) {
-	if(isset($_SESSION['connected'])) {
-	    if(!isset($param)) {
-		$profil     = Profil::s_search_byId($this->_bdd, $_SESSION['user']['Id']);
-		$this->_smarty->assign("Profil", $profil);
+        if(isset($_SESSION['connected'])) {
+            if(!isset($param)) {
+                $profil     = Profil::s_search_byId($this->_bdd, $_SESSION['user']['Id']);
+                $this->_smarty->assign("Profil", $profil);
 
-		return $this->_smarty->fetch("templates/".$this->_template."/html/profil.html");
-	    } else if(isset($param['v1'])) {
-		$err = false;
-		switch($param['v1']) {
-		case "modif_pseudo":
-		    if(isset($param['v2']) && $param['v2'] == "true" && isset($param['pseudo'])) {
-			if(Profil::s_set_profilById($this->_bdd, "pseudo", $param['pseudo'], $_SESSION['user']['Id'])) {
-			    header("Location: index.php?page=profil");
-			} else {
-			    $err = true;
-			}
-		    } else {
-			$Modif = "pseudo";
-		    }
-		    break;
-		case "modif_password":
-		    if(isset($param['v2']) && $param['v2'] == "true" && isset($param['password'])) {
-			if(md5($param['ancien_password']) == $_SESSION['user']['Mdp']) {
-			    if(Profil::s_set_profilById($this->_bdd, "Mdp", $param['password'], $_SESSION['user']['Id'])) {
-				header("Location: index.php?page=profil");
-			    } else {
-				$err = true;
-			    }
-			} else {
-			    $err = true;
-			}
-		    } else {
-			$Modif = "password";
-		    }
-		    break;
-		case "modif_mail":
-		    if(isset($param['v2']) && $param['v2'] == "true" && isset($param['mail'])) {
-			if(Profil::s_set_profilById($this->_bdd, "mail", $param['mail'], $_SESSION['user']['Id'])) {
-			    header("Location: index.php?page=profil");
-			} else {
-			    $err = true;
-			}
-		    } else {
-			$Modif = "mail";
-		    }
-		    break;
-		case "modif_photo":
-		    if(isset($param['v2']) && $param['v2'] == "true") {
-			if(Profil::s_set_photo($this->_bdd, $_SESSION['user']['Id'])) {
-			    header("Location: index.php?page=profil");
-			} else {
-			    $err = true;
-			}
-		    } else {
-			$Modif = "photo";
-		    }
-		    break;
-		default:
-		    $Modif = "pseudo";
-		}
+                return $this->_smarty->fetch("templates/".$this->_template."/html/profil.html");
+            } else if(isset($param['v1'])) {
+                $err = false;
+                switch($param['v1']) {
+                    case "modif_pseudo":
+                        if(isset($param['v2']) && $param['v2'] == "true" && isset($param['pseudo'])) {
+                            if(Profil::s_set_profilById($this->_bdd, "pseudo", $param['pseudo'], $_SESSION['user']['Id'])) {
+                                header("Location: index.php?page=profil");
+                            } else {
+                                $err = true;
+                            }
+                        } else {
+                            $Modif = "pseudo";
+                        }
+                        break;
+                    case "modif_password":
+                        if(isset($param['v2']) && $param['v2'] == "true" && isset($param['password'])) {
+                            if(md5($param['ancien_password']) == $_SESSION['user']['Mdp']) {
+                                if(Profil::s_set_profilById($this->_bdd, "Mdp", $param['password'], $_SESSION['user']['Id'])) {
+                                    header("Location: index.php?page=profil");
+                                } else {
+                                    $err = true;
+                                }
+                            } else {
+                                $err = true;
+                            }
+                        } else {
+                            $Modif = "password";
+                        }
+                        break;
+                    case "modif_mail":
+                        if(isset($param['v2']) && $param['v2'] == "true" && isset($param['mail'])) {
+                            if(Profil::s_set_profilById($this->_bdd, "mail", $param['mail'], $_SESSION['user']['Id'])) {
+                                header("Location: index.php?page=profil");
+                            } else {
+                                $err = true;
+                            }
+                        } else {
+                            $Modif = "mail";
+                        }
+                        break;
+                    case "modif_photo":
+                        if(isset($param['v2']) && $param['v2'] == "true") {
+                            if(Profil::s_set_photo($this->_bdd, $_SESSION['user']['Id'])) {
+                                header("Location: index.php?page=profil");
+                            } else {
+                                $err = true;
+                            }
+                        } else {
+                            $Modif = "photo";
+                        }
+                        break;
+                    default:
+                        $Modif = "pseudo";
+                }
 
-		if($err) {
-		    $this->_smarty->assign("Err", "Erreur lors de la modification de votre profil !");
-		    return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
-		} else {
-		    $this->_smarty->assign("Modif", $Modif);
-		    return $this->_smarty->fetch("templates/".$this->_template."/html/profil_modif.html");
-		}
-	    }
-	} else {
-	    return "C'est pas bien de bidouiller l'url !!<br>";
-	}
+                if($err) {
+                    $this->_smarty->assign("Err", "Erreur lors de la modification de votre profil !");
+                    return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
+                } else {
+                    $this->_smarty->assign("Modif", $Modif);
+                    return $this->_smarty->fetch("templates/".$this->_template."/html/profil_modif.html");
+                }
+            }
+        } else {
+            return "C'est pas bien de bidouiller l'url !!<br>";
+        }
 
     }
 
@@ -251,16 +251,16 @@ class Content {
       \return renvoi la page parser avec smarty
     */
     public function get_html_connexion() {
-	if(isset($_GET['action']) && $_GET['action'] == "verif") {
-	    if(Connexion::connect($this->_bdd)) {
-		header("Location: index.php");
-	    } else {
-		$this->_smarty->assign("Err", "Erreur lors de la connexion !");
-		return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
-	    }
-	} else {
-	    return $this->_smarty->fetch("templates/".$this->_template."/html/connexion.html");
-	}   
+        if(isset($_GET['action']) && $_GET['action'] == "verif") {
+            if(Connexion::connect($this->_bdd)) {
+                header("Location: index.php");
+            } else {
+                $this->_smarty->assign("Err", "Erreur lors de la connexion !");
+                return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
+            }
+        } else {
+            return $this->_smarty->fetch("templates/".$this->_template."/html/connexion.html");
+        }
     }
 
 
@@ -270,17 +270,17 @@ class Content {
       \return renvoi la page parser avec smarty
     */
     public function get_html_inscription() {
-	if(isset($_GET['action']) && $_GET['action'] == "insert") {
-	    if(Inscription::insert($this->_bdd)) {
-		header("Location: index.php");
-	    } else {
-		$this->_smarty->assign("Err", "Erreur lors de l'inscription !");
-		return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
-	    }
-	} else {
-	    return $this->_smarty->fetch("templates/".$this->_template."/html/inscription.html");
-	}
- 
+        if(isset($_GET['action']) && $_GET['action'] == "insert") {
+            if(Inscription::insert($this->_bdd)) {
+                header("Location: index.php");
+            } else {
+                $this->_smarty->assign("Err", "Erreur lors de l'inscription !");
+                return $this->_smarty->fetch("templates/".$this->_template."/html/err.html");
+            }
+        } else {
+            return $this->_smarty->fetch("templates/".$this->_template."/html/inscription.html");
+        }
+
     }
 
 
@@ -291,14 +291,14 @@ class Content {
       \return la page parser avec smarty
      */
     public function get_html_membre_equipe($param) {
-	if ( isset($param['id'] )) {
-	    $joueur = new Joueur($this->_bdd);
-	    $tab = $joueur->search_byTeamId($param['id']);
-	    $this->_smarty->assign("MEquipe", $tab);
-	    return $this->_smarty->fetch("templates/".$this->_template."/html/membre_equipe.html");
-	} else {
-	    header("Location: index.php");
-	}
+        if ( isset($param['id'] )) {
+            $joueur = new Joueur($this->_bdd);
+            $tab = $joueur->search_byTeamId($param['id']);
+            $this->_smarty->assign("MEquipe", $tab);
+            return $this->_smarty->fetch("templates/".$this->_template."/html/membre_equipe.html");
+        } else {
+            header("Location: index.php");
+        }
     }
 
 
@@ -308,18 +308,18 @@ class Content {
       \return une page parser avec smarty
      */
     public function get_html_fiche_joueur($param) {
-	if ( isset($param['id'] )) {
-	    $joueur = new Joueur($this->_bdd);
-	    $elem = $joueur->search_byId($param['id']);
-	    if ( $joueur != false ) {
-		$photo = Photo::s_search_byId($this->_bdd, $elem['idPhoto']);
-		$elem['img'] = $photo['Fichier'];
-	    }
-	    $this->_smarty->assign("joueur", $elem);
-	    return $this->_smarty->fetch("templates/".$this->_template."/html/fiche_joueur.html");
-	} else {
-	    header("Location: index.php");
-	}
+        if ( isset($param['id'] )) {
+            $joueur = new Joueur($this->_bdd);
+            $elem = $joueur->search_byId($param['id']);
+            if ( $joueur != false ) {
+                $photo = Photo::s_search_byId($this->_bdd, $elem['idPhoto']);
+                $elem['img'] = $photo['Fichier'];
+            }
+            $this->_smarty->assign("joueur", $elem);
+            return $this->_smarty->fetch("templates/".$this->_template."/html/fiche_joueur.html");
+        } else {
+            header("Location: index.php");
+        }
     }
 
 
@@ -332,26 +332,26 @@ class Content {
     */
     public function get_html($page, $param = null) {
         if($page == "news") {
-	    return $this->get_html_news($param);
+            return $this->get_html_news($param);
         } else if($page == "calendrier") {
-	    return $this->get_html_calendrier($param);
+            return $this->get_html_calendrier($param);
         } else if($page == "equipes") {
-	    return $this->get_html_equipe();
-	} else if ($page == "membre_equipe") {
-	    return $this->get_html_membre_equipe($param);
-	} else if ($page == "fiche_joueur") {
-	    return $this->get_html_fiche_joueur($param);
-	}else if ($page == "match") {
-	    return $this->get_html_match($param);
+            return $this->get_html_equipe();
+        } else if ($page == "membre_equipe") {
+            return $this->get_html_membre_equipe($param);
+        } else if ($page == "fiche_joueur") {
+            return $this->get_html_fiche_joueur($param);
+        }else if ($page == "match") {
+            return $this->get_html_match($param);
         } else if ( $page == "tournois" ) {
-	    return $this->get_html_tournoi($param);
-	} else if($page == "profil" && isset($_SESSION)) {
-	    return $this->get_html_profil($param);
-	} else if($page == "connexion") {
-	    return $this->get_html_connexion();
-	} else if($page == "inscription") {
-	    return $this->get_html_inscription();
-	} else {
+            return $this->get_html_tournoi($param);
+        } else if($page == "profil" && isset($_SESSION)) {
+            return $this->get_html_profil($param);
+        } else if($page == "connexion") {
+            return $this->get_html_connexion();
+        } else if($page == "inscription") {
+            return $this->get_html_inscription();
+        } else {
             $news_obj = new News($this->_bdd);
             $news = $news_obj->get_content();
             $events_obj = new Calendrier($this->_bdd);
