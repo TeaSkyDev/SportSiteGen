@@ -1,27 +1,45 @@
+<script type="text/javascript">
+function afficher_cacher(id)
+{
+    if(document.getElementById(id).style.visibility=="hidden")
+    {
+        document.getElementById(id).style.visibility="visible";
+        document.getElementById('bouton_'+id).innerHTML='Cacher le texte';
+    }
+    else
+    {
+        document.getElementById(id).style.visibility="hidden";
+        document.getElementById('bouton_'+id).innerHTML='Afficher le texte';
+    }
+    return true;
+}
+</script>
+
 <div>
   <div class="tournoi">
     <img src="templates/template1/images/gauche.png"/><span><b>TOURNOIS</b></span><img src="templates/template1/images/droite.png"/>
     <table >
       {foreach from=$Tournoi item=tour}
-      <tr>
-	<td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}"> {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} </td>
-      </tr>
-      <tr> 
-	<td> {$tour.Description} </td>
-      </tr>
-      {/foreach}
-    </table>
-    <table>
-      {foreach from=$Match item=match}
-      <tr>
-	<td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} le {$match.date} </a></td>
-      </tr>
-      <tr>
-	<td>Description: {$match.comm} </td>
-      </tr>
-
-      {/foreach}
-    </table>
+		  <tr>
+		<td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}" class="bouton" id="bouton_texte" onclick="javascript:afficher_cacher('texte');"> {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} </td>
+		  </tr>
+		  <tr> 
+		<td> {$tour.Description} </td>
+		  </tr>
+		  {/foreach}
+		</table>
+		<table>
+			<div id="texte" class="texte">
+				{foreach from=$Match item=match}
+		<tr>
+			<td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} le {$match.date} </a></td>
+		</tr>
+		  <tr>
+		<td>Description: {$match.comm} </td>
+		  </tr>
+		  {/foreach}
+			</div>
+		</table>
     {if $NSimple.one == 1}
     <canvas id="arbre" width="900" height="500"></canvas>
     <script src="js/BinaryTree.js"></script>
