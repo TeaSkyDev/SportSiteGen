@@ -56,6 +56,11 @@
     height: 10%;
 }
 
+.tableau td button img {
+    height: 20px; 
+    width: 20px;
+}
+
 
 .tableau tr:last-child td{
     border-width:0px 1px 0px 0px;
