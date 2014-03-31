@@ -64,21 +64,21 @@
         e = e || window.event; //compatibilité IE
         var divs = document.getElementsByClassName("result");
 
-        if(e.keyCode == 38 && selectedResult > -1) {
+        if(e.keyCode == 38 && selectedResult > -1) { // 38 fleche bas
             divs[selectedResult--].className = "unselected_result result";
             if(selectedResult > -1) {
                 divs[selectedResult].className = "selected_result result";
             } else {
                 searchElement.focus();
             }
-        } else if(e.keyCode == 40 && selectedResult != divs.length - 1) {
+        } else if(e.keyCode == 40 && selectedResult != divs.length - 1) { // 40 fleche haut
             results.style.display = "block";
             if(selectedResult > -1) {
                 divs[selectedResult].className = "unselected_result result";
             }
             selectedResult++;
             divs[selectedResult].className = "selected_result result";
-        } else if(e.keyCode == 13 && selectedResult > -1) {
+        } else if(e.keyCode == 13 && selectedResult > -1) { // 13 entree
             chooseResult(divs[selectedResult]);
         } else if(searchElement.value != previousResult) {
             if(searchElement.value != "") {
