@@ -1,3 +1,11 @@
+<?php
+   $page;
+   if ( isset($_GET['num']) ) {
+   $page = $_GET['num'];
+   } else {
+   $page = 1;
+   }
+?>
 <!doctype html>
 <html>
 <head>
@@ -45,53 +53,72 @@
                                 }
                             }
                             echo '</select>';
-                        if(isset($_GET['tournoi'])) {
-                        echo '<form method="post" action="index.php?page=new_photo&type=tournoi" enctype="multipart/form-data">';
-                        //echo '<input type="hidden" name="MAX_FILE_SIZE" value="2097152">';
-                        echo '<input type="hidden" name="id_tournoi" value="'.$_GET['tournoi'].'">';
-                        echo '<table>';
-                            echo '<tr>';
-                                echo '<th>Upload</th>';
-                                echo '</tr>';
-                            for($i = 0; $i < 5; $i++) {
-                            echo '<tr>';
-                                echo '<td><input type="file" name="photo[]"/></td>';
-                                echo '</tr>';
-                            }
-                            echo '<tr>';
-                                echo '<td><input type="submit" value=" Envoyer"></td>';
-                                echo '</tr>';
-                            echo '</table>';
-                        echo '</form>';
-                        }
+			?>
+	    </table>
+	</div>
+	<br>
+	<?php 
+           if(isset($_GET['tournoi'])) {
+	   ?>
+	<div class="tableau">
+	  <table>
+            <form method="post" action="index.php?page=new_photo&type=tournoi" enctype="multipart/form-data">
+              <input type="hidden" name="MAX_FILE_SIZE" value="2097152">
+              <input type="hidden" name="id_tournoi" value="<?php echo $_GET['tournoi'] ?>">
+              <table>
+		<tr>
+		  <th>Upload</th>
+		</tr>
 
-                        ?>
-
-                        </select>
-                    </td>
-                </tr>
-            </table>
+		<tr>
+		  <td><input type="file" name="photo[]" multiple/></td>
+		</tr>
+		<tr>
+		  <td><input type="submit" value=" Envoyer"></td>
+		</tr>
+              </table>
+            </form>
+	  </table>
+	</div>
+	<br>
+	<div class="tableau">
+	  <table>
             <?php
-            if(isset($_GET['tournoi'])) {
-                $sql = $bdd->query("select IdPhoto from PHOTO_TOURNOIS where IdTOURNOIS = ".$_GET['tournoi']);
-                echo '<table>';
-                echo '<tr><th colspan="4">Photos du tournoi</th></tr>';
-                $i = 0;
-                while($data = $sql->fetch()) {
-                    $photo = $bdd->query("select Fichier from PHOTO where Id = ".$data['IdPhoto'])->fetch()['Fichier'];
-                    if($i == 0) {
-                        echo '<tr>';
-                    } else if($i%4 == 0) {
-                        echo '</tr>';
-                    }
-                    echo '<td><img src="'.$photo.'"/></td>';
-                    $i++;
-                }
-                echo '</table>';
-            }
-            ?>
-        </div>
+	       echo'<tr><th colspan="4">Photos du tournoi</th></tr>';
+               $sql = $bdd->prepare("select idPhoto from PHOTO_TOURNOIS where IdTOURNOIS = ".$_GET['tournoi']);
+	    $sql->execute();
+            $i = 0;
+	    for ($i = 0 ; $i < ($page*5)-5 ; $i++) { if ( $sql->rowCount() > $i ) { $sql->fetch(); } }			       
+              while(($data = $sql->fetch()) && $i < $page * 5) {
+						    $i++;
+						    $photo = $bdd->query("select Fichier from PHOTO where Id = ".$data['idPhoto'])->fetch()['Fichier'];
+		?>
+	    <tr><td><img src="<?php echo $photo ?>"/></td></tr>
+	    <?php
+               }
+	       
+               }
+               ?>
+	  </table>
+	</div>
+	<br>
+	<?php
+	   if ( isset($_GET['tournoi'])) {
+	   ?>
+	<div align="center">
+	  Page<br>
+	  <?php 
+	     for ( $i = 0 ; $i < $sql->rowCount()/5 ; $i++) {
+	     ?>
+	  <a href="index.php?page=photos_tournois&tournoi=<?php echo $_GET['tournoi'] ?>&num=<?php echo $i+1 ?>"><?php echo $i+1 ?></a>
+	  <?php
+	     if ( $i < $sql->rowCount()/5-1 ) {
+	     echo "-";
+	     }
+	     }
+	     }
+	     ?>
+	</div>
     </div>
-</div>
 </body>
 </html>

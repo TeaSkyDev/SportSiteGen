@@ -1,3 +1,11 @@
+<?php
+   if ( isset($_GET['num'])) {
+   $page = $_GET['num'];
+   } else {
+   $page = 1;
+   }
+?>
+
 <!doctype html>
 <html>
     <head>
@@ -33,7 +41,12 @@
 
                         <?php
                             $sql = "SELECT * FROM MATCHS order by Id DESC ";
-                            foreach($bdd->query($sql) as $data) {
+			   $query = $bdd->prepare($sql);
+			$query->execute();
+			$i = 0;
+			for ( $i = 0  ; $i < ($page * 10) - 10 ; $i++) { if ( $query->rowCount() > $i ) { $query->fetch(); } }
+                          while(($data = $query->fetch()) && $i < $page * 10) {
+								  $i++;
                         ?>
 
                         <tr>
@@ -102,11 +115,24 @@
                     </table>
                 </div>
                 <br>
-                
+
                 <a href="index.php?page=new_match">
                     <input type="button" value="Nouveau Match">
                 </a>
-
+		<br>
+		<div align="center">
+		  Page<br>
+		    <?php
+		       for ( $i = 0 ; $i < $query->rowCount() /10 ; $i++ ) {
+		       ?>
+		    <a href="index.php?page=match&num=<?php echo $i+1 ?>" ><?php  echo $i+1 ?> </a>
+		    <?php 
+		    if ( $i < $query->rowCount()/10 - 1 ) {
+		    echo '-';
+		    } 
+		    }
+		       ?>
+		</div>
             </div>
         </div>
     </body>

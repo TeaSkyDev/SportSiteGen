@@ -122,9 +122,20 @@ class Content {
         if ( $simple['one'] ) {
             $fiche = $match_obj->get_fiche_content();
         }
+	$Image = array();
+	$i = 0;
+	if ( $simple['one'] ) {
+	    $query = $this->_bdd->prepare("select IdPhoto from PHOTO_MATCHS where IdMATCHS = :id");
+	    $query->bindParam(":id", $match[0]['Id']);
+	    $query->execute();
+	    while( $d = $query->fetch()) {
+		$Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
+	    }
+	}
         $this->_smarty->assign("Match", $data);
         $this->_smarty->assign("NSimple", $simple);
         $this->_smarty->assign("Fiche", $fiche);
+	$this->_smarty->assign("Image", $Image);
         return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
     }
 

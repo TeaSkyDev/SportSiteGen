@@ -30,6 +30,8 @@ class Equipe {
 		$photo = Photo::s_search_byId($this->_bdd, $data['idPhoto']);
 		if ( $photo != null ) {
 		    $this->_data[$this->_nb]['img'] = $photo['Fichier'];
+		} else {
+		    $this->_data[$this->_nb]['img'] = "";
 		}
 		$this->_nb++;
 	    }
