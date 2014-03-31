@@ -1,3 +1,12 @@
+<?php
+   if (isset($_GET['num'])) {
+   $page = $_GET['num'];
+   } else {
+   $page = 1;
+   }
+?>
+
+
 <!doctype html>
 <html>
   <head>
@@ -30,15 +39,9 @@
 		  <tr>
 		    <th>Upload</th>
 		  </tr>
-		  <?php
-                     for($i = 0; $i < 5; $i++) {
-				      ?>
 		     <tr>
-		       <td><input type="file" name="photo[]"/></td>
+		       <td><input type="file" name="photo[]" multiple/></td>
 		     </tr>
-                     <?php
-			}
-			?>
 		  <tr>
 		    <td><input type="submit" value=" Envoyer"></td>
 		  </tr>
@@ -46,26 +49,40 @@
 	      </form>
 	    </tr>
 	  </table>
+	</div>
+	<br>
+	<div class="tableau">
 	  <table>
 	    <tr><th colspan="4">Photos</th></tr>
-	    <?php $i = 0;
-		  $sql = "SELECT * from PHOTO";
-		  $query = $bdd->query($sql);
-	    while($data = $query->fetch()) {
-		  $q = $bdd->prepare("select * from PHOTO_MATCHS where IdPhoto =".$data['Id']);
-		  $q2 = $bdd->prepare("select * from PHOTO_TOURNOIS where IdPhoto =".$data['Id']);
-		  $q->execute();
-		  $q2->execute();
-		  if ( $q->rowCount() == 0 && $q2->rowCount() == 0 ) {
-		  ?>
+	    <?php 
+	       $sql = "SELECT * from PHOTO";
+	       $query = $bdd->prepare($sql);
+	    $query->execute();
+	    $j = 0;
+	    for ( $i = 0 ; $i < ($page * 5) - 5 ; $i++) { if ( $query->rowCount() > $i ) { $query->fetch(); }}
+	      while(($data = $query->fetch()) && $i < $page * 5) {
+						      $i++;
+		?>
 	    <tr><td><img src= "<?php echo $data['Fichier'] ?>"/></td></tr>
 	    <?php
-               $i++;
 	       }
-               }
+               
 	       ?>
 	  </table>
-	  
+	</div>
+	<br>
+	<div align="center">
+	  Page<br>
+	  <?php
+	     for ( $i = 0 ; $i < $query->rowCount()/5 ; $i++) {
+	     ?>
+	  <a href="index.php?page=photo_class&num=<?php echo $i+1 ?>"><?php echo $i+1 ?></a>
+	  <?php
+	     if ( $i < $query->rowCount()/5 - 1 ) {
+	     echo "-";
+	     }
+	     }
+	     ?>
 	</div>
       </div>
     </div>
