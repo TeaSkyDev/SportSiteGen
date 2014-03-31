@@ -130,6 +130,7 @@ class Content {
 	    $query->execute();
 	    while( $d = $query->fetch()) {
 		$Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
+		$i++;
 	    }
 	}
         $this->_smarty->assign("Match", $data);
