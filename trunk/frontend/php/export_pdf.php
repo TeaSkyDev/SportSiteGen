@@ -51,6 +51,19 @@ if(isset($_GET['action'])) {
 	} else {
 	    echo "Erreur, aucune donnees.";
 	}
+    } else if($_GET['action'] == "tournoi" && isset($_GET['id'])) {
+	$req = $bdd->prepare("select * from TOURNOI where Id = :id");
+	$req->execute(array(":id" => $_GET['id']));
+
+	if($req->rowCount() !=0) {
+	    $data = $req->fetch();
+	    
+	    $smarty = new Smarty();
+	    $smarty->assign("tournoi", $data);
+	    $content = $smarty->display("../templates/fiche_tournoi.html");
+	} else {
+	    echo "aucune donnes";
+	}
     } else {
 	echo "Erreur";
     }
