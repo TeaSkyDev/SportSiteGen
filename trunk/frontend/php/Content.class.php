@@ -129,7 +129,7 @@ class Content {
 	    $query->bindParam(":id", $match[0]['Id']);
 	    $query->execute();
 	    while( $d = $query->fetch()) {
-		$Image[$i] = Photo::s_search_byId($d['IdPhoto'])['Fichier'];
+		$Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
 	    }
 	}
         $this->_smarty->assign("Match", $data);
