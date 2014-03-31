@@ -2,6 +2,7 @@
     <tr>
         <th>NEWS</th>
     </tr>
+    {id $NSimple != 1}
     <tr>
         <th>
             <form method="post" action="index.php?page=news&v1=research_news">
@@ -14,6 +15,7 @@
             <script type="text/javascript" src="js/news_research.js"></script>
         </th>
     </tr>
+    {/if}
     {foreach from=$News item=news}
     <tr>
         <td><a href="index.php?page=news&v1=lire_news&v2={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></td>
