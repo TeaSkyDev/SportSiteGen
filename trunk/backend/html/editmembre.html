@@ -21,7 +21,7 @@
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=membre&action=ajouter">
+                <form method="post" action="index.php?page=membre&action=edit&id=<?php echo $id ?>">
                 <br>
                 <fieldset>
                     <legend>Modifier un Membre</legend>
@@ -31,40 +31,73 @@
                     ?>
                    
                     <br>
-                        Pseudo : <input type="text" name="titre" value="<?php echo $data['Pseudo']?>">
+                        Pseudo : <input type="text" name="pseudo" value="<?php echo $data['Pseudo']?>">
                     <br>
                     <br>
                
-                        Mail : <input type="text" name="titre" value="<?php echo $data['Mail']?>">
+                        Mail : <input type="text" name="mail" value="<?php echo $data['Mail']?>">
                
                     <br>
                     <br>
-                    Type : 
+                    <input type="hidden" name="pass" value="<?php echo $data['Mdp']?>">
                     <?php
                         $type=$data['IdTypeUser'];
+                        $photo=$data['IdPhoto'];
                         }
-                        $sql="SELECT * FROM TYPE_USER WHERE id=$type";
-                        foreach ($bdd->query($sql) as $data) {
                     ?>
-                    <select name="type">
+                    Photo : 
+                    <select name="photo">
+                        <?php
+                            $sql="SELECT * FROM PHOTO WHERE Id=$photo";
+                            foreach ($bdd->query($sql) as $data) {
+                        ?>
                         <option value="<?php echo $data['Id']; ?>" selected> 
                             <?php
                                 echo $data['Nom'];
-                                }
                             ?>
                         </option>
                         <?php
+                            }
+                            $sql="SELECT * FROM PHOTO WHERE Id!=$photo";
+                            foreach ($bdd->query($sql) as $data) {
+                        ?>
+                        <option value="<?php echo $data['Id']; ?>">
+                            <?php
+                                echo $data['Nom'];
+                            ?>
+                        </option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                    <br>
+                    <br>
+                    Type : 
+                    <select name="type">
+                        <?php
+                            $sql="SELECT * FROM TYPE_USER WHERE id=$type";
+                            foreach ($bdd->query($sql) as $data) {
+                        ?>
+                        <option value="<?php echo $data['Id']; ?>" selected> 
+                            <?php
+                                echo $data['Nom'];
+                            ?>
+                        </option>
+                        <?php
+                            }
                             $sql="SELECT * FROM TYPE_USER WHERE id!=$type";
                             foreach ($bdd->query($sql) as $data) {
                         ?>
                         <option value="<?php echo $data['Id']; ?>">
                             <?php
                                 echo $data['Nom'];
-                                }
                             ?>
                         </option>
-                        <br>
+                        <?php
+                            }
+                        ?>
                     </select>
+                    <br>
                     <br>
                     <br>            
                     <input type="submit" value="Envoyer">

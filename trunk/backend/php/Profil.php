@@ -53,10 +53,9 @@ class Profil {
 
     public static function s_delete_byId($bdd, $id) {
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query = $bdd->prepare("delete from UTILISATEUR where Id = :id");
+        $query =$bdd->prepare("delete from UTILISATEUR where Id = :id");
         $query->bindParam(":id", $id);
         return $query->execute();
-        //return $query->rowCount() == 1;
     }
 
 
@@ -71,6 +70,18 @@ class Profil {
         }
     }
 
+    public function update_membre($id, $name, $mail, $pass,$IdPhoto, $Idtype){
+        $query = $this->_bdd->prepare("update UTILISATEUR set Pseudo = :name, Mail = :mail, Mdp=:pass, IdPhoto = :IdPhoto, IdTypeUser = :Idtype where Id = :id");
+        $query->bindParam(":id", $id);
+        $query->bindParam(":name", $name);
+        $query->bindParam(":mail", $mail);
+        $query->bindParam(":pass", $pass);
+        $query->bindParam(":Idtype", $Idtype);
+        $query->bindParam(":IdPhoto", $IdPhoto);
+        $query->execute();
+        $count = $query->rowCount();
+        return ($count == 1);
+    }
 
     public function search_byId($id) {
         $query = $this->_bdd->prepare("select * from UTILISATEUR where Id = :id");

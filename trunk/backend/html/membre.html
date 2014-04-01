@@ -35,12 +35,16 @@
 
                         <?php
                             $sql = "SELECT * FROM UTILISATEUR order by Id DESC";
-			   $query = $bdd->prepare($sql);
-			$query->execute();
-			$i = 0;
-			for ($i = 0 ; $i < ($page * 10) - 10 ; $i++) { if ( $query->rowCount() > $i ) { $query->fetch(); } } 
-			  while (($data = $query->fetch()) && $i < $page * 10)  { 
-								   $i++;
+            			    $query = $bdd->prepare($sql);
+                			$query->execute();
+                			$i = 0;
+                			for ($i = 0 ; $i < ($page * 10) - 10 ; $i++) { 
+                                if ( $query->rowCount() > $i ) { 
+                                    $query->fetch(); 
+                                } 
+                            } 
+            			    while (($data = $query->fetch()) && $i < $page * 10)  { 
+								$i++;
                                 $sql2 = "SELECT Nom from TYPE_USER where Id = ".$data['IdTypeUser'];
                                 $status = $bdd->query($sql2)->fetch()['Nom'];
                         ?>
@@ -63,7 +67,7 @@
                                 <button onclick="self.location.href='index.php?page=edit_membre&id=<?php echo $data['Id']; ?>'" title="Editer">
                                     <img src="Images/edition.png">
                                 </button>
-                                <button onclick="self.location.href='index.php?page=suppr_membre&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                <button onclick="self.location.href='index.php?page=membre&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
                                     <img src="Images/suppression.bmp">
                                 </button>
                             </td>
@@ -87,11 +91,11 @@
 		     ?>
 		  <a href="index.php?page=membre&num=<?php echo $i+1 ?>" ><?php  echo $i+1 ?> </a>
 		  <?php 
-		     if ( $i < $query->rowCount()/10 - 1 ) {
-		     echo '-';
-		     } 
-		     }
-		     ?>
+		    if ( $i < $query->rowCount()/10 - 1 ) {
+                echo '-';
+		    } 
+		    }
+		    ?>
 		</div>
             </div>
         </div>

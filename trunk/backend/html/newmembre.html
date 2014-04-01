@@ -17,7 +17,7 @@
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=new_membre">
+                <form method="post" action="index.php?page=membre&action=ajouter">
                 <br>
                 <fieldset>
                     <legend>Ajouter un Membre</legend>
@@ -39,22 +39,39 @@
                         Confirmation Mot de passe : <input type="text" name="pass_verif">
                     <br>
                     <br>
+                    Photo :
+                    <select name="photo">
+                        <?php
+                           $sql="SELECT * FROM PHOTO";
+                            foreach ($bdd->query($sql) as $data) { 
+                        ?>
+                        <option value="<?php echo $data['Id']?>">
+                            <?php
+                                echo $data['Nom'];
+                            ?>
+                        </option>
+                        <?php
+                            }
+                        ?>
+                    </select>
+                    <br>
+                    <br>
                     Type : 
                     <select name="type">
-                    <?php
-                        $sql="SELECT * FROM TYPE_USER";
-                        foreach ($bdd->query($sql) as $data) {
-                    ?>
+                        <?php
+                            $sql="SELECT * FROM TYPE_USER";
+                            foreach ($bdd->query($sql) as $data) {
+                        ?>
                         <option value="<?php echo $data['Id']; ?>">
                             <?php
                                 echo $data['Nom'];
                             ?>
                         </option>
+                        <?php
+                            }
+                        ?>  
                         <br>
                     </select>
-                    <?php
-                        }
-                    ?>  
                     <br>
                     <br>           
                     <input type="submit" value="Envoyer">
