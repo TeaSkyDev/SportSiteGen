@@ -1,33 +1,23 @@
-<script type="text/javascript">
-  function afficher_cacher(id)
-  {
-  if(document.getElementById(id).style.visibility=="hidden")
-  {
-  document.getElementById(id).style.visibility="visible";
-  }
-  else
-  {
-  document.getElementById(id).style.visibility="hidden";
-  }
-  return true;
-  }
-</script>
 
 <div>
-  <div class="tournoi">
-    <img src="templates/template1/images/gauche.png"/><span><b>TOURNOIS</b></span><img src="templates/template1/images/droite.png"/>
+  <div class="tournoi" id="all">
+    <img src="templates/Rouge/images/gauche.png"/><span><b>TOURNOIS</b></span><img src="templates/Rouge/images/droite.png"/>
     <table >
       {foreach from=$Tournoi item=tour}
       <tr>
-	<td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}" onclick="javascript:afficher_cacher('texte');"> {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} </td>
+	<br>
+	{if $NSimple.one == 1}
+	<button id="button" value="cacher" onclick="javascript:afficher_cacher('table');">Cacher les matchs</button>
+	{/if}
+	<td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}" > {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} </td>
       </tr>
       <tr> 
 	<td> {$tour.Description} </td>
       </tr>
       {/foreach}
     </table>
-    <table>
-      <div id="texte" class="texte">
+    <table id="table">
+      <div class="texte">
 	{foreach from=$Match item=match}
 	<tr>
 	  <td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} le {$match.date} </a></td>
@@ -39,6 +29,8 @@
       </div>
     </table>
     {if $NSimple.one == 1}
+  </div>
+  <div class="tournoi">
     <canvas id="arbre" width="900" height="500"></canvas>
     <script src="js/BinaryTree.js"></script>
     
@@ -49,3 +41,21 @@
     </div>
     {/if}
   </div>
+  <script type="text/javascript">
+    function afficher_cacher(id)
+    {
+    if(document.getElementById(id).style.visibility=="hidden")
+    {
+    document.getElementById(id).style.visibility="visible";
+    document.getElementById("all").style.height="auto";
+    document.getElementById("button").innerHTML="Cacher les matchs";
+    }
+    else
+    {
+    document.getElementById(id).style.visibility="hidden";
+    document.getElementById("all").style.height="150";
+    document.getElementById("button").innerHTML="Afficher les matchs";
+    }
+    return true;
+    }
+  </script>
