@@ -5,7 +5,7 @@
     {foreach from=$Match item=match}
     <tr>
             <td align="center"><u>{$match.name1} - {$match.point1} | {$match.point2} - {$match.name2}
-	    	     |||    {$match.date} - {$match.comm} </td>
+	    	     |||    {$match.date} - {$match.comm} <a href="php/export_pdf.php?action=match&id={$match.Id}">Exporter</a></td>
 
     </tr>
 
