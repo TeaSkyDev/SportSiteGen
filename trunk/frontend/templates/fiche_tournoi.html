@@ -4,63 +4,66 @@
   </head>
   <body>
     <h1 align="center">Tournoi de {$tournoi.Nom}</h1>
-    <table align="center" style="border: 1px solid black;width:100%;">
+    <table style="width : 100%; border: 1px solid black;">
       <tr>
-	<td colspan="2">Date debut : {$tournoi.DateDebut}</td><td>Date fin : {$tournoi.DateFin}</td>
+	<td style="width : 50%;">Date debut : {$tournoi.DateDebut}</td><td style="width : 50%;">Date fin : {$tournoi.DateFin}</td>
       </tr>
     </table>
     
     <h2 align="center">Deroulement des matchs / Scores</h2>
-    <table align="center" style="border: 1px solid black;width:100%;">
+    <table align="center" style="width : 100%; border:1px solid black;">
       {foreach from=$Matchs item=match}
       <tr>
-	<td>{$match.equipe1}  vs  {$match.equipe2}</td><td>{$match.nbPoint1} - {$match.nbPoint2}</td><td>{$match.DateMATCHS}</td>
+	<td style="width : 10%;">{$match.equipe1}</td><td  style="width : 20%;text-align:center;">  vs  </td><td  style="width : 10%;">{$match.equipe2}</td><td style="text-align:center;width : 30%;">{$match.nbPoint1} - {$match.nbPoint2}</td><td style="width : 30%;">{$match.DateMATCHS}</td>
       </tr>
       {/foreach}
     </table>
       
 
     <h2 align="center">Classmement Final</h2>
-    <table align="center" style="border: 1px solid black;width:100%;">
+    <table align="center"  style="width : 100%;border:1px solid black;">
       <tr>
-	<th>Equipe</th>
-	<th>G</th>
-	<th>P</th>
-	<th>N</th>
-	<th>TOT</th>
+	<th style="width : 20%;">Equipe</th>
+	<th style="width : 20%;">G</th>
+	<th style="width : 20%;">P</th>
+	<th style="width : 20%;">N</th>
+	<th style="width : 20%;">TOT</th>
       </tr>
       {foreach from=$Classement item=class}
       <tr>
-	<td>{$class.equipe}</td>
-	<td>{$class.gagne}</td>
-	<td>{$class.perdu}</td>
-	<td>{$class.null}</td>
-	<td>{$class.tot}</td>
+	<td style="width : 20%;">{$class.equipe}</td>
+	<td style="width : 20%;">{$class.gagne}</td>
+	<td style="width : 20%;">{$class.perdu}</td>
+	<td style="width : 20%;">{$class.null}</td>
+	<td style="width : 20%;">{$class.tot}</td>
       </tr>
       {/foreach}
     </table>
 
     <h2 align="center">Composition des equipes</h2>
     
-    <table align="center" style="border: 1px solid black;width:100%;">
+    <table align="center" style="width : 100%;border:1px solid black;">
       {section name=equipe loop=$ListeNomsEquipe}
       <tr>
-	<th colspan="3">{$ListeNomsEquipe[equipe].Nom}</th>
+	<th colspan="3" style="width : 30%;">{$ListeNomsEquipe[equipe].Nom}</th>
       </tr>
       <tr>
-	<th>Nom</th>
-	<th>Prenom</th>
-	<th>Poste</th>
+	<th style="width : 30%;">Nom</th>
+	<th style="width : 30%;">Prenom</th>
+	<th style="width : 30%;">Poste</th>
       </tr>
       {section name=membre loop=$ListeEquipe}
       {if $ListeEquipe[membre].IdTeam == $ListeNomsEquipe[equipe].Id}
       <tr>
-	<td>{$ListeEquipe[membre].Nom}</td>
-	<td>{$ListeEquipe[membre].Prenom}</td>
-	<td>{$ListeEquipe[membre].Poste}</td>
+	<td style="width : 30%;">{$ListeEquipe[membre].Nom}</td>
+	<td style="width : 30%;">{$ListeEquipe[membre].Prenom}</td>
+	<td style="width : 30%;">{$ListeEquipe[membre].Poste}</td>
       </tr>
       {/if}
       {/section}
+      <tr>
+	<td  colspan="3"style="background-color:grey; width:100%"></td>
+      </tr>
       {/section}
     </table>
     
