@@ -57,9 +57,58 @@ if(isset($_GET['action'])) {
 
 	if($req->rowCount() !=0) {
 	    $data = $req->fetch();
+
+	    /* récupération des matchs */ 
+	    $matchs = array();
+	    $query_matchs = $bdd->query("select * from MATCHS where Id in (select IdMATCHS from APPARTENIR_TOURNOI where IdTournoi = ".$data['Id'].")");
+	    $i = 0;
+	    while($tmp = $query_matchs->fetch()) {
+		$matchs[$i] = $tmp;
+		$matchs[$i]['equipe1'] = $bdd->query("select Nom from TEAM where Id = ".$tmp['IdTeam1'])->fetch()['Nom'];
+		$matchs[$i]['equipe2'] = $bdd->query("select Nom from TEAM where Id = ".$tmp['IdTeam2'])->fetch()['Nom'];
+		$i++;
+	    }
+	    
+	    /* récupération des équipes + joueurs */
+	    $equipes          = array();
+	    $liste_nom_equipes = array();
+	    $liste_id_equipes = array();
+	    for($i = 0; $i < count($matchs); $i++) {
+		if(!array_key_exists($matchs[$i]['IdTeam1'], $liste_id_equipes)) {
+		    array_push($liste_id_equipes, $matchs[$i]['IdTeam1']);
+		}
+		if(!array_key_exists($matchs[$i]['IdTeam2'], $liste_id_equipes)) {
+		    array_push($liste_id_equipes, $matchs[$i]['IdTeam2']);
+		}
+	    }
+	    for($i = 0; $i < count($liste_id_equipes); $i++) {
+		$liste_nom_equipes[$i] = $bdd->query("select * from TEAM where Id = ".$liste_id_equipes[$i])->fetch();
+		$req_membres = $bdd->query("select * from JOUEUR where IdTeam = ".$liste_id_equipes[$i]);
+		while($tmp = $req_membres->fetch()) {
+		    $equipes[$i] = $tmp;
+		    $equipes[$i]['Poste'] = $bdd->query("select Nom from POSTE where Id = ".$tmp['IdPoste'])->fetch()['Nom'];
+		}
+		
+	    }
+
+	    /* création du classement */
+	    $classement = array();
+	    /* for($i = 0; $i < count($matchs); $i++) {
+		$nb_pts_gagnes = 0;
+		$nb_pts_perdus = 0;
+		$nb_pts_nulls  = 0;
+
+		$id_equipe_courante = $matchs[$i]['Id'];
+		}*/
 	    
 	    $smarty = new Smarty();
 	    $smarty->assign("tournoi", $data);
+	    $smarty->assign("Matchs", $matchs);
+	    $smarty->assign("Classement", $classement);
+	    $smarty->assign("ListeNomsEquipe", $liste_nom_equipes);
+	    $smarty->assign("ListeEquipe", $equipes);
+	    
+
 	    $content = $smarty->display("../templates/fiche_tournoi.html");
 	} else {
 	    echo "aucune donnes";

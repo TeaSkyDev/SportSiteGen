@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>Tournoi de {$tournoi.Nom}</title>
+  </head>
+  <body>
+    <h1 align="center">Tournoi de {$tournoi.Nom}</h1>
+    <table align="center" style="border: 1px solid black;width:100%;">
+      <tr>
+	<td colspan="2">Date debut : {$tournoi.DateDebut}</td><td>Date fin : {$tournoi.DateFin}</td>
+      </tr>
+    </table>
+    
+    <h2 align="center">Deroulement des matchs / Scores</h2>
+    <table align="center" style="border: 1px solid black;width:100%;">
+      {foreach from=$Matchs item=match}
+      <tr>
+	<td>{$match.equipe1}  vs  {$match.equipe2}</td><td>{$match.nbPoint1} - {$match.nbPoint2}</td><td>{$match.DateMATCHS}</td>
+      </tr>
+      {/foreach}
+    </table>
+      
+
+    <h2 align="center">Classmement Final</h2>
+    <table align="center" style="border: 1px solid black;width:100%;">
+      <tr>
+	<th>Equipe</th>
+	<th>G</th>
+	<th>P</th>
+	<th>N</th>
+	<th>Diff</th>
+	<th>TOT</th>
+      </tr>
+      {foreach from=$Classement item=class}
+      <tr>
+	<td>{$class.equipe}</td>
+	<td>{$class.gagne}</td>
+	<td>{$class.perdu}</td>
+	<td>{$class.null}</td>
+	<td>{$class.diff}</td>
+	<td>{$class.tot}</td>
+      </tr>
+      {/foreach}
+    </table>
+
+    <h2 align="center">Composition des equipes</h2>
+    {section name=equipe loop=$ListeNomsEquipe}
+    <table align="center" style="border: 1px solid black;width:100%;">
+      <tr>
+	<th colspan="3">{$ListeNomsEquipe[equipe].Nom}</th>
+      </tr>
+      <tr>
+	<th>Nom</th>
+	<th>Prenom</th>
+	<th>Poste</th>
+      </tr>
+      {section name=membre loop=$ListeEquipe}
+      {if $ListeEquipe[membre].IdTeam == $ListeNomsEquipe[equipe].Id}
+      <tr>
+	<td>{$ListeEquipe[membre].Nom}</td>
+	<td>{$ListeEquipe[membre].Prenom}</td>
+	<td>{$ListeEquipe[membre].Poste}</td>
+      </tr>
+      {/if}
+      {/section}
+    </table>
+    {/section}
+  </body>
+</html>
