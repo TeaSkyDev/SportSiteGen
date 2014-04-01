@@ -25,6 +25,20 @@ if (isset($_GET['action']) ) {
 	    $msg = "Erreur l'identifiant est manquant";
 	    header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
 	}
+    } else if ( $_GET['action'] == "edit" ) {
+	if (isset($_GET['id'] ) &&
+	    isset($_POST['nom']) && 
+	    isset($_POST['desc'])) {
+	    if ( Poste::s_update($bdd, $_GET['id'], $_POST['nom'], $_POST['desc'])) {
+		header("Location: index.php?page=equipe");
+	    } else {
+		$msg = "Erreur lors de la mise a jour du poste";
+		header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
+	    }
+	} else {
+	    $msg = "Erreur il manque des informations";
+	    header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
+	}
     }
 } else {
     if ( $_GET['page'] == "new_poste" ) {
