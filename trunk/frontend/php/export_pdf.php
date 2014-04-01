@@ -96,14 +96,34 @@ if(isset($_GET['action'])) {
 	    	    
 	    /* création du classement */
 	    $classement = array();
-	    /* for($i = 0; $i < count($matchs); $i++) {
-		$nb_pts_gagnes = 0;
-		$nb_pts_perdus = 0;
-		$nb_pts_nulls  = 0;
+	    /*
+             pour chaque equipe
+	          pour chaque match
+		       si idEq == match.idTeam1
+		          si score1 > score2
+			      classement[i][gagne]++
+			  sinon si score1 == score2
+			      classement[i][nulle]++
+			  sinon 
+			      classement[i][perdu]++
+                          fin si
+		       sinon si idEq == match.idTeam2
+		          si score1 > score2
+			      classement[i][gagne]++
+			  sinon si score1 == score2
+			      classement[i][nulle]++
+			  sinon 
+			      classement[i][perdu]++
+                          fin si
+		       fin si
+		   fin pour
+              fin pour      
+	     */
+	    for($i = 0; $i < count($liste_nom_equipes); $i++) {
+		for($i = 0; $i < count($matchs); $i++) {
+		    if(
+	    }
 
-		$id_equipe_courante = $matchs[$i]['Id'];
-		}*/
-	    
 	    $smarty = new Smarty();
 	    $smarty->assign("tournoi", $data);
 	    $smarty->assign("Matchs", $matchs);
