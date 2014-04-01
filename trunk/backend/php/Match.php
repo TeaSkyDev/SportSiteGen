@@ -232,6 +232,22 @@ class Match {
 
 
 
+    /**
+       \brief supprime les matchs en focntion de l'identifiant d'une equipe (statique)
+       \param bdd la base de donnees
+       \param id l'identifiant de l'equipe
+       \return vrai si reussi faux sinon
+     */
+    static public function s_delete_byTeamId($bdd, $id) {
+	$query = $bdd->prepare("delete from MATCHS where IdTeam1=:id or IdTeam2=:id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() != 0;
+    }
+
+
+
+
 
 }
 
