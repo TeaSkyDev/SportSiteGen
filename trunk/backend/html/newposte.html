@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Nouveaux Poste</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/icone_membres.png">
+        <h1>Gestion des Equipes : Ajouter un Poste</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <form method="post" action="index.php?page=new_poste&action=ajouter">
+          <br>
+          <fieldset>
+            <legend>Ajouter un Poste</legend>
+            Nom : <input type="text" name="nom">
+            <br>
+            <br>
+	    Description:<br>
+	    <textarea name="desc" cols="50" rows="10">
+	    </textarea>
+	    <br>
+	    <br>
+	    <input type="submit" value="Envoyer">
+	  </fieldset>        
+	</form>
+      </div>
+    </div>
+    <br>
+  </body>
+</html>

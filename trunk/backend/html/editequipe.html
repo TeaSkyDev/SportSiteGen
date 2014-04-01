@@ -8,6 +8,7 @@
     <title>Modifier Equipe</title>
     <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
     <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
   </head>
   <body>
     <div id="contenu">
@@ -21,12 +22,50 @@
       </div>
       <br>
       <div class="interieur">
-        <form method="post" action="index.php?page=edit_equipe&action=edit&id=<?php echo $id ?>">
+
           <br>
+
           <fieldset>
             <legend>Modifier une Equipe</legend>
-
-            <?php 
+	    <div class="tableau">
+	      <table>
+		<tr>
+		  <td>Nom</td>
+		  <td>Prenom</td>
+		  <td>Description</td>
+		  <td>Action</td>
+		</tr>
+		<?php
+		   $query = $bdd->prepare("select * from JOUEUR where IdTeam = :id");
+		$query->bindParam(":id", $id);
+		$query->execute();
+		while ($data = $query->fetch()) {
+		?>
+		<tr>
+		  <td> <?php echo $data['Nom']; ?> </td>
+		  <td> <?php echo $data['Prenom']; ?></td>
+		  <td> <?php echo resume_text($data['Description'], 100); ?></td>
+		  <td>
+                    <button onclick="self.location.href='index.php?page=edit_joueur&id=<?php echo $data['Id']; ?>'" title="Editer">
+                      <img src="Images/edition.png">
+                    </button>
+                    <button onclick="self.location.href='index.php?page=suppr_joueur&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                      <img src="Images/suppression.bmp">
+                    </button>
+                  </td>
+		</tr>
+		<?php
+		}
+		   ?>
+	      </table>
+	    </div>
+	    <br>
+	    <form method="post" action="index.php?page=new_joueur&id_team=<?php echo $_GET['id']; ?>">
+	      <input type="submit" value="Nouveau Joueur">
+	    </form>
+		<br>
+		<form method="post" action="index.php?page=edit_equipe&action=edit&id=<?php echo $id ?>">
+              <?php 
                $sql = "SELECT * FROM TEAM WHERE Id= $id ";
                foreach($bdd->query($sql) as $data){
             ?>
@@ -36,6 +75,7 @@
             <br>
             <br>
             Photo : 
+            <select name="photo">
             <?php
                $categorie=$data['IdCategorie'];
                $photo=$data['idPhoto'];
@@ -44,7 +84,7 @@
                $sql="SELECT * FROM PHOTO WHERE id=$photo";
                foreach ($bdd->query($sql) as $data) {
             ?>
-            <select name="photo">
+
               <option value="<?php echo $data['Id']; ?>"selected> 
                 <?php
                    echo $data['Nom'];
@@ -52,7 +92,7 @@
                    ?>
               </option>
               <?php
-                 $sql="SELECT * FROM TYPE_USER WHERE id!=$photo";
+                 $sql="SELECT * FROM PHOTO WHERE id!=$photo";
                  foreach ($bdd->query($sql) as $data) {
               ?>
               <option value="<?php echo $data['Id']; ?>">

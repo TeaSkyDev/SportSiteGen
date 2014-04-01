@@ -138,9 +138,54 @@
 	  </table>
 	</div>
 	<br>
-	  <a href="index.php?page=new_categorie">
-            <input type="button" value="Nouvelle categorie" onclick="self.location.href='index.php?page=new_categorie'">
+	<a href="index.php?page=new_categorie">
+          <input type="button" value="Nouvelle categorie" onclick="self.location.href='index.php?page=new_categorie'">
+      </div>
+      <div class="interieur">
+	<div class="tableau">
+	  <table>
+	    <tr>
+	      <td>Nom</td>
+	      <td>Description</td>
+	      <td>Action</td>
+	    </tr>
+	    <?php
+               $sql = "SELECT * FROM POSTE ";
+               foreach($bdd->query($sql) as $data) {
+            ?>
+
+            <tr>
+              <td>
+		<?php 
+                   echo $data['Nom'];
+                   ?>
+              </td>
+              <td>
+		<?php
+                   echo resume_text($data['Description'], 100);
+                   ?>
+              </td>
+              <td>
+		<button onclick="self.location.href='index.php?page=edit_poste&id=<?php echo $data['Id']; ?>'" title="Editer">
+                  <img src="Images/edition.png">
+		</button>
+		<button onclick="self.location.href='index.php?page=suppr_poste&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                  <img src="Images/suppression.bmp">
+		</button>
+              </td>
+            </tr>
+
+            <?php
+               }
+               ?>
+            
+	  </table>
+	</div>
+	<br>
+	<a href="index.php?page=new_poste">
+          <input type="button" value="Nouveau Poste" onclick="self.location.href='index.php?page=new_poste">
       </div>
     </div>
+
   </body>
 </html>
