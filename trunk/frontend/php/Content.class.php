@@ -380,11 +380,14 @@ class Content {
         } else {
             $news_obj = new News($this->_bdd);
             $news = $news_obj->get_content();
+	    $Image = new Photo($this->_bdd);
+	    $img = $Image->get_content();
             $events_obj = new Calendrier($this->_bdd);
             $events = $events_obj->get_content();
 
             $this->_smarty->assign("News", $news);
             $this->_smarty->assign("Events", $events);
+	    $this->_smarty->assign("Image", $img);
 
             return $this->_smarty->fetch("templates/".$this->_template."/html/accueil.html");
         }
