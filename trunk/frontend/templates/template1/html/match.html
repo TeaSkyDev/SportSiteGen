@@ -20,3 +20,7 @@
     </td>
   </tr>
 </table>
+
+{foreach from=$page item=elem}
+<a href="index.php?page=match&num={$elem}">{$elem}</a>
+{/foreach}
