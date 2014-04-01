@@ -27,7 +27,6 @@
 	<th>G</th>
 	<th>P</th>
 	<th>N</th>
-	<th>Diff</th>
 	<th>TOT</th>
       </tr>
       {foreach from=$Classement item=class}
@@ -36,15 +35,15 @@
 	<td>{$class.gagne}</td>
 	<td>{$class.perdu}</td>
 	<td>{$class.null}</td>
-	<td>{$class.diff}</td>
 	<td>{$class.tot}</td>
       </tr>
       {/foreach}
     </table>
 
     <h2 align="center">Composition des equipes</h2>
-    {section name=equipe loop=$ListeNomsEquipe}
+    
     <table align="center" style="border: 1px solid black;width:100%;">
+      {section name=equipe loop=$ListeNomsEquipe}
       <tr>
 	<th colspan="3">{$ListeNomsEquipe[equipe].Nom}</th>
       </tr>
@@ -62,7 +61,8 @@
       </tr>
       {/if}
       {/section}
+      {/section}
     </table>
-    {/section}
+    
   </body>
 </html>
