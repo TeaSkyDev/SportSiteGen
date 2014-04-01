@@ -5,7 +5,7 @@
 */
 
 function check_cms_installed() {
-    $fichier = fopen("cms.conf", "r");
+    $fichier = @fopen("cms.conf", "r");
 
     if($fichier) {
         $ligne = fgets($fichier);
@@ -18,14 +18,12 @@ function check_cms_installed() {
         }
 
     } else {
-        echo '<p>Erreur lors de l\'ouverture du fichier de configuration.</p>';
-        return true;
+        return false;
     }
 }
 
 function cms_installed() {
-    @unlink("cms.conf");
-    $fichier = fopen("cms.conf", "r+");
+    $fichier = fopen("cms.conf", "a+");
 
     fseek($fichier, 0);
     fputs($fichier, "installed 1");
