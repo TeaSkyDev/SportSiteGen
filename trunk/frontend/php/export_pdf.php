@@ -119,9 +119,62 @@ if(isset($_GET['action'])) {
 		   fin pour
               fin pour      
 	     */
+	    /* initialisation tableau classement */
 	    for($i = 0; $i < count($liste_nom_equipes); $i++) {
-		for($i = 0; $i < count($matchs); $i++) {
-		    if(
+		$classement[$i]['equipe'] = $liste_nom_equipes[$i]['Nom'];
+		$classement[$i]['gagne']  = 0;
+		$classement[$i]['perdu']  = 0;
+		$classement[$i]['null']   = 0;
+		$classement[$i]['tot']    = 0;
+	    }
+	    /* calcul des parties gagnées, pardues, nulles */
+	    for($i = 0; $i < count($liste_nom_equipes); $i++) {
+		for($j = 0; $j < count($matchs); $j++) {
+		    if($liste_nom_equipes[$i]['Id'] == $matchs[$j]['IdTeam1']) {
+			if($matchs[$j]['nbPoint1'] > $matchs[$j]['nbPoint2']) {
+			    $classement[$i]['gagne']++;
+			} else if($matchs[$j]['nbPoint1'] == $matchs[$j]['nbPoint2']) {
+			    $classement[$i]['null']++;
+			} else {
+			    $classement[$i]['perdu']++;
+			}
+		    } else if($liste_nom_equipes[$i]['Id'] == $matchs[$j]['IdTeam2']) {
+			if($matchs[$j]['nbPoint1'] < $matchs[$j]['nbPoint2']) {
+			    $classement[$i]['gagne']++;
+			} else if($matchs[$j]['nbPoint1'] == $matchs[$j]['nbPoint2']) {
+			    $classement[$i]['null']++;
+			} else {
+			    $classement[$i]['perdu']++;
+			}
+		    }
+		}
+	    }
+
+	    /* Calcul des points (gagne = 3pts, nulle = 2pts, perdue = 1pts), diff */
+	    for($i = 0; $i < count($classement); $i++) {
+		$classement[$i]['tot'] = ($classement[$i]['gagne']*3) + ($classement[$i]['null']*2) + $classement[$i]['perdu'];
+	    }
+	    /* on tri */
+	    $trie = false;
+	    while(!$trie) {
+		$trie = true;
+		for($i = 0; $i < count($classement); $i++) {
+		    if($i < count($classement)-1) {
+			if($classement[$i]['tot'] < $classement[$i+1]['tot']) {
+			    $tmp = $classement[$i];
+			    $classement[$i] = $classement[$i+1];
+			    $classement[$i+1] = $tmp;
+			    $trie = false;
+			} else if($classement[$i]['tot'] == $classement[$i+1]['tot']) {
+			    if($classement[$i]['gagne'] < $classement[$i+1]['gagne']) {
+				$tmp = $classement[$i];
+				$classement[$i] = $classement[$i+1];
+				$classement[$i+1] = $tmp;
+				$trie = false;
+			    }
+			}
+		    }
+		}
 	    }
 
 	    $smarty = new Smarty();
@@ -132,7 +185,11 @@ if(isset($_GET['action'])) {
 	    $smarty->assign("ListeEquipe", $equipes);
 	    
 
-	    $content = $smarty->display("../templates/fiche_tournoi.html");
+	    $content = $smarty->fetch("../templates/fiche_tournoi.html");
+
+	    $html2pdf = new HTML2PDF('P', 'A4', 'fr');
+	    $html2pdf->WriteHTML($content);
+	    $html2pdf->Output('test_'.$data['DateDebut'].'.pdf');
 	} else {
 	    echo "aucune donnes";
 	}
