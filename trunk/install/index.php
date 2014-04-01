@@ -42,24 +42,15 @@ if(isset($_POST['step']) || isset($_GET['step'])) {
             start_step_one();
             break;
         case "step_1":
-            if(!$_SESSION['steps']['step1']) {
-                recup_info("step_1");
-                $_SESSION['steps']['step1'] = true;
-            }
-            start_step_two();
+	    recup_info("step_1");
+	    start_step_two();
             break;
         case "step_2":
-            if(!$_SESSION['steps']['step2']) {
-                recup_info("step_2");
-                $_SESSION['steps']['step2'] = true;
-            }
+            recup_info("step_2");
             start_step_three();
             break;
         case "step_3":
-            if(!$_SESSION['steps']['step3']) {
-                recup_info("step_3");
-                $_SESSION['steps']['step3'] = true;
-            }
+            recup_info("step_3");
             show_recapitulatif();
             break;
         case "step_4":

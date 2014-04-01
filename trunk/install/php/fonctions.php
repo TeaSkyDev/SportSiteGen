@@ -33,18 +33,27 @@ function cms_installed() {
 function recup_info($step) {
     switch($step) {
         case "step_1":
-            $_SESSION[$step]["server"] = $_POST['server'];
-            $_SESSION[$step]["login"]  = $_POST['login'];
-            $_SESSION[$step]["pass"]   = $_POST['pass'];
-            $_SESSION[$step]["bdd"]    = $_POST['bdd'];
+	    if(isset($_POST['server']) && isset($_POST['login']) && isset($_POST['pass']) && isset($_POST['bdd'])) {
+		$_SESSION[$step]["server"] = $_POST['server'];
+		$_SESSION[$step]["login"]  = $_POST['login'];
+		$_SESSION[$step]["pass"]   = $_POST['pass'];
+		$_SESSION[$step]["bdd"]    = $_POST['bdd'];
+		$_SESSION['steps'][$step] = true;
+	    }
             break;
         case "step_2":
-            $_SESSION[$step]["login"]  = $_POST['login'];
-            $_SESSION[$step]["pass"]   = $_POST['pass'];
-            $_SESSION[$step]["mail"]   = $_POST['mail'];
+	    if(isset($_POST['login']) && isset($_POST['pass']) && isset($_POST['mail'])) {
+		$_SESSION[$step]["login"]  = $_POST['login'];
+		$_SESSION[$step]["pass"]   = $_POST['pass'];
+		$_SESSION[$step]["mail"]   = $_POST['mail'];
+		$_SESSION['steps'][$step] = true;
+	    }
             break;
         case "step_3":
-            $_SESSION[$step]["nom"]    = $_POST['nom'];
+	    if(isset($_POST['nom'])) {
+		$_SESSION[$step]["nom"]    = $_POST['nom'];
+		$_SESSION["steps"][$step] = true;
+	    }
             break;
         default:
             echo 'Erreur';
