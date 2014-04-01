@@ -7,6 +7,8 @@
    */
 
 
+
+
 class Joueur {
 
     private $_bdd; /* base de donnees rattache */
@@ -198,7 +200,32 @@ class Joueur {
 	return $query->rowCount() == 1;
     }
 
-    
+    /**
+       \brief supprime les joueur par rapport a leurs id de poste (statique)
+       \param bdd la base de donnee rattache
+       \param id l'identifiant du poste
+       \return vrai si reussi faux sinon
+     */
+    static public function s_delete_byPosteId($bdd, $id) {
+	$query = $bdd->prepare("delete from JOUEUR where IdPoste=:id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() != 0;
+    }
+
+
+    /**
+     \brief supprime un joueur en fonction de l' Id de son equipe (statique)
+     \param bdd la base de donnees rattache
+     \param id l'identifiant de l'equipe
+     \return vrai si reussi faux sinon
+     */
+    public function s_delete_byTeamId($bdd, $id) {
+	$query = $bdd->prepare("delete from JOUEUR where IdTeam = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() != 0;
+    }
 
 
 }

@@ -19,13 +19,8 @@ if (isset($_GET['action'] )) {
 	}
     } else if ( $_GET['action'] == "edit" && isset($_GET['id'])) {
 	if (isset($_POST['titre']) && isset($_POST['date']) && isset($_POST['contenu']) && isset($_POST['location'])) {
-	    if( Calendrier::s_delete_byId($bdd, $_GET['id']) ) {
-		if ( Calendrier::s_insert($bdd, $_POST['titre'], $_POST['contenu'], $_POST['date'], $_POST['location'])) {
-		    header("Location:index.php?page=calendrier");
-		} else {
-		    $msg = "probleme lors de la modification de l'evenement";
-		    header("Location:index.php?page=err&page_r=edit_event&msg=".$msg);
-		}
+	    if ( Calendrier::s_update($bdd, $_GET['id'], $_POST['titre'], $_POST['contenu'], $_POST['date'], $_POST['location'])) {
+		header("Location:index.php?page=calendrier");
 	    } else {
 		$msg = "probleme lors de la modification de l'evenement";
 		header("Location:index.php?page=err&page_r=edit_event&msg=".$msg);

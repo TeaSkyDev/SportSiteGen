@@ -1,6 +1,7 @@
 <?php
 
 require("php/Poste.php");
+require("php/Joueur.php");
 
 if (isset($_GET['action']) ) {
     if ( $_GET['action'] == "ajouter") {
@@ -19,6 +20,7 @@ if (isset($_GET['action']) ) {
     } else if ( $_GET['action'] == "supprimer" ) {
 	if ( isset( $_GET['id'] ) ) {
 	    if (Poste::s_delete_byId($bdd, $_GET['id']) ) {
+		Joueur::s_delete_byPosteId($bdd, $_GET['id']);
 		header("Location: index.php?page=equipe");
 	    }	    
 	} else {

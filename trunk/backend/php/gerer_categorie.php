@@ -17,16 +17,11 @@ if ( isset($_GET['action'] ) ) {
 	}
     } else if ( $_GET['action'] == "edit" && isset($_GET['id'])) {
 	if ( isset($_POST['nom']) && isset($_POST['description']) ) {
-	    if( Categorie::s_delete_byId($bdd, $_GET['id'] )) {
-		if ( Categorie::s_insert($bdd, $_POST['nom'], $_POST['description'] )) {
-		    header("Location:index.php?page=equipe");
-		} else {
-		    $msg = "Erreur lors de la modification de la categorie.";
-		    header("Location:index.php?page=err&page_r=edit_categorie&msg=".$msg);
-		}
+	    if ( Categorie::s_update($bdd, $_GET['id'], $_POST['nom'], $_POST['description'] )) {
+		header("Location:index.php?page=equipe");
 	    } else {
-		$msg = "Erreur lors de la modification de la categorie.(del)";
-		header("Location:index.php?page=err&page_r=edit_categorie&msg=".$msg);
+		$msg = "Erreur lors de la modification de la categorie.";
+		header("Location:index.php?page=err&page_r=equipe&msg=".$msg);
 	    }
 	} else {
 	    $msg = "Erreur toutes les donnees ne sont pas presentes.";
@@ -40,7 +35,7 @@ if ( isset($_GET['action'] ) ) {
 	    header("Location:index.php?page=err&page_r=equipe&msg=".$msg);
 	}
     }
- } else {
+} else {
     if ( $_GET['page'] == "new_categorie" ) {
 	include ("html/newcategorie.html");
     } else if ( $_GET['page'] == "edit_categorie") {
@@ -48,5 +43,5 @@ if ( isset($_GET['action'] ) ) {
     } else {
 	include("html/equipe.html");
     }
- }
-    ?>
+}
+?>

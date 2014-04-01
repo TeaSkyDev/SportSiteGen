@@ -1,5 +1,6 @@
 <?php
-include("News.php");
+
+include("php/News.php");
 
 /* Vérification des arg de l'url : si une action est demandée on la traite */
 if(isset($_GET['action'])) {
@@ -15,7 +16,7 @@ if(isset($_GET['action'])) {
         }
     } else if($action == "supprimer") { /* Sinon si on demande une suppression.. */
         if(isset($_GET['id'])) {
-            if(Delete_byID($bdd, "NEWS", $_GET['id'])) {
+            if(News::s_delete_byId($bdd, $_GET['id'])) {
                 header("Location: index.php?page=article");
             } else {
                 $msg = "Erreur lors de la suppression.";
