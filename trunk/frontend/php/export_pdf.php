@@ -74,23 +74,26 @@ if(isset($_GET['action'])) {
 	    $liste_nom_equipes = array();
 	    $liste_id_equipes = array();
 	    for($i = 0; $i < count($matchs); $i++) {
-		if(!array_key_exists($matchs[$i]['IdTeam1'], $liste_id_equipes)) {
+		if(!in_array($matchs[$i]['IdTeam1'], $liste_id_equipes)) {
 		    array_push($liste_id_equipes, $matchs[$i]['IdTeam1']);
 		}
-		if(!array_key_exists($matchs[$i]['IdTeam2'], $liste_id_equipes)) {
+		if(!in_array($matchs[$i]['IdTeam2'], $liste_id_equipes)) {
 		    array_push($liste_id_equipes, $matchs[$i]['IdTeam2']);
 		}
 	    }
+	    
+	    $j = 0;
 	    for($i = 0; $i < count($liste_id_equipes); $i++) {
 		$liste_nom_equipes[$i] = $bdd->query("select * from TEAM where Id = ".$liste_id_equipes[$i])->fetch();
 		$req_membres = $bdd->query("select * from JOUEUR where IdTeam = ".$liste_id_equipes[$i]);
 		while($tmp = $req_membres->fetch()) {
-		    $equipes[$i] = $tmp;
-		    $equipes[$i]['Poste'] = $bdd->query("select Nom from POSTE where Id = ".$tmp['IdPoste'])->fetch()['Nom'];
+		    $equipes[$j] = $tmp;
+		    $equipes[$j]['Poste'] = $bdd->query("select Nom from POSTE where Id = ".$tmp['IdPoste'])->fetch()['Nom'];
+		    $j++;
 		}
 		
 	    }
-
+	    	    
 	    /* création du classement */
 	    $classement = array();
 	    /* for($i = 0; $i < count($matchs); $i++) {
