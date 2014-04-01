@@ -4,9 +4,9 @@
   </tr>
   {foreach from=$Teams item=team}
   <tr>
-    <td>
-      <a href="index.php?page=membre_equipe&id={$team.Id}"> <img id="avatar" src="{$team.img}" alt=""  width="50" height="50" />{$team.Nom} </a>
-    </td>
+    <th>
+      <a href="index.php?page=membre_equipe&id={$team.Id}"> <img src="{$team.img}" alt=""  width="150"/><br>{$team.Nom} </a>
+    </th>
   </tr>
   {/foreach}
 </table>

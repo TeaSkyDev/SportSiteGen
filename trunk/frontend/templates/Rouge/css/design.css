@@ -409,6 +409,17 @@ table {
     text-decoration:none;
 }
 
+.membre ul li {
+    text-align: center;
+    border: solid 1px;
+    margin-top: 5px;
+}
+
+.membre ul li img {
+    max-height: 250px;
+    min-height: 200px;
+}
+
 .section{
     margin-top:30px;
     text-align:left;
