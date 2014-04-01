@@ -23,8 +23,8 @@ if(isset($_GET['action'])) {
 		header("Location: index.php?page=equipe");
 		
 	    } else {
-		$msg = "Erreur lors de la modification d'une equipe. (del)";
-		header("Location: index.php?page=err&page_r=edit_equipe&msg=".$msg);
+		$msg = "Erreur lors de la modification d'une equipe";
+		header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
 	    }
 	} else {
 	    $msg = "Erreur, toutes les donnees ne sont pas presentes.";

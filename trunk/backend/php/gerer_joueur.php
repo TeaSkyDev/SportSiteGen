@@ -10,7 +10,7 @@ if (isset($_GET['action']) ) {
 	    && isset($_POST['photo']) 
 	    && isset($_POST['desc'])) {
 	    if ( Joueur::s_insert($bdd, $_GET['id_team'], $_POST['nom'], $_POST['photo'], $_POST['prenom'], $_POST['poste'], $_POST['desc'])) {
-		    header("Location:index.php?page=equipe&id=".$_GET['id_team']);
+		    header("Location:index.php?page=edit_equipe&id=".$_GET['id_team']);
 	    } else {
 		$msg = "Erreur lors de l'ajout d'un joueur";
 		header("Location:index.php?page=err&msg=".$msg);
@@ -19,6 +19,21 @@ if (isset($_GET['action']) ) {
 	    $msg = "Erreur il manque des informations";
 	    header("Location:index.php?page=err&page_r=equipe&msg=".$msg);
 	}	    
+    } else if ( $_GET['action'] == "supprimer" ) {
+	if ( Joueur::s_delete_byId($bdd, $_GET['id']) ) {
+	    header("Location: index.php?page=edit_equipe&id=".$_GET['id_team']);
+	} else {
+	    $msg = "Erreur lors de la suppression du joueur";
+	    header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
+	}
+    } else if ( $_GET['action'] == "edit" ) {
+	if ( Joueur::s_update($bdd, $_GET['id'], $_POST['nom'], $_POST['photo'], $_POST['prenom'], $_POST['poste'], $_POST['desc']) ) {
+	    header("Location: index.php?page=edit_equipe&id=".$_GET['id_team']);
+	} else {
+	    echo "jhfdjhfk";
+	    $msg = "Erreur lors de la mise a jour du joueur";
+	    //    header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
+	}
     }
 } else {
     if ( $_GET['page'] == "new_joueur" ) {

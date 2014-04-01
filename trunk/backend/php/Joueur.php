@@ -146,6 +146,31 @@ class Joueur {
     }
 
 
+    /**
+       \brief met a jour un joueur (statique) 
+       \param bdd la base de donnees 
+       \param id l'identifiant du joueur
+       \param nom le nom du joueur
+       \param photo la photo du joueur
+       \param prenom le prenom du joueur
+       \param poste le poste du joueur
+       \param desc la description du joueur
+       \return vrai si reussi faux sinon
+     */
+    static public function s_update($bdd, $id, $nom, $photo, $prenom, $poste, $desc) {
+	$query = $bdd->prepare("UPDATE JOUEUR SET Nom=:nom, idPhoto=:photo, Prenom=:prenom, IdPoste=:poste, Description=:desc where Id=:id");
+	$query->bindParam(":id", $id);
+	$query->bindParam(":nom", $nom);
+	$query->bindParam(":photo", $photo);
+	$query->bindParam(":prenom", $prenom);
+	$query->bindParam(":poste", $poste);
+	$query->bindParam(":desc", $desc);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+
+
 
     
     /**
