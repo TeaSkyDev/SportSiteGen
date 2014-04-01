@@ -16,7 +16,7 @@ require("php/Profil.php");
 if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
     if(isset($_GET['page'])) {
         if($_GET['page'] == "err") {
-            include("php/err.php");
+            include("php/info.php");
         }
     }
     $_SESSION['admin_connected'] = false;
@@ -27,113 +27,133 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 
         switch($page) {
             /*ARTICLE*/
-            case 'article':
-                include("php/article.php");
-                break;
-            case 'new_article':
-                include("html/newarticle.html");
-                break;
-            case 'edit_article':
-                include("html/editarticle.html");
-                break;
+	case 'article':
+	    include("php/article.php");
+	    break;
+	case 'new_article':
+	    include("html/newarticle.html");
+	    break;
+	case 'edit_article':
+	    include("html/editarticle.html");
+	    break;
             /*CALENDRIER*/
-            case 'calendrier':
-                include("php/gerer_calendrier.php");
-                break;
-            case 'new_event':
-                include("php/gerer_calendrier.php");
-                break;
-            case 'edit_event':
-                include("php/gerer_calendrier.php");
-                break;
+	case 'calendrier':
+	    include("php/gerer_calendrier.php");
+	    break;
+	case 'new_event':
+	    include("php/gerer_calendrier.php");
+	    break;
+	case 'edit_event':
+	    include("php/gerer_calendrier.php");
+	    break;
             /*MEMBRE*/
-            case 'membre':
-                include("html/membre.html");
-                break;
-            case 'new_membre':
-                include("html/newmembre.html");
-                break;
-            case 'edit_membre':
-                include("html/editmembre.html");
-                break;
-            case 'suppr_membre':
-                include("php/membre.php");
-                break;
+	case 'membre':
+	    include("html/membre.html");
+	    break;
+	case 'new_membre':
+	    include("html/newmembre.html");
+	    break;
+	case 'edit_membre':
+	    include("html/editmembre.html");
+	    break;
+	case 'suppr_membre':
+	    include("php/membre.php");
+	    break;
             /*EQUIPE*/
-            case 'equipe':
-                include("html/equipe.html");
-                break;
-            case 'new_equipe':
-                include("php/gerer_equipe.php");
-                break;
-            case 'edit_equipe':
-                include("php/gerer_equipe.php");
-                break;
-            case 'suppr_equipe':
-                include("php/gerer_equipe.php");
-                break;
+	case 'equipe':
+	    include("html/equipe.html");
+	    break;
+	case 'new_equipe':
+	    include("php/gerer_equipe.php");
+	    break;
+	case 'edit_equipe':
+	    include("php/gerer_equipe.php");
+	    break;
+	case 'suppr_equipe':
+	    include("php/gerer_equipe.php");
+	    break;
             /*CATEGORIE*/
-            case 'new_categorie':
-                include("php/gerer_categorie.php");
-                break;
-            case 'edit_categorie':
-                include("php/gerer_categorie.php");
-                break;
-            case 'suppr_categorie':
-                include("php/gerer_categorie.php");
-                break;
+	case 'new_categorie':
+	    include("php/gerer_categorie.php");
+	    break;
+	case 'edit_categorie':
+	    include("php/gerer_categorie.php");
+	    break;
+	case 'suppr_categorie':
+	    include("php/gerer_categorie.php");
+	    break;
+	    /*POSTE*/
+	case 'new_poste':
+	    include("php/gerer_poste.php");
+	    break;
+	case 'edit_poste':
+	    include("php/gerer_poste.php");
+	    break;
+	case 'suppr_poste':
+	    include("php/gerer_poste.php");
+	    break;
+	    /*JOUEUR*/
+	case 'new_joueur':
+	    include("php/gerer_joueur.php");
+	    break;
+	case 'edit_joueur':
+	    include("php/gerer_joueur.php");
+	    break;
+	case 'suppr_joueur':
+	    include("php/gerer_joueur.php");
+	    break;
             /*MATCH*/
-            case 'match':
-                include("html/match.html");
-                break;
-            case 'new_match':
-            case 'edit_match':
-            case 'suppr_match':
-                include("php/gerer_match.php");
-                break;
+	case 'match':
+	    include("html/match.html");
+	    break;
+	case 'new_match':
+	case 'edit_match':
+	case 'suppr_match':
+	    include("php/gerer_match.php");
+	    break;
             /*TOURNOIS*/
-            case 'tournois':
-                include("php/gerer_tournois.php");
-                break;
-            case 'new_tournois':
-                include("php/gerer_tournois.php");
-                break;
-            case 'edit_tournois':
-                include("php/gerer_tournois.php");
-                break;
-            case 'new_tourn_match':
-                include("php/gerer_tournois.php");
-                break;
+	case 'tournois':
+	    include("php/gerer_tournois.php");
+	    break;
+	case 'new_tournois':
+	    include("php/gerer_tournois.php");
+	    break;
+	case 'edit_tournois':
+	    include("php/gerer_tournois.php");
+	    break;
+	case 'new_tourn_match':
+	    include("php/gerer_tournois.php");
+	    break;
             /* PHOTOS */
-            case 'photos':
-                include("html/photos.html");
-                break;
-            case 'photos_matchs':
-                include("html/photos_matchs.html");
-                break;
-            case 'photos_tournois':
-                include("html/photos_tournois.html");
-                break;
-            case 'photo_class':
-                include("html/photos_class.html");
-                break;
-            case 'new_photo':
-                include("php/photos.php");
-                break;
+	case 'photos':
+	    include("html/photos.html");
+	    break;
+	case 'photos_matchs':
+	    include("html/photos_matchs.html");
+	    break;
+	case 'photos_tournois':
+	    include("html/photos_tournois.html");
+	    break;
+	case 'photo_class':
+	    include("html/photos_class.html");
+	    break;
+	case 'new_photo':
+	    include("php/photos.php");
+	    break;
             /*AUTRE*/
 
-            case 'logout':
-                include("php/logout.php");
-                break;
-            case 'err':
-            case 'info':
-                include("php/info.php");
-                break;
-            case 'configuration':
-                include("php/config.php");
-                break;
-            default:
-                include("html/accueil.html");
+	case 'logout':
+	    include("php/logout.php");
+	    break;
+	case 'err':
+	case 'info':
+	    include("php/info.php");
+	    break;
+	case 'configuration':
+	    include("php/config.php");
+	    break;
+	default:
+	    include("html/accueil.html");
 
         }
     } else {
