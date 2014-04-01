@@ -106,7 +106,15 @@ class Content {
         $match = $match_obj->get_content();
         $data = array();
         $i = 0;
-        while(isset($match[$i])) {
+	$page = 0;
+	if(isset($param['num'])){
+	  $i=$param['num']*10-10;
+	  $page=$param['num'];
+	}else{
+	  $i=0;
+	  $page=1;
+	}
+        while(isset($match[$i]) && $i<$page*10) {
             $data[$i]['Id'] = $match[$i]['Id'];
             $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
             $data[$i]['name2'] = $equ_obj->search_byId($match[$i]['IdTeam2'])['Nom'];
@@ -123,20 +131,26 @@ class Content {
             $fiche = $match_obj->get_fiche_content();
         }
 	$Image = array();
+	$page = array();
 	$i = 0;
 	if ( $simple['one'] ) {
-	    $query = $this->_bdd->prepare("select IdPhoto from PHOTO_MATCHS where IdMATCHS = :id");
-	    $query->bindParam(":id", $match[0]['Id']);
-	    $query->execute();
-	    while( $d = $query->fetch()) {
-		$Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
-		$i++;
-	    }
+	  $query = $this->_bdd->prepare("select IdPhoto from PHOTO_MATCHS where IdMATCHS = :id");
+	  $query->bindParam(":id", $match[0]['Id']);
+	  $query->execute();
+	  while( $d = $query->fetch()) {
+	    $Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
+	    $i++;
+	  }
+	} else {
+	  for ( $j = 0 ; $j < count($match)/10 ; $j++) {
+	    $page[$j] = $j+1;
+	  }
 	}
         $this->_smarty->assign("Match", $data);
         $this->_smarty->assign("NSimple", $simple);
         $this->_smarty->assign("Fiche", $fiche);
 	$this->_smarty->assign("Image", $Image);
+	$this->_smarty->assign("page", $page);
         return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
     }
 

@@ -16,7 +16,7 @@ require("php/Profil.php");
 if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
     if(isset($_GET['page'])) {
         if($_GET['page'] == "err") {
-            include("php/err.php");
+            include("php/info.php");
         }
     }
     $_SESSION['admin_connected'] = false;

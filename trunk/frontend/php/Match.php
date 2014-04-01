@@ -22,7 +22,7 @@ class Match {
      */
     public function __construct($bdd, $param = null) {
         $this->_bdd = $bdd;
-        if ( isset ($param) && $param!=null) {
+        if ( isset ($param) && $param!=null && isset($param['v1'])) {
             if ( $param['v1'] == "lire_match" && isset($param['v2']) ) {
                 $this->get_one_match($param['v2']);
             } else {
