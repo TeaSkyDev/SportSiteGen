@@ -1,0 +1,56 @@
+<?php
+   $id = $_GET['id'];
+   ?>
+
+<!doctype html>
+<html>
+  <head>
+    <title>Modifier Poste</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/newarticle.png">
+        <h1>Gestion des Equipes : Modifier un Poste</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+
+        <br>
+
+        <fieldset>
+          <legend>Modifier un Poste</legend>	   
+	  <br>
+	  <form method="post" action="index.php?page=edit_poste&action=edit&id=<?php echo $id ?>">
+            <?php 
+	       $sql = "SELECT * FROM POSTE WHERE Id= $id ";
+	       foreach($bdd->query($sql) as $data){
+            ?>
+            
+            <br>
+            Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
+            <br>
+            <br>
+            Description : 
+            <br>
+            <textarea name="description" rows="10" cols="50"><?php
+								echo $description;
+								?>
+            </textarea>
+            <br>
+            <br>           
+            <input type="submit" value="Envoyer">
+        </fieldset>
+        <br>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

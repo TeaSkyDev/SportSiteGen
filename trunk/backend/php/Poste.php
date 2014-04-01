@@ -74,6 +74,24 @@ class Poste {
 	return $query->rowCount() == 1;
     }
 
+
+    /**
+       \brief met a jour un poste (statique)
+       \param bdd la base de donnees 
+       \param id l'identifiant du poste
+       \param nom le nom du poste
+       \param desc la description du poste
+       \return vrai si reussi faux sinon
+     */
+    static public function s_update($bdd, $id, $nom, $desc) {
+	$query = $bdd->prepare("UPDATE POSTE SET Nom =:nom, Description=:desc where Id = :id");
+	$query->bindParam(":desc", $desc);
+	$query->bindParam(":nom", $nom);
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
     
     /**
      \brief cherche un poste en fonction de son id
