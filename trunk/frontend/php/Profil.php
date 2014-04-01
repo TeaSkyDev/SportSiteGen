@@ -236,8 +236,8 @@ class Profil {
      */
     public static function s_set_profilById($bdd, $champs, $val, $id) {
         $query = $bdd->prepare("update UTILISATEUR set ".$champs." = :val where Id = :id");
-	$val_md5 = md5($val);
-        return $query->execute(array(':val' => $val_md5, ':id' => $id));
+		//$val_md5 = md5($val);
+        return $query->execute(array(':val' => $val, ':id' => $id));
     }
 
     /**
@@ -269,18 +269,14 @@ class Profil {
             } else {
                 $path = '../photos/utilisateurs/';
                 move_uploaded_file($_FILES['photo']['tmp_name'], $path.$_FILES['photo']['name']);
-
-                $id_photo = Photo::s_insert($bdd, $_FILES['photo']['name'], "Photo utilisateur");
+				$id_photo = Photo::s_insert($bdd, $_FILES['photo']['name'], $path.$_FILES['photo']['name'], "Photo utilisateur");
                 if($id_photo != -1) {
                     if(!Profil::s_set_profilById($bdd, "IdPhoto", $id_photo, $id_user)) {
-                        //header("Location: html/err.html");
                         return false;
                     }
                 } else {
-                    //header("Location: html/err.html");
                     return false;
-                }
-                //header("Location: html/err.html");
+                }               
                 return true;
             }
     }

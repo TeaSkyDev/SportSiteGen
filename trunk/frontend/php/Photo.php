@@ -87,20 +87,26 @@ class Photo {
         return $query->rowCount() == 1;
     }
 
-    public static function s_insert($bdd, $fichier, $com) {
-        $query = $bdd->prepare("insert into PHOTO value(null, :nom, :fichier, :com)");
-        $query->bindParam(":nom", $nom);
-        $query->bindParam(":fichier", $fichier);
-        $query->bindParam(":com", $commentaire);
-        $query->execute();
+    public static function s_insert($bdd, $nom, $fichier, $commentaire) {
+		/* on vérifie d'abord si le même fichier n'a pas déjà été enregistré */
+		$photo_exist = $bdd->query("select count(*) as nb from PHOTO where Fichier = '".$fichier."'")->fetch()['nb'];
+		if($photo_exist == 0) {
+			$query = $bdd->prepare("insert into PHOTO value(null, :nom, :fichier, :com)");
+			$query->bindParam(":nom", $nom);
+			$query->bindParam(":fichier", $fichier);
+			$query->bindParam(":com", $commentaire);
+			$query->execute();
 
-        if($query->rowCount() == 1) {
-            return -1;
-        } else {
-            $reponse = $bdd->query('select max(Id) AS last from PHOTO');
-            while ($data = $reponse->fetch()){ $res = $data['last'];}
-            return $res;
-        }
+			if($query->rowCount() != 1) {
+				return -1;
+			} else {
+				$reponse = $bdd->query('select max(Id) AS last from PHOTO');
+				while ($data = $reponse->fetch()){ $res = $data['last'];}
+				return $res;
+			}
+		} else {
+			return $bdd->query("select Id from PHOTO where Fichier = '".$fichier."'")->fetch()['Id'];
+		}
     }
 
     /**
