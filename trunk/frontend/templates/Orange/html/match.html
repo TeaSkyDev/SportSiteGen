@@ -1,0 +1,28 @@
+
+<div class="body equipe">
+  <div>
+    <span> Match </span>
+    <div class="section">
+      <table >
+	{foreach from=$Match item=match}
+	<tr>
+          <td><a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} - {$match.point1} | {$match.point2} - {$match.name2}
+		|||    {$match.date} - {$match.comm} </a> </td>
+	  
+	</tr>
+	
+	{/foreach}
+      </table>
+      {if $NSimple.one }
+      <table>
+	<tr>
+	  <td> Point Equipe 1 </td> <td> Point Equipe 2 </td> <td> Carton Equipe 1 </td> <td> Carton Equipe 2 </td> 
+	</tr>
+	<tr>
+	  <td> {$Fiche.Point1} </td><td> {$Fiche.Point2} </td><td> {$Fiche.NbCarton1}</td><td>{$Fiche.NbCarton2}</td>
+	</tr>
+      </table>
+      {/if}
+    </div>
+  </div>
+

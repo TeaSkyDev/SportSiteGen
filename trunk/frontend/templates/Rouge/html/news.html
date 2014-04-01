@@ -1,0 +1,55 @@
+<table class="partie" align="center">
+    <tr>
+        <th><img src="templates/template1/images/gauche.png"/><span>NEWS</span><img src="templates/template1/images/droite.png"/></th>
+    </tr>
+    {if $NSimple.one != 1}
+    <tr>
+        <th>
+            <form method="post" action="index.php?page=news&v1=research_news">
+                <input type="text" autocomplete="off" name="v2" id="champ_recherche" />
+                <input type="text" style="display:none"/>
+                <input type="submit" value="Rechercher"/>
+            </form>
+            <div id="output" class="hide result"></div>
+            <script type="text/javascript" src="js/oXHR.js"></script>
+            <script type="text/javascript" src="js/news_research.js"></script>
+        </th>
+    </tr>
+    {/if}
+    {foreach from=$News item=news}
+    <tr>
+        <td><a href="index.php?page=news&v1=lire_news&v2={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></td>
+    </tr>
+    <tr>
+        <td>{$news.contenu}</td>
+    </tr>
+    {/foreach}
+</table>
+<table align="center" class="partie">
+    {foreach from=$Com item=com}
+    <tr>
+        <td><u>{$com.utilisateur}</u></a> - <i>{$com.date}</td>
+    </tr>
+    <tr>
+        <td>{$com.contenu}</td>
+    </tr>
+    {/foreach}
+</table>
+{if $NSimple.one == 1}
+{if $NSimple.connected == 1}
+<table align="center">
+    <tr>
+        <th><form action="index.php?page=news&v1=lire_news&v2={$NSimple.Id}&news_com=true" method="post" >
+            <textarea name="message" id="message" cols="30" rows="10" ></textarea><br/>
+            <input type="hidden" name="id_news" value="{$NSimple.Id}" />
+            <input type="submit" value="Commenter"/>
+        </form>
+        </th>
+    </tr>
+</table>
+{else}
+<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion" class="connect" >Se connecter</a></span><br>
+
+{/if}
+{/if}
+

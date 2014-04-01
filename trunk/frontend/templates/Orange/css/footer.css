@@ -1,0 +1,91 @@
+/*------------------------- Footer -------------------------*/
+.footer {
+	background:none #090606;
+	height:67px;
+	margin:0 10px;
+	padding:0;
+}
+.footer div:first-child {
+	float:left;
+	margin:0 0 0 20px;
+	overflow:hidden;
+}
+.footer div:first-child ul {
+	list-style:none;
+	margin:0;
+	overflow:hidden;
+	padding:10px 0 0;
+}
+.footer div:first-child ul li {
+	color:#026593;
+	float:left;
+	font-size:11px;
+}
+.footer div:first-child ul li:first-child a {
+	padding-left:0;
+}
+.footer div:first-child ul li a {
+	color:#026593;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:11px;
+	line-height:30px;
+	padding:0 13px;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.footer div:first-child ul li a:hover, .footer div:first-child ul li.selected a {
+	color:#ff7500;
+}
+.footer div:first-child p {
+	color:#026593;
+	display:block;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:11px;
+	line-height:11px;
+	margin:-2px 0 0;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+.footer div.connect {
+	float:right;
+	padding:20px 20px 0;
+}
+.footer div.connect span {
+	color:#ff7500;
+	float:left;
+	font-family:"Arial Black", Gadget, sans-serif;
+	font-size:11px;
+	line-height:12px;
+	text-transform:uppercase;
+}
+.footer div.connect a {
+	float:left;
+	height:22px;
+	margin:0 0 0 7px;
+	text-indent:-99999px;
+	width:23px;
+}
+.footer div.connect a#fb {
+	background:url(../images/icons.png) no-repeat 0 -184px;
+}
+.footer div.connect a#fb:hover {
+	background:url(../images/icons.png) no-repeat 0 -207px;
+}
+.footer div.connect a#twitter {
+	background:url(../images/icons.png) no-repeat 0 -230px;
+}
+.footer div.connect a#twitter:hover {
+	background:url(../images/icons.png) no-repeat 0 -253px;
+}
+.footer div.connect a#googleplus {
+	background:url(../images/icons.png) no-repeat 0 -276px;
+}
+.footer div.connect a#googleplus:hover {
+	background:url(../images/icons.png) no-repeat 0 -299px;
+}
+.footer div.connect a#contact {
+	background:url(../images/icons.png) no-repeat 0 -322px;
+}
+.footer div.connect a#contact:hover {
+	background:url(../images/icons.png) no-repeat 0 -345px;
+}
