@@ -33,7 +33,7 @@ if(isset($_GET['action'])) {
 	    $data_joueurs_eq2 = array();
 	    while($d = $sql_joueur->fetch()) {
 		$data_joueurs_eq2[$i] = $d;
-		$data_joueurs_eq2[$i]['poste'] = $bdd->query("select * from POSTE where Id = ".$d['IdPoste'])->fetch()['Id'];
+		$data_joueurs_eq2[$i]['poste'] = $bdd->query("select Nom from POSTE where Id = ".$d['IdPoste'])->fetch()['Nom'];
 		$i++;
 	    }
 

@@ -6,31 +6,31 @@
     <h1 align="center">Rencontre du {$match.DateMATCHS}</h1>
     <table align="center" style="border: 1px solid black;width:100%;">
       <tr>
-	<td>Lieu de la rencontre : {$match.Lieu}</td><td>Categorie : {$match.categorie}</td>
+	<td style="width:50%">Lieu de la rencontre : {$match.Lieu}</td><td style="width:50%">Categorie : {$match.categorie}</td>
       </tr>
       <tr>
-	<td colspan="2">Date rencontre : {$match.DateMATCHS}</td>
+	<td colspan="2" style="width:100%">Date rencontre : {$match.DateMATCHS}</td>
       </tr>
     </table>
     <h2 align="center">Composition des équipes</h2>
     <table align="center" style="border: 1px solid black;width:100%;">
       <tr>
-	<td>
-	  Equipe {$equipe1.Nom}
-	  <table>
+	<td  style="width:50%">
+	  <b>Equipe {$equipe1.Nom}</b>
+	  <table  style="width:100%">
 	    {foreach from=$Joueur_equipe1 item=joueur1}
 	    <tr>
-	      <td>{$joueur1.Nom}</td><td>{$joueur1.Prenom}</td><td>{$joueur1.poste}</td>
+	      <td  style="width:30%">{$joueur1.Nom}</td><td style="width:30%">{$joueur1.Prenom}</td><td style="width:30%">{$joueur1.poste}</td>
 	    </tr>
 	    {/foreach}
 	  </table>
 	</td>
-	<td>
-	  Equipe {$equipe2.Nom}
-	  <table>
+	<td  style="width:50%">
+	  <b>Equipe {$equipe2.Nom}</b>
+	  <table  style="width:100%">
 	    {foreach from=$Joueur_equipe2 item=joueur2}
 	    <tr>
-	      <td>{$joueur2.Nom}</td><td>{$joueur2.Prenom}</td><td>{$joueur2.poste}</td>
+	      <td style="width:30%">{$joueur2.Nom}</td><td style="width:30%">{$joueur2.Prenom}</td><td style="width:30%">{$joueur2.poste}</td>
 	    </tr>
 	     {/foreach}
 	  </table>
@@ -38,9 +38,9 @@
       </tr>
     </table>
     <h2 align="center">Scores</h2>
-    <table align="center" style="border: 1px solid black;" width="90%">
+    <table align="center" style="border: 1px solid black;width:100%;">
       <tr>
-	<td>{$equipe1.Nom} : {$match.nbPoint1}</td><td>{$equipe2.Nom} : {$match.nbPoint2}</td>
+	<td style="width:50%"><b>{$equipe1.Nom}</b> : {$match.nbPoint1}</td><td style="width:50%"><b>{$equipe2.Nom}</b> : {$match.nbPoint2}</td>
       </tr>
     </table>
   </body>
