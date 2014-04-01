@@ -126,10 +126,28 @@ class Content {
       \param void
       \return la page parser avec smarty
     */
-    public function get_html_equipe() {
+    public function get_html_equipe($param) {
         $teams_obj = new Equipe($this->_bdd);
         $teams     = $teams_obj->get_content();
-        $this->_smarty->assign("Teams", $teams);
+	$page = 1;
+	$i = 0;
+	if (isset($param['num']) ) {
+	  $page = $param['num'];
+	  $i = $page * 5 - 5;
+	}
+	$data = array();
+	$j = 0;
+	while (isset($teams[$i]) && $i < $page * 5 ) {
+	  $data[$j] = $teams[$i];
+	  $j++;
+	  $i++;
+	}
+	$p = array();
+	for ( $i = 0 ; $i < count($teams) / 5 ; $i++) {
+	  $p[$i] = $i+1;
+	}
+        $this->_smarty->assign("Teams", $data);
+	$this->_smarty->assign("Page", $p);
         return $this->_smarty->fetch("templates/".$this->_template."/html/equipes.html");
     }
 
@@ -400,7 +418,7 @@ class Content {
         } else if($page == "calendrier") {
             return $this->get_html_calendrier($param);
         } else if($page == "equipes") {
-            return $this->get_html_equipe();
+            return $this->get_html_equipe($param);
         } else if ($page == "membre_equipe") {
             return $this->get_html_membre_equipe($param);
         } else if ($page == "fiche_joueur") {

@@ -6,7 +6,7 @@
       <ul>
 	{foreach from=$MEquipe item=joueur}
 	<li>
-	  <a href="index.php?page=fiche_joueur&id={$joueur.Id}"> <img src="{$joueur.img}" alt="" width="150"> {$joueur.Prenom} {$joueur.Nom} </a>
+	  <a href="index.php?page=fiche_joueur&id={$joueur.Id}"> <img src="{$joueur.img}" alt="" width="150"><br> {$joueur.Prenom} {$joueur.Nom} </a>
 	</li>
 	{/foreach}
       </ul>
