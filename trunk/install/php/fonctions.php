@@ -37,7 +37,7 @@ function recup_info($step) {
 		$_SESSION[$step]["login"]  = $_POST['login'];
 		$_SESSION[$step]["pass"]   = $_POST['pass'];
 		$_SESSION[$step]["bdd"]    = $_POST['bdd'];
-		$_SESSION['steps'][$step] = true;
+		$_SESSION['steps']['step1'] = true;
 	    }
             break;
         case "step_2":
@@ -45,13 +45,13 @@ function recup_info($step) {
 		$_SESSION[$step]["login"]  = $_POST['login'];
 		$_SESSION[$step]["pass"]   = $_POST['pass'];
 		$_SESSION[$step]["mail"]   = $_POST['mail'];
-		$_SESSION['steps'][$step] = true;
+		$_SESSION['steps']['step2'] = true;
 	    }
             break;
         case "step_3":
 	    if(isset($_POST['nom'])) {
 		$_SESSION[$step]["nom"]    = $_POST['nom'];
-		$_SESSION["steps"][$step] = true;
+		$_SESSION["steps"]['step3'] = true;
 	    }
             break;
         default:
