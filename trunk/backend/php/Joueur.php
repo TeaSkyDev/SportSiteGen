@@ -214,6 +214,20 @@ class Joueur {
     }
 
 
+    /**
+     \brief supprime un joueur en fonction de l' Id de son equipe (statique)
+     \param bdd la base de donnees rattache
+     \param id l'identifiant de l'equipe
+     \return vrai si reussi faux sinon
+     */
+    public function s_delete_byTeamId($bdd, $id) {
+	$query = $bdd->prepare("delete from JOUEUR where IdTeam = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() != 0;
+    }
+
+
 }
 
 

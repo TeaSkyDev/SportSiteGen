@@ -7,8 +7,8 @@
  ====================================================
 */
 
-require("Match.php");
-
+require("php/Match.php");
+require("php/Joueur.php");
 
 
 class Equipe {
@@ -119,6 +119,7 @@ class Equipe {
         $query->bindParam(":id", $id);
         $query->execute();
 	Match::s_delete_byTeamId($bdd, $id);
+	Joueur::s_delete_byTeamId($bdd, $id);
         return $query->rowCount() == 1;
     }
 

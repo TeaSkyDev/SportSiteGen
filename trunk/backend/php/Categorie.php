@@ -55,20 +55,6 @@ class Categorie {
     }
 
     
-    /**
-     \brief ajoute une nouvelle categorie a la base ( fonction statique )
-     \param bdd la base de donne dans laquelle inserer
-     \param nom le nom de la categorie 
-     \param description la description de la categorie
-     \return vrai si l'ajout a reussi faux sinon
-     */
-    public static function s_insert($bdd, $nom, $description) {
-	$query = $bdd->prepare("insert into CATEGORIE values(null, :nom, :desc)");
-	$query->bindParam(":nom", $nom);
-	$query->bindParam(":desc", $description);
-	$query->execute();
-	return $query->rowCount() == 1;
-    }
 
 
     /**
@@ -189,6 +175,37 @@ class Categorie {
 	}
     }
 
+    /**
+     \brief ajoute une nouvelle categorie a la base ( fonction statique )
+     \param bdd la base de donne dans laquelle inserer
+     \param nom le nom de la categorie 
+     \param description la description de la categorie
+     \return vrai si l'ajout a reussi faux sinon
+     */
+    public static function s_insert($bdd, $nom, $description) {
+	$query = $bdd->prepare("insert into CATEGORIE values(null, :nom, :desc)");
+	$query->bindParam(":nom", $nom);
+	$query->bindParam(":desc", $description);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+
+    /**
+       \brief met a jour une categorie 
+       \param bdd la base de donnees
+       \param id l'identifiant de la categorie
+       \param nom le nom de la categorie
+       \param description la description de la categorie
+     */
+    static public function s_update($bdd, $id, $nom, $description) {
+	$query = $bdd->prepare("UPDATE CATEGORIE SET Nom=:nom, Description=:desc where Id = :id");
+	$query->bindParam(":nom", $nom);
+	$query->bindParam(":desc", $description);
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() != 0;
+    }
 
 
 
