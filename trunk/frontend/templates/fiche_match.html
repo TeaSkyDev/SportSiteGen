@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Feuille de match {$match.DateMATCHS}</title>
+  </head>
+  <body>
+    <h1 align="center">Rencontre du {$match.DateMATCHS}</h1>
+    <table align="center" style="border: 1px solid black;width:100%;">
+      <tr>
+	<td>Lieu de la rencontre : {$match.Lieu}</td><td>Categorie : {$match.categorie}</td>
+      </tr>
+      <tr>
+	<td colspan="2">Date rencontre : {$match.DateMATCHS}</td>
+      </tr>
+    </table>
+    <h2 align="center">Composition des équipes</h2>
+    <table align="center" style="border: 1px solid black;width:100%;">
+      <tr>
+	<td>
+	  Equipe {$equipe1.Nom}
+	  <table>
+	    {foreach from=$Joueur_equipe1 item=joueur1}
+	    <tr>
+	      <td>{$joueur1.Nom}</td><td>{$joueur1.Prenom}</td><td>{$joueur1.poste}</td>
+	    </tr>
+	    {/foreach}
+	  </table>
+	</td>
+	<td>
+	  Equipe {$equipe2.Nom}
+	  <table>
+	    {foreach from=$Joueur_equipe2 item=joueur2}
+	    <tr>
+	      <td>{$joueur2.Nom}</td><td>{$joueur2.Prenom}</td><td>{$joueur2.poste}</td>
+	    </tr>
+	     {/foreach}
+	  </table>
+	</td>
+      </tr>
+    </table>
+    <h2 align="center">Scores</h2>
+    <table align="center" style="border: 1px solid black;" width="90%">
+      <tr>
+	<td>{$equipe1.Nom} : {$match.nbPoint1}</td><td>{$equipe2.Nom} : {$match.nbPoint2}</td>
+      </tr>
+    </table>
+  </body>
+</html>
