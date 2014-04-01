@@ -46,10 +46,10 @@
 		  <td> <?php echo $data['Prenom']; ?></td>
 		  <td> <?php echo resume_text($data['Description'], 100); ?></td>
 		  <td>
-                    <button onclick="self.location.href='index.php?page=edit_joueur&id=<?php echo $data['Id']; ?>'" title="Editer">
+                    <button onclick="self.location.href='index.php?page=edit_joueur&id_team=<?php echo $id ?>&id=<?php echo $data['Id']; ?>'" title="Editer">
                       <img src="Images/edition.png">
                     </button>
-                    <button onclick="self.location.href='index.php?page=suppr_joueur&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                    <button onclick="self.location.href='index.php?page=suppr_joueur&action=supprimer&id=<?php echo $data['Id'];?>&id_team=<?php echo $id; ?>'" title="Supprimer">
                       <img src="Images/suppression.bmp">
                     </button>
                   </td>
@@ -72,6 +72,7 @@
             
             <br>
             Nom <input type="text" name="nom" value="<?php echo $data['Nom']?>">
+	    
             <br>
             <br>
             Photo : 

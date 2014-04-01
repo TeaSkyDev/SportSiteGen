@@ -1,0 +1,105 @@
+<?php
+   $id = $_GET['id'];
+?>
+<!doctype html>
+<html>
+  <head>
+    <title>Nouveaux Membre</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
+  </head>
+  <body>
+    <div id="contenu">
+      <?php
+         @include ("header.html");
+         ?>
+      <br>
+      <div class="entete">
+        <img src="Images/icone_membres.png">
+        <h1>Gestion des Membre : Ajouter un Membre</h1> 
+      </div>
+      <br>
+      <div class="interieur">
+        <form method="post" action="index.php?page=edit_joueur&action=edit&id_team=<?php echo $_GET['id_team']; ?>&id=<?php echo $id; ?>">
+	  <?php
+	     $sql = "SELECT * FROM JOUEUR where Id=$id";
+	     foreach($bdd->query($sql) as $data) {
+	  ?>
+          <br>
+          <fieldset>
+            <legend>Ajouter un Membre</legend>
+            <br>
+            Prenom : <input type="text" name="prenom" value="<?php echo $data['Prenom']; ?>">
+            <br>
+            <br>
+            Nom : <input type="text" name="nom" value=" <?php echo $data['Nom']; ?>">
+            <br>
+            <br>
+	    Photo : 
+            <select name="photo">
+              <?php
+		 $ph = $data['idPhoto'];
+                 $sql="SELECT * FROM PHOTO where id=$ph";
+                 foreach ($bdd->query($sql) as $d) {
+              ?>
+              <option value="<?php echo $d['Id']; ?>" selected>
+                <?php
+                   echo $d['Nom'];
+		   }
+                   ?>
+              </option>
+              <br>
+              <?php
+		 $sql = "SELECT * FROM PHOTO WHERE id!=$ph";
+		 foreach($bdd->query($sql) as $d) {
+	      ?>
+	      <option value="<?php echo $d['Id']; ?>">
+		<?php
+		   echo $d['Nom'];
+                   }
+                   ?>
+	      </option>
+            </select>
+	    <br>
+	    <br>	   
+	    Poste:
+            <select name="poste">
+              <?php
+		 $de = $data['IdPoste'];
+                 $sql="SELECT * FROM POSTE where Id=$de";
+                 foreach ($bdd->query($sql) as $d) {
+              ?>
+              <option value="<?php echo $d['Id']; ?>">
+                <?php
+                   echo $d['Nom'];
+		   }
+		   ?>
+		</option>
+	      <?php
+		 $sql = "SELECT * FROM POSTE where Id!=$de";
+		 foreach($bdd->query($sql) as $d) {
+	      ?>
+	      <option value="<?php echo $d['Id']; ?>">
+		<?php
+		   echo $d['Nom'];
+		   }
+                   ?>
+              </option> 
+            </select>
+            <br>
+            <br>          
+	    Description:<br>
+	    <textarea name="desc" cols="50" rows="10"><?php echo $data['Description'];
+							    }
+		 ?>
+	    </textarea>
+	    <br>
+	    <br>
+	    <input type="submit" value="Envoyer">
+	  </fieldset>        
+	</form>
+      </div>
+    </div>
+    <br>
+  </body>
+</html>
