@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2014-03-20 10:15:43
+<?php /* Smarty version Smarty-3.1.16, created on 2014-04-01 10:51:29
          compiled from "templates/debug/html/calendrier.html" */ ?>
 <?php /*%%SmartyHeaderCode:1994445685532ab1bf72a790-75269129%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '28cdad5835feb8139843c9010f80bb80a88ec4a8' => 
     array (
       0 => 'templates/debug/html/calendrier.html',
-      1 => 1395231509,
+      1 => 1396279242,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_532ab1bf824bd9_05692925',
   'variables' => 
   array (
     'Events' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'NSimple' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_532ab1bf824bd9_05692925',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_532ab1bf824bd9_05692925')) {function content_532ab1bf824bd9_05692925($_smarty_tpl) {?><table align="center">
     <tr>
@@ -81,8 +81,11 @@ $_smarty_tpl->tpl_vars['com']->_loop = true;
   </tr>
 </table>
 <?php } else { ?>
-<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></span><br>
-
+  <table align="center">
+  <tr>
+    <th> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion">Se connecter</a></th>
+  </tr>
+</table>
 <?php }?>
 <?php }?>
 

@@ -1,0 +1,26 @@
+<table class="partie" align="center">
+  <tr>
+    <th id="matchs"><img src="templates/template1/images/gauche.png"/><span>MATCHS</span><img src="templates/template1/images/droite.png"/></th>
+  </tr>
+  {foreach from=$Match item=match}
+  <tr>
+    <td align="center" id="case"> 
+      <span><a href="index.php?page=match&v1=lire_match&v2={$match.Id}">Le {$match.date} à {$match.Lieu}</a></span>
+      <br><br>
+      <mark>{$match.name1}</mark> - {$match.point1} | {$match.point2} - <mark>{$match.name2}</mark>
+      <br><br><br>
+      <table>
+	{foreach from=$Image item=image}
+	<tr align="center">
+	  <img src="{$image}" width="100"/>
+	</tr>&nbsp;
+	{/foreach}
+      </table>
+      {/foreach}
+    </td>
+  </tr>
+</table>
+
+{foreach from=$page item=elem}
+<a href="index.php?page=match&num={$elem}">{$elem}</a>
+{/foreach}

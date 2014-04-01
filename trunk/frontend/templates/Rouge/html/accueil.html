@@ -1,0 +1,54 @@
+<table align="center">
+
+  <section id="slideshow">  
+    <div class="container">  
+      <div class="c_slider"></div>  
+      <div class="slider">  
+	<figure>
+	  <img src="templates/template1/images/slide1.jpg" title="1" alt="1" width="700" height="467" />
+	  <figcaption>Jean-Mi joue les goals</figcaption>
+	</figure><!--
+		   --><figure>  
+	  <img src="templates/template1/images/slide2.jpg" title="2" alt="2" width="700" height="467" />
+	  <figcaption>Jean-Mi en pleinne action</figcaption>  
+	</figure><!--
+		   --><figure> 
+	  <img src="templates/template1/images/slide3.jpg" title="3" alt="3" width="700" height="467" />
+	  <figcaption>Jean-Mi qui court</figcaption>  
+	</figure><!--
+		   --><figure>
+	  <img src="templates/template1/images/slide4.jpg" title="4" alt="4" width="700" height="467" />
+	  <figcaption>Jean-Mi regarde son adversaire</figcaption>
+	</figure>
+      </div>  
+    </div>
+    <span id="timeline"></span>  
+  </section> 
+  
+  <table class="partie" align="center">
+    <tr>
+      <th><img src="templates/template1/images/gauche.png"/><span>NEWS</span><img src="templates/template1/images/droite.png"/></th>
+    </tr>
+    {foreach from=$News item=news}
+    <tr>
+      <td><a href="index.php?page=news&v1=lire_news&v2={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></td>
+    </tr>
+    <tr>
+      <td>{$news.contenu}</td>
+    </tr>
+    {/foreach}
+  </table>
+
+  <table class="partie" align="center">
+    <tr>
+      <th><img src="templates/template1/images/gauche.png"/><span>CALENDRIER</span><img src="templates/template1/images/droite.png"/></th>
+    </tr>
+    {foreach from=$Events item=event}
+    <tr>
+      <th><u>{$event.titre} - {$event.location}</u> - <i>{$event.date}</i></th>
+    </tr>
+    <tr>
+      <td>{$event.contenu}</td>
+    </tr>
+    {/foreach}
+  </table>
