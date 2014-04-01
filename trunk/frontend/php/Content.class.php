@@ -90,13 +90,31 @@ class Content {
         $com        = $events_obj->get_content_com();
         $simple = array();
         $simple['one'] = isset($param['v1']);
+	$i = 0;
+	$page = 1;
+	if ( isset($param['num']) ) {
+	    $page = $param['num'];
+	    $i = $page * 5 - 5;
+	}
+	$data = array();
         if ( $simple['one'] ) {
-            if( $simple['one'] ) {
-                $simple['connected'] = isset($_SESSION['connected']);
-                $simple['Id'] = $events[0]['Id'];
-            }
-        }
-        $this->_smarty->assign("Events", $events);
+	    $simple['connected'] = isset($_SESSION['connected']);
+	    $simple['Id'] = $events[0]['Id'];
+	    $data = $events;
+        } else {
+	    $j = 0;
+	    while (isset($events[$i]) && $i < $page * 5) {
+		$data[$j] = $events[$i];
+		$j++;
+		$i ++;
+	    }
+	}
+	$p = array();
+	for ( $i = 0 ; $i < count($events)/5 ; $i++) {
+	    $p[$i] = $i+1;
+	}
+        $this->_smarty->assign("Events", $data);
+	$this->_smarty->assign("Page", $p);
         $this->_smarty->assign("Com", $com);
         $this->_smarty->assign("NSimple", $simple);
 
