@@ -7,7 +7,7 @@
 	{foreach from=$Match item=match}
 	<tr>
           <td><a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} - {$match.point1} | {$match.point2} - {$match.name2}
-		|||    {$match.date} - {$match.comm} </a> </td>
+		|||    {$match.date} - {$match.comm} </a><a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a> </td>
 	  
 	</tr>
 	

@@ -4,7 +4,7 @@
     </tr>
     {foreach from=$Tournoi item=tour}
     <tr>
-      <td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}"> {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} </td>
+      <td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}"> {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} <a href="php/export_pdf.php?action=tournoi&id={$tour.Id}" target="_blank">Exporter</a></td>
     </tr>
     <tr> 
       <td> {$tour.Description} </td>
@@ -14,7 +14,7 @@
 <table align="center">
   {foreach from=$Match item=match}
   <tr>
-    <td align="center"> <a href="index.php?page=match">{$match.name1} vs {$match.name2} ||| {$match.date} </a></td>
+    <td align="center"> <a href="index.php?page=match">{$match.name1} vs {$match.name2} ||| {$match.date} <a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a></a></td>
   </tr>
     <tr>
       <td>Description: {$match.comm} </td>

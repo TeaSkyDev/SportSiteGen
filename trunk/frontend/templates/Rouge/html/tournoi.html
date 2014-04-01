@@ -9,7 +9,7 @@
 	{if $NSimple.one == 1}
 	<button id="button" value="cacher" onclick="javascript:afficher_cacher('table');">Cacher les matchs</button>
 	{/if}
-	<td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}" > {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} </td>
+	<td><a href="index.php?page=tournois&v1=lire_tourn&v2={$tour.Id}" > {$tour.Nom}</a> - {$tour.DateDebut} / {$tour.DateFin} <a href="php/export_pdf.php?action=tournoi&id={$tour.Id}" target="_blank">Exporter</a></td>
       </tr>
       <tr> 
 	<td> {$tour.Description} </td>
@@ -20,7 +20,7 @@
       <div class="texte">
 	{foreach from=$Match item=match}
 	<tr>
-	  <td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} le {$match.date} </a></td>
+	  <td> <a href="index.php?page=match&v1=lire_match&v2={$match.Id}">{$match.name1} vs {$match.name2} le {$match.date} <a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a></a></td>
 	</tr>
 	<tr>
 	  <td>Description: {$match.comm} </td>
