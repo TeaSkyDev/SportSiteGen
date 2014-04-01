@@ -180,11 +180,15 @@ class Calendrier {
     public function s_delete_byId($bdd, $id) {
 	echo $id;
 	$query = $bdd->prepare("delete from EVENEMENT where Id = :id");
+	$query2 = $bdd->prepare("delete from EVENEMENT_COM where idEvenement=:id");
 	$query->bindParam(":id", $id);
+	$query2->bindParam(":id", $id);
 	$query->execute();
+	$query2->execute();
 	return ($query->rowCount() == 1);
     }
-    
+        
+
 
 
     /**
@@ -198,6 +202,30 @@ class Calendrier {
      */
     public function update_evenement_byId($id, $titre, $date, $contenu, $location) {
 	$query = $this->_bdd->prepare("Update EVENEMENT set titre = :titre, date = :date, contenu = :contenu, location = :location where Id = :id");
+	$query->bindParam(":id",$id);
+	$query->bindParam(":titre",$titre);
+	$query->bindParam(":date",$date);
+	$query->bindParam(":contenu",$contenu);
+	$query->bindParam(":location",$location);
+	$query->execute();
+	return ($query->rowCount() == 1);
+    }
+
+
+
+
+
+    /**
+     \brief met a jour un evenement en fonction de son identifiant  (statique)
+     \param id identifiant de l'evenement a mettre a jour
+     \param titre titre de l'evenement
+     \param date date de l'evenement
+     \param contenu contenu de l'evenement
+     \param location lieu de l'evenement
+     \return renvoi vrai si la mise a jour a reussi faux sinon
+     */
+    public function s_update($bdd, $id, $titre, $date, $contenu, $location) {
+	$query = $bdd->prepare("Update EVENEMENT set titre = :titre, date = :date, contenu = :contenu, location = :location where Id = :id");
 	$query->bindParam(":id",$id);
 	$query->bindParam(":titre",$titre);
 	$query->bindParam(":date",$date);

@@ -7,7 +7,7 @@
  ====================================================
 */
 
-require("php/Match.php");
+include_once("php/Match.php");
 require("php/Joueur.php");
 
 
