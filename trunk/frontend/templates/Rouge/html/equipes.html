@@ -10,3 +10,7 @@
   </tr>
   {/foreach}
 </table>
+Page<br>
+{foreach from=$Page item=elem}
+<a href="index.php?page=equipes&num={$elem}">{$elem}</a>
+{/foreach}
