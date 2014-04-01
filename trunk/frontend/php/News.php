@@ -20,7 +20,7 @@ class News {
      */
     public function __construct($bdd, $param = null) {
         $this->_bdd = $bdd;
-        if(isset($param) && $param != null) {
+        if(isset($param) && $param != null && isset($param['v1'])) {
             if($param['v1'] == "lire_news" && isset($param['v2'])) {
                 $this->get_one_news($param['v2']);
                 if ( isset($param['news_com']) && $param['news_com'] == 'true') {

@@ -46,15 +46,35 @@ class Content {
         $news_obj = new News($this->_bdd, $param);
         $news     = $news_obj->get_content();
         $com      = $news_obj->get_content_com();
+	$page = 1;
+	$i = 0;
+	if ( isset($param['num']) ) {
+	    $page = $param['num'];
+	    $i = $page*5-5; 
+	}
+	$data = array();
         $simple = array();
         $simple['one'] = isset($param['v1']) && $param['v1'] == "lire_news";
         if( $simple['one'] ) {
             $simple['connected'] = isset($_SESSION['connected']);
             $simple['Id'] = $news[0]['Id'];
-        }
-        $this->_smarty->assign("News", $news);
+	    $data = $news;
+        } else {
+	    $j = 0;
+	    while (isset($news[$i]) && $i < $page * 5 ) {
+		$data[$j] = $news[$i];
+		$i++;
+		$j++;
+	    }
+	}
+	$p = array();
+	for ( $i = 0 ; $i < count($news)/5 ; $i++) {
+	    $p[$i] = $i+1;
+	}
+        $this->_smarty->assign("News", $data);
         $this->_smarty->assign("Com", $com);
         $this->_smarty->assign("NSimple", $simple);
+	$this->_smarty->assign("Page", $p);
         return $this->_smarty->fetch("templates/".$this->_template."/html/news.html");
     }
 
@@ -70,13 +90,31 @@ class Content {
         $com        = $events_obj->get_content_com();
         $simple = array();
         $simple['one'] = isset($param['v1']);
+	$i = 0;
+	$page = 1;
+	if ( isset($param['num']) ) {
+	    $page = $param['num'];
+	    $i = $page * 5 - 5;
+	}
+	$data = array();
         if ( $simple['one'] ) {
-            if( $simple['one'] ) {
-                $simple['connected'] = isset($_SESSION['connected']);
-                $simple['Id'] = $events[0]['Id'];
-            }
-        }
-        $this->_smarty->assign("Events", $events);
+	    $simple['connected'] = isset($_SESSION['connected']);
+	    $simple['Id'] = $events[0]['Id'];
+	    $data = $events;
+        } else {
+	    $j = 0;
+	    while (isset($events[$i]) && $i < $page * 5) {
+		$data[$j] = $events[$i];
+		$j++;
+		$i ++;
+	    }
+	}
+	$p = array();
+	for ( $i = 0 ; $i < count($events)/5 ; $i++) {
+	    $p[$i] = $i+1;
+	}
+        $this->_smarty->assign("Events", $data);
+	$this->_smarty->assign("Page", $p);
         $this->_smarty->assign("Com", $com);
         $this->_smarty->assign("NSimple", $simple);
 

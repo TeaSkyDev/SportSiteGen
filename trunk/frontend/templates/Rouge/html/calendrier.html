@@ -39,3 +39,9 @@
 {/if}
 {/if}
 
+{if $NSimple.one == 0}
+Page<br>
+{foreach from=$Page item=elem}
+<a href="index.php?page=calendrier&num={$elem}">{$elem}</a>
+{/foreach}
+{/if}

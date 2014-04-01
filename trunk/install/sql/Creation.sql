@@ -18,8 +18,8 @@ create table UTILISATEUR(
        Pseudo varchar(10) unique not null,
        Mail varchar(50) not null,
        Mdp varchar(522) not null,
-       IdPhoto integer(10) references PHOTO(Id),
-       IdTypeUser integer(10) not null references TYPE_USER(Id)
+       IdPhoto integer(10) references PHOTO(Id) ON DELETE CASCADE,
+       IdTypeUser integer(10) not null references TYPE_USER(Id) ON DELETE CASCADE
 );
 
 
@@ -34,7 +34,7 @@ create table TEAM(
        Id integer(10) primary key AUTO_INCREMENT,
        Nom varchar(20) not null unique,
        idPhoto integer(10) references PHOTO(Id),
-       IdCategorie integer(10) references CATEGORIE(Id),
+       IdCategorie integer(10) references CATEGORIE(Id) ON DELETE CASCADE,
        Description varchar(50)     
 );
 
@@ -42,8 +42,8 @@ create table TEAM(
 create table MATCHS(
        Id integer(10) primary key AUTO_INCREMENT,
        joue integer(1), 
-       IdTeam1 integer(10) references TEAM(Id),
-       IdTeam2 integer(10) references TEAM(Id) ,
+       IdTeam1 integer(10) references TEAM(Id) ON DELETE CASCADE,
+       IdTeam2 integer(10) references TEAM(Id) ON DELETE CASCADE,
        nbPoint1 integer(5),
        nbPoint2 integer(5),
        DateMATCHS datetime not null,
@@ -73,41 +73,20 @@ create table POSTE(
 
 create table JOUEUR(
        Id integer(10) primary key AUTO_INCREMENT,
-       IdTeam integer(10) references TEAM(Id),
+       IdTeam integer(10) references TEAM(Id) ON DELETE CASCADE,
        Nom varchar(15) not null,
        idPhoto integer(10) references PHOTO(Id),
        Prenom varchar(15),
-       IdPoste integer(10) references POSTE(Id),
+       IdPoste integer(10) references POSTE(Id) ON DELETE CASCADE,
        Description varchar(255)
 );
 
 
-create table EVENT(
-       Id integer(10) primary key AUTO_INCREMENT,
-       IdMATCHS integer(10) references MATCHS(Id),
-       IdJoueur integer(10) references JOUEUR(Id),
-       IdPoints integer(10) references POINTS(Id),
-       Nom varchar(10),
-       Moment Date not null,
-       Commentaires varchar(50)
-);
-
-
-create table EVENT_ADV(
-       Id integer(10) primary key AUTO_INCREMENT,
-       IdMATCHS integer(10) references MATCHS(Id),
-       IdJoueurAv integer(10) references JOUEUR(Id),
-       IdPoints integer(10) references POINTS(Id),
-       Nom varchar(10),
-       Moment Date not null,
-       Commentaires varchar(50)
-);
-
 
 create table TOURNOI(
        Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(15) not null,
-       Description varchar(50),
+       Nom varchar(60) not null,
+       Description varchar(255),
        DateDebut Date not null,
        DateFin Date not null,
        nbEquipe integer(5) not null
@@ -115,8 +94,8 @@ create table TOURNOI(
 );
 
 create table APPARTENIR_TOURNOI(
-       IdTournoi integer(10) references TOURNOI(Id),
-       IdMATCHS integer(10) references MATCHS(Id),
+       IdTournoi integer(10) references TOURNOI(Id) ON DELETE CASCADE,
+       IdMATCHS integer(10) references MATCHS(Id) ON DELETE CASCADE,
        NumTour integer(5),
        primary key(IdTournoi,IdMATCHS)
 );
@@ -142,8 +121,8 @@ create table NEWS_COM(
        Id int(7) AUTO_INCREMENT,
        contenu varchar(1000),
        date datetime,
-       idNews int(5) references NEWS(id),
-       idUtilisateur int(10) references UTILISATEUR(Id),
+       idNews int(5) references NEWS(id) ON DELETE CASCADE,
+       idUtilisateur int(10) references UTILISATEUR(Id) ON DELETE CASCADE,
        primary key(id)
 );
 
@@ -161,8 +140,8 @@ create table EVENEMENT_COM(
        Id int(7) AUTO_INCREMENT,
        contenu varchar(1000),
        date datetime,
-       idEvenement int(5) references EVENEMENT(Id),
-       idUtilisateur int(10) references UTILISATEUR(Id),
+       idEvenement int(5) references EVENEMENT(Id) ON DELETE CASCADE,
+       idUtilisateur int(10) references UTILISATEUR(Id) ON DELETE CASCADE,
        primary key(id)
 );
 
@@ -175,7 +154,7 @@ create table MENU_ELEM (
 
 create table FICHE ( 
        Id integer(10) AUTO_INCREMENT, 
-       IdMatch integer(10) references MATCHS(Id),
+       IdMatch integer(10) references MATCHS(Id) ON DELETE CASCADE,
        NbCarton1 integer(1),
        NbCarton2 integer(1),
        Point1 integer(5),
