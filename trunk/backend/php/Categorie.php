@@ -5,6 +5,9 @@
    ==================================================
    */
 
+require("php/Equipe.php");
+
+
 class Categorie {
 
     private $_bdd; /* base rattache a la classe */
@@ -79,6 +82,7 @@ class Categorie {
 	$query = $bdd->prepare("delete from CATEGORIE where Id = :id");
 	$query->bindParam(":id", $id);
 	$query->execute();
+	Equipe::s_delete_byCatId($bdd, $id);
 	return $query->rowCount() == 1;
     }
 

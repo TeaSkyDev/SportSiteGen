@@ -206,8 +206,21 @@ class Equipe {
         return $this->_nb / $nb;
     }
 
-
-
+    /**
+       \brief supprime des equipe en fonction de leurs identifiant de categorie
+       \param bdd la base de donnees
+       \param id l'identifiant de la categorie
+       \return vrai si reussi faux sinon
+     */
+    static public function s_delete_byCatId($bdd, $id) {
+	$query = $bdd->prepare("select * from TEAM where IdCategorie =:id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	while ( $data = $query->fetch() ) {
+	    Equipe::s_delete_byId($bdd, $data['Id']);
+	}
+	return $query->rowCount() != 0;
+    }
 
 }
 
