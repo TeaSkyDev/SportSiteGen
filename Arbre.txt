@@ -1,0 +1,9 @@
+La fonction d'affichage de l'arbre en javascript utilise le systeme de caneva. Elle prend un
+tableau de match identifié comme appartenant à un tournoi. Cette identification se fait en php
+dans la classe Tournoi. Les matchs d'un tournoi disposent d'un numero de tour ainsi on peut 
+connaitre l'emplacement de chaque match. Le javascript affiche ainsi les matchs les un 
+après les autres sous forme de barre coloré ( la couleur indiquant la victoire d'une équipe).
+Un arbre mal forme (log2(nbMatch) = un nombre flottant) ne s'affichera pas. 
+Si une arbre est non finis parceque tout les matchs n'ont pas été entrée par l'utilisateur 
+mais qu'il respecte le log2, celui ci s'affichera partiellement pour n'afficher que les 
+matchs entrés dans la partie administration. 
