@@ -53,7 +53,22 @@ class Poste {
      \return vrai si reussi faux sinon
      */
     public function delete_byId($id) {
-	$query = $this->_bdd->prepare("delete * from POSTE where Id = :id");
+	$query = $this->_bdd->prepare("delete from POSTE where Id = :id");
+	$query->bindParam(":id", $id);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
+
+
+    /**
+     \brief supprime un poste en fonction de son id (statique)
+     \param bdd la base de donnee
+     \param id l'identifiant du poste
+     \return vrai si reussi faux sinon
+     */
+    static public function s_delete_byId($bdd, $id) {
+	$query = $bdd->prepare("delete from POSTE where Id = :id");
 	$query->bindParam(":id", $id);
 	$query->execute();
 	return $query->rowCount() == 1;

@@ -19,21 +19,17 @@ if(isset($_GET['action'])) {
 	
     } else if($_GET['action'] == "edit" && isset($_GET['id'])) {
 	if(isset($_POST['nom']) && isset($_POST['photo']) && isset($_POST['categorie']) && isset($_POST['description'])) {
-	    if(Equipe::s_delete_byId($bdd, $_GET['id'])) {
-		if(Equipe::s_insert($bdd, $_POST['nom'], $_POST['photo'], $_POST['categorie'], $_POST['description'])) {
-                    header("Location: index.php?page=equipe");
-                } else {
-                    $msg = "Erreur lors de la modification d'une equipe.";
-                    header("Location: index.php?page=err&page_r=edit_equipe&msg=".$msg);
-                }
-            } else {
-                $msg = "Erreur lors de la modification d'une equipe. (del)";
-                header("Location: index.php?page=err&page_r=edit_equipe&msg=".$msg);
-            }
-        } else {
-            $msg = "Erreur, toutes les donnees ne sont pas presentes.";
-            header("Location: index.php?page=err&page_r=edit_equipe&msg=".$msg);
-        }
+	    if(Equipe::s_update($bdd, $_GET['id'], $_POST['nom'], $_POST['photo'], $_POST['categorie'], $_POST['description'])) {
+		header("Location: index.php?page=equipe");
+		
+	    } else {
+		$msg = "Erreur lors de la modification d'une equipe. (del)";
+		header("Location: index.php?page=err&page_r=edit_equipe&msg=".$msg);
+	    }
+	} else {
+	    $msg = "Erreur, toutes les donnees ne sont pas presentes.";
+	    header("Location: index.php?page=err&page_r=edit_equipe&msg=".$msg);
+	}
     } else if($_GET['action'] == "supprimer" && isset($_GET['id'])) {
         if(Equipe::s_delete_byId($bdd, $_GET['id'])) {
             header("Location: index.php?page=equipe");

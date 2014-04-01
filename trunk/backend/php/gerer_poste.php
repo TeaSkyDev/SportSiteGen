@@ -16,6 +16,15 @@ if (isset($_GET['action']) ) {
 	    $msg = "Erreur il manque des informations";
 	    header("Location:index.php?page=err&page_r=equipe&msg=".$msg);
 	}	    
+    } else if ( $_GET['action'] == "supprimer" ) {
+	if ( isset( $_GET['id'] ) ) {
+	    if (Poste::s_delete_byId($bdd, $_GET['id']) ) {
+		header("Location: index.php?page=equipe");
+	    }	    
+	} else {
+	    $msg = "Erreur l'identifiant est manquant";
+	    header("Location: index.php?page=err&page_r=equipe&msg=".$msg);
+	}
     }
 } else {
     if ( $_GET['page'] == "new_poste" ) {

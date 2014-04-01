@@ -92,6 +92,20 @@ class Equipe {
         return $query->rowCount() == 1;
     }
 
+    /**
+       \brief met a jour l'enregistrement
+     */
+    static public function s_update($bdd, $id , $nom, $photo, $categorie, $description) { 
+	$query = $bdd->prepare("UPDATE TEAM SET Nom=:nom, idPhoto=:photo, IdCategorie=:cate,Description=:desc WHERE Id=:id");
+	$query->bindParam(":id", $id);
+	$query->bindParam(":nom", $nom);
+	$query->bindParam(":photo", $photo);
+	$query->bindParam(":cate", $categorie);
+	$query->bindParam(":desc", $description);
+	$query->execute();
+	return $query->rowCount() == 1;
+    }
+
     /** Static
     \brief supprime une equipe en fonction de son id
     \param id l'identifiant de l'equipe
