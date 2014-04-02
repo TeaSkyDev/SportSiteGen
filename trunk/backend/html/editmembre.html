@@ -48,25 +48,25 @@
                     Photo : 
                     <select name="photo">
                         <?php
-                            $sql="SELECT * FROM PHOTO WHERE Id=$photo";
-                            foreach ($bdd->query($sql) as $data) {
+                            $sql="SELECT * FROM PHOTO";
+                            foreach ($bdd->query($sql) as $data) { 
+                                if($data['Id']==$photo){       
                         ?>
-                        <option value="<?php echo $data['Id']; ?>" selected> 
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>" selected> 
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
-                            }
-                            $sql="SELECT * FROM PHOTO WHERE Id!=$photo";
-                            foreach ($bdd->query($sql) as $data) {
+                                } else {
                         ?>
-                        <option value="<?php echo $data['Id']; ?>">
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>">
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
+                                }
                             }
                         ?>
                     </select>
@@ -75,25 +75,25 @@
                     Type : 
                     <select name="type">
                         <?php
-                            $sql="SELECT * FROM TYPE_USER WHERE id=$type";
+                            $sql="SELECT * FROM TYPE_USER";
                             foreach ($bdd->query($sql) as $data) {
+                                if($data['Id']==$type){       
                         ?>
-                        <option value="<?php echo $data['Id']; ?>" selected> 
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>" selected> 
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
-                            }
-                            $sql="SELECT * FROM TYPE_USER WHERE id!=$type";
-                            foreach ($bdd->query($sql) as $data) {
+                                } else {
                         ?>
-                        <option value="<?php echo $data['Id']; ?>">
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>">
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
+                                }
                             }
                         ?>
                     </select>
