@@ -12,21 +12,28 @@
 	height:42px;
 	width:320px;
 }
-.header ul {
-	float:right;
-	list-style:none;
-	margin:0;
-	overflow:hidden;
-	padding:9px 33px 0 0;
+.header ul 
+{		
+	list-style: none outside none;
+	margin: 1px 33px;
+	overflow: hidden;
+	padding: 10px 33px 0px 33px;	
+
 }
-.header ul li:first-child {
+
+.header ul li:first-child 
+{
 	margin:0;
 }
-.header ul li {
+
+.header ul li 
+{
 	float:left;
-	margin:0 0 0 36px;
+	margin:0 0 0 11px;
 }
-.header ul li a {
+
+.header ul li a
+{
 	color:#fbfbf4;
 	font-family:bevanregular;
 	font-size:14px;
@@ -36,7 +43,9 @@
 	text-decoration:none;
 	text-transform:uppercase;
 }
-.header ul li.selected a, .header ul li a:hover {
+
+.header ul li.selected a, .header ul li a:hover 
+{
 	color:#ff7500;
 }
 
