@@ -224,7 +224,7 @@ class Calendrier {
      \param location lieu de l'evenement
      \return renvoi vrai si la mise a jour a reussi faux sinon
      */
-    public function s_update($bdd, $id, $titre, $date, $contenu, $location) {
+    public function s_update($bdd, $id, $titre, $contenu, $date, $location) {
 	$query = $bdd->prepare("Update EVENEMENT set titre = :titre, date = :date, contenu = :contenu, location = :location where Id = :id");
 	$query->bindParam(":id",$id);
 	$query->bindParam(":titre",$titre);
