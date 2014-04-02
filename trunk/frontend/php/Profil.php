@@ -236,9 +236,9 @@ class Profil {
      */
     public static function s_set_profilById($bdd, $champs, $val, $id) {
         $query = $bdd->prepare("update UTILISATEUR set ".$champs." = :val where Id = :id");
-		//$val_md5 = md5($val);
         return $query->execute(array(':val' => $val, ':id' => $id));
     }
+
 
     /**
     * \brief Met à jour la photo de l'utilisateur et copie le fichier dans le repertoire ../photos/utilisateurs/
