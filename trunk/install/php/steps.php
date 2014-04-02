@@ -217,7 +217,7 @@ function installation() {
     $bdd->beginTransaction();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'debug')");
+    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'Vert')");
     $sql_2 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");
 
     $bdd->commit();
@@ -234,7 +234,7 @@ function installation() {
 
     if($creation_reussie && $insertions_reussies) {
         unset($_SESSION);
-        //cms_installed(); /* DESACTIVE LE TEMPS DU DEV */
+        cms_installed();
         echo 'Bravo votre cms est maintenant installe ! <br>Url de votre site : <a class="lien_cms" href="'.get_url_frontend().'" target="_blank">'.get_url_frontend().'</a><br>';
         echo 'Voici le lien vers ta page d\'administration : <a href="'.get_url_backend().'" target="_blank">'.get_url_backend().'</a><br>';
         echo 'Pensez a les enregistrer dans vos favoris !!';
