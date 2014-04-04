@@ -11,6 +11,24 @@
     <title>équipes</title>
     <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
     <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+      <script language="JavaScript">
+          function confirm_suppression_equipe(id) {
+              if(confirm("Voulez-vous vraiment supprimer cette equipe ?")) {
+                  window.location = "index.php?page=suppr_equipe&action=supprimer&id="+id;
+              }
+          }
+          function confirm_suppression_categorie(id) {
+              if(confirm("Voulez-vous vraiment supprimer cette categorie ?")) {
+                  window.location = "index.php?page=suppr_categorie&action=supprimer&id="+id;
+              }
+          }
+          function confirm_suppression_poste(id) {
+              if(confirm("Voulez-vous vraiment supprimer cette categorie ?")) {
+                  window.location = "index.php?page=suppr_poste&action=supprimer&id="+id;
+              }
+          }
+
+      </script>
   </head>
   <script language=JavaScript src="js/accueil.js"></script>
   <body>
@@ -65,7 +83,7 @@
                 <button onclick="self.location.href='index.php?page=edit_equipe&id=<?php echo $data['Id']; ?>'" title="Editer">
                   <img src="Images/edition.png">
                 </button>
-                <button onclick="self.location.href='index.php?page=suppr_equipe&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                <button onclick="confirm_suppression_equipe(<?php echo $data['Id'];?>)" title="Supprimer">
                   <img src="Images/suppression.bmp">
                 </button>
               </td>
@@ -125,7 +143,7 @@
                 <button onclick="self.location.href='index.php?page=edit_categorie&id=<?php echo $data['Id']; ?>'" title="Editer">
                   <img src="Images/edition.png">
                 </button>
-                <button onclick="self.location.href='index.php?page=suppr_categorie&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                <button onclick="confirm_suppression_categorie(<?php echo $data['Id'];?>)" title="Supprimer">
                   <img src="Images/suppression.bmp">
                 </button>
               </td>
@@ -170,7 +188,7 @@
 		<button onclick="self.location.href='index.php?page=edit_poste&id=<?php echo $data['Id']; ?>'" title="Editer">
                   <img src="Images/edition.png">
 		</button>
-		<button onclick="self.location.href='index.php?page=suppr_poste&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+		<button onclick="confirm_suppression_poste(<?php echo $data['Id'];?>)" title="Supprimer">
                   <img src="Images/suppression.bmp">
 		</button>
               </td>

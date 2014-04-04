@@ -12,6 +12,13 @@
         <title>Match</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
         <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+        <script language="JavaScript">
+            function confirm_suppression(id) {
+                if(confirm("Voulez-vous vraiment supprimer ce match ?")) {
+                    window.location = "index.php?page=suppr_match&action=supprimer&id_match="+id;
+                }
+            }
+        </script>
     </head>
     <body>
     	<div id="contenu">
@@ -103,7 +110,7 @@
                                 <button onclick="self.location.href='index.php?page=edit_match&id_match=<?php echo $data['Id']; ?>'" title="Editer">
                                     <img src="Images/edition.png">
                                 </button>
-                                <button onclick="self.location.href='index.php?page=suppr_match&action=supprimer&id_match=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                <button onclick="confirm_suppression(<?php echo $data['Id'];?>)" title="Supprimer">
                                     <img src="Images/suppression.bmp">
                                 </button>
                             </td>

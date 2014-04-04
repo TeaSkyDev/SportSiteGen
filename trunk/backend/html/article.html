@@ -14,6 +14,13 @@
         <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
     </head>
     <script language=JavaScript src="js/accueil.js"></script>
+    <script language="JavaScript">
+        function confirm_suppression(id) {
+            if(confirm("Voulez-vous vraiment supprimer cet article ?")) {
+                window.location = "index.php?page=article&action=supprimer&id="+id;
+            }
+        }
+    </script>
     <body>
     	<div id="contenu">
             <?php
@@ -61,7 +68,7 @@
                                 <button onclick="self.location.href='index.php?page=edit_article&id=<?php echo $data['Id']; ?>'" title="Editer">
                                     <img src="Images/edition.png">
                                 </button>
-                                <button onclick="self.location.href='index.php?page=article&action=supprimer&id=<?php echo $data['Id']; ?>'" title="Supprimer">
+                                <button onclick="confirm_suppression(<?php echo $data['Id'];?>)" title="Supprimer">
                                     <img src="Images/suppression.bmp">
                                 </button>
                             </td>
