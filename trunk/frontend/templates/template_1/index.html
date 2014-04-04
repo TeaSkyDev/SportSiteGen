@@ -18,6 +18,11 @@
 	      <a href="{$menu.url}">{$menu.title}</a>
 	    </li>
 	    {/foreach}
+	    {foreach from=$Connect item=connect}
+	    <li>
+        	<a href="{$connect.url}">{$connect.title}</a>
+    	</li>
+        {/foreach}
 	  </ul>
 	</div>
 	{$Content}
@@ -45,9 +50,7 @@
 	    <a href="index.php?page=calendrier">Voir Calendrier</a>
 	  </div>
 	</div>
-      </div>
-      
-      
+      </div>   
     </div>
 </div>
 </body>

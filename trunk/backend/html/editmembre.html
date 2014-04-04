@@ -5,7 +5,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>Modifier Membre</title>
+        <title>Modifier membre</title>
         <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
         <link rel="stylesheet" href="css/news.css" type="text/css" media="screen"/>
     </head>
@@ -17,11 +17,11 @@
             <br>
             <div class="entete">
                 <img src="Images/newarticle.png">
-                <h1>Gestion des Membre : Modifier un Membre</h1> 
+                <h1>Gestion des membre : Modifier un membre</h1> 
             </div>
             <br>
             <div class="interieur">
-                <form method="post" action="index.php?page=membre&action=edit&id=<?php echo $id ?>">
+                <form method="post" action="index.php?page=edit_membre&action=editer&id=<?php echo $id ?>">
                 <br>
                 <fieldset>
                     <legend>Modifier un Membre</legend>
@@ -48,25 +48,25 @@
                     Photo : 
                     <select name="photo">
                         <?php
-                            $sql="SELECT * FROM PHOTO WHERE Id=$photo";
-                            foreach ($bdd->query($sql) as $data) {
+                            $sql="SELECT * FROM PHOTO";
+                            foreach ($bdd->query($sql) as $data) { 
+                                if($data['Id']==$photo){       
                         ?>
-                        <option value="<?php echo $data['Id']; ?>" selected> 
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>" selected> 
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
-                            }
-                            $sql="SELECT * FROM PHOTO WHERE Id!=$photo";
-                            foreach ($bdd->query($sql) as $data) {
+                                } else {
                         ?>
-                        <option value="<?php echo $data['Id']; ?>">
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>">
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
+                                }
                             }
                         ?>
                     </select>
@@ -75,25 +75,25 @@
                     Type : 
                     <select name="type">
                         <?php
-                            $sql="SELECT * FROM TYPE_USER WHERE id=$type";
+                            $sql="SELECT * FROM TYPE_USER";
                             foreach ($bdd->query($sql) as $data) {
+                                if($data['Id']==$type){       
                         ?>
-                        <option value="<?php echo $data['Id']; ?>" selected> 
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>" selected> 
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
-                            }
-                            $sql="SELECT * FROM TYPE_USER WHERE id!=$type";
-                            foreach ($bdd->query($sql) as $data) {
+                                } else {
                         ?>
-                        <option value="<?php echo $data['Id']; ?>">
-                            <?php
-                                echo $data['Nom'];
-                            ?>
-                        </option>
+                                    <option value="<?php echo $data['Id']; ?>">
+                                        <?php
+                                            echo $data['Nom'];
+                                        ?>
+                                    </option>
                         <?php
+                                }
                             }
                         ?>
                     </select>

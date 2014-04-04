@@ -34,13 +34,14 @@ class Profil {
 
     public function insert($name, $mail, $pass, $photo, $type) {
         $query = $this->_bdd->prepare("insert into UTILISATEUR values(null, :name, :mail, :pass, :photo, :type)");
+	$pass_md5 = md5($pass);
         $query->bindParam(":name", $name);
         $query->bindParam(":mail", $mail);
-        $query->bindParam(":pass", md5($pass));
+        $query->bindParam(":pass", $pass_md5);
         $query->bindParam(":photo", $photo);
         $query->bindParam(":type", $type);
         $query->execute();
-        return $query->rowCount() == 0;
+        return $query->rowCount() == 1;
     }
 
     public static function s_delete_byName($name) {

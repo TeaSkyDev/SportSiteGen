@@ -275,7 +275,7 @@ class Content {
                     case "modif_password":
                         if(isset($param['v2']) && $param['v2'] == "true" && isset($param['password'])) {
                             if(md5($param['ancien_password']) == $_SESSION['user']['Mdp']) {
-                                if(Profil::s_set_profilById($this->_bdd, "Mdp", $param['password'], $_SESSION['user']['Id'])) {
+                                if(Profil::s_set_profilById($this->_bdd, "Mdp", md5($param['password']), $_SESSION['user']['Id'])) {
                                     header("Location: index.php?page=profil");
                                 } else {
                                     $err = true;

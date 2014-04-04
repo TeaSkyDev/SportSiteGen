@@ -15,7 +15,7 @@ insert into CATEGORIE values(null,'Junior','Equipe de 8-16 ans');
 insert into CATEGORIE values(null,'Cadet','Equipe de 16-20 ans');
 insert into CATEGORIE values(null,'Senior','Equipe de plus de 20 ans');
 
-insert into PHOTO values (1,'avatar_admin','defaut.png','');
+insert into PHOTO values (1,'avatar_admin','../photos/defaut.png','');
 
 insert into NEWS values(null, 'Nouveau site en ligne !', '2014-02-03 00:00:00', 'Que dites vous de ce nouveau super site ??', 1, 'admin');
 insert into NEWS values(null, 'Nouveau test', '2014-02-04 00:00:00', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at mi consectetur, commodo arcu eu, luctus augue. Vivamus tincidunt neque ipsum, eget eleifend ipsum sagittis ut. Sed ullamcorper egestas erat nec elementum. Nulla accumsan rutrum molestie. Aliquam ut magna egestas, accumsan velit ut, gravida dolor. Sed feugiat lectus et dolor venenatis posuere. Aenean vehicula vel neque vel varius. Integer imperdiet laoreet dolor, eget semper felis tincidunt vitae. Praesent id fringilla lectus. Sed sed enim venenatis, scelerisque ligula a, facilisis mi. Donec venenatis eros ac ultrices tincidunt. Maecenas mollis magna est, vitae elementum urna sagittis nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. ', 1, 'Pantoufle');

@@ -23,6 +23,9 @@ function check_cms_installed() {
 }
 
 function cms_installed() {
+    if(file_exists("cms.conf")) {
+	unlink("cms.conf");
+    }
     $fichier = fopen("cms.conf", "a+");
 
     fseek($fichier, 0);

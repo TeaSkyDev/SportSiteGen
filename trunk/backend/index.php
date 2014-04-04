@@ -51,10 +51,10 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 	    include("html/membre.html");
 	    break;
 	case 'new_membre':
-	    include("html/newmembre.html");
+	    include("php/membre.php");
 	    break;
 	case 'edit_membre':
-	    include("html/editmembre.html");
+	    include("php/membre.php");
 	    break;
 	case 'suppr_membre':
 	    include("php/membre.php");

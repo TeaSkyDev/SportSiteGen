@@ -125,7 +125,7 @@ if(isset($_POST['step']) || isset($_GET['step'])) {
 
     } else {
         echo 'Vous semblez avoir déjà installé ce cms sur ce serveur, un risque de conflit avec la base de données empêche l\'installation.<br>
-              Si vous n\'avez pas effectué d\'installaion, vérifiez que le fichier cms.conf est présent dans le dossier d\'installation.';
+              Si vous n\'avez pas effectué d\'installaion, vérifiez que le fichier cms.conf est présent dans le dossier d\'installation.<br>Cliquez ici pour effectuer une re-installation : <a href="php/reinstall.php">Re-installer</a>';
     }
 
 }?>

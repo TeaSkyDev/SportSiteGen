@@ -1,8 +1,6 @@
 drop table SITE;
 drop table APPARTENIR_TOURNOI;
 drop table TOURNOI;
-drop table EVENT_ADV;
-drop table EVENT;
 drop table JOUEUR;
 drop table MENU_ELEM;
 drop table POSTE;

@@ -924,6 +924,8 @@
 .body.news_simple div:first-child div img, .body.equipe div:first-child div img, .body.fiche_joueur div:first-child div span img,.body.about div:first-child div img {
 	border:5px solid #030303;
 	display:block;
+	height:135px;
+	width: 130px 
 }
 .body.news_simple div:first-child div p a, .body.equipe div:first-child div p a {
 	color:#5e5e5e;
