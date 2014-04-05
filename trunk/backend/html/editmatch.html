@@ -108,8 +108,25 @@
                     <option value="0" <?php if(!$data_match['joue']) { echo "selected"; } ?>>0</option>
                     <option value="1" <?php if($data_match['joue']) { echo "selected"; } ?>>1</option>
                 </select>
+                <br>
+                <br>
+                Saison :
+                <select name="saison">
+                    <?php
+                    $query_saisons = $bdd->query("select * from SAISONS order by Saison ASC");
+                    while($data = $query_saisons->fetch()) {
+                        if($data['Id'] == $data_match['IdSaison']) {
+                            echo '<option value="'.$data['Id'].'" selected>'.$data['Saison'].'</option>';
+                        } else {
+                            echo '<option value="'.$data['Id'].'">'.$data['Saison'].'</option>';
+                        }
+                    }
+                    ?>
+                </select>
+                <br>
+                <br>
                 Commentaires :
-                <textarea name="com" cols="30" rows="10" value="<?php echo $data_match['Commentaires']; ?>"></textarea><br/>
+                <textarea name="com" cols="30" rows="10"><?php echo $data_match['Commentaires']; ?></textarea><br/>
                 <input type="submit" value=" Envoyer">
             </fieldset>
             <br>

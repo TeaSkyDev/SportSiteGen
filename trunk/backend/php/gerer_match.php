@@ -11,9 +11,10 @@ if(isset($_GET['action'])) {
             && isset($_POST['heure'])
             && isset($_POST['lieu'])
             && isset($_POST['joue'])
+            && isset($_POST['saison'])
             && isset($_POST['com'])) {
             $date = $_POST['date']." ".$_POST['heure'];
-            if(Match::s_insert($bdd, $_POST['joue'], $_POST['team1'], $_POST['team2'], $_POST['score1'], $_POST['score2'], $date, $_POST['lieu'], $_POST['com'])) {
+            if(Match::s_insert($bdd, $_POST['joue'], $_POST['team1'], $_POST['team2'], $_POST['score1'], $_POST['score2'], $date, $_POST['lieu'], $_POST['com'], $_POST['saison'])) {
                header("Location: index.php?page=match");
             } else {
                 $msg = "Erreur lors de l'ajout d'un match.";
@@ -30,9 +31,10 @@ if(isset($_GET['action'])) {
                 && isset($_POST['heure'])
                 && isset($_POST['lieu'])
                 && isset($_POST['joue'])
+                && isset($_POST['saison'])
                 && isset($_POST['com'])) {
                 $date = $_POST['date']." ".$_POST['heure'];
-                if(Match::s_update($bdd,$_GET['id_match'], $_POST['joue'], $_POST['team1'], $_POST['team2'], $_POST['score1'], $_POST['score2'], $date, $_POST['lieu'], $_POST['com'])) {
+                if(Match::s_update($bdd,$_GET['id_match'], $_POST['joue'], $_POST['team1'], $_POST['team2'], $_POST['score1'], $_POST['score2'], $date, $_POST['lieu'], $_POST['com'], $_POST['saison'])) {
                     header("Location: index.php?page=match");
                 } else {
                     $msg = "Erreur lors de l'ajout d'un match.";

@@ -174,7 +174,7 @@ class Match {
      */
     static public function s_update($bdd, $id, $jouer, $team1, $team2, $point1, $point2, $date, $lieu, $comm, $idsaison) {
         $query = $bdd->prepare("UPDATE MATCHS SET joue=:joue,IdTeam1=:id1,IdTeam2=:id2,nbPoint1=:poi1,nbPoint2=:poi2,DateMATCHS=:date,Lieu=:lieu,Commentaires=:com,IdSaison=:idsaison WHERE Id=:id");
-        $query->bindParam(":joue", $joue);
+        $query->bindParam(":joue", $jouer);
         $query->bindParam(":id1", $team1);
         $query->bindParam(":id2", $team2);
         $query->bindParam(":poi1", $point1);
