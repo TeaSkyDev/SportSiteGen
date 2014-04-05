@@ -44,7 +44,7 @@ class Match {
         if( $query->rowCount() > 0) {
             while ($data = $query->fetch()) {
                 $this->_data[$this->_nb] = $data;
-                $this->_data[$this->_nb]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$data['IdSaison'])->fetch()['Saison'];
+                $this->_data[$this->_nb]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$this->_data[$this->_nb]['IdSaison'])->fetch()['Saison'];
                 $this->_nb++;
             }
         }
@@ -64,7 +64,7 @@ class Match {
         if ( $query->rowCount() == 1 ) {
             $this->_nb = 1;
             $this->_data[0] = $query->fetch();
-            $this->_data[0]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$data['IdSaison'])->fetch()['Saison'];
+            $this->_data[0]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$this->_data[0]['IdSaison'])->fetch()['Saison'];
         }
         $this->_fiche = $this->get_fiche_match($id);
     }
@@ -159,18 +159,18 @@ class Match {
 
 
     /**
-       \brief met a jour un match dans la base de données (fonction statique)
-       \param bdd la base de donnees rattache 
-       \param id l'identifiant a mettre a jour
-       \param team1 l'identifiant de la premiere equipe
-       \param team2 l'identifiant de la deuxieme equipe
-       \param point1 le nombre de point de la premiere equipe
-       \param point2 le nombre de point de la deuxieme equipe
-       \param date la date du match
-       \param lieu le lieu du match
-       \param comm le commentaire du match
-       \param idsaison id de la saison
-       \return vrai si reussi faux sinon
+    \brief met a jour un match dans la base de données (fonction statique)
+    \param bdd la base de donnees rattache
+    \param id l'identifiant a mettre a jour
+    \param team1 l'identifiant de la premiere equipe
+    \param team2 l'identifiant de la deuxieme equipe
+    \param point1 le nombre de point de la premiere equipe
+    \param point2 le nombre de point de la deuxieme equipe
+    \param date la date du match
+    \param lieu le lieu du match
+    \param comm le commentaire du match
+    \param idsaison id de la saison
+    \return vrai si reussi faux sinon
      */
     static public function s_update($bdd, $id, $jouer, $team1, $team2, $point1, $point2, $date, $lieu, $comm, $idsaison) {
         $query = $bdd->prepare("UPDATE MATCHS SET joue=:joue,IdTeam1=:id1,IdTeam2=:id2,nbPoint1=:poi1,nbPoint2=:poi2,DateMATCHS=:date,Lieu=:lieu,Commentaires=:com,IdSaison=:idsaison WHERE Id=:id");
@@ -183,7 +183,7 @@ class Match {
         $query->bindParam(":lieu", $lieu);
         $query->bindParam(":com", $comm);
         $query->bindParam(":idsaison", $idsaison);
-	    $query->bindParam(":id", $id);
+        $query->bindParam(":id", $id);
         $query->execute();
         return $query->rowCount() == 1;
     }
@@ -241,16 +241,16 @@ class Match {
 
 
     /**
-       \brief supprime les matchs en focntion de l'identifiant d'une equipe (statique)
-       \param bdd la base de donnees
-       \param id l'identifiant de l'equipe
-       \return vrai si reussi faux sinon
+    \brief supprime les matchs en focntion de l'identifiant d'une equipe (statique)
+    \param bdd la base de donnees
+    \param id l'identifiant de l'equipe
+    \return vrai si reussi faux sinon
      */
     static public function s_delete_byTeamId($bdd, $id) {
-	$query = $bdd->prepare("delete from MATCHS where IdTeam1=:id or IdTeam2=:id");
-	$query->bindParam(":id", $id);
-	$query->execute();
-	return $query->rowCount() != 0;
+        $query = $bdd->prepare("delete from MATCHS where IdTeam1=:id or IdTeam2=:id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+        return $query->rowCount() != 0;
     }
 
 
