@@ -1,47 +1,47 @@
 <html>
-  <head>
+<head>
     <title>Feuille de match {$match.DateMATCHS}</title>
-  </head>
-  <body>
-    <h1 align="center">Rencontre du {$match.DateMATCHS}</h1>
-    <table align="center" style="border: 1px solid black;width:100%;">
-      <tr>
-	<td style="width:50%">Lieu de la rencontre : {$match.Lieu}</td><td style="width:50%">Categorie : {$match.categorie}</td>
-      </tr>
-      <tr>
-	<td colspan="2" style="width:100%">Date rencontre : {$match.DateMATCHS}</td>
-      </tr>
-    </table>
-    <h2 align="center">Composition des équipes</h2>
-    <table align="center" style="border: 1px solid black;width:100%;">
-      <tr>
-	<td  style="width:50%">
-	  <b>Equipe {$equipe1.Nom}</b>
-	  <table  style="width:100%">
-	    {foreach from=$Joueur_equipe1 item=joueur1}
-	    <tr>
-	      <td  style="width:30%">{$joueur1.Nom}</td><td style="width:30%">{$joueur1.Prenom}</td><td style="width:30%">{$joueur1.poste}</td>
-	    </tr>
-	    {/foreach}
-	  </table>
-	</td>
-	<td  style="width:50%">
-	  <b>Equipe {$equipe2.Nom}</b>
-	  <table  style="width:100%">
-	    {foreach from=$Joueur_equipe2 item=joueur2}
-	    <tr>
-	      <td style="width:30%">{$joueur2.Nom}</td><td style="width:30%">{$joueur2.Prenom}</td><td style="width:30%">{$joueur2.poste}</td>
-	    </tr>
-	     {/foreach}
-	  </table>
-	</td>
-      </tr>
-    </table>
-    <h2 align="center">Scores</h2>
-    <table align="center" style="border: 1px solid black;width:100%;">
-      <tr>
-	<td style="width:50%"><b>{$equipe1.Nom}</b> : {$match.nbPoint1}</td><td style="width:50%"><b>{$equipe2.Nom}</b> : {$match.nbPoint2}</td>
-      </tr>
-    </table>
-  </body>
+</head>
+<body>
+<h1 align="center">Rencontre du {$match.DateMATCHS}</h1>
+<table align="center" style="border: 1px solid black;width:100%;">
+    <tr>
+        <td style="width:50%">Lieu de la rencontre : {$match.Lieu}</td><td style="width:50%">Categorie : {$match.categorie}</td>
+    </tr>
+    <tr>
+        <td style="width:50%">Date rencontre : {$match.DateMATCHS}</td><td style="width:50%;">Saison : {$match.Saison}</td>
+    </tr>
+</table>
+<h2 align="center">Composition des équipes</h2>
+<table align="center" style="border: 1px solid black;width:100%;">
+    <tr>
+        <td  style="width:50%">
+            <b>Equipe {$equipe1.Nom}</b>
+            <table  style="width:100%">
+                {foreach from=$Joueur_equipe1 item=joueur1}
+                <tr>
+                    <td  style="width:30%">{$joueur1.Nom}</td><td style="width:30%">{$joueur1.Prenom}</td><td style="width:30%">{$joueur1.poste}</td>
+                </tr>
+                {/foreach}
+            </table>
+        </td>
+        <td  style="width:50%">
+            <b>Equipe {$equipe2.Nom}</b>
+            <table  style="width:100%">
+                {foreach from=$Joueur_equipe2 item=joueur2}
+                <tr>
+                    <td style="width:30%">{$joueur2.Nom}</td><td style="width:30%">{$joueur2.Prenom}</td><td style="width:30%">{$joueur2.poste}</td>
+                </tr>
+                {/foreach}
+            </table>
+        </td>
+    </tr>
+</table>
+<h2 align="center">Scores</h2>
+<table align="center" style="border: 1px solid black;width:100%;">
+    <tr>
+        <td style="width:50%"><b>{$equipe1.Nom}</b> : {$match.nbPoint1}</td><td style="width:50%"><b>{$equipe2.Nom}</b> : {$match.nbPoint2}</td>
+    </tr>
+</table>
+</body>
 </html>
