@@ -1,24 +1,36 @@
 <table class="partie" align="center">
-  <tr>
-    <th id="matchs"><img src="templates/Rouge/images/gauche.png"/><span>MATCHS</span><img src="templates/Rouge/images/droite.png"/></th>
-  </tr>
-  {foreach from=$Match item=match}
-  <tr>
-    <td align="center" id="case"> 
-      <span><a href="index.php?page=match&v1=lire_match&v2={$match.Id}">Le {$match.date} à {$match.Lieu}</a> <a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a></span>
-      <br><br>
-      <mark>{$match.name1}</mark> - {$match.point1} | {$match.point2} - <mark>{$match.name2}</mark>
-      <br><br><br>
-      <table>
-	{foreach from=$Image item=image}
-	<tr align="center">
-	  <img src="{$image}" width="100"/>
-	</tr>&nbsp;
-	{/foreach}
-      </table>
-      {/foreach}
-    </td>
-  </tr>
+    <tr>
+        <th id="matchs"><img src="templates/Rouge/images/gauche.png"/><span>MATCHS</span><img src="templates/Rouge/images/droite.png"/></th>
+    </tr>
+    <tr>
+        <td>
+            <form method="POST" action="index.php?page=match&v1=lire_matchBySaison">
+                <select name="v2">
+                    {foreach from=$Saisons item=saison}
+                        <option value="{$saison.Id}">{$saison.Saison}</option>
+                    {/foreach}
+                </select>
+                <input type="submit" value="Valider"/>
+            </form>
+        </td>
+    </tr>
+    {foreach from=$Match item=match}
+    <tr>
+        <td align="center" id="case">
+            <span><a href="index.php?page=match&v1=lire_match&v2={$match.Id}">Le {$match.date} à {$match.Lieu}</a> <a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a></span>
+            <br><br>
+            <mark>{$match.name1}</mark> - {$match.point1} | {$match.point2} - <mark>{$match.name2}</mark>
+            <br><br><br>
+            <table>
+                {foreach from=$Image item=image}
+                <tr align="center">
+                    <img src="{$image}" width="100"/>
+                </tr>&nbsp;
+                {/foreach}
+            </table>
+            {/foreach}
+        </td>
+    </tr>
 </table>
 
 {foreach from=$page item=elem}

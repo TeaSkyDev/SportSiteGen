@@ -1,12 +1,28 @@
 <table align="center">
     <tr>
-        <th>Match</th>
+        <th colspan="3">Match</th>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <form method="POST" action="index.php?page=match&v1=lire_matchBySaison">
+                Saison :
+                <select name="v2">
+                    {foreach from=$Saisons item=saison}
+                    <option value="{$saison.Id}">{$saison.Saison}</option>
+                    {/foreach}
+                </select>
+                <input type="submit" value="Valider"/>
+            </form>
+        </td>
     </tr>
     {foreach from=$Match item=match}
     <tr>
-            <td align="center"><u>{$match.name1} - {$match.point1} | {$match.point2} - {$match.name2}
-	    	     |||    {$match.date} - {$match.comm} <a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a></td>
-
+        <td><u>{$match.name1}  -  {$match.name2}</u></td>
+        <td style="text-align: center;">{$match.point1} - {$match.point2}</td>
+        <td>{$match.date} - <a href="php/export_pdf.php?action=match&id={$match.Id}" target="_blank">Exporter</a></td>
+    </tr>
+    <tr>
+        <td colspan="3" style="background-color: lightslategrey;">{$match.comm}></td>
     </tr>
 
     {/foreach}

@@ -23,8 +23,10 @@ class Match {
     public function __construct($bdd, $param = null) {
         $this->_bdd = $bdd;
         if ( isset ($param) && $param!=null) {
-            if ( $param['v1'] == "lire_match" && isset($param['v2']) ) {
+            if ( $param['v1'] == "lire_match" && isset($param['v2'])) {
                 $this->get_one_match($param['v2']);
+            } else if($param['v1'] == "lire_matchBySaison" && isset($param['v2'])) {
+                $this->get_matchs_byIdSaison($param['v2']);
             } else {
                 $this->get_all_match();
             }
@@ -50,7 +52,17 @@ class Match {
         }
     }
 
-
+    public function get_matchs_byIdSaison($idsaison) {
+        $query = $this->_bdd->query("select * from MATCHS where IdSaison = ".$idsaison." order by Id desc");
+        $this->_nb = 0;
+        if($query->rowCount() > 0) {
+            while($data = $query->fetch()) {
+                $this->_data[$this->_nb] = $data;
+                $this->_data[$this->_nb]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$idsaison)->fetch()['Saison'];
+                $this->_nb++;
+            }
+        }
+    }
 
     /*
      \brief cherche un match dans la base de donnes

@@ -46,35 +46,35 @@ class Content {
         $news_obj = new News($this->_bdd, $param);
         $news     = $news_obj->get_content();
         $com      = $news_obj->get_content_com();
-	$page = 1;
-	$i = 0;
-	if ( isset($param['num']) ) {
-	    $page = $param['num'];
-	    $i = $page*5-5; 
-	}
-	$data = array();
+        $page = 1;
+        $i = 0;
+        if ( isset($param['num']) ) {
+            $page = $param['num'];
+            $i = $page*5-5;
+        }
+        $data = array();
         $simple = array();
         $simple['one'] = isset($param['v1']) && $param['v1'] == "lire_news";
         if( $simple['one'] ) {
             $simple['connected'] = isset($_SESSION['connected']);
             $simple['Id'] = $news[0]['Id'];
-	    $data = $news;
+            $data = $news;
         } else {
-	    $j = 0;
-	    while (isset($news[$i]) && $i < $page * 5 ) {
-		$data[$j] = $news[$i];
-		$i++;
-		$j++;
-	    }
-	}
-	$p = array();
-	for ( $i = 0 ; $i < count($news)/5 ; $i++) {
-	    $p[$i] = $i+1;
-	}
+            $j = 0;
+            while (isset($news[$i]) && $i < $page * 5 ) {
+                $data[$j] = $news[$i];
+                $i++;
+                $j++;
+            }
+        }
+        $p = array();
+        for ( $i = 0 ; $i < count($news)/5 ; $i++) {
+            $p[$i] = $i+1;
+        }
         $this->_smarty->assign("News", $data);
         $this->_smarty->assign("Com", $com);
         $this->_smarty->assign("NSimple", $simple);
-	$this->_smarty->assign("Page", $p);
+        $this->_smarty->assign("Page", $p);
         return $this->_smarty->fetch("templates/".$this->_template."/html/news.html");
     }
 
@@ -90,31 +90,31 @@ class Content {
         $com        = $events_obj->get_content_com();
         $simple = array();
         $simple['one'] = isset($param['v1']);
-	$i = 0;
-	$page = 1;
-	if ( isset($param['num']) ) {
-	    $page = $param['num'];
-	    $i = $page * 5 - 5;
-	}
-	$data = array();
+        $i = 0;
+        $page = 1;
+        if ( isset($param['num']) ) {
+            $page = $param['num'];
+            $i = $page * 5 - 5;
+        }
+        $data = array();
         if ( $simple['one'] ) {
-	    $simple['connected'] = isset($_SESSION['connected']);
-	    $simple['Id'] = $events[0]['Id'];
-	    $data = $events;
+            $simple['connected'] = isset($_SESSION['connected']);
+            $simple['Id'] = $events[0]['Id'];
+            $data = $events;
         } else {
-	    $j = 0;
-	    while (isset($events[$i]) && $i < $page * 5) {
-		$data[$j] = $events[$i];
-		$j++;
-		$i ++;
-	    }
-	}
-	$p = array();
-	for ( $i = 0 ; $i < count($events)/5 ; $i++) {
-	    $p[$i] = $i+1;
-	}
+            $j = 0;
+            while (isset($events[$i]) && $i < $page * 5) {
+                $data[$j] = $events[$i];
+                $j++;
+                $i ++;
+            }
+        }
+        $p = array();
+        for ( $i = 0 ; $i < count($events)/5 ; $i++) {
+            $p[$i] = $i+1;
+        }
         $this->_smarty->assign("Events", $data);
-	$this->_smarty->assign("Page", $p);
+        $this->_smarty->assign("Page", $p);
         $this->_smarty->assign("Com", $com);
         $this->_smarty->assign("NSimple", $simple);
 
@@ -129,25 +129,25 @@ class Content {
     public function get_html_equipe($param) {
         $teams_obj = new Equipe($this->_bdd);
         $teams     = $teams_obj->get_content();
-	$page = 1;
-	$i = 0;
-	if (isset($param['num']) ) {
-	  $page = $param['num'];
-	  $i = $page * 5 - 5;
-	}
-	$data = array();
-	$j = 0;
-	while (isset($teams[$i]) && $i < $page * 5 ) {
-	  $data[$j] = $teams[$i];
-	  $j++;
-	  $i++;
-	}
-	$p = array();
-	for ( $i = 0 ; $i < count($teams) / 5 ; $i++) {
-	  $p[$i] = $i+1;
-	}
+        $page = 1;
+        $i = 0;
+        if (isset($param['num']) ) {
+            $page = $param['num'];
+            $i = $page * 5 - 5;
+        }
+        $data = array();
+        $j = 0;
+        while (isset($teams[$i]) && $i < $page * 5 ) {
+            $data[$j] = $teams[$i];
+            $j++;
+            $i++;
+        }
+        $p = array();
+        for ( $i = 0 ; $i < count($teams) / 5 ; $i++) {
+            $p[$i] = $i+1;
+        }
         $this->_smarty->assign("Teams", $data);
-	$this->_smarty->assign("Page", $p);
+        $this->_smarty->assign("Page", $p);
         return $this->_smarty->fetch("templates/".$this->_template."/html/equipes.html");
     }
 
@@ -162,14 +162,14 @@ class Content {
         $match = $match_obj->get_content();
         $data = array();
         $i = 0;
-	$page = 0;
-	if(isset($param['num'])){
-	  $i=$param['num']*10-10;
-	  $page=$param['num'];
-	}else{
-	  $i=0;
-	  $page=1;
-	}
+        $page = 0;
+        if(isset($param['num'])){
+            $i=$param['num']*10-10;
+            $page=$param['num'];
+        }else{
+            $i=0;
+            $page=1;
+        }
         while(isset($match[$i]) && $i<$page*10) {
             $data[$i]['Id'] = $match[$i]['Id'];
             $data[$i]['name1'] = $equ_obj->search_byId($match[$i]['IdTeam1'])['Nom'];
@@ -186,27 +186,38 @@ class Content {
         if ( $simple['one'] ) {
             $fiche = $match_obj->get_fiche_content();
         }
-	$Image = array();
-	$page = array();
-	$i = 0;
-	if ( $simple['one'] ) {
-	  $query = $this->_bdd->prepare("select IdPhoto from PHOTO_MATCHS where IdMATCHS = :id");
-	  $query->bindParam(":id", $match[0]['Id']);
-	  $query->execute();
-	  while( $d = $query->fetch()) {
-	    $Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
-	    $i++;
-	  }
-	} else {
-	  for ( $j = 0 ; $j < count($match)/10 ; $j++) {
-	    $page[$j] = $j+1;
-	  }
-	}
+        $Image = array();
+        $page = array();
+        $i = 0;
+        if ( $simple['one'] ) {
+            $query = $this->_bdd->prepare("select IdPhoto from PHOTO_MATCHS where IdMATCHS = :id");
+            $query->bindParam(":id", $match[0]['Id']);
+            $query->execute();
+            while( $d = $query->fetch()) {
+                $Image[$i] = Photo::s_search_byId($this->_bdd, $d['IdPhoto'])['Fichier'];
+                $i++;
+            }
+        } else {
+            for ( $j = 0 ; $j < count($match)/10 ; $j++) {
+                $page[$j] = $j+1;
+            }
+        }
+
+        /* Récupération des saisons */
+        $query_saison = $this->_bdd->query("select * from SAISONS order by Saison DESC");
+        $data_saisons = array();
+        $i = 0;
+        while($d = $query_saison->fetch()) {
+            $data_saisons[$i] = $d;
+            $i++;
+        }
+
         $this->_smarty->assign("Match", $data);
+        $this->_smarty->assign("Saisons", $data_saisons);
         $this->_smarty->assign("NSimple", $simple);
         $this->_smarty->assign("Fiche", $fiche);
-	$this->_smarty->assign("Image", $Image);
-	$this->_smarty->assign("page", $page);
+        $this->_smarty->assign("Image", $Image);
+        $this->_smarty->assign("page", $page);
         return $this->_smarty->fetch("templates/".$this->_template."/html/match.html");
     }
 
@@ -436,14 +447,14 @@ class Content {
         } else {
             $news_obj = new News($this->_bdd);
             $news = $news_obj->get_content();
-	    $Image = new Photo($this->_bdd);
-	    $img = $Image->get_content();
+            $Image = new Photo($this->_bdd);
+            $img = $Image->get_content();
             $events_obj = new Calendrier($this->_bdd);
             $events = $events_obj->get_content();
 
             $this->_smarty->assign("News", $news);
             $this->_smarty->assign("Events", $events);
-	    $this->_smarty->assign("Image", $img);
+            $this->_smarty->assign("Image", $img);
 
             return $this->_smarty->fetch("templates/".$this->_template."/html/accueil.html");
         }
