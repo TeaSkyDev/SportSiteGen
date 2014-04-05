@@ -61,7 +61,6 @@ function start_step_one() {
 function start_step_two() {
 
     /* var_dump permet d'afficher le contenu de varaibles et tableau, pratique pour savoir si toutes les info d'un form sont passées */
-    echo '# DEBUG :<br>';
     //var_dump($_POST);
 
     include("header.php");
