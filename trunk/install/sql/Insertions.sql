@@ -42,8 +42,14 @@ insert into SAISONS values(1, 2014);
 
 insert into MATCHS values(1,1,1,2,3,2,'2014-20-03 13:00:00','Paris','Belle rencontre', 1);
 insert into MATCHS values(2,1,2,1,11,10,'2014-20-04 13:00:00','Paris','Super Belle rencontre', 1);
+insert into MATCHS values(3,1,2,1,11,10,'2014-20-04 13:00:00','Chartres','Match de championnat', 1);
+
 
 insert into TOURNOI values(1,'Tournoi des 6 terrains','','2014-01-02 00:00:00','2014-01-04 00:00:00',2);
 
 insert into APPARTENIR_TOURNOI values(1, 1, 1);
 insert into APPARTENIR_TOURNOI values(1, 2, 1);
+
+insert into CHAMPIONNAT values(1, "CLRH");
+
+insert into APPARTENIR_CHAMPIONNAT values(1, 3, 1);

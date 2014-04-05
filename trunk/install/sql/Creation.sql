@@ -167,3 +167,16 @@ create table SAISONS (
        Saison integer(4) unique not null,
        primary key(Id, Saison)
 );
+
+create table CHAMPIONNAT (
+       Id integer(10) AUTO_INCREMENT,
+       Nom varchar(255) unique not null,
+       primary key (Id)
+);
+
+create table APPARTENIR_CHAMPIONNAT (
+      Id integer(10) AUTO_INCREMENT,
+      IdMatch integer(10) references MATCHS(Id),
+      IdChampionnat integer(10) references CHAMPIONNAT(Id),
+      primary key (Id)
+);
