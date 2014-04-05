@@ -44,6 +44,7 @@ class Match {
         if( $query->rowCount() > 0) {
             while ($data = $query->fetch()) {
                 $this->_data[$this->_nb] = $data;
+                $this->_data[$this->_nb]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$data['IdSaison'])->fetch()['Saison'];
                 $this->_nb++;
             }
         }
@@ -63,6 +64,7 @@ class Match {
         if ( $query->rowCount() == 1 ) {
             $this->_nb = 1;
             $this->_data[0] = $query->fetch();
+            $this->_data[0]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$data['IdSaison'])->fetch()['Saison'];
         }
         $this->_fiche = $this->get_fiche_match($id);
     }
@@ -109,10 +111,11 @@ class Match {
     \param date la date du match
     \param lieu le lieu du match
     \param comm commentaire sur le match
+    \param idsaison id de la saison
     \return vrai si reussi faux sinon
      */
-    public function insert($joue, $team1, $team2, $point1, $point2, $date, $lieu, $comm) {
-        $query = $this->_bdd->prepare("insert into MATCHS values(null, :joue, :team1, :team2, :point1, :point2, :date, :lieu, :comm)");
+    public function insert($joue, $team1, $team2, $point1, $point2, $date, $lieu, $comm, $idsaison) {
+        $query = $this->_bdd->prepare("insert into MATCHS values(null, :joue, :team1, :team2, :point1, :point2, :date, :lieu, :comm, :idsaison)");
         $query->bindParam(":joue", $joue);
         $query->bindParam(":team1", $team1);
         $query->bindParam(":team2", $team2);
@@ -121,6 +124,7 @@ class Match {
         $query->bindParam(":date", $date);
         $query->bindParam(":lieu", $lieu);
         $query->bindParam(":comm", $comm);
+        $queyr->bindParam(":idsaison", $idsaison);
         $query->execute();
         return $query->rowCount() == 1;
     }
@@ -135,10 +139,11 @@ class Match {
     \param date la date du match
     \param lieu le lieu du match
     \param comm commentaire sur le match
+    \param idsaison id de la saison
     \return vrai si reussi faux sinon
      */
-    static public function s_insert($bdd, $joue, $team1, $team2, $point1, $point2, $date, $lieu, $comm) {
-        $query = $bdd->prepare("insert into MATCHS values(null, :joue, :team1, :team2, :point1, :point2, :date, :lieu, :comm)");
+    static public function s_insert($bdd, $joue, $team1, $team2, $point1, $point2, $date, $lieu, $comm, $idsaison) {
+        $query = $bdd->prepare("insert into MATCHS values(null, :joue, :team1, :team2, :point1, :point2, :date, :lieu, :comm, :idsaison)");
         $query->bindParam(":joue", $joue);
         $query->bindParam(":team1", $team1);
         $query->bindParam(":team2", $team2);
@@ -147,6 +152,7 @@ class Match {
         $query->bindParam(":date", $date);
         $query->bindParam(":lieu", $lieu);
         $query->bindParam(":comm", $comm);
+        $query->bindParam(":idsaison", $idsaison);
         $query->execute();
         return $query->rowCount() == 1;
     }
@@ -163,10 +169,11 @@ class Match {
        \param date la date du match
        \param lieu le lieu du match
        \param comm le commentaire du match
+       \param idsaison id de la saison
        \return vrai si reussi faux sinon
      */
-    static public function s_update($bdd, $id, $jouer, $team1, $team2, $point1, $point2, $date, $lieu, $comm) {
-        $query = $bdd->prepare("UPDATE MATCHS SET joue=:joue,IdTeam1=:id1,IdTeam2=:id2,nbPoint1=:poi1,nbPoint2=:poi2,DateMATCHS=:date,Lieu=:lieu,Commentaires=:com WHERE Id=:id");
+    static public function s_update($bdd, $id, $jouer, $team1, $team2, $point1, $point2, $date, $lieu, $comm, $idsaison) {
+        $query = $bdd->prepare("UPDATE MATCHS SET joue=:joue,IdTeam1=:id1,IdTeam2=:id2,nbPoint1=:poi1,nbPoint2=:poi2,DateMATCHS=:date,Lieu=:lieu,Commentaires=:com,IdSaison=:idsaison WHERE Id=:id");
         $query->bindParam(":joue", $joue);
         $query->bindParam(":id1", $team1);
         $query->bindParam(":id2", $team2);
@@ -175,7 +182,8 @@ class Match {
         $query->bindParam(":date", $date);
         $query->bindParam(":lieu", $lieu);
         $query->bindParam(":com", $comm);
-	$query->bindParam(":id", $id);
+        $query->bindParam(":idsaison", $idsaison);
+	    $query->bindParam(":id", $id);
         $query->execute();
         return $query->rowCount() == 1;
     }
