@@ -3,7 +3,7 @@ require("Saison.php");
 
 if(isset($_GET['action'])) {
     if($_GET['action'] == "ajouter") {
-        if(isset($_POST['new_saison'])) {
+        if(isset($_POST['new_saison']) && !empty($_POST['new_saison'])) {
             if(Saison::s_insert($bdd, $_POST['new_saison'])) {
                 header("Location: index.php?page=match");
             } else {
