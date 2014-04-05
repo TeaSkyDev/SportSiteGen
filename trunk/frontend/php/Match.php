@@ -41,12 +41,15 @@ class Match {
      \return void
      */
     public function get_all_match() {
-        $query = $this->_bdd->query("select * from MATCHS order by Id DESC");
+        /* On récupère la dernière saison */
+        $last_saison = $this->_bdd->query("select * from SAISONS order by Saison DESC")->fetch();
+
+        $query = $this->_bdd->query("select * from MATCHS where IdSaison = ".$last_saison['Id']." order by Id DESC");
         $this->_nb = 0;
         if( $query->rowCount() > 0) {
             while ($data = $query->fetch()) {
                 $this->_data[$this->_nb] = $data;
-                $this->_data[$this->_nb]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$this->_data[$this->_nb]['IdSaison'])->fetch()['Saison'];
+                $this->_data[$this->_nb]['Saison'] = $last_saison['Saison'];
                 $this->_nb++;
             }
         }
