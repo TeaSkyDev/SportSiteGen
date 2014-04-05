@@ -48,9 +48,9 @@ create table MATCHS(
        nbPoint2 integer(5),
        DateMATCHS datetime not null,
        Lieu varchar(15),
-       Commentaires varchar(100)
+       Commentaires varchar(100),
+       IdSaison integer(10) references SAISONS(Id)
 );
-
 
 create table PHOTO_MATCHS(
        IdMATCHS integer(10),
@@ -160,4 +160,10 @@ create table FICHE (
        Point1 integer(5),
        Point2 integer(5),
        primary key (Id, IdMatch)
+);
+
+create table SAISONS (
+       Id integer(10) AUTO_INCREMENT,
+       Saison integer(4),
+       primary key(Id, Saison)
 );

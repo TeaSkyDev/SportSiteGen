@@ -38,8 +38,10 @@ insert into JOUEUR values(2,1,'Durant',1,'Jean',2,'Cours vite');
 
 insert into JOUEUR values(3,1,'Martin',1,'Martin',3,'Rapide');
 
-insert into MATCHS values(1,1,1,2,3,2,'2014-20-03 13:00:00','Paris','Belle rencontre');
-insert into MATCHS values(2,1,2,1,11,10,'2014-20-04 13:00:00','Paris','Super Belle rencontre');
+insert into SAISONS values(1, 2014);
+
+insert into MATCHS values(1,1,1,2,3,2,'2014-20-03 13:00:00','Paris','Belle rencontre', 1);
+insert into MATCHS values(2,1,2,1,11,10,'2014-20-04 13:00:00','Paris','Super Belle rencontre', 1);
 
 insert into TOURNOI values(1,'Tournoi des 6 terrains','','2014-01-02 00:00:00','2014-01-04 00:00:00',2);
 
