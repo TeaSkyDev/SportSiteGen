@@ -164,6 +164,6 @@ create table FICHE (
 
 create table SAISONS (
        Id integer(10) AUTO_INCREMENT,
-       Saison integer(4),
+       Saison integer(4) unique not null,
        primary key(Id, Saison)
 );
