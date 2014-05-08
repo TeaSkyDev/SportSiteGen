@@ -5,6 +5,8 @@
 SportSiteGen est un cms créé par un groupe d'étudiant de l'IUT d'Orléans et qui a pour but la création d'un site web
 facilement. Les technologies utilisées sont PHP (+Smarty), HTML5, CSS3, Javascript/AJAX, HTML2PDF et une base de données MySql.
 
+Site du projet : http://sportsitegen.e-monsite.com/
+
 ## Pourquoi celui-ci et pas un autre ? ##
 
 SportSiteGen a pour particularité d'être axé sur le sport. Ainsi, il sera l'outil parfait pour une équipe de sport
