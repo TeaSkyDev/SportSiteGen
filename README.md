@@ -39,7 +39,7 @@ Si tout se passe bien, deux liens devraient s'afficher :
 ## Comment participer au projet ? ##
 
 Si vous désirez participer au projet, voici la commande permettant de cloner le dépot :
-    git clone https://github.com/EmileCadorel/SportSiteGen.git
+    git clone https://github.com/TeaSkyDev/SportSiteGen.git
 
 Je vous encourage à lire le cahier des charges pour y voir plus claire dans le fonctionnement du cms et
 dans son architecture.
