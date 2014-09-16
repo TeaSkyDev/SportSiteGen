@@ -14,47 +14,46 @@ require_once("php/Log.class.php");
 $smarty  = new Smarty();
 $log     = new Log("log.txt");
 
+
 /* On initialise le cms en nous connectant à la BDD, on récupérant le template à utiliser, ainsi que les fichiers */
-$init_cms = new Init($bdd);
+$init_cms = new Init($bdd, $smarty);
 $template = $init_cms->get_template(); //on récupère le template à utiliser
 $name     = $init_cms->get_name();     //on récupère le nom du site
 
+//on stocke ces deux dernières données dans des constantes pour ne pas les passer en paramètre partout
+define("TEMPLATE", "templates/".$template);
+define("SITE_NAME", $name);
+
+
 /* On récupère le header Dont le menu */
-$head = new Header($bdd, $template, $name, $smarty, $log);
+$head = new Header($bdd, $smarty, $log);
 $header = $head->get_content();
 
+
 //On récupère le Aside 
-$as = new Aside($bdd, $smarty, $template);
+$as = new Aside($bdd, $smarty);
 $as = $as->get_content();
 
 
-/*On récupère le footer
-  $fo = new Footer($bdd);
-  $footer = $fo->get_content();
-*/
-
-// On récupère le corps du texte suivant ce qui a été demandé
-$content = new Content($bdd, $template, $smarty);
+//On récupère la page demandée
 if(isset($_GET['page']) || isset($_POST['page'])) {
     $page = $_REQUEST['page'];
-    $param = get_params($_GET, $_POST); /* On récupère tous les params sauf la page */
-    $content_html = $content->get_html($page, $param);
-
-    if ($page == "deconnexion"){
-        unset($_SESSION);
-        session_destroy();
-        header("Location:  index.php");
-    }
 } else {
-    $content_html = $content->get_html("accueil");
+    $page = "home";
 }
+
+
+// On récupère le corps du texte suivant ce qui a été demandé
+$content = new Content($bdd, $smarty, $page);
+$content_page = $content->get_content();
 
 
 $smarty->assign("Header", $header);
 $smarty->assign("Aside", $aside);
 $smarty->assign("Content", $content_html);
-//$smarty->assign("Footer", $footer);
 
-$smarty->display("templates/".$template."/index.html");
+
+//On affiche tout
+$smarty->display(TEMPLATE."/index.html");
 
 ?>
