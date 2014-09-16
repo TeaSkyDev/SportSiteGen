@@ -12,10 +12,7 @@ class Aside {
     private $_smarty;
     private $_bdd;
     private $_data_news; /* contient les news de la base */
-    private $_data_calendrier; /* contient les evenement de la base */ 
-    private $_nb_news; /* le nombre de news dans la variable _data_news */
-    private $_nb_calendrier; /* le nombre d'evenements dans la variable _data_calendrier */
-
+    private $_data_calendar; /* contient les evenement de la base */
     
     /**
      \brief construit l'objet
@@ -23,16 +20,16 @@ class Aside {
      \param smarty représente l'objet smarty (moteur de template)
      \param template représente le template à utiliser
      */
-    public function __construct($bdd, $smarty, $template) {
+    public function __construct($bdd, $smarty) {
         $this->_bdd    = $bdd;
         $this->_smarty = $smarty;
     }
 
 
     public function get_content() {
-        get_content_news();
-        get_content_calendrier();
-        return $this->_smarty->fetch("templates/".$this->_template."/html/aside.html");
+        $this->get_content_news();
+        $this->get_content_calendar();
+        return $this->_smarty->fetch(TEMPLATE."/html/aside.html");
     }
 
     /**
@@ -42,7 +39,7 @@ class Aside {
      */
     private function get_content_news() {
         $news = new News($this->_bdd, $this->_template);
-        $this->_data_news = $news->get_content();
+        $this->_data_news = $news->get_data_news();
 
         $i = 0;
         $data = array();
@@ -60,9 +57,9 @@ class Aside {
      \param void
      \returntableau des 10 derniers evenement ( ! peut etre vide )
      */
-    private function get_content_calendrier() {
-        $cal = new Calendrier($this->_bdd, $this->_template);
-        $this->_data_calendrier = $cal->get_content();
+    private function get_content_calendar() {
+        $cal = new Calendar($this->_bdd, $this->_template);
+        $this->_data_calendrier = $cal->get_data_events();
 
         $i = 0;
         $data = array();
