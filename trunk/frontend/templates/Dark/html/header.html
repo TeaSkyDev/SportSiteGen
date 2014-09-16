@@ -1,0 +1,42 @@
+<html>
+<header>
+    <title>{$Name}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {foreach from=$CssFiles item=style}
+    <link rel="stylesheet" href="{$style}" type="text/css">
+    {/foreach}
+    <style>
+        .selected_result {
+            border:1px solid black;
+            width:100px;
+            display: block;
+            background-color: red;
+        }
+        .unselected_result {
+            border:1px solid black;
+            width:100px;
+            display: block;
+        }
+
+    </style>
+</header>
+
+<body>
+<div id="fond">
+    <div class="ruban">
+        <h2>{$Name}</h2>
+    </div>
+    <div class="ruban_gauche"></div>
+    <div class="ruban_droit"></div>
+</div>
+<!-- <h1 align="center">{$Name}</h1> -->
+<table align="center">
+    <tr>
+        {foreach from=$Menu item=menu}
+        <td><a href="{$menu.url}">{$menu.title}</a></td>
+        {/foreach}
+        {foreach from=$Menu_connect item=connect}
+        <td><a href="{$connect.url}">{$connect.title}</a></td>
+        {/foreach}
+    </tr>
+</table>
