@@ -1,22 +1,5 @@
 {$Header}
 {$Content}
-<table align="center" class="aside">
-    <tr>
-        <th>LAST NEWS</th>
-    </tr>
-    {foreach from=$AsideNews item=it}
-    <tr>
-        <td>{$it.titre}</td>
-    </tr>
-    {/foreach}
-    <tr>
-        <th>LAST EVENTS</th>
-    </tr>
-    {foreach from=$AsideCal item=it}
-    <tr>
-        <td>{$it.titre}</td>
-    </tr>
-    {/foreach}
-</table>
+{$Aside}
 </body>
 </html>

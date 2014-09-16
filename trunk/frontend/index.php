@@ -4,6 +4,7 @@ session_start();
 
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require_once("../Smarty/libs/Smarty.class.php");
+
 require_once("php/Init.class.php");
 require_once("php/Header.class.php");
 require_once("php/Content.class.php");
@@ -23,7 +24,7 @@ $head = new Header($bdd, $template, $name, $smarty, $log);
 $header = $head->get_content();
 
 //On récupère le Aside 
-$as = new Aside($bdd);
+$as = new Aside($bdd, $smarty, $template);
 $as = $as->get_content();
 
 
