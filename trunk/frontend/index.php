@@ -3,32 +3,28 @@
 session_start();
 
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
-require_once("fonctions.php");
+require_once("../Smarty/libs/Smarty.class.php");
 require_once("php/Init.class.php");
 require_once("php/Header.class.php");
 require_once("php/Content.class.php");
-require_once("../Smarty/libs/Smarty.class.php");
 require_once("php/Aside.class.php");
+require_once("php/Log.class.php");
 
 $smarty  = new Smarty();
+$log     = new Log("log.txt");
 
 /* On initialise le cms en nous connectant à la BDD, on récupérant le template à utiliser, ainsi que les fichiers */
 $init_cms = new Init($bdd);
-$template = $init_cms->get_template();
-$name     = $init_cms->get_name();
-
-$url_style = "templates/".$template."/css/";
-$styles = array($url_style."design.css", $url_style."header.css", $url_style."content.css", $url_style."aside.css");
+$template = $init_cms->get_template(); //on récupère le template à utiliser
+$name     = $init_cms->get_name();     //on récupère le nom du site
 
 /* On récupère le header Dont le menu */
-$head = new Header($bdd);
+$head = new Header($bdd, $template, $name, $smarty, $log);
 $header = $head->get_content();
-$connect = $head->get_content_connexion();
 
 //On récupère le Aside 
 $as = new Aside($bdd);
-$asidenews = $as->get_content_news();
-$asidecal  = $as->get_content_calendrier();
+$as = $as->get_content();
 
 
 /*On récupère le footer
@@ -53,13 +49,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
 }
 
 
-$smarty->assign("Style", $styles);
 $smarty->assign("Header", $header);
-$smarty->assign("Name", $name);
-$smarty->assign("AsideNews", $asidenews);
-$smarty->assign("AsideCal", $asidecal);
+$smarty->assign("Aside", $aside);
 $smarty->assign("Content", $content_html);
-$smarty->assign("Connect", $connect);
 //$smarty->assign("Footer", $footer);
 
 $smarty->display("templates/".$template."/index.html");
