@@ -4,11 +4,12 @@ session_start();
 
 require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require_once("fonctions.php");
-require_once("php/Init.php");
-require_once("php/Header.php");
+require_once("php/Init.class.php");
+require_once("php/Header.class.php");
 require_once("php/Content.class.php");
-require_once("../tpl/libs/Smarty.class.php");
-require_once("php/Aside.php");
+require_once("../Smarty/libs/Smarty.class.php");
+require_once("php/Aside.class.php");
+
 $smarty  = new Smarty();
 
 /* On initialise le cms en nous connectant à la BDD, on récupérant le template à utiliser, ainsi que les fichiers */
@@ -43,9 +44,9 @@ if(isset($_GET['page']) || isset($_POST['page'])) {
     $content_html = $content->get_html($page, $param);
 
     if ($page == "deconnexion"){
-	unset($_SESSION);
-	session_destroy();
-	header("Location:  index.php");
+        unset($_SESSION);
+        session_destroy();
+        header("Location:  index.php");
     }
 } else {
     $content_html = $content->get_html("accueil");
