@@ -23,11 +23,15 @@ class News {
     /**
      * \brief retourne la page news (toutes les news)
      */
-    public function get_content($id_news = null) {
-        if($id_news == null) {
+    public function get_content() {
+        if(!isset($_GET['action'])) {
             return $this->get_all_news();
         } else {
-            return $this->get_news($id_news);
+            if($_GET['action'] == "lire_news" && isset($_GET['id_news'])) {
+                return $this->get_news($_GET['id_news']);
+            } else {
+                return Message::msg("Erreur dans les arguments.", "news", $this->_smarty);
+            }
         }
     }
 
@@ -51,7 +55,6 @@ class News {
             }
         }
         $this->_smarty->assign("News", $data);
-        $this->_smarty->assign("NSimple", 0);
 
         return $this->_smarty->fetch(TEMPLATE."/html/news.html");
     }
@@ -64,15 +67,14 @@ class News {
             //on récupère la news avec l'image associée
             $res_news = $query->fetch();
             $photo = Photo::s_search_byId($this->_bdd, $res_news['IdPhoto']);
-            $news = array();
-            $news[0] = $res_news;
-            $news[0]['img'] = $photo['Fichier'];
+            $news = $res_news;
 
             //on récupère les commentaires associés
             $coms = $this->get_data_coms($id_news);
 
             $this->_smarty->assign("News", $news);
             $this->_smarty->assign("Coms", $coms);
+            $this->_smarty->assign("Photo", $photo['Fichier']);
 
             return $this->_smarty->fetch(TEMPLATE."/html/news_simple.html");
         } else {

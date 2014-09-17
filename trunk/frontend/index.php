@@ -7,11 +7,13 @@ require_once("../Smarty/libs/Smarty.class.php");
 
 require_once("php/Init.class.php");
 require_once("php/Log.class.php");
+require_once("php/Message.class.php");
 
 require_once("php/Home.class.php");
 require_once("php/News.class.php");
 require_once("php/Calendar.class.php");
 require_once("php/Photo.php");
+require_once("php/Profil.php");
 
 require_once("php/Aside.class.php");
 require_once("php/Header.class.php");

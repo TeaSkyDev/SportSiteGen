@@ -65,12 +65,12 @@ class Content {
        /* $home = new Home($this->_bdd, $this->_smarty);
         return $home->get_content();*/
         $news = new News($this->_bdd, $this->_smarty);
-        return $news->get_contenu();
+        return $news->get_content();
     }
 
     private function get_news() {
         $news = new News($this->_bdd, $this->_smarty);
-        return $news->get_contenu();
+        return $news->get_content();
     }
 
     private function get_calendar() {
