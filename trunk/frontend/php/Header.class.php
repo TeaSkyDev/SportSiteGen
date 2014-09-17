@@ -61,7 +61,7 @@ class Header {
         }
 
         //en fonction du template utilisé, on récupère la liste des fichiers css à utiliser
-        $path_template = "templates/".$this->_template."/css/";
+        $path_template = TEMPLATE."/css/";
 
         $dir_css = @opendir($path_template);
         if(!$dir_css) {
