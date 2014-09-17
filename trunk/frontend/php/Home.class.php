@@ -16,6 +16,11 @@ class Accueil {
         return $this->_smarty->fetch(TEMPLATE."/html/home.html");
     }
 
+    private function get_news() {
+
+
+    }
+
 }
 
 ?>
