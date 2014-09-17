@@ -6,10 +6,16 @@ require_once("../mysql_connect.php"); //la variable $bdd vient d'ici
 require_once("../Smarty/libs/Smarty.class.php");
 
 require_once("php/Init.class.php");
+require_once("php/Log.class.php");
+
+require_once("php/Home.class.php");
+require_once("php/News.class.php");
+require_once("php/Calendar.class.php");
+require_once("php/Photo.php");
+
+require_once("php/Aside.class.php");
 require_once("php/Header.class.php");
 require_once("php/Content.class.php");
-require_once("php/Aside.class.php");
-require_once("php/Log.class.php");
 
 $smarty  = new Smarty();
 $log     = new Log("log.txt");
@@ -32,7 +38,7 @@ $header = $head->get_content();
 
 //On récupère le Aside 
 $as = new Aside($bdd, $smarty);
-$as = $as->get_content();
+$aside = $as->get_content();
 
 
 //On récupère la page demandée
@@ -50,7 +56,7 @@ $content_page = $content->get_content();
 
 $smarty->assign("Header", $header);
 $smarty->assign("Aside", $aside);
-$smarty->assign("Content", $content_html);
+$smarty->assign("Content", $content_page);
 
 
 //On affiche tout
