@@ -27,7 +27,7 @@ class News {
         if(!isset($_GET['action'])) {
             return $this->get_all_news();
         } else {
-            if($_GET['action'] == "lire_news" && isset($_GET['id_news'])) {
+            if($_GET['action'] == "read_news" && isset($_GET['id_news'])) {
                 return $this->get_news($_GET['id_news']);
             } else {
                 return Message::msg("Erreur dans les arguments.", "news", $this->_smarty);
@@ -72,9 +72,16 @@ class News {
             //on récupère les commentaires associés
             $coms = $this->get_data_coms($id_news);
 
+            //on vérifie si l'utilisateur est connecté pour afficher ou non le formulaire d'ajout de commentaires
+            $user_connected = "false";
+            if(isset($_SESSION['user_connected']) && $_SESSION['user_connected']) {
+                $user_connected = "true";
+            }
+
             $this->_smarty->assign("News", $news);
             $this->_smarty->assign("Coms", $coms);
             $this->_smarty->assign("Photo", $photo['Fichier']);
+            $this->_smarty->assign("User_connected", $user_connected);
 
             return $this->_smarty->fetch(TEMPLATE."/html/news_simple.html");
         } else {
