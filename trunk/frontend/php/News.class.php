@@ -23,10 +23,14 @@ class News {
     /**
      * \brief retourne la page news (toutes les news)
      */
-    public function get_contenu() {
-        $this->get_all_news();
-        return $this->_smarty->fetch(TEMPLATE."/html/news.html");
+    public function get_content($id_news = null) {
+        if($id_news == null) {
+            return $this->get_all_news();
+        } else {
+            return $this->get_news($id_news);
+        }
     }
+
 
     /**
     \brief charge toute le news de la base
@@ -48,6 +52,56 @@ class News {
         }
         $this->_smarty->assign("News", $data);
         $this->_smarty->assign("NSimple", 0);
+
+        return $this->_smarty->fetch(TEMPLATE."/html/news.html");
+    }
+
+    private function get_news($id_news) {
+        $query = $this->_bdd->prepare("SELECT * FROM NEWS WHERE Id = :id");
+        $query->execute(array(":id" => $id_news));
+
+        if($query->rowCount() != 0) {
+            //on récupère la news avec l'image associée
+            $res_news = $query->fetch();
+            $photo = Photo::s_search_byId($this->_bdd, $res_news['IdPhoto']);
+            $news = array();
+            $news[0] = $res_news;
+            $news[0]['img'] = $photo['Fichier'];
+
+            //on récupère les commentaires associés
+            $coms = $this->get_data_coms($id_news);
+
+            $this->_smarty->assign("News", $news);
+            $this->_smarty->assign("Coms", $coms);
+
+            return $this->_smarty->fetch(TEMPLATE."/html/news_simple.html");
+        } else {
+            return Message::msg("News inconnue !", "home", $this->_smarty);
+        }
+    }
+
+    /**
+     * @brief Va chercher les commentaires associés à une news
+     * @param $id_news id de la news
+     * @return array|bool tableau de coms
+     */
+    private function get_data_coms($id_news) {
+        $query = $this->_bdd->prepare("select * from NEWS_COM where idNews = :id");
+        $query->bindParam(":id", $id_news);
+        $query->execute();
+        if ($query->rowCount() > 0 ) {
+            $data = array();
+            $i = 0;
+            $profil = new Profil($this->_bdd);
+            while ( $rep = $query->fetch() ) {
+                $data[$i] = $rep;
+                $data[$i]['utilisateur'] = $profil->search_byId($rep['idUtilisateur'])['Pseudo'];
+                $i++;
+            }
+            return $data;
+        } else {
+            return false;
+        }
     }
 
     public function get_data_news() {
