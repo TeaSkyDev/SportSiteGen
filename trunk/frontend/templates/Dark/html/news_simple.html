@@ -1,0 +1,26 @@
+<table align="center">
+    <tr>
+        <th>NEWS</th>
+    </tr>
+    <tr>
+        <td><u>{$News.titre}</u> - <i>{$News.date}</i></td>
+    </tr>
+    <tr>
+        <td>{$News.contenu}</td>
+    </tr>
+</table>
+
+<table align="center">
+    <tr>
+        <th>COMMENTAIRES</th>
+    </tr>
+    {foreach from=$Coms item=com}
+    <tr>
+        <td><u>{$com.utilisateur}</u></a> - <i>{$com.date}</td>
+    </tr>
+    <tr>
+        <td>{$com.contenu}</td>
+    </tr>
+    {/foreach}
+</table>
+
