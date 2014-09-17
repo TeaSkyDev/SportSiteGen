@@ -1,8 +1,8 @@
 <?php
 
-require_once("php/Home.class.php");
-require_once("php/News.class.php");
-require_once("php/Calendar.class.php");
+//require_once("php/Home.class.php");
+//require_once("php/News.class.php");
+//require_once("php/Calendar.class.php");
 /*require_once("Equipe.class.php");
 require_once("Joueur.class.php");
 require_once("Profil.class.php");
@@ -62,8 +62,15 @@ class Content {
     }
 
     private function get_home() {
-        $home = new Home($this->_bdd, $this->_smarty);
-        return $home->get_content();
+       /* $home = new Home($this->_bdd, $this->_smarty);
+        return $home->get_content();*/
+        $news = new News($this->_bdd, $this->_smarty);
+        return $news->get_contenu();
+    }
+
+    private function get_news() {
+        $news = new News($this->_bdd, $this->_smarty);
+        return $news->get_contenu();
     }
 
     private function get_calendar() {
