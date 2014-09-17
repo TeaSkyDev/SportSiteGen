@@ -5,15 +5,13 @@
    Classe Permettant d'obtnenir les Info sur le cote de la page
    =============================================================
    */
-
+require_once("php/Calendar.class.php");
 
 class Aside {
 
     private $_smarty;
     private $_bdd;
-    private $_data_news; /* contient les news de la base */
-    private $_data_calendar; /* contient les evenement de la base */
-    
+
     /**
      \brief construit l'objet
      \param bdd la base de donnees a laquelle sera rattache l'objet
@@ -38,13 +36,13 @@ class Aside {
      \returntableau des 10 dernieres news ( ! peut etre vide )
      */
     private function get_content_news() {
-        $news = new News($this->_bdd, $this->_template);
-        $this->_data_news = $news->get_data_news();
+        $news = new News($this->_bdd, TEMPLATE);
+        $data_news = $news->get_data_news();
 
         $i = 0;
         $data = array();
-        while(isset($this->_data_news[$i]) && $i < 10) {
-            $data[$i] = $this->_data_news[$i];
+        while(isset($data_news[$i]) && $i < 10) {
+            $data[$i] = $data_news[$i];
             $i++;
         }
 
@@ -58,13 +56,13 @@ class Aside {
      \returntableau des 10 derniers evenement ( ! peut etre vide )
      */
     private function get_content_calendar() {
-        $cal = new Calendar($this->_bdd, $this->_template);
-        $this->_data_calendrier = $cal->get_data_events();
+        $cal = new Calendar($this->_bdd, TEMPLATE);
+        $data_calendrier = $cal->get_data_events();
 
         $i = 0;
         $data = array();
-        while( isset($this->_data_calendrier[$i] ) && $i < 10 ) {
-            $data[$i] = $this->_data_calendrier[$i];
+        while( isset($data_calendrier[$i] ) && $i < 10 ) {
+            $data[$i] = $data_calendrier[$i];
             $i++;
         }
 
