@@ -8,7 +8,7 @@ class Message {
     public static function msg($message, $redirection, $smarty) {
         $smarty->assign("Message", $message);
         $smarty->assign("Redirection", $redirection);
-        return $smarty->fetch("html/message.html");
+        return $smarty->fetch(TEMPLATE."/html/message.html");
     }
 
     public static function bbcode($text) {
