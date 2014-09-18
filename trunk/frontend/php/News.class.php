@@ -34,6 +34,8 @@ class News {
                     }
                 }
                 return $this->get_news($_GET['id_news']);
+            } else if($_GET['action'] == "research_news" && isset($_POST['text'])) {
+                return $this->get_news_like($_POST['text']);
             } else {
                 return Message::msg("Erreur dans les arguments.", "news", $this->_smarty);
             }
@@ -156,7 +158,29 @@ class News {
         }
     }
 
+    /**
+    \brief charge toute le news qui commencent par $val
+    \param val représente les premiers caractères du titre de la news
+     */
+    private function get_news_like($val) {
+        $val = $val."%";
+        $query = $this->_bdd->prepare("select * from NEWS where titre like :val ORDER BY Id desc");
+        $query->execute(array(":val" => $val));
 
+        $news = array();
+        if($query->rowCount() != 0) {
+            $i = 0;
+            while($d = $query->fetch()) {
+                $photo = Photo::s_search_byId($this->_bdd, $d['IdPhoto']);
+                $news[$i] = $d;
+                $news[$i]['img'] = $photo['Fichier'];
+                $i++;
+            }
+        }
+
+        $this->_smarty->assign("News", $news);
+        return $this->_smarty->fetch(TEMPLATE."/html/news.html");
+    }
 }
 
 
