@@ -48,7 +48,7 @@ class Header {
         }
 
         //suivant l'état de connection de l'utilisateur, on créé le menu de connexion/deco
-        if(isset($_SESSION['connected']) && $_SESSION['connected'] == true) {
+        if(isset($_SESSION['user_connected']) && $_SESSION['user_connected'] == true) {
             $data_connect[0]['title'] = $_SESSION['user']['Pseudo'];
             $data_connect[0]['url']   = "index.php?page=profil";
             $data_connect[1]['title'] = "Deconnexion";
