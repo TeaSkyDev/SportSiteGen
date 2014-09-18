@@ -28,7 +28,16 @@
 <table align="center">
     <tr>
         <th><form action="index.php?page=news&action=read_news&id_news={$News.Id}&add_news_com=true" method="post" >
-            <textarea name="message" id="message" cols="30" rows="10" ></textarea><br/>
+            <textarea id="editor1" name="message" rows="10" cols="80"></textarea>
+            {literal}<script>CKEDITOR.replace( 'editor1', {
+            extraPlugins: 'bbcode',
+            toolbar: [
+                [ 'Undo', 'Redo' ],
+                [ 'Bold', 'Italic', 'Underline' ],
+                [ 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat' ],
+                [ 'Link', 'Unlink']
+            ]
+        } );</script>{/literal}
             <input type="hidden" name="id_news" value="{$News.Id}" />
             <input type="submit" value="Commenter"/>
         </form>

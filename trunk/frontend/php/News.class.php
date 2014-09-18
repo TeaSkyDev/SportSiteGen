@@ -28,6 +28,11 @@ class News {
             return $this->get_all_news();
         } else {
             if($_GET['action'] == "read_news" && isset($_GET['id_news'])) {
+                if(isset($_GET['add_news_com']) && $_GET['add_news_com'] = "true") {
+                    if(!$this->add_com_news()) {
+                        return Message::msg("Erreur lors de l'ajout du commentaire.", "news", $this->_smarty);
+                    }
+                }
                 return $this->get_news($_GET['id_news']);
             } else {
                 return Message::msg("Erreur dans les arguments.", "news", $this->_smarty);
@@ -50,6 +55,7 @@ class News {
             while($d = $query->fetch()) {
                 $photo = Photo::s_search_byId($this->_bdd, $d['IdPhoto']);
                 $data[$i] = $d;
+                $data[$i]['contenu'] = Message::bbcode($data[$i]['contenu']);
                 $data[$i]['img'] = $photo['Fichier'];
                 $i++;
             }
@@ -68,6 +74,7 @@ class News {
             $res_news = $query->fetch();
             $photo = Photo::s_search_byId($this->_bdd, $res_news['IdPhoto']);
             $news = $res_news;
+            $news['contenu'] = Message::bbcode($news['contenu']);
 
             //on récupère les commentaires associés
             $coms = $this->get_data_coms($id_news);
@@ -104,6 +111,7 @@ class News {
             $profil = new Profil($this->_bdd);
             while ( $rep = $query->fetch() ) {
                 $data[$i] = $rep;
+                $data[$i]['contenu'] = Message::bbcode($data[$i]['contenu']);
                 $data[$i]['utilisateur'] = $profil->search_byId($rep['idUtilisateur'])['Pseudo'];
                 $i++;
             }
@@ -129,6 +137,25 @@ class News {
         }
         return $data;
     }
+
+    private function add_com_news() {
+        if(isset($_POST['message']) && isset($_POST['id_news'])) {
+            $date = date("Y-m-d H:i:s");
+            $text = htmlentities($_POST['message']);
+
+            $user = $_SESSION['user']['Id'];
+            $query = $this->_bdd->prepare("insert into NEWS_COM values(null, :text, :date, :idnews, :iduser)");
+            $query->bindParam(":text", $text);
+            $query->bindParam(":date", $date);
+            $query->bindParam(":idnews", $_POST['id_news']);
+            $query->bindParam(":iduser", $user);
+            $query->execute();
+            return $query->rowCount() == 1;
+        } else {
+            return false;
+        }
+    }
+
 
 }
 
