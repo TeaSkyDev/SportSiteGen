@@ -12,6 +12,7 @@ require_once("php/Message.class.php");
 require_once("php/Home.class.php");
 require_once("php/News.class.php");
 require_once("php/Calendar.class.php");
+require_once("php/Connexion.class.php");
 require_once("php/Photo.php");
 require_once("php/Profil.php");
 
