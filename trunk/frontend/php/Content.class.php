@@ -54,6 +54,12 @@ class Content {
             case "calendar":
                 $content = $this->get_calendar();
                 break;
+            case "connexion":
+                $content = $this->get_connexion();
+                break;
+            case "deconnexion":
+                $content = $this->get_deconnexion();
+                break;
             default:
                 $content = $this->get_home();
         }
@@ -62,10 +68,8 @@ class Content {
     }
 
     private function get_home() {
-       /* $home = new Home($this->_bdd, $this->_smarty);
-        return $home->get_content();*/
-        $news = new News($this->_bdd, $this->_smarty);
-        return $news->get_content();
+        $home = new Home($this->_bdd, $this->_smarty);
+        return $home->get_content();
     }
 
     private function get_news() {
@@ -76,6 +80,17 @@ class Content {
     private function get_calendar() {
         $calendar = new Calendar($this->_bdd, $this->_smarty);
         return $calendar->get_content();
+    }
+
+    private function get_connexion() {
+        $connexion = new Connexion($this->_bdd, $this->_smarty);
+        return $connexion->get_contenu();
+    }
+
+    private function get_deconnexion() {
+        $_SESSION['user_connected'] = false;
+        unset($_SESSION['user']);
+        header("Location: index.php");
     }
 }
 
