@@ -1,12 +1,23 @@
 <table align="center">
     <tr>
-        <th>NEWS</th>
+        <th colspan="2">NEWS</th>
     </tr>
     <tr>
-        <td><u>{$News.titre}</u> - <i>{$News.date}</i></td>
-    </tr>
-    <tr>
-        <td>{$News.contenu}</td>
+        <td>
+            <table>
+                <tr><td><img src="{$Photo}"/></td></tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><a href="index.php?page=news&action=read_news&id_news={$News.Id}"><u>{$News.titre}</u></a> - <i>{$News.date}</i></td>
+                </tr>
+                <tr>
+                    <td>{$News.contenu}</td>
+                </tr>
+            </table>
+        </td>
     </tr>
 </table>
 

@@ -1,9 +1,9 @@
 <table align="center">
     <tr>
-        <th>NEWS</th>
+        <th colspan="2">NEWS</th>
     </tr>
     <tr>
-        <th>
+        <th colspan="2">
             <form method="post" action="index.php?page=news&action=research_news">
                 <input type="text" autocomplete="off" name="text" id="champ_recherche" />
                 <input type="text" style="display:none"/>
@@ -14,12 +14,24 @@
             <script type="text/javascript" src="js/news_research.js"></script>
         </th>
     </tr>
+
     {foreach from=$News item=news}
     <tr>
-        <td><a href="index.php?page=news&action=read_news&id_news={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></td>
-    </tr>
-    <tr>
-        <td>{$news.contenu}</td>
+        <td>
+            <table>
+                <tr><td><img src="{$news.img}"/></td></tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><a href="index.php?page=news&action=read_news&id_news={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></td>
+                </tr>
+                <tr>
+                    <td>{$news.contenu}</td>
+                </tr>
+            </table>
+        </td>
     </tr>
     {/foreach}
 </table>
