@@ -1,0 +1,46 @@
+<table align="center">
+    <tr>
+        <th>CALENDRIER</th>
+    </tr>
+    <tr>
+        <td><a href="index.php?page=calendar&action=read_event&id_event={$Event.Id}">{$Event.titre} - {$Event.location}</a> - <i>{$Event.date}</i></td>
+    </tr>
+    <tr>
+        <td>{$Event.contenu}</td>
+    </tr>
+</table>
+
+<table align="center" class="partie">
+    {foreach from=$Coms item=com}
+    <tr>
+        <td><u>{$com.utilisateur}</u> - <i>{$com.date}</td>
+    </tr>
+    <tr>
+        <td>{$com.contenu}</td>
+    </tr>
+    {/foreach}
+</table>
+
+{if $User_connected == "true"}
+<table align="center">
+    <tr>
+        <th><form action="index.php?page=calendar&action=read_event&id_event={$Event.Id}&add_event_com=true" method="post" >
+            <textarea id="editor1" name="message" rows="10" cols="80"></textarea>
+            {literal}<script>CKEDITOR.replace( 'editor1', {
+            extraPlugins: 'bbcode',
+            toolbar: [
+                [ 'Undo', 'Redo' ],
+                [ 'Bold', 'Italic', 'Underline' ],
+                [ 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat' ],
+                [ 'Link', 'Unlink']
+            ]
+        } );</script>{/literal}
+            <input type="hidden" name="id_event" value="{$Event.Id}" />
+            <input type="submit" value="Commenter"/>
+        </form>
+        </th>
+    </tr>
+</table>
+{else}
+<span> Vous devez être connecté pour poster un commentaire. <a href="index.php?page=connexion" class="connect">Se connecter</a></span><br>
+{/if}

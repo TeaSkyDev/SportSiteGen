@@ -23,8 +23,22 @@ class Calendar {
     }
 
     public function get_content() {
-        $this->get_all_event();
-        return $this->_smarty->fetch(TEMPLATE."/html/calendar.html");
+        if(isset($_GET['action'])) {
+            if($_GET['action'] == "read_event" && isset($_GET['id_event'])) {
+                if(isset($_GET['add_event_com']) && $_GET['add_event_com'] == "true") {
+                    if(!$this->add_com_event()) {
+                        return Message::msg("Erreur lors de l'ajout du commentaire !", "calendar", $this->_smarty);
+                    }
+                }
+                $this->get_event($_GET['id_event']);
+                return $this->_smarty->fetch(TEMPLATE."/html/calendar_simple_event.html");
+            } else {
+                return Message::msg("Erreur dans les arguments.", "calendar", $this->_smarty);
+            }
+        } else {
+            $this->get_all_events();
+            return $this->_smarty->fetch(TEMPLATE."/html/calendar.html");
+        }
     }
 
     /**
@@ -32,7 +46,7 @@ class Calendar {
       \param void
       \return void
      */
-    private function get_all_event() {
+    private function get_all_events() {
         $query = $this->_bdd->prepare("select * from EVENEMENT order by id DESC");
         $query->execute();
 
@@ -41,12 +55,43 @@ class Calendar {
             $i = 0;
             while ( $data = $query->fetch() ) {
                 $events[$i] = $data;
+                $events[$i]['contenu'] = Message::bbcode($data['contenu']);
                 $i++;
             }
         }
 
         $this->_smarty->assign("Events", $events);
     }
+
+    /**
+    \brief charge un evenement en fonction de son Id
+    \param id l'identifiant de l'evenement
+    \return void
+     */
+    public function get_event($id) {
+        $query = $this->_bdd->prepare("select * from EVENEMENT where Id = :id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+
+        $data = array();
+        if ( $query->rowCount() > 0 ) {
+            $data = $query->fetch();
+            $data['contenu'] = Message::bbcode($data['contenu']);
+        }
+
+        $coms = $this->get_data_coms($id); //on va chercher les coms de l'event chargé
+
+        //on détermine si l'utilisateur peut poster des commentaires (connecté ou non ?)
+        $user_connected = "false";
+        if(isset($_SESSION['user_connected']) && $_SESSION['user_connected']) {
+            $user_connected = "true";
+        }
+
+        $this->_smarty->assign("Event", $data);
+        $this->_smarty->assign("Coms", $coms);
+        $this->_smarty->assign("User_connected", $user_connected);
+    }
+
 
     /**
      * @return array liste des events
@@ -60,13 +105,57 @@ class Calendar {
             $i = 0;
             while ( $data = $query->fetch() ) {
                 $events[$i] = $data;
+                $events[$i]['contenu'] = Message::bbcode($data['contenu']);
                 $i++;
             }
         }
 
         return $events;
     }
-    
+
+    /**
+    \brief cherche les commentaire associe a un evenement en fonction de son id
+    \param id l'identifiant de l'evenement
+    \return un tableau de commentaire ou null si il n'y en as pas
+     */
+    public function get_data_coms($id) {
+        $query = $this->_bdd->prepare("select * from EVENEMENT_COM where idEvenement = :id");
+        $query->bindParam(":id", $id);
+        $query->execute();
+
+        if ($query->rowCount() > 0 ) {
+            $data = array();
+            $i = 0;
+            $profil = new Profil($this->_bdd);
+            while ( $rep = $query->fetch() ) {
+                $data[$i] = $rep;
+                $data[$i]['contenu'] = Message::bbcode($rep['contenu']);
+                $data[$i]['utilisateur'] = $profil->search_byId($rep['idUtilisateur'])['Pseudo'];
+                $i++;
+            }
+            return $data;
+        } else {
+            return null;
+        }
+    }
+
+    private function add_com_event() {
+        if(isset($_POST['id_event']) && isset($_POST['message'])) {
+            $date = date("Y-m-d H:i:s");
+            $contenu = htmlentities($_POST['message']);
+            $id_event = $_POST['id_event'];
+            $user = $_SESSION['user']['Id'];
+            $query = $this->_bdd->prepare("insert into EVENEMENT_COM values(null, :text, :date, :idevent, :iduser)");
+            $query->bindParam(":text", $contenu);
+            $query->bindParam(":date", $date);
+            $query->bindParam(":idevent", $id_event);
+            $query->bindParam(":iduser", $user);
+            $query->execute();
+            return $query->rowCount() == 1;
+        } else {
+            return false;
+        }
+    }
 }
 
 
