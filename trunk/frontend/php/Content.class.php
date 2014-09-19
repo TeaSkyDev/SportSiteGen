@@ -1,18 +1,5 @@
 <?php
 
-//require_once("php/Home.class.php");
-//require_once("php/News.class.php");
-//require_once("php/Calendar.class.php");
-/*require_once("Equipe.class.php");
-require_once("Joueur.class.php");
-require_once("Profil.class.php");
-require_once("Connexion.class.php");
-require_once("Inscription.class.php");
-require_once("Match.class.php");
-require_once("Tournoi.class.php");
-require_once("Photo.class.php");*/
-
-
 /*
   ==============================================
   Classe qui gere le parsing de toute les pages
@@ -67,26 +54,46 @@ class Content {
         return $content;
     }
 
+    /**
+     * @brief Va chercher le contenu à afficher à l'accueil
+     * @return string : code à afficher
+     */
     private function get_home() {
         $home = new Home($this->_bdd, $this->_smarty);
         return $home->get_content();
     }
 
+    /**
+     * @brief Va chercher le contenu à afficher page news
+     * @return string : code à afficher
+     */
     private function get_news() {
         $news = new News($this->_bdd, $this->_smarty);
         return $news->get_content();
     }
 
+    /**
+     * @brief Va chercher le contenu à afficher page calendrier
+     * @return string : code à afficher
+     */
     private function get_calendar() {
         $calendar = new Calendar($this->_bdd, $this->_smarty);
         return $calendar->get_content();
     }
 
+    /**
+     * @brief Va chercher le contenu à afficher page connexion
+     * @return string : code à afficher
+     */
     private function get_connexion() {
         $connexion = new Connexion($this->_bdd, $this->_smarty);
         return $connexion->get_contenu();
     }
 
+    /**
+     * @brief Supprime la session en cours et redirige vers l'accueil
+     * @return string : code à afficher
+     */
     private function get_deconnexion() {
         $_SESSION['user_connected'] = false;
         unset($_SESSION['user']);

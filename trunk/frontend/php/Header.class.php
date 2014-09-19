@@ -2,7 +2,7 @@
 
   /*
    ========================================
-   Classe qui gere les differents menus
+   Classe qui va chercher les éléments à afficher dans le menu, ainsi que les noms des fichiers css à afficher
    ========================================
    */
 
@@ -24,8 +24,7 @@ class Header {
     }
     
     /**
-     \brief renvoi les elements du menu
-     \param void 
+     \brief renvoie le code correspondant à l'en-tête du site (titre, menu généré, liste des fichiers css à inclure..)
      \return tableau d'element de menu
      */
     public function get_content() {
@@ -68,6 +67,7 @@ class Header {
             $this->_log->add_err_log("Erreur lors de l'ouverture du dossier css.");
             $this->_log->write_log();
         } else {
+            //on liste les fichiers css à inclure (présent dans le dossier du template
             while($css_file = readdir($dir_css)) {
                 if($css_file != "." && $css_file != "..") {
                     $list_css_files[] = $path_template.$css_file;
@@ -80,6 +80,7 @@ class Header {
         $this->_smarty->assign("Menu_connect", $data_connect);
         $this->_smarty->assign("CssFiles", $list_css_files);
 
+        //smarty parse le code et renvoie le résultat
         return $this->_smarty->fetch(TEMPLATE."/html/header.html");
     }
 

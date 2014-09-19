@@ -16,6 +16,10 @@ class Connexion {
         $this->_smarty    = $smarty;
     }
 
+    /**
+     * @brief Renvoie les éléments à afficher en fonction du status de la connexion (formulaire, message de réussite ou d'échec..)
+     * @return mixed
+     */
     public function get_contenu() {
         //objet permettant la connexion
         $l = new Login("", "utilisateur", $this->_bdd, true);

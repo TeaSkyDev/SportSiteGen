@@ -2,7 +2,7 @@
 
   /*
    ============================================================
-   Class qui cherche les evenement dans la base de donnees
+   Classe qui cherche les evenement dans la base de donnees
    =============================================================
   */
 
@@ -22,7 +22,12 @@ class Calendar {
         $this->_smarty = $smarty;
     }
 
+    /**
+     * @brief permet d'obtenir le code affichant les events, un event en particulier, ..
+     * @return mixed
+     */
     public function get_content() {
+        //on vérifie d'abord si une action est demandée (lire une news, ajouter un commentaire...)
         if(isset($_GET['action'])) {
             if($_GET['action'] == "read_event" && isset($_GET['id_event'])) {
                 if(isset($_GET['add_event_com']) && $_GET['add_event_com'] == "true") {
@@ -94,6 +99,7 @@ class Calendar {
 
 
     /**
+     * @brief va chercher les events dans la base, et renvoie un tableau php avec le résultat
      * @return array liste des events
      */
     public function get_data_events() {
@@ -139,6 +145,10 @@ class Calendar {
         }
     }
 
+    /**
+     * @brief ajout un commentaire à un évènement
+     * @return bool true si réussite sinon false
+     */
     private function add_com_event() {
         if(isset($_POST['id_event']) && isset($_POST['message'])) {
             $date = date("Y-m-d H:i:s");

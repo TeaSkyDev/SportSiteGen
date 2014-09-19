@@ -2,7 +2,7 @@
 
 
   /*============================================================
-   Classe Permettant d'obtnenir les Info sur le cote de la page
+   Classe Permettant d'obtnenir les dernières news et evenements
    =============================================================
    */
 require_once("php/Calendar.class.php");
@@ -24,6 +24,10 @@ class Aside {
     }
 
 
+    /**
+     * @brief permet d'obtenir le code de l'aside à afficher
+     * @return mixed
+     */
     public function get_content() {
         $this->get_content_news();
         $this->get_content_calendar();
@@ -41,6 +45,7 @@ class Aside {
 
         $i = 0;
         $data = array();
+        //on ne prend que les 10 premières news si possible
         while(isset($data_news[$i]) && $i < 10) {
             $data[$i] = $data_news[$i];
             $i++;
@@ -61,6 +66,7 @@ class Aside {
 
         $i = 0;
         $data = array();
+        //on ne prend que les 10 premières news si possible
         while( isset($data_calendrier[$i] ) && $i < 10 ) {
             $data[$i] = $data_calendrier[$i];
             $i++;

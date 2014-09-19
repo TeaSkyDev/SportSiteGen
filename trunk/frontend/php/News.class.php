@@ -24,6 +24,7 @@ class News {
      * \brief retourne la page news (toutes les news)
      */
     public function get_content() {
+        //on vérifie si on demande une action particulière (lire une news, ajouter un commentaire...)
         if(!isset($_GET['action'])) {
             return $this->get_all_news();
         } else {
@@ -44,7 +45,7 @@ class News {
 
 
     /**
-    \brief charge toute le news de la base
+    \brief charge toute les news de la base et renvoie le code à afficher page news
     \param void
      */
     private function get_all_news() {
@@ -67,6 +68,12 @@ class News {
         return $this->_smarty->fetch(TEMPLATE."/html/news.html");
     }
 
+
+    /**
+     * @brief récupère une news et renvoie le code à afficher
+     * @param $id_news id de la news à afficher
+     * @return mixed code à afficher
+     */
     private function get_news($id_news) {
         $query = $this->_bdd->prepare("SELECT * FROM NEWS WHERE Id = :id");
         $query->execute(array(":id" => $id_news));
@@ -123,6 +130,10 @@ class News {
         }
     }
 
+    /**
+     * @brief va chercher toutes les news et renvoie un tableau php avec le resultat
+     * @return array
+     */
     public function get_data_news() {
         $query = $this->_bdd->prepare("select * from NEWS ORDER BY Id desc");
         $query->execute();
@@ -140,6 +151,10 @@ class News {
         return $data;
     }
 
+    /**
+     * @brief ajouter le commentaire envoyé en post dans la bdd
+     * @return bool
+     */
     private function add_com_news() {
         if(isset($_POST['message']) && isset($_POST['id_news'])) {
             $date = date("Y-m-d H:i:s");

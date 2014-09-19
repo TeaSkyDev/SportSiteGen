@@ -48,7 +48,7 @@ $aside = $as->get_content();
 if(isset($_GET['page']) || isset($_POST['page'])) {
     $page = $_REQUEST['page'];
 } else {
-    $page = "home";
+    $page = "home"; //page par défaut
 }
 
 
