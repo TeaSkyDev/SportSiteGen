@@ -216,7 +216,7 @@ function installation() {
     $bdd->beginTransaction();
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'Vert')");
+    $sql_1 = $bdd->query("insert into SITE values ('".$_SESSION['step_3']['nom']."', '".get_url_frontend()."', 'Dark')");
     $sql_2 = $bdd->query("insert into UTILISATEUR values (1,'".$_SESSION['step_2']['login']."', '".$_SESSION['step_2']['mail']."', '".md5($_SESSION['step_2']['pass'])."',1,1)");
 
     $bdd->commit();
