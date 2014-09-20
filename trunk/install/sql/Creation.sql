@@ -1,182 +1,188 @@
-create table PHOTO(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(20),
-       Fichier varchar(255) unique,
-       Commentaires varchar(50)
+CREATE TABLE PHOTO(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Nom VARCHAR(20),
+       Fichier VARCHAR(255) UNIQUE,
+       Commentaires VARCHAR(50)
 );
 
 
-create table TYPE_USER(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(255) unique,
-       Description varchar(255)
+CREATE TABLE TYPE_USER(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Nom VARCHAR(255) UNIQUE,
+       Description VARCHAR(255)
 );
 
 
-create table UTILISATEUR(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Pseudo varchar(10) unique not null,
-       Mail varchar(50) not null,
-       Mdp varchar(522) not null,
-       IdPhoto integer(10) references PHOTO(Id) ON DELETE CASCADE,
-       IdTypeUser integer(10) not null references TYPE_USER(Id) ON DELETE CASCADE
+CREATE TABLE UTILISATEUR(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Pseudo VARCHAR(10) UNIQUE NOT NULL,
+       Mail VARCHAR(50) NOT NULL,
+       Mdp VARCHAR(522) NOT NULL,
+       IdPhoto INTEGER(10) REFERENCES PHOTO(Id) ON DELETE CASCADE,
+       IdTypeUser INTEGER(10) NOT NULL REFERENCES TYPE_USER(Id) ON DELETE CASCADE
 );
 
 
-create table CATEGORIE(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(10) unique,
-       Description varchar(50)
+CREATE TABLE CATEGORIE(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Nom VARCHAR(10) UNIQUE,
+       Description VARCHAR(50)
 );
 
 
-create table TEAM(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(20) not null unique,
-       idPhoto integer(10) references PHOTO(Id),
-       IdCategorie integer(10) references CATEGORIE(Id) ON DELETE CASCADE,
-       Description varchar(50)     
+CREATE TABLE TEAM(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Nom VARCHAR(20) NOT NULL UNIQUE,
+       idPhoto INTEGER(10) REFERENCES PHOTO(Id),
+       IdCategorie INTEGER(10) REFERENCES CATEGORIE(Id) ON DELETE CASCADE,
+       Description VARCHAR(50)     
 );
 
 
-create table MATCHS(
-       Id integer(10) primary key AUTO_INCREMENT,
-       joue integer(1), 
-       IdTeam1 integer(10) references TEAM(Id) ON DELETE CASCADE,
-       IdTeam2 integer(10) references TEAM(Id) ON DELETE CASCADE,
-       nbPoint1 integer(5),
-       nbPoint2 integer(5),
-       DateMATCHS datetime not null,
-       Lieu varchar(15),
-       Commentaires varchar(100),
-       IdSaison integer(10) references SAISONS(Id)
+CREATE TABLE MATCHS(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       joue INTEGER(1), 
+       IdTeam1 INTEGER(10) REFERENCES TEAM(Id) ON DELETE CASCADE,
+       IdTeam2 INTEGER(10) REFERENCES TEAM(Id) ON DELETE CASCADE,
+       nbPoint1 INTEGER(5),
+       nbPoint2 INTEGER(5),
+       DateMATCHS datetime NOT NULL,
+       Lieu VARCHAR(15),
+       Commentaires VARCHAR(100),
+       IdSaison INTEGER(10) REFERENCES SAISONS(Id)
 );
 
-create table PHOTO_MATCHS(
-       IdMATCHS integer(10),
-       IdPhoto integer(10),
-       primary key(IdMATCHS,IdPhoto)
+CREATE TABLE PHOTO_MATCHS(
+       IdMATCHS INTEGER(10),
+       IdPhoto INTEGER(10),
+       PRIMARY KEY(IdMATCHS,IdPhoto)
 );
 
-create table PHOTO_TOURNOIS(
-        IdTOURNOIS integer(10),
-        idPhoto integer(10),
-        primary key(idTOURNOIS,idPhoto)
+CREATE TABLE PHOTO_TOURNOIS(
+        IdTOURNOIS INTEGER(10),
+        idPhoto INTEGER(10),
+        PRIMARY KEY(idTOURNOIS,idPhoto)
 );
 
-create table POSTE(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(10),
-       Description varchar(50)
-);
-
-
-create table JOUEUR(
-       Id integer(10) primary key AUTO_INCREMENT,
-       IdTeam integer(10) references TEAM(Id) ON DELETE CASCADE,
-       Nom varchar(15) not null,
-       idPhoto integer(10) references PHOTO(Id),
-       Prenom varchar(15),
-       IdPoste integer(10) references POSTE(Id) ON DELETE CASCADE,
-       Description varchar(255)
+CREATE TABLE POSTE(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Nom VARCHAR(10),
+       Description VARCHAR(50)
 );
 
 
+CREATE TABLE JOUEUR(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       IdTeam INTEGER(10) REFERENCES TEAM(Id) ON DELETE CASCADE,
+       Nom VARCHAR(15) NOT NULL,
+       idPhoto INTEGER(10) REFERENCES PHOTO(Id),
+       Prenom VARCHAR(15),
+       IdPoste INTEGER(10) REFERENCES POSTE(Id) ON DELETE CASCADE,
+       Description VARCHAR(255)
+);
 
-create table TOURNOI(
-       Id integer(10) primary key AUTO_INCREMENT,
-       Nom varchar(60) not null,
-       Description varchar(255),
-       DateDebut Date not null,
-       DateFin Date not null,
-       nbEquipe integer(5) not null
+
+
+CREATE TABLE TOURNOI(
+       Id INTEGER(10) PRIMARY KEY AUTO_INCREMENT,
+       Nom VARCHAR(60) NOT NULL,
+       Description VARCHAR(255),
+       DateDebut Date NOT NULL,
+       DateFin Date NOT NULL,
+       nbEquipe INTEGER(5) NOT NULL
        
 );
 
-create table APPARTENIR_TOURNOI(
-       IdTournoi integer(10) references TOURNOI(Id) ON DELETE CASCADE,
-       IdMATCHS integer(10) references MATCHS(Id) ON DELETE CASCADE,
-       NumTour integer(5),
-       primary key(IdTournoi,IdMATCHS)
+CREATE TABLE APPARTENIR_TOURNOI(
+       IdTournoi INTEGER(10) REFERENCES TOURNOI(Id) ON DELETE CASCADE,
+       IdMATCHS INTEGER(10) REFERENCES MATCHS(Id) ON DELETE CASCADE,
+       NumTour INTEGER(5),
+       PRIMARY KEY(IdTournoi,IdMATCHS)
 );
 
 
-create table SITE(
-       Nom varchar(25) primary key,
-       URL varchar(255),
-       current_template varchar(255)
+CREATE TABLE SITE(
+       Nom VARCHAR(25) PRIMARY KEY,
+       URL VARCHAR(255),
+       current_template VARCHAR(255)
 );
 
-create table NEWS(
+CREATE TABLE NEWS(
        Id int(5) AUTO_INCREMENT,
-       titre varchar(100),
+       titre VARCHAR(100),
        date datetime,
-       contenu varchar(1000),
-       IdPhoto integer(10) references PHOTO(Id),
-       auteur varchar(100),
-       primary key(id)
+       contenu VARCHAR(1000),
+       IdPhoto INTEGER(10) REFERENCES PHOTO(Id),
+       auteur VARCHAR(100),
+       PRIMARY KEY(id)
 );
 
-create table NEWS_COM(
+CREATE TABLE NEWS_COM(
        Id int(7) AUTO_INCREMENT,
-       contenu varchar(1000),
+       contenu VARCHAR(1000),
        date datetime,
-       idNews int(5) references NEWS(id) ON DELETE CASCADE,
-       idUtilisateur int(10) references UTILISATEUR(Id) ON DELETE CASCADE,
-       primary key(id)
+       idNews int(5) REFERENCES NEWS(id) ON DELETE CASCADE,
+       idUtilisateur int(10) REFERENCES UTILISATEUR(Id) ON DELETE CASCADE,
+       PRIMARY KEY(id)
 );
 
 
-create table EVENEMENT(
+CREATE TABLE EVENEMENT(
        Id int(5) AUTO_INCREMENT,
-       titre varchar(100),
+       titre VARCHAR(100),
        date datetime,
-       contenu varchar(1000),
-       location varchar(100),
-       primary key(id)
+       contenu VARCHAR(1000),
+       location VARCHAR(100),
+       PRIMARY KEY(id)
 );
 
-create table EVENEMENT_COM(
+CREATE TABLE EVENEMENT_COM(
        Id int(7) AUTO_INCREMENT,
-       contenu varchar(1000),
+       contenu VARCHAR(1000),
        date datetime,
-       idEvenement int(5) references EVENEMENT(Id) ON DELETE CASCADE,
-       idUtilisateur int(10) references UTILISATEUR(Id) ON DELETE CASCADE,
-       primary key(id)
+       idEvenement int(5) REFERENCES EVENEMENT(Id) ON DELETE CASCADE,
+       idUtilisateur int(10) REFERENCES UTILISATEUR(Id) ON DELETE CASCADE,
+       PRIMARY KEY(id)
 );
 
-create table MENU_ELEM (
-       Id integer(1) AUTO_INCREMENT,
-       Nom varchar(255), 
-       url varchar(255),
-       primary key(Id)
+CREATE TABLE MENU_ELEM (
+       Id INTEGER(1) AUTO_INCREMENT,
+       Nom VARCHAR(255) REFERENCES fonctionnalites(Nom) ON DELETE CASCADE,
+       PRIMARY KEY(Id)
 );
 
-create table FICHE ( 
-       Id integer(10) AUTO_INCREMENT, 
-       IdMatch integer(10) references MATCHS(Id) ON DELETE CASCADE,
-       NbCarton1 integer(1),
-       NbCarton2 integer(1),
-       Point1 integer(5),
-       Point2 integer(5),
-       primary key (Id, IdMatch)
+CREATE TABLE fonctionnalites (
+       Nom VARCHAR(255),
+       Url VARCHAR(255),
+       PRIMARY KEY(Nom)
 );
 
-create table SAISONS (
-       Id integer(10) AUTO_INCREMENT,
-       Saison integer(4) unique not null,
-       primary key(Id, Saison)
+CREATE TABLE FICHE ( 
+       Id INTEGER(10) AUTO_INCREMENT, 
+       IdMatch INTEGER(10) REFERENCES MATCHS(Id) ON DELETE CASCADE,
+       NbCarton1 INTEGER(1),
+       NbCarton2 INTEGER(1),
+       Point1 INTEGER(5),
+       Point2 INTEGER(5),
+       PRIMARY KEY (Id, IdMatch)
 );
 
-create table CHAMPIONNAT (
-       Id integer(10) AUTO_INCREMENT,
-       Nom varchar(255) unique not null,
-       primary key (Id)
+CREATE TABLE SAISONS (
+       Id INTEGER(10) AUTO_INCREMENT,
+       Saison INTEGER(4) UNIQUE NOT NULL,
+       PRIMARY KEY(Id, Saison)
 );
 
-create table APPARTENIR_CHAMPIONNAT (
-      Id integer(10) AUTO_INCREMENT,
-      IdMatch integer(10) references MATCHS(Id),
-      IdChampionnat integer(10) references CHAMPIONNAT(Id),
-      primary key (Id)
+CREATE TABLE CHAMPIONNAT (
+       Id INTEGER(10) AUTO_INCREMENT,
+       Nom VARCHAR(255) UNIQUE NOT NULL,
+       Description VARCHAR(255),
+       PRIMARY KEY (Id)
+);
+
+CREATE TABLE APPARTENIR_CHAMPIONNAT (
+      Id INTEGER(10) AUTO_INCREMENT,
+      IdMatch INTEGER(10) REFERENCES MATCHS(Id),
+      IdChampionnat INTEGER(10) REFERENCES CHAMPIONNAT(Id),
+      PRIMARY KEY (Id)
 );

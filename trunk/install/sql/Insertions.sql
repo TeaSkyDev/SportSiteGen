@@ -1,9 +1,16 @@
-insert into MENU_ELEM values(null, 'Accueil', 'index.php?page=accueil');
-insert into MENU_ELEM values(null, 'News', 'index.php?page=news');
-insert into MENU_ELEM values(null, 'Calendrier', 'index.php?page=calendrier');
-insert into MENU_ELEM values(null, 'Matchs', 'index.php?page=match');
-insert into MENU_ELEM values(null, 'Equipes', 'index.php?page=equipes');
-insert into MENU_ELEM values(null, 'Tournois', 'index.php?page=tournois');
+INSERT INTO fonctionnalites VALUES('Accueil', 'index.php?page=home');
+INSERT INTO fonctionnalites VALUES('News', 'index.php?page=news');
+INSERT INTO fonctionnalites VALUES('Calendrier', 'index.php?page=calendar');
+INSERT INTO fonctionnalites VALUES('Matchs', 'index.php?page=matchs');
+INSERT INTO fonctionnalites VALUES('Equipes', 'index.php?page=equipes');
+INSERT INTO fonctionnalites VALUES('Tournois', 'index.php?page=tournois');
+
+insert into MENU_ELEM values(null, 'Accueil');
+insert into MENU_ELEM values(null, 'News');
+insert into MENU_ELEM values(null, 'Calendrier');
+insert into MENU_ELEM values(null, 'Matchs');
+insert into MENU_ELEM values(null, 'Equipes');
+insert into MENU_ELEM values(null, 'Tournois');
 
 insert into TYPE_USER values(null,'Administrateur','Grand maitre du site');
 insert into TYPE_USER values(null, 'Utilisateur', 'Utilisateur classique');
@@ -50,6 +57,6 @@ insert into TOURNOI values(1,'Tournoi des 6 terrains','','2014-01-02 00:00:00','
 insert into APPARTENIR_TOURNOI values(1, 1, 1);
 insert into APPARTENIR_TOURNOI values(1, 2, 1);
 
-insert into CHAMPIONNAT values(1, "CLRH");
+insert into CHAMPIONNAT values(1, "CLRH", "Super championnat");
 
 insert into APPARTENIR_CHAMPIONNAT values(1, 3, 1);

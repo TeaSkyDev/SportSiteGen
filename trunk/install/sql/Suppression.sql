@@ -3,6 +3,7 @@ drop table APPARTENIR_TOURNOI;
 drop table TOURNOI;
 drop table JOUEUR;
 drop table MENU_ELEM;
+drop table fonctionnalites;
 drop table POSTE;
 drop table PHOTO_MATCHS;
 drop table PHOTO_TOURNOIS;
