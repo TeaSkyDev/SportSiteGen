@@ -49,6 +49,11 @@ dans son architecture.
  - Ajout d'une fonctionnalité championnat
  - Ajout de statistiques (club + joueurs)
  - Importation liste de joueurs
- - + de libertés de personnalisation (menu, bannière, affichage d'un diapo...)
+ - + de libertés de personnalisation (menu, bannière, affichage d'un diapo, modif du code css...)
  - Gérer plusieurs langues
  - Système de recherche plus évolué
+ - Page création de feuille de match en temps réel (avec chrono, ajout des points et autre au file du match)
+ - Gérer plusieurs SGDB
+ - Flux RSS (news par exemple..)
+ - Chaque fonctionnalité sera un élément qui pourra être ajouté, modifié, supprimé du cms
+ - Gestion de plugins pour ajouter de nouvelles fonctionnalités facilement
