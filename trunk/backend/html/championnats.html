@@ -1,0 +1,281 @@
+<?php
+   if ( isset($_GET['num'])) {
+   $page = $_GET['num'];
+   } else {
+   $page = 1;
+   }
+?>
+
+<!doctype html>
+<html>
+<head>
+    <title>Championnats</title>
+    <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
+    <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
+    <script language="JavaScript">
+        function confirm_suppression(id) {
+            if(confirm("Voulez-vous vraiment supprimer ce tournois ?")) {
+                window.location = "index.php?page=suppr_tournois&action=supprimer&id_tournois="+id;
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="contenu">
+    <?php
+                @include ("header.html");
+            ?>
+    <br>
+    <div class="entete">
+        <img src="Images/championnat.jpg">
+        <h1>Gestion des championnats : liste des championnats</h1>
+    </div>
+    <br>
+    <div class="interieur">
+        <div class="tableau">
+            <table>
+                <tr>
+                    <td>Nom du championnat</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
+
+                <?php
+                             $sql = "SELECT * FROM CHAMPIONNATS ";
+			    $query = $bdd->prepare($sql);
+                $query->execute();
+                $i = 0;
+                for ( $i = 0 ; $i < ($page * 10) - 10 ; $i++) { if ($query->rowCount() > $i )   { $query->fetch(); } }
+                while(($data = $query->fetch()) && $i < $page * 10 ) {
+                $i++;
+                ?>
+
+                <tr>
+                    <td>
+                        <?php
+                                    if($data['joue']==1){
+                                        echo "<img src='Images/valider.jpg'>";
+                        }
+                        else {
+                        echo  " ";
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                                    $sql="SELECT * FROM TEAM WHERE Id='".$data['IdTeam1']."'";
+                                    foreach ($bdd->query($sql) as $equipe) {
+                        echo $equipe['Nom'];
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                                    $sql="SELECT * FROM TEAM WHERE Id='".$data['IdTeam2']."'";
+                                    foreach ($bdd->query($sql) as $equipe) {
+                        echo $equipe['Nom'];
+                        }
+                        ?>
+                    </td>
+                    <td>
+                        <?php
+                                    echo $data['nbPoint1'];
+                                ?>
+                    </td>
+                    <td>
+                        <?php
+                                    echo $data['nbPoint2'];
+                                ?>
+                    </td>
+                    <td>
+                        <?php
+                                    echo $data['DateMATCHS'];
+                                ?>
+                    </td>
+                    <td>
+                        <?php
+                                    echo $data['Lieu'];
+                                ?>
+                    </td>
+                    <td>
+                        <?php
+                                    echo $data['Commentaires'];
+                                ?>
+                    </td>
+                    <td>
+                        <?php echo $data['Saison']; ?>
+                    </td>
+                    <td>
+                        <button onclick="self.location.href='index.php?page=edit_match&id_match=<?php echo $data['Id']; ?>'" title="Editer">
+                            <img src="Images/edition.png">
+                        </button>
+                        <button onclick="confirm_suppression(<?php echo $data['Id'];?>)" title="Supprimer">
+                            <img src="Images/suppression.bmp">
+                        </button>
+                    </td>
+                </tr>
+
+                <?php
+                            }
+                        ?>
+            </table>
+        </div>
+        <br>
+
+        <a href="index.php?page=new_match">
+            <input type="button" value="Nouveau match">
+        </a>
+        <br>
+        <div align="center">
+            Page<br>
+            <?php
+		       for ( $i = 0 ; $i < $query->rowCount() /10 ; $i++ ) {
+            ?>
+            <a href="index.php?page=match&num=<?php echo $i+1 ?>" ><?php  echo $i+1 ?> </a>
+            <?php
+		    if ( $i < $query->rowCount()/10 - 1 ) {
+            echo '-';
+            }
+            }
+            ?>
+        </div>
+    </div>
+    <div class="interieur">
+        <div class="tableau">
+            <table>
+                <tr>
+                    <td colspan="2">Saisons</td>
+                </tr>
+                <tr>
+                    <form method="POST" action="index.php?page=saisons&action=ajouter">
+                        <td>
+                            Nouvelle saison : <input type="text" name="new_saison"/>
+                        </td>
+                        <td>
+                            <input type="submit" value="Ajouter"/>
+                        </td>
+                    </form>
+                </tr>
+                <?php
+                $sql = "SELECT * FROM SAISONS";
+                foreach($bdd->query($sql) as $data) {
+                ?>
+
+                <tr>
+                    <td>
+                        <b>
+                            <?php
+                            echo $data['Saison'];
+                        ?>
+                        </b>
+                    </td>
+                    <td>
+                        <button onclick="confirm_suppression_saison(<?php echo $data['Id'];?>)" title="Supprimer">
+                            <img src="Images/suppression.bmp">
+                        </button>
+                    </td>
+                </tr>
+
+                <?php
+               }
+               ?>
+
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+<body>
+<div id="contenu">
+    <?php
+                @include ("header.html");
+            ?>
+    <br>
+    <div class="entete">
+        <img src="Images/championnat.jpg">
+        <h1>Gestion des championnats : liste des championnats</h1>
+    </div>
+    <br>
+    <div class="interieur">
+        <div class="tableau">
+            <table>
+                <tr>
+                    <td>Nom du championnat</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
+                <tr>
+                    <td>sdfsdf</td>
+                    <td>sdfsdf</td>
+                    <td>sdfsdf</td>
+                </tr>
+                <?php
+                $sql = "SELECT * FROM CHAMPIONNATS ";
+			    $query = $bdd->prepare($sql);
+                $query->execute();
+                $i = 0;
+                for ( $i = 0 ; $i < ($page * 10) - 10 ; $i++) { if ($query->rowCount() > $i )   { $query->fetch(); } }
+                while(($data = $query->fetch()) && $i < $page * 10 ) {
+                    $i++;
+                ?>
+
+                <tr>
+                    <td>
+                        <?php
+                                    echo $data['Nom'];
+                                ?>
+                    </td>
+                    <td>
+                        <?php
+                                    echo resume_text($data['Description'], 100);
+                                ?>
+                    </td>
+                    <td>
+                        <button onclick="self.location.href='index.php?page=edit_championnat&id=<?php echo $data['Id']; ?>'" title="Editer">
+                            <img src="Images/edition.png">
+                        </button>
+                        <button onclick="confirm_suppression(<?php echo $data['Id'];?>)" title="Supprimer">
+                            <img src="Images/suppression.bmp">
+                        </button>
+                    </td>
+                </tr>
+
+                <?php
+                           }
+                           ?>
+            </table>
+        </div>
+        <br>
+
+
+        <a href="index.php?page=new_championnat">
+            <input type="button" value="Nouveau championnat" onclick="self.location.href='index.php?page=new_championnat'">
+        </a>
+        <br>
+        <div align="center">
+            Page<br>
+            <?php
+		     for ( $i = 0 ; $i < $query->rowCount() /10 ; $i++ ) {
+            ?>
+            <a href="index.php?page=championnats&num=<?php echo $i+1 ?>" ><?php  echo $i+1 ?> </a>
+            <?php
+		     if ( $i < $query->rowCount()/10 - 1 ) {
+            echo '-';
+            }
+            }
+            ?>
+        </div>
+    </div>
+</div>
+</body>
+</html>

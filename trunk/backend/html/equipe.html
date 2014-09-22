@@ -7,204 +7,204 @@
 ?>
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>équipes</title>
     <meta http-equiv="Content-Type" content="text/html"  charset="UTF-8"/>
     <link rel="stylesheet" href="css/tableau.css" type="text/css" media="screen"/>
-      <script language="JavaScript">
-          function confirm_suppression_equipe(id) {
-              if(confirm("Voulez-vous vraiment supprimer cette equipe ?")) {
-                  window.location = "index.php?page=suppr_equipe&action=supprimer&id="+id;
-              }
-          }
-          function confirm_suppression_categorie(id) {
-              if(confirm("Voulez-vous vraiment supprimer cette categorie ?")) {
-                  window.location = "index.php?page=suppr_categorie&action=supprimer&id="+id;
-              }
-          }
-          function confirm_suppression_poste(id) {
-              if(confirm("Voulez-vous vraiment supprimer cette categorie ?")) {
-                  window.location = "index.php?page=suppr_poste&action=supprimer&id="+id;
-              }
-          }
+    <script language="JavaScript">
+        function confirm_suppression_equipe(id) {
+            if(confirm("Voulez-vous vraiment supprimer cette equipe ?")) {
+                window.location = "index.php?page=suppr_equipe&action=supprimer&id="+id;
+            }
+        }
+        function confirm_suppression_categorie(id) {
+            if(confirm("Voulez-vous vraiment supprimer cette categorie ?")) {
+                window.location = "index.php?page=suppr_categorie&action=supprimer&id="+id;
+            }
+        }
+        function confirm_suppression_poste(id) {
+            if(confirm("Voulez-vous vraiment supprimer cette categorie ?")) {
+                window.location = "index.php?page=suppr_poste&action=supprimer&id="+id;
+            }
+        }
 
-      </script>
-  </head>
-  <script language=JavaScript src="js/accueil.js"></script>
-  <body>
-    <div id="contenu">
-      <?php
+    </script>
+</head>
+<script language=JavaScript src="js/accueil.js"></script>
+<body>
+<div id="contenu">
+    <?php
          @include ("header.html");
          ?>
-      <br>
-      <div class="entete">
+    <br>
+    <div class="entete">
         <img src="Images/icon_equipe.png">
-        <h1>Gestion des équipes : Liste des équipes</h1> 
-      </div>
-      <br>
-      <div class="interieur">
+        <h1>Gestion des équipes : Liste des équipes</h1>
+    </div>
+    <br>
+    <div class="interieur">
         <div class="tableau">
-          <table>
-            <tr>
-              <td>Nom</td>
-              <td>Categorie</td>
-              <td>Description</td>
-              <td>Action</td>
-            </tr>
+            <table>
+                <tr>
+                    <td>Nom</td>
+                    <td>Categorie</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
 
-            <?php
+                <?php
                $sql = "SELECT * FROM TEAM ";
 	       $query = $bdd->prepare($sql);
-	    $query->execute();
-	    $i = 0;
-	    for ( $i = 0 ; $i < ($page * 10) -10 ; $i++) { if ( $query->rowCount() > $i ) { $query->fetch(); }}
-	      while(($data = $query->fetch()) && $i < $page * 10 ) {
-						      $i++;
-            $categorie = $bdd->query("select Nom from CATEGORIE where Id = ".$data['IdCategorie'])->fetch()['Nom'];
-            ?>
+                $query->execute();
+                $i = 0;
+                for ( $i = 0 ; $i < ($page * 10) -10 ; $i++) { if ( $query->rowCount() > $i ) { $query->fetch(); }}
+                while(($data = $query->fetch()) && $i < $page * 10 ) {
+                $i++;
+                $categorie = $bdd->query("select Nom from CATEGORIE where Id = ".$data['IdCategorie'])->fetch()['Nom'];
+                ?>
 
-            <tr>
-              <td>
-                <?php 
+                <tr>
+                    <td>
+                        <?php
                    echo $data['Nom'];
                    ?>
-              </td>
-              <td>
-                <?php
+                    </td>
+                    <td>
+                        <?php
                    echo $categorie;
                    ?>
-              </td>
-              <td>
-                <?php
+                    </td>
+                    <td>
+                        <?php
                    echo resume_text($data['Description'], 100);
                    ?>
-              </td>
-              <td>
-                <button onclick="self.location.href='index.php?page=edit_equipe&id=<?php echo $data['Id']; ?>'" title="Editer">
-                  <img src="Images/edition.png">
-                </button>
-                <button onclick="confirm_suppression_equipe(<?php echo $data['Id'];?>)" title="Supprimer">
-                  <img src="Images/suppression.bmp">
-                </button>
-              </td>
-            </tr>
+                    </td>
+                    <td>
+                        <button onclick="self.location.href='index.php?page=edit_equipe&id=<?php echo $data['Id']; ?>'" title="Editer">
+                            <img src="Images/edition.png">
+                        </button>
+                        <button onclick="confirm_suppression_equipe(<?php echo $data['Id'];?>)" title="Supprimer">
+                            <img src="Images/suppression.bmp">
+                        </button>
+                    </td>
+                </tr>
 
-            <?php
+                <?php
                }
                ?>
-          </table>
+            </table>
         </div>
         <br>
 
 
         <a href="index.php?page=new_equipe">
-          <input type="button" value="Nouvelle équipe" onclick="self.location.href='index.php?page=new_equipe'">
+            <input type="button" value="Nouvelle équipe" onclick="self.location.href='index.php?page=new_equipe'">
         </a>
-	<br>
-	<div align="center">
-	  Page<br>
-	  <?php
+        <br>
+        <div align="center">
+            Page<br>
+            <?php
 	     for ( $i = 0 ; $i < $query->rowCount() /10 ; $i++ ) {
-	     ?>
-	  <a href="index.php?page=equipe&num=<?php echo $i+1 ?>" ><?php  echo $i+1 ?> </a>
-	  <?php 
+            ?>
+            <a href="index.php?page=equipe&num=<?php echo $i+1 ?>" ><?php  echo $i+1 ?> </a>
+            <?php
 	     if ( $i < $query->rowCount()/10 - 1 ) {
-	     echo '-';
-	     } 
-	     }
-	     ?>
-	</div>
-      </div>
-      <div class="interieur">
-	<div class="tableau">
-	  <table>
-	    <tr>
-	      <td>Nom</td>
-	      <td>Description</td>
-	      <td>Action</td>
-	    </tr>
-	    <?php
+            echo '-';
+            }
+            }
+            ?>
+        </div>
+    </div>
+    <div class="interieur">
+        <div class="tableau">
+            <table>
+                <tr>
+                    <td>Nom</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
+                <?php
                $sql = "SELECT * FROM CATEGORIE ";
                foreach($bdd->query($sql) as $data) {
-            ?>
+                ?>
 
-            <tr>
-              <td>
-                <?php 
+                <tr>
+                    <td>
+                        <?php
                    echo $data['Nom'];
                    ?>
-              </td>
-              <td>
-                <?php
+                    </td>
+                    <td>
+                        <?php
                    echo resume_text($data['Description'], 100);
                    ?>
-              </td>
-              <td>
-                <button onclick="self.location.href='index.php?page=edit_categorie&id=<?php echo $data['Id']; ?>'" title="Editer">
-                  <img src="Images/edition.png">
-                </button>
-                <button onclick="confirm_suppression_categorie(<?php echo $data['Id'];?>)" title="Supprimer">
-                  <img src="Images/suppression.bmp">
-                </button>
-              </td>
-            </tr>
+                    </td>
+                    <td>
+                        <button onclick="self.location.href='index.php?page=edit_categorie&id=<?php echo $data['Id']; ?>'" title="Editer">
+                            <img src="Images/edition.png">
+                        </button>
+                        <button onclick="confirm_suppression_categorie(<?php echo $data['Id'];?>)" title="Supprimer">
+                            <img src="Images/suppression.bmp">
+                        </button>
+                    </td>
+                </tr>
 
-            <?php
+                <?php
                }
                ?>
-            
-	  </table>
-	</div>
-	<br>
-	<a href="index.php?page=new_categorie">
-          <input type="button" value="Nouvelle categorie" onclick="self.location.href='index.php?page=new_categorie'">
-	</a>
-      </div>
-      <div class="interieur">
-	<div class="tableau">
-	  <table>
-	    <tr>
-	      <td>Nom</td>
-	      <td>Description</td>
-	      <td>Action</td>
-	    </tr>
-	    <?php
+
+            </table>
+        </div>
+        <br>
+        <a href="index.php?page=new_categorie">
+            <input type="button" value="Nouvelle categorie" onclick="self.location.href='index.php?page=new_categorie'">
+        </a>
+    </div>
+    <div class="interieur">
+        <div class="tableau">
+            <table>
+                <tr>
+                    <td>Nom</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </tr>
+                <?php
                $sql = "SELECT * FROM POSTE ";
                foreach($bdd->query($sql) as $data) {
-            ?>
+                ?>
 
-            <tr>
-              <td>
-		<?php 
+                <tr>
+                    <td>
+                        <?php
                    echo $data['Nom'];
                    ?>
-              </td>
-              <td>
-		<?php
+                    </td>
+                    <td>
+                        <?php
                    echo resume_text($data['Description'], 100);
                    ?>
-              </td>
-              <td>
-		<button onclick="self.location.href='index.php?page=edit_poste&id=<?php echo $data['Id']; ?>'" title="Editer">
-                  <img src="Images/edition.png">
-		</button>
-		<button onclick="confirm_suppression_poste(<?php echo $data['Id'];?>)" title="Supprimer">
-                  <img src="Images/suppression.bmp">
-		</button>
-              </td>
-            </tr>
+                    </td>
+                    <td>
+                        <button onclick="self.location.href='index.php?page=edit_poste&id=<?php echo $data['Id']; ?>'" title="Editer">
+                            <img src="Images/edition.png">
+                        </button>
+                        <button onclick="confirm_suppression_poste(<?php echo $data['Id'];?>)" title="Supprimer">
+                            <img src="Images/suppression.bmp">
+                        </button>
+                    </td>
+                </tr>
 
-            <?php
+                <?php
                }
                ?>
-            
-	  </table>
-	</div>
-	<br>
-	<a href="index.php?page=new_poste">
-          <input type="button" value="Nouveau poste" onclick="self.location.href='index.php?page=new_poste">
-      </div>
-    </div>
 
-  </body>
+            </table>
+        </div>
+        <br>
+        <a href="index.php?page=new_poste">
+            <input type="button" value="Nouveau poste" onclick="self.location.href='index.php?page=new_poste">
+    </div>
+</div>
+
+</body>
 </html>
