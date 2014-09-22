@@ -1,0 +1,16 @@
+Bon alors deux trois trucs sur lesquels il faut se mettre d'accord et que je propose :
+
+ - code en ANGLAIS (y compris les paramètres en GET et POST, etc...)
+ - commentaires en FRANCAIS
+ - on déconne pas avec les commentaires
+
+ - chaque classe (ce qui correspond à chaque fonctionnalité généralement), on a :
+   -> un constructeur qui prend généralement la connexion à la bdd, et l'objet smarty
+   -> une méthode publique "get_content()" qui renvoie le code html parsé par smarty au préalable
+
+ ! : le nom des variables privées de classe sont précédées d'un underscore, exemple : $_bdd, $_smarty
+
+Les noms de fichier se composent comme ceci : Fonctionnalite.class.php (si c'est une classe évidamment)
+
+Je pense que c'est tout, je vais créer deux Milestones afin de classer les issues concernant le backend d'un côté, frontend de l'autre.
+Hésite pas à utiliser tout ça, y compris pour les bugs, les questions, ...
