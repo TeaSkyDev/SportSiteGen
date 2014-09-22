@@ -37,6 +37,7 @@ class Connexion {
                 $res_type = null;
             }
 
+            //c'est bien un administrateur
             if($res_type[0] == "Administrateur") {
                 $_SESSION['admin_connected'] = true;
                 header("Location: index.php");

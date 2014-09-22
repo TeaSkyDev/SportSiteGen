@@ -10,6 +10,9 @@ require_once("php/Log.class.php");
 require_once("php/Message.class.php");
 require_once("php/Connexion.class.php");
 require_once("php/Header.class.php");
+require_once("php/Photo.class.php");
+require_once("php/Profil.class.php");
+require_once("php/News.class.php");
 
 $smarty  = new Smarty();
 
@@ -26,6 +29,7 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
     $connexion = new Connexion($bdd, $smarty);
     $content_page   = $connexion->get_contenu();
 } else {
+
     //on va chercher le contenu du header
     $header = new Header($bdd, $smarty, $page);
     $content_header = $header->get_content();
@@ -39,6 +43,7 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
 $smarty->assign("Admin_connected", $_SESSION['admin_connected']);
 $smarty->assign("Content", $content_page);
 
+//affichage de la page
 $smarty->display("html/index.html");
 
 ?>

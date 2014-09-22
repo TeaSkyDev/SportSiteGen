@@ -1,0 +1,30 @@
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>News</h1>
+            <div class="row">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a href="index.php?page=news&action=read_news&id_news={$News.Id}"><u>{$News.titre}</u></a> - <i>{$News.date}</i></div>
+                    <div class="panel-body">
+                        {$News.contenu}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {foreach from=$Coms item=com}
+    <div class="row">
+        <div class="well">
+            <h4><u>{$com.utilisateur}</u></a> - <i>{$com.date}</h4>
+            <form role="form">
+                <div class="form-group">
+                    {$com.contenu}
+                </div>
+            </form>
+        </div>
+    </div>
+    {/foreach}
+</div>
+

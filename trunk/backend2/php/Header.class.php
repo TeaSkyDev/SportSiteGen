@@ -6,9 +6,9 @@
 
 class Header {
 
-    private $_bdd;
-    private $_smarty;
-    private $_page;
+    private $_bdd;    //connexion à la base de données
+    private $_smarty; //moteur de template
+    private $_page;   //page demandée
 
     public function __construct($bdd, $smarty, $page) {
         $this->_bdd    = $bdd;
@@ -16,9 +16,13 @@ class Header {
         $this->_page   = $page;
     }
 
+    /**
+     * @brief renvoie le code du header parsé par Smarty
+     * @return string
+     */
     public function get_content() {
 
-        //nom du site
+        //on va chercher le nom du site
         $query_site_name = $this->_bdd->query("SELECT Nom FROM site");
         $name = $query_site_name->fetch()['Nom'];
 
@@ -59,14 +63,16 @@ class Header {
         $menu[8]['url']      = "index.php?page=users";
         $menu[8]['selected'] = $this->_page == "users";
 
-        $menu[9]['title']    = "Options";
+        $menu[9]['title']    = "Configuration";
         $menu[9]['url']      = "index.php?page=settings";
         $menu[9]['selected'] = $this->_page == "settings";
 
+        //on donne ces données à smarty
         $this->_smarty->assign("Admin_name", $_SESSION['admin']['Pseudo']);
         $this->_smarty->assign("Name", $name);
         $this->_smarty->assign("Menu", $menu);
 
+        //smarty parse le code avec les données et renvoie le résultat html
         return $this->_smarty->fetch("html/header.html");
     }
 
