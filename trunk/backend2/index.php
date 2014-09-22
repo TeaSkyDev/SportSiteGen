@@ -9,8 +9,16 @@ require_once("php/Content.class.php");
 require_once("php/Log.class.php");
 require_once("php/Message.class.php");
 require_once("php/Connexion.class.php");
+require_once("php/Header.class.php");
 
 $smarty  = new Smarty();
+
+if(isset($_GET['page'])) {
+    $page = $_GET['page'];
+} else {
+    $page = "home";
+}
+
 
 //si l'admin n'est pas connecté, on va chercher la page de connexion
 if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
@@ -18,11 +26,12 @@ if(!isset($_SESSION['admin_connected']) || !$_SESSION['admin_connected']) {
     $connexion = new Connexion($bdd, $smarty);
     $content_page   = $connexion->get_contenu();
 } else {
-    if(isset($_GET['page'])) {
-        $page = $_GET['page'];
-    } else {
-        $page = "home";
-    }
+    //on va chercher le contenu du header
+    $header = new Header($bdd, $smarty, $page);
+    $content_header = $header->get_content();
+    $smarty->assign("Header", $content_header);
+
+    //on va chercher le contenu de la fonctionnalité demandée
     $content = new Content($bdd, $smarty, $page);
     $content_page = $content->get_content();
 }

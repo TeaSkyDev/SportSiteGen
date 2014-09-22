@@ -39,7 +39,7 @@ class Connexion {
 
             if($res_type[0] == "Administrateur") {
                 $_SESSION['admin_connected'] = true;
-                return Message::msg("Vous êtes maintenant connecté !", "home", $this->_smarty);
+                header("Location: index.php");
             } else {
                 unset($_SESSION);
                 unset($_POST);

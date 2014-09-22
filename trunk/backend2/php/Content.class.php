@@ -24,7 +24,7 @@ class Content {
             case "home":
                 $content = $this->get_home();
                 break;
-            case "deconnexion":
+            case "logout":
                 $content = $this->get_deconnexion();
                 break;
             default:
