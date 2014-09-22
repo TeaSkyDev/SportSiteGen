@@ -12,5 +12,9 @@ Bon alors deux trois trucs sur lesquels il faut se mettre d'accord et que je pro
 
 Les noms de fichier se composent comme ceci : Fonctionnalite.class.php (si c'est une classe évidamment)
 
+Dernière info : les url sont formées de cette manière : index.php?page=nom_fonctionnalite&truc=bidule...
+    Exemple : index.php?page=news&action=add_news
+              index.php?page=news&action=read_news&id_news=2
+
 Je pense que c'est tout, je vais créer deux Milestones afin de classer les issues concernant le backend d'un côté, frontend de l'autre.
 Hésite pas à utiliser tout ça, y compris pour les bugs, les questions, ...
