@@ -66,7 +66,7 @@ class News {
             while($d = $query->fetch()) {
                 $photo = Photo::s_search_byId($this->_bdd, $d['IdPhoto']);
                 $data[$i] = $d;
-                $data[$i]['contenu'] = Message::bbcode($data[$i]['contenu']);
+                $data[$i]['contenu'] = Message::resume_text(Message::bbcode($data[$i]['contenu']), 300);
                 $data[$i]['img'] = $photo['Fichier'];
                 $i++;
             }
