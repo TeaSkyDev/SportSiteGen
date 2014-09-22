@@ -3,15 +3,17 @@
     <div class="row">
         <div class="col-lg-12">
             <h1>News</h1>
+        </div>
+        <div class="col-lg-12">
+            <a href="index.php?page=news&action=add_news" style="text-decoration: underline;float:right;">Nouvelle news</a>
+        </div>
+        <div class="col-lg-12">
             {foreach from=$News item=news}
             <div class="row">
                 <div class="panel panel-default">
                     <div class="panel-heading"><a href="index.php?page=news&action=read_news&id_news={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></div>
                     <div class="panel-body">
                         {$news.contenu}
-                    </div>
-                    <div class="text-center">
-                        <a href="#"><i class="fa fa-plus"></i>Full Story</a>
                     </div>
                 </div>
             </div>

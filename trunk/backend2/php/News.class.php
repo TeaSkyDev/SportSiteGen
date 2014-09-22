@@ -38,7 +38,7 @@ class News {
             } else if($_GET['action'] == "research_news" && isset($_POST['text'])) {
                 return $this->get_news_like($_POST['text']);
             } else if($_GET['action'] == "add_news") {
-                //$this->add_news();
+                return $this->add_news();
             } else if($_GET['action'] == "delete_news") {
                 if(isset($_GET['id_news'])) {
                     //$this->delete_news($_GET['id_news']);
@@ -157,6 +157,27 @@ class News {
             }
         }
         return $data;
+    }
+
+    private function add_news() {
+        if(isset($_POST['title']) && isset($_POST['content'])) {
+            $date     = date("Y-m-d H:i:s");
+            $id_photo = 1;
+            $content  = htmlentities($_POST['content']);
+            $title    = htmlentities($_POST['title']);
+            $autor    = $_SESSION['admin']['Pseudo'];
+
+            $query_add_news = $this->_bdd->prepare("INSERT INTO news VALUES(NULL, :title, :date, :content, :id_photo, :autor)");
+            if($query_add_news->execute(array(":title" => $title, ":date" => $date, ":content" => $content, ":id_photo" => $id_photo, ":autor" => $autor))) {
+                //enregistrement de l'image
+                return Message::msg("News ajoutée avec succès !", "news", $this->_smarty);
+            } else {
+                echo "INSERT INTO news VALUES(NULL, ".$title.", ".$date.", ".$content.", ".$id_photo.", ".$autor.")";
+                //return Message::msg("Erreur lors de l'ajout de la news.", "news", $this->_smarty);
+            }
+        } else {
+            return $this->_smarty->fetch("html/add_news.html");
+        }
     }
 
     /**

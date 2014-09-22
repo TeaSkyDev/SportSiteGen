@@ -1,0 +1,35 @@
+<form method="post" action="index.php?page=news&action=add_news">
+    <div class="row text-center">
+        <h2>Nouvelle news</h2>
+    </div>
+    <div>
+        <label for="title" class="col-md-2">
+            Titre :
+        </label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="title" name="title">
+        </div>
+    </div>
+    <div>
+        <label class="col-md-2">
+            Contenu :
+        </label>
+        <div class="col-md-10">
+            <textarea id="editor1" name="content" rows="10" cols="80"></textarea>
+            {literal}<script>CKEDITOR.replace( 'editor1', {
+            extraPlugins: 'bbcode',
+            toolbar: [
+                [ 'Undo', 'Redo' ],
+                [ 'Bold', 'Italic', 'Underline' ],
+                [ 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat' ],
+                [ 'Link', 'Unlink']
+            ]
+        } );</script>{/literal}
+        </div>
+    </div>
+    <div class="col-md-offset-5">
+        <button type="submit" class="col-md-5 btn btn-primary">
+            Register
+        </button>
+    </div>
+</form>
