@@ -10,59 +10,69 @@
 class Match {
 
     private $_bdd; /* base de donnees rattache */
-    private $_data; /* les donnees de matchs de la base */
-    private $_nb; /* le nombre de matchs */
-    private $_fiche; /* une fiche de match */
-
+    private $_smarty; //moteur de template smarty
 
     /**
     \brief construit l'objet
     \param bdd la base de donnees
     \param param l'id du match (optionnel)
      */
-    public function __construct($bdd, $param = null) {
-        $this->_bdd = $bdd;
-        if ( isset ($param) && $param!=null) {
-            if ( $param['v1'] == "lire_match" && isset($param['v2'])) {
-                $this->get_one_match($param['v2']);
-            } else if($param['v1'] == "lire_matchBySaison" && isset($param['v2'])) {
-                $this->get_matchs_byIdSaison($param['v2']);
-            } else {
-                $this->get_all_match();
-            }
+    public function __construct($bdd, $smarty) {
+        $this->_bdd    = $bdd;
+        $this->_smarty = $smarty;
+    }
+
+    public function get_content() {
+        if(isset($_GET['season'])) {
+            //return $this->get_matchs_by_season($_GET['season']);
+        } else if(isset($_GET['id_match'])) {
+            //return $this->get_match_by_id($_GET['id_match']);
         } else {
-            $this->get_all_match();
+            return $this->get_all_matchs();
         }
     }
 
-    /*
-     \brief recupere tout le match de la base
-     \param void
-     \return void
+    /**
+     @brief recupere tout le match de la base
+     @param void
+     @return void
      */
-    public function get_all_match() {
+    public function get_all_matchs() {
         /* On récupère la dernière saison */
-        $last_saison = $this->_bdd->query("select * from SAISONS order by Saison DESC")->fetch();
+        $last_saison = $this->_bdd->query("SELECT * FROM saison ORDER BY Saison DESC")->fetch();
 
-        $query = $this->_bdd->query("select * from MATCHS where IdSaison = ".$last_saison['Id']." order by Id DESC");
-        $this->_nb = 0;
+        $query = $this->_bdd->query("SELECT * FROM `match` WHERE IdSaison = ".$last_saison['Id']." ORDER BY Id DESC");
+        $data_matchs = array();
+        $i = 0;
         if( $query->rowCount() > 0) {
             while ($data = $query->fetch()) {
-                $this->_data[$this->_nb] = $data;
-                $this->_data[$this->_nb]['Saison'] = $last_saison['Saison'];
-                $this->_nb++;
+
+                //on va chercher le nom des deux équipes
+                $data_matchs[$i] = $data;
+                $data_matchs[$i]['name_team1'] = Equipe::s_search_byId($this->_bdd, $data['IdTeam1']);
+                $data_matchs[$i]['name_team2'] = Equipe::s_search_byId($this->_bdd, $data['IdTeam2']);
+                $data_matchs[$i]['Saison'] = $last_saison['Saison'];
+                $i++;
             }
         }
+
+        $this->_smarty->assign("Matchs", $data_matchs);
+        return $this->_smarty->fetch(TEMPLATE."/html/match.html");
     }
 
-    public function get_matchs_byIdSaison($idsaison) {
-        $query = $this->_bdd->query("select * from MATCHS where IdSaison = ".$idsaison." order by Id desc");
-        $this->_nb = 0;
+    /**
+     * @brief renvoie la page à afficher des matchs en fonction de la saison donnée
+     * @param $season
+     */
+    public function get_matchs_by_season($saison) {
+        $query = $this->_bdd->query("select * from MATCHS where IdSaison = ".$saison." order by Id desc");
+        $data_matchs = array();
         if($query->rowCount() > 0) {
+            $i = 0;
             while($data = $query->fetch()) {
-                $this->_data[$this->_nb] = $data;
-                $this->_data[$this->_nb]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$idsaison)->fetch()['Saison'];
-                $this->_nb++;
+                $data_matchs[$i] = $data;
+                //$data_matchs[$i]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$idsaison)->fetch()['Saison'];
+                $i++;
             }
         }
     }
@@ -72,16 +82,16 @@ class Match {
      \param l'identifiant du match
      \return void
      */
-    public function get_one_match($id) {
+    public function get_match_by_id($id) {
         $query = $this->_bdd->prepare("select * from MATCHS where Id = :id");
         $query->bindParam(":id", $id);
         $query->execute();
+        $data_match = array();
         if ( $query->rowCount() == 1 ) {
-            $this->_nb = 1;
-            $this->_data[0] = $query->fetch();
-            $this->_data[0]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$this->_data[0]['IdSaison'])->fetch()['Saison'];
+            $data_match[0] = $query->fetch();
+            $data_match[0]['Saison'] = $this->_bdd->query("select Saison from SAISONS where Id = ".$data_match[0]['IdSaison'])->fetch()['Saison'];
         }
-        $this->_fiche = $this->get_fiche_match($id);
+        //$this->_fiche = $this->get_fiche_match($id);
     }
 
 
@@ -90,7 +100,7 @@ class Match {
      \param 'identifiant d'un match
      \return une fiche de match
      */
-    public function get_fiche_match($id) {
+    /*public function get_fiche_match($id) {
         $query = $this->_bdd->prepare("select * from FICHE where IdMatch = :id");
         $query->bindParam(":id", $id);
         $query->execute();
@@ -100,20 +110,9 @@ class Match {
             return null;
         }
     }
+*/
 
 
-    /**
-    \brief renvoi les donnees sur les matchs
-    \param void
-    \return un tableau de matchs
-     */
-    public function get_content() {
-        return $this->_data;
-    }
-
-    public function get_fiche_content() {
-        return $this->_fiche;
-    }
 
 
     /**
@@ -139,7 +138,7 @@ class Match {
         $query->bindParam(":date", $date);
         $query->bindParam(":lieu", $lieu);
         $query->bindParam(":comm", $comm);
-        $queyr->bindParam(":idsaison", $idsaison);
+        $query->bindParam(":idsaison", $idsaison);
         $query->execute();
         return $query->rowCount() == 1;
     }
@@ -211,7 +210,7 @@ class Match {
     \param to deuxieme match a renvoyer
     \return un tableau de match ou false
      */
-    public function get_content_FromTo($from, $to) {
+  /*  public function get_content_FromTo($from, $to) {
         if ( isset ( $this->_data[$from] ) ) {
             $data = array();
             $i = 0;
@@ -225,15 +224,8 @@ class Match {
         }
     }
 
+*/
 
-    /**
-    \brief renvoi le nombre de page necessaire pour afficher des match
-    \param nb le nombre de match par page
-    \return le nombre de page
-     */
-    public function get_nb_page($nb) {
-        return $this->_nb / $nb;
-    }
 
 
     /**

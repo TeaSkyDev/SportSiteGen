@@ -47,6 +47,9 @@ class Content {
             case "deconnexion":
                 $content = $this->get_deconnexion();
                 break;
+            case "matchs":
+                $content = $this->get_matchs();
+                break;
             default:
                 $content = $this->get_home();
         }
@@ -98,6 +101,15 @@ class Content {
         $_SESSION['user_connected'] = false;
         unset($_SESSION['user']);
         header("Location: index.php");
+    }
+
+    /**
+     * @brief Va chercher le contenu de la page de matchs
+     * @return string
+     */
+    private function get_matchs() {
+        $matchs = new Match($this->_bdd, $this->_smarty);
+        return $matchs->get_content();
     }
 }
 
