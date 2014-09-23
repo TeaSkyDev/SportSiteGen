@@ -41,7 +41,9 @@ class News {
                 return $this->add_news();
             } else if($_GET['action'] == "delete_news") {
                 if(isset($_GET['id_news'])) {
-                    //$this->delete_news($_GET['id_news']);
+                    //$this->delete_one_news($_GET['id_news']);
+                } else if(isset($_POST['id_news'])) {
+                    return $this->delete_news();
                 } else {
                     return Message::msg("Erreur, id de news inconnu.", "news", $this->_smarty);
                 }
@@ -224,6 +226,24 @@ class News {
 
         $this->_smarty->assign("News", $news);
         return $this->_smarty->fetch("html/news.html");
+    }
+
+    /**
+     * @brief supprime une ou plusieurs news suivant la sélection
+     */
+    private function delete_news() {
+        $nb_errors = 0;
+        foreach($_POST['id_news'] as $id_news) {
+            $query_delete = $this->_bdd->prepare("DELETE FROM news WHERE Id = :id_news");
+            if(!$query_delete->execute(array(":id_news" => $id_news))) {
+                $nb_errors++;
+            }
+        }
+        if($nb_errors > 0) {
+            return Message::msg("Il s'est produit ".$nb_errors." erreurs.", "news", $this->_smarty);
+        } else {
+            return Message::msg(count($_POST['id_news'])." news supprimée(s).", "news", $this->_smarty);
+        }
     }
 }
 

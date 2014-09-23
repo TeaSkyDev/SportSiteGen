@@ -1,17 +1,23 @@
 <div id="page-wrapper">
 
     <div class="row">
+        <form method="post" id="form_delete" action="index.php?page=news&action=delete_news">
         <div class="col-lg-12">
             <h1>News</h1>
         </div>
         <div class="col-lg-12">
-            <a href="index.php?page=news&action=add_news" style="text-decoration: underline;float:right;">Nouvelle news</a>
+            <table>
+                <tr>
+                    <td><a href="index.php?page=news&action=add_news" class="btn btn-primary btn-xs" style="text-decoration: none;">Nouvelle news</a></td>
+                    <td><a href="#" onclick="document.getElementById('form_delete').submit();" class="btn btn-danger btn-xs" style="text-decoration: none;">Supprimer sélection</a></td>
+                </tr>
+            </table>
         </div>
         <div class="col-lg-12">
             {foreach from=$News item=news}
             <div class="row">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><a href="index.php?page=news&action=read_news&id_news={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></div>
+                    <div class="panel-heading"><input type="checkbox" name="id_news[]" value="{$news.Id}"/>  <a href="index.php?page=news&action=read_news&id_news={$news.Id}"><u>{$news.titre}</u></a> - <i>{$news.date}</i></div>
                     <div class="panel-body">
                         {$news.contenu}
                     </div>
@@ -19,6 +25,7 @@
             </div>
             {/foreach}
         </div>
+        </form>
     </div>
 
 </div>
