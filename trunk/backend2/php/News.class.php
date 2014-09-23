@@ -41,7 +41,7 @@ class News {
                 return $this->add_news();
             } else if($_GET['action'] == "delete_news") {
                 if(isset($_GET['id_news'])) {
-                    //$this->delete_one_news($_GET['id_news']);
+                    return $this->delete_news_by_id($_GET['id_news']);
                 } else if(isset($_POST['id_news'])) {
                     return $this->delete_news();
                 } else {
@@ -243,6 +243,19 @@ class News {
             return Message::msg("Il s'est produit ".$nb_errors." erreurs.", "news", $this->_smarty);
         } else {
             return Message::msg(count($_POST['id_news'])." news supprimée(s).", "news", $this->_smarty);
+        }
+    }
+
+    /**
+     * @brief supprime la news
+     * @param id_news l'id de la news à supprimer
+     */
+    private function delete_news_by_id($id_news) {
+        $query_delete = $this->_bdd->prepare("DELETE FROM news WHERE Id = :id_news");
+        if(!$query_delete->execute(array(":id_news" => $id_news))) {
+            return Message::msg("Erreur lors de la suppression de la news.", "news", $this->_smarty);
+        } else {
+            return Message::msg("News supprimée avec succès !", "news", $this->_smarty);
         }
     }
 }
