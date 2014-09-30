@@ -30,7 +30,7 @@ class Connexion {
 
         //si des données ont été envoyées...
         if($l->connexion_ok()) {
-            $query_right = $this->_bdd->query("SELECT Nom FROM type_utilisateur WHERE id = ".$_SESSION['user']['IdTypeUser']);
+            $query_right = $this->_bdd->query("SELECT Nom FROM type_utilisateur WHERE id = ".$_SESSION['admin']['IdTypeUser']);
             if($query_right) {
                 $res_type = $query_right->fetch();
             } else {
